@@ -10,30 +10,21 @@
 <body>
 
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-        <a class="navbar-brand" href="Index">JaunDetect</a>
+        <a class="navbar-brand">JaunDetect</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="@Url.Action("Index", "Home")#home">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="@Url.Action("UsageData", "Home")">Usage Data</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="@Url.Action("Resources", "Home")">Resources</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="@Url.Action("CrashReport", "Home")">Crash Report</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="@Url.Action("Photos", "Home")">Photos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="@Url.Action("CustomQuery", "Home")">Custom Query</a>
-                </li>
+                <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+                <li><a href="@Url.Action("UsageData", "Home")">Usage Data</a></li>
+                <li><a href="@Url.Action("Resources", "Home")">Resources</a></li>
+                <li><a href="@Url.Action("CrashReport", "Home")">Crash Report</a></li>
+                <li><a href="@Url.Action("Photos", "Home")">Photos</a></li>
+                <li><a href="@Url.Action("CustomQuery", "Home")">Custom Query</a></li>
+
+
             </ul>
         </div>
     </nav>
