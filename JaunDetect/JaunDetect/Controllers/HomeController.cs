@@ -13,16 +13,37 @@ namespace JaunDetect.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult UsageData()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Reports for App Usage";
 
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult Resources()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Resources and Budgeting";
+
+            return View();
+        }
+
+        public ActionResult CrashReport()
+        {
+            ViewBag.Message = "Crash Reports";
+
+            return View();
+        }
+
+        public ActionResult CustomQuery()
+        {
+            ViewBag.Message = "Custom Query";
+
+            return View();
+        }
+
+        public ActionResult Photos()
+        {
+            ViewBag.Message = "Failed Photo Gallery";
 
             return View();
         }
