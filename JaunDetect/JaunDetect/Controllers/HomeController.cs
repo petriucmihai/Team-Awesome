@@ -109,5 +109,20 @@ namespace JaunDetect.Controllers
 
             return null;
         }
+
+        public ActionResult GetDownloadsPerMonthChart()
+        {
+            var usageModel = new UsageViewModel();
+
+            var key = new Chart(width: 600, height: 400)
+                .AddSeries(
+                    chartType: "line",
+                    legend: "Downloads Per Month",
+                    xValue: usageModel.Months,
+                    yValues: usageModel.Downloads)
+                .Write();
+
+            return null;
+        }
     }
 }
