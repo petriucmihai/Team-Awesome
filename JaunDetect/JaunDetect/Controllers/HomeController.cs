@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
+using JaunDetect.Models;
 
 namespace JaunDetect.Controllers
 {
@@ -46,6 +48,21 @@ namespace JaunDetect.Controllers
             ViewBag.Message = "Failed Photo Gallery";
 
             return View();
+        }
+
+        public ActionResult GetTestStripUsageChart()
+        {
+            var resourceModel = new ResourcesDataModel();
+
+            var key = new Chart(width: 600, height: 400)
+                .AddSeries(
+                    chartType: "bar",
+                    legend: "Test Strips Used",
+                    xValue: resourceModel.Months,
+                    yValues: resourceModel.TestStripUsages)
+                .Write();
+
+            return null;
         }
     }
 }
