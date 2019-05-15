@@ -52,11 +52,13 @@ namespace JaunDetect.Models
 
         private int[] getRandomDatapoint(int num, int low, int high)
         {
+            Random rand = new Random();
+
             int[] result = new int[num];
 
             for (int i = 0; i < num; i++)
             {
-                result[i] = randomNumber(low, high);
+                result[i] = rand.Next(low, high);
             }
 
             return result;
@@ -88,12 +90,6 @@ namespace JaunDetect.Models
             }
 
             return result;
-        }
-
-        private int randomNumber(int low, int high)
-        {
-            Random rand = new Random();
-            return rand.Next(low, high);
         }
     }
 }
