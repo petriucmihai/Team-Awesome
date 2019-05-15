@@ -54,11 +54,11 @@ namespace JaunDetect.Models
 
             // Break the day up into 7 units: 2 hour intervals from 8AM to 8PM
             UsageTimes = random.GetRandomDatapoint(7, 10, 50);
-            //TimesOfDay = 8AM, 10AM, 12PM, etc.
+            TimesOfDay = unit.GetTimesOfDay(7, 2);
 
             // 6 types of devices
             NumbersOfDevices = random.GetRandomDatapoint(6, 3, 30);
-            //DeviceTypes = Samsung Galaxy, Google Pixel, etc.
+            DeviceTypes = unit.GetDevices(6);
 
             Months = unit.GetMonths(5);
             Logins = random.GetRandomDatapoint(5, 100, 500);
