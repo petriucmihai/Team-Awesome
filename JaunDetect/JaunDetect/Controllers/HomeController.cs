@@ -64,5 +64,20 @@ namespace JaunDetect.Controllers
 
             return null;
         }
+
+        public ActionResult GetHospitalPatientChart()
+        {
+            var resourceModel = new ResourcesDataModel();
+
+            var key = new Chart(width: 600, height: 400)
+                .AddSeries(
+                    chartType: "pie",
+                    legend: "Highest-Percentage Cases by Clinic",
+                    xValue: resourceModel.Clinics,
+                    yValues: resourceModel.HospitalPatients)
+                .Write();
+
+            return null;
+        }
     }
 }
