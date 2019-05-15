@@ -19,7 +19,9 @@ namespace JaunDetect.Controllers
         {
             ViewBag.Message = "Reports for App Usage";
 
-            return View();
+            var usageViewModel = new UsageViewModel();
+
+            return View(usageViewModel);
         }
 
         public ActionResult Resources()
