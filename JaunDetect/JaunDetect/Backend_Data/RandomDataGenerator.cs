@@ -21,6 +21,9 @@ namespace JaunDetect.Backend_Data
             return result;
         }
 
-        
+        public int GetRandomInt(int low, int high)
+        {
+            return _rand.Next(low, high);
+        }
     }
 }

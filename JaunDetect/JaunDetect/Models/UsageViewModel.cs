@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using JaunDetect.Backend_Data;
 
 namespace JaunDetect.Models
 {
@@ -46,7 +47,22 @@ namespace JaunDetect.Models
         /// </summary>
         public void Initialize()
         {
+            RandomDataGenerator random = new RandomDataGenerator();
+            UnitGenerator unit = new UnitGenerator();
 
+            CurrentUsers = random.GetRandomInt(10, 50);
+
+            // Break the day up into 7 units: 2 hour intervals from 8AM to 8PM
+            UsageTimes = random.GetRandomDatapoint(7, 10, 50);
+            //TimesOfDay = 8AM, 10AM, 12PM, etc.
+
+            // 6 types of devices
+            NumbersOfDevices = random.GetRandomDatapoint(6, 3, 30);
+            //DeviceTypes = Samsung Galaxy, Google Pixel, etc.
+
+            Months = unit.GetMonths(5);
+            Logins = random.GetRandomDatapoint(5, 100, 500);
+            Downloads = random.GetRandomDatapoint(5, 50, 200);
         }
 
 
