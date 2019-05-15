@@ -7,5 +7,46 @@ namespace JaunDetect.Backend_Data
 {
     public class UnitGenerator
     {
+
+        public string[] GetClinics(int num)
+        {
+            string[] result = new string[num];
+            string[] cities = { "Lagos", "Onitsha", "Kano", "Ibadan", "Uyo", "Nsukka", "Abuja", "Aba" };
+
+            for (int i = 0; i < num; i++)
+            {
+                result[i] = cities[i];
+            }
+
+            return result;
+        }
+
+        public string[] GetMonths(int numMonthsBack)
+        {
+            string[] result = new string[numMonthsBack];
+            List<string> months = getMonthsBackFromThisMonth(numMonthsBack);
+
+            for (int i = 0; i < numMonthsBack; i++)
+            {
+                result[i] = months[i];
+            }
+
+            return result;
+        }
+
+        private List<string> getMonthsBackFromThisMonth(int numMonthsBack)
+        {
+            List<string> result = new List<string>();
+            DateTime thisMonth = DateTime.Now;
+
+            for (int i = 0; i < numMonthsBack; i++)
+            {
+                DateTime month = thisMonth.AddMonths(-i);
+                string monthString = month.ToString("MMMM");
+                result.Add(monthString);
+            }
+
+            return result;
+        }
     }
 }

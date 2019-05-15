@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using JaunDetect.Backend_Data;
 
 namespace JaunDetect.Models
 {
@@ -30,66 +31,16 @@ namespace JaunDetect.Models
         /// </summary>
         public void Initialize()
         {
-            Months = getMonths(5);
-            TestStripUsages = getRandomDatapoint(5, 100, 400);
-            Clinics = getClinics(4);
-            HospitalPatients = getRandomDatapoint(4, 50, 500);
+            RandomDataGenerator random = new RandomDataGenerator();
+            UnitGenerator unit = new UnitGenerator();
+
+            Months = unit.GetMonths(5);
+            TestStripUsages = random.GetRandomDatapoint(5, 100, 400);
+            Clinics = unit.GetClinics(4);
+            HospitalPatients = random.GetRandomDatapoint(4, 50, 500);
         }
 
 
-        private string[] getMonths(int numMonthsBack)
-        {
-            string[] result = new string[numMonthsBack];
-            List<string> months = getMonthsBackFromThisMonth(numMonthsBack);
-
-            for (int i = 0; i < numMonthsBack; i++)
-            {
-                result[i] = months[i];
-            }
-
-            return result;
-        }
-
-        private int[] getRandomDatapoint(int num, int low, int high)
-        {
-            Random rand = new Random();
-
-            int[] result = new int[num];
-
-            for (int i = 0; i < num; i++)
-            {
-                result[i] = rand.Next(low, high);
-            }
-
-            return result;
-        }
-
-        private List<string> getMonthsBackFromThisMonth(int numMonthsBack)
-        {
-            List<string> result = new List<string>();
-            DateTime thisMonth = DateTime.Now;
-
-            for (int i = 0; i < numMonthsBack; i++)
-            {
-                DateTime month = thisMonth.AddMonths(-i);
-                string monthString = month.ToString("MMMM");
-                result.Add(monthString);
-            }
-
-            return result;
-        }
-
-        private string[] getClinics(int num)
-        {
-            string[] result = new string[num];
-            string[] cities = { "Lagos", "Onitsha", "Kano", "Ibadan", "Uyo", "Nsukka", "Abuja", "Aba" };
-            
-            for (int i = 0; i < num; i++)
-            {
-                result[i] = cities[i];
-            }
-
-            return result;
-        }
+        
     }
 }
