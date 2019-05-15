@@ -94,5 +94,20 @@ namespace JaunDetect.Controllers
 
             return null;
         }
+
+        public ActionResult GetDeviceModelsPieChart()
+        {
+            var usageModel = new UsageViewModel();
+
+            var key = new Chart(width: 600, height: 400)
+                .AddSeries(
+                    chartType: "pie",
+                    legend: "Device Models",
+                    xValue: usageModel.DeviceTypes,
+                    yValues: usageModel.NumbersOfDevices)
+                .Write();
+
+            return null;
+        }
     }
 }
