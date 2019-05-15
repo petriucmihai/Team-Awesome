@@ -11,6 +11,10 @@ namespace JaunDetect.Models
 
         public int[] TestStripUsages { get; set; }
 
+        public string[] Clinics { get; set; }
+
+        public int[] HospitalPatients { get; set; }
+
         /// <summary>
         /// Constructor for Log Model
         /// Calls to Initialize to set initial settings
@@ -27,7 +31,9 @@ namespace JaunDetect.Models
         public void Initialize()
         {
             Months = getMonths(5);
-            TestStripUsages = getTestStripUsages(5, 300, 400);
+            TestStripUsages = getRandomDatapoint(5, 300, 400);
+            Clinics = getClinics(4);
+            HospitalPatients = getRandomDatapoint(4, 50, 150);
         }
 
 
@@ -44,7 +50,7 @@ namespace JaunDetect.Models
             return result;
         }
 
-        private int[] getTestStripUsages(int num, int low, int high)
+        private int[] getRandomDatapoint(int num, int low, int high)
         {
             int[] result = new int[num];
 
@@ -66,6 +72,19 @@ namespace JaunDetect.Models
                 DateTime month = thisMonth.AddMonths(-i);
                 string monthString = month.ToString("MMMM");
                 result.Add(monthString);
+            }
+
+            return result;
+        }
+
+        private string[] getClinics(int num)
+        {
+            string[] result = new string[num];
+            string[] cities = { "Lagos", "Onitsha", "Kano", "Ibadan", "Uyo", "Nsukka", "Abuja", "Aba" };
+            
+            for (int i = 0; i < num - 1; i++)
+            {
+                result[i] = cities[i];
             }
 
             return result;
