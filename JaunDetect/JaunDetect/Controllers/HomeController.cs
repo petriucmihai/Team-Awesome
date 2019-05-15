@@ -79,5 +79,20 @@ namespace JaunDetect.Controllers
 
             return null;
         }
+
+        public ActionResult GetCommonUsageTimesChart()
+        {
+            var usageModel = new UsageViewModel();
+
+            var key = new Chart(width: 600, height: 400)
+                .AddSeries(
+                    chartType: "column",
+                    legend: "CommonUsageTimes",
+                    xValue: usageModel.TimesOfDay,
+                    yValues: usageModel.UsageTimes)
+                .Write();
+
+            return null;
+        }
     }
 }
