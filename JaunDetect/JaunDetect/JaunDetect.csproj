@@ -133,6 +133,8 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\crashes1.png" />
     <Content Include="Content\Images\crashes2.png" />
+    <Content Include="Content\Images\customquery1.png" />
+    <Content Include="Content\Images\customquery2.png" />
     <Content Include="Content\Images\homepage_photo1.png" />
     <Content Include="Content\Images\homepage_photo2.png" />
     <Content Include="favicon.ico" />
