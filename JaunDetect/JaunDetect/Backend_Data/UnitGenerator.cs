@@ -48,5 +48,35 @@ namespace JaunDetect.Backend_Data
 
             return result;
         }
+
+        public string[] GetDevices(int num)
+        {
+            string[] result = new string[num];
+            string[] devices = { "Samsung Galaxy S8", "Samsung Galaxy Note", "Sony Xperia", "Tecno Spark", "Motorola One", "Huawei Y9", "Huawei P10", "OnePlus 5" };
+
+            for (int i = 0; i < num; i++)
+            {
+                result[i] = devices[i];
+            }
+
+            return result;
+        }
+
+        public string[] GetTimesOfDay(int num, int multiplier)
+        {
+            string[] result = new string[num];
+
+            DateTime now = DateTime.Now;
+            DateTime start = new DateTime(now.Year, now.Month, now.Day, 8, 0, 0);
+
+            for (int i = 0; i < num; i++)
+            {
+                DateTime add = start.AddHours(i * multiplier);
+                result[i] = add.ToString("h:mm tt");
+            }
+
+
+            return result;
+        }
     }
 }
