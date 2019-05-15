@@ -124,5 +124,20 @@ namespace JaunDetect.Controllers
 
             return null;
         }
+
+        public ActionResult GetLoginsPerMonthChart()
+        {
+            var usageModel = new UsageViewModel();
+
+            var key = new Chart(width: 600, height: 400)
+                .AddSeries(
+                    chartType: "bar",
+                    legend: "Logins Per Month",
+                    xValue: usageModel.Months,
+                    yValues: usageModel.Logins)
+                .Write();
+
+            return null;
+        }
     }
 }
