@@ -31,9 +31,9 @@ namespace JaunDetect.Models
         public void Initialize()
         {
             Months = getMonths(5);
-            TestStripUsages = getRandomDatapoint(5, 300, 400);
+            TestStripUsages = getRandomDatapoint(5, 100, 400);
             Clinics = getClinics(4);
-            HospitalPatients = getRandomDatapoint(4, 50, 150);
+            HospitalPatients = getRandomDatapoint(4, 50, 500);
         }
 
 
@@ -42,7 +42,7 @@ namespace JaunDetect.Models
             string[] result = new string[numMonthsBack];
             List<string> months = getMonthsBackFromThisMonth(numMonthsBack);
 
-            for (int i = 0; i < numMonthsBack - 1; i++)
+            for (int i = 0; i < numMonthsBack; i++)
             {
                 result[i] = months[i];
             }
@@ -54,7 +54,7 @@ namespace JaunDetect.Models
         {
             int[] result = new int[num];
 
-            for (int i = 0; i < num - 1; i++)
+            for (int i = 0; i < num; i++)
             {
                 result[i] = randomNumber(low, high);
             }
@@ -82,7 +82,7 @@ namespace JaunDetect.Models
             string[] result = new string[num];
             string[] cities = { "Lagos", "Onitsha", "Kano", "Ibadan", "Uyo", "Nsukka", "Abuja", "Aba" };
             
-            for (int i = 0; i < num - 1; i++)
+            for (int i = 0; i < num; i++)
             {
                 result[i] = cities[i];
             }
