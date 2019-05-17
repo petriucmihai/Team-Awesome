@@ -36,8 +36,8 @@ namespace JaunDetect.Models
 
             Months = unit.GetMonths(5);
             TestStripUsages = random.GetRandomDatapoint(5, 100, 400);
-            Clinics = unit.GetClinics(4);
-            HospitalPatients = random.GetRandomDatapoint(4, 50, 500);
+            Clinics = unit.GetClinics(5);
+            HospitalPatients = random.GetRandomDatapoint(5, 50, 500);
         }
 
 
