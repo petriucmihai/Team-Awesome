@@ -6,7 +6,7 @@ using JaunDetect.Backend_Data;
 
 namespace JaunDetect.Models
 {
-    public class ResourcesDataModel
+    public class ResourcesViewModel
     {
         public string[] Months { get; set; }
 
@@ -20,7 +20,7 @@ namespace JaunDetect.Models
         /// Constructor for Log Model
         /// Calls to Initialize to set initial settings
         /// </summary>
-        public ResourcesDataModel()
+        public ResourcesViewModel()
         {
             Initialize();
         }

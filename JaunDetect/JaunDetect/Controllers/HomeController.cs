@@ -54,7 +54,7 @@ namespace JaunDetect.Controllers
 
         public ActionResult GetTestStripUsageChart()
         {
-            var resourceModel = new ResourcesDataModel();
+            var resourceModel = new ResourcesViewModel();
 
             var key = new Chart(width: 600, height: 400)
                 .AddSeries(
@@ -69,7 +69,7 @@ namespace JaunDetect.Controllers
 
         public ActionResult GetHospitalPatientChart()
         {
-            var resourceModel = new ResourcesDataModel();
+            var resourceModel = new ResourcesViewModel();
 
             var key = new Chart(width: 600, height: 400)
                 .AddSeries(
