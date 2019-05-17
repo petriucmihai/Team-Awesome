@@ -1,4 +1,7 @@
-﻿@{
+﻿@using JaunDetect.Models;
+@model ResourcesViewModel
+
+@{
     ViewBag.Title = "Resources";
 }
 <h2>@ViewBag.Title</h2>
@@ -6,6 +9,30 @@
 
 <div>
     <img src="/Home/GetTestStripUsageChart" />
+</div>
+<div class="border border-dark rounded">
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">Clinic</th>
+                <th scope="col">Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                if (Model.Clinics.Count() == Model.TestStripUsages.Count())
+                {
+                    for (int i = 0; i < Model.Clinics.Count(); i++)
+                    {
+                        <tr>
+                            <td>@Model.Clinics[i]</td>
+                            <td>@Model.TestStripUsages[i]</td>
+                        </tr>
+                    }
+                }
+            }
+        </tbody>
+    </table>
 </div>
 <br />
 <div>

@@ -28,7 +28,9 @@ namespace JaunDetect.Controllers
         {
             ViewBag.Message = "Resources and Budgeting";
 
-            return View();
+            var resourceModel = new ResourcesViewModel();
+
+            return View(resourceModel);
         }
 
         public ActionResult CrashReport()
