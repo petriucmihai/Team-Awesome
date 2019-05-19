@@ -6,8 +6,7 @@ using JaunDetect.Backend_Data;
 
 namespace JaunDetect.Models
 {
-    public class ResourcesViewModel
-    {
+    public class ResourcesViewModel{
         public string[] Months { get; set; }
 
         public int[] TestStripUsages { get; set; }
