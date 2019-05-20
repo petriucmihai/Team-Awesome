@@ -114,6 +114,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Backend_Data\DataBackend.cs" />
     <Compile Include="Backend_Data\IDataRepository.cs" />
     <Compile Include="Backend_Data\RandomDataGenerator.cs" />
     <Compile Include="Backend_Data\UnitGenerator.cs" />
