@@ -1,0 +1,36 @@
+﻿@model JaunDetect.Models.CustomQueryViewModel
+
+@{
+    ViewBag.Title = "QueryTemporary";
+}
+
+<h3>@ViewBag.Message</h3>
+
+@using (Html.BeginForm("QueryTemporary", "Home", FormMethod.Post))
+{
+    <div class="row">
+        <h5> Clinic Name </h5>
+        @Html.DisplayTextFor(model => model.ClinicName)
+    </div>
+
+    <div class="row">
+        <h5> Province </h5>
+        @Html.DisplayTextFor(model => model.Province)
+    </div>
+
+    <div class="row">
+        <h5> Start Time </h5>
+        @Html.DisplayTextFor(model => model.StartTime)
+    </div>
+
+    <div class="row">
+        <h5> End Time </h5>
+        @Html.DisplayTextFor(model => model.EndTime)
+    </div>
+
+    <div class="row">
+        <h5> Device Info </h5>
+        @Html.DisplayTextFor(model => model.Device)
+    </div>
+}
+

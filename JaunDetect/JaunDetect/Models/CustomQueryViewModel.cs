@@ -8,6 +8,9 @@ namespace JaunDetect.Models
 {
     public class CustomQueryViewModel
     {
+        public int count = 0;
+        public int ID { get; set; }
+
         public string ClinicName { get; set; }
 
         public string Province { get; set; }
@@ -20,15 +23,23 @@ namespace JaunDetect.Models
 
         public CustomQueryViewModel()
         {
-            Initialize();
+            QueryInitializer();
         }
 
-        public void Initialize()
-        {    
-            ClinicName = Console.ReadLine();
-            StartTime = Console.ReadLine();
-            EndTime = Console.ReadLine();
-            Device = Console.ReadLine();
+        public void QueryInitializer()
+        {
+            //ClinicName = Console.ReadLine();
+            //Province = Console.ReadLine();
+            //StartTime = Console.ReadLine();
+            //EndTime = Console.ReadLine();
+            //Device = Console.ReadLine();
+
+            ID = count++;
+            ClinicName = "Lagos Clinic";
+            Province = "Lagos";
+            StartTime = "1/1/2019"; 
+            EndTime = "6/1/2019";
+            Device = "Android"; 
         }
     }
 }

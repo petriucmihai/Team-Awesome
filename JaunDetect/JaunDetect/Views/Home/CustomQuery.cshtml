@@ -1,91 +1,49 @@
-﻿
+﻿@model JaunDetect.Models.CustomQueryViewModel
+
 @{
     ViewBag.Title = "Custom Query Tool";
 }
 
 <h3>@ViewBag.Message</h3>
 
-<div class="row">
-    <style>
-        input[type=text] {
-            width: 100%;
-            padding: 12px 20px;
-            margin: 8px 0;
-            box-sizing: border-box;
-        }
-    </style>
+@using (Html.BeginForm("CustomQuery", "Home", FormMethod.Post))
+{
+    <div class="row">
+        <h5> Clinic Name </h5>
+        @Html.TextBoxFor(model => model.ClinicName)
+        @Html.ValidationMessageFor(model => model.ClinicName)
+    </div>
 
-    <form>
-        <label for="clinic">Clinic Name</label>
-        <input type="text">
-    </form>
-</div>
+    <div class="row">
+        <h5> Province </h5>
+        @Html.TextBoxFor(model => model.Province)
+        @Html.ValidationMessageFor(model => model.Province)
+    </div>
 
-<div class="row">
-    <style>
-        input[type=text] {
-            width: 100%;
-            padding: 12px 20px;
-            margin: 8px 0;
-            box-sizing: border-box;
-        }
-    </style>
+    <div class="row">
+        <h5> Start Time </h5>
+        @Html.TextBoxFor(model => model.StartTime)
+        @Html.ValidationMessageFor(model => model.StartTime)
 
-    <form>
-        <label for="province">Clinic Province</label>
-        <input type="text">
-    </form>
-</div>
+    </div>
 
-<div class="row">
-    <style>
-        input[type=text] {
-            width: 100%;
-            padding: 12px 20px;
-            margin: 8px 0;
-            box-sizing: border-box;
-        }
-    </style>
+    <div class="row">
+        <h5> End Time </h5>
+        @Html.TextBoxFor(model => model.EndTime)
+        @Html.ValidationMessageFor(model => model.EndTime)
+     </div>
 
-    <form>
-        <label for="startDate">Start Date</label>
-        <input type="text">
-    </form>
-</div>
+    <div class="row">
+        <h5> Device Info </h5>
+        @Html.TextBoxFor(model => model.Device)
+        @Html.ValidationMessageFor(model => model.Device)
+    </div>
 
-<div class="row">
-    <style>
-        input[type=text] {
-            width: 100%;
-            padding: 12px 20px;
-            margin: 8px 0;
-            box-sizing: border-box;
-        }
-    </style>
-
-    <form>
-        <label for="endDate">End Date</label>
-        <input type="text">
-    </form>
-</div>
-
-<div class="row">
-    <style>
-        input[type=text] {
-            width: 100%;
-            padding: 12px 20px;
-            margin: 8px 0;
-            box-sizing: border-box;
-        }
-    </style>
-
-    <form>
-        <label for="deviceInfo">Device Info</label>
-        <input type="text">
-    </form>
-</div>
+    <input type="submit"/>
+}
 
 <div class="col">
-    <img src="~/Content/Images/customquery2.png" />
+   
+    
 </div>
 
