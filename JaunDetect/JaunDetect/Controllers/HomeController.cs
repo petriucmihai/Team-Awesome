@@ -54,6 +54,10 @@ namespace JaunDetect.Controllers
             return View();
         }
 
+        public ActionResult Settings()
+        {
+            return View();
+        }
         public ActionResult GetTestStripUsageChart()
         {
             var resourceModel = new ResourcesViewModel();
