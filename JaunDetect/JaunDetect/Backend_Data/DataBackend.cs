@@ -42,15 +42,15 @@ namespace JaunDetect.Backend_Data
             myData.HospitalPatients = repository.GetPatients();
             myData.Months = repository.GetMonths();
             myData.TestStripUsages = repository.GetUsages();
-            myData.TestStripPrice = repository.GetStripPrice();
-            myData.TestStripCosts = repository.GetStripCosts();
+            myData.TestStripPrice = repository.GetTestStripPrice();
+            myData.TestStripCosts = repository.GetTestStripCosts();
 
             return myData;
         }
 
         public bool UpdateStripPrice(double price)
         {
-            return repository.UpdateStripPrice(price);
+            return repository.UpdateTestStripPrice(price);
         }
     }
 }

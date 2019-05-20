@@ -34,7 +34,7 @@ namespace JaunDetect.Backend_Data
             data.Clinics = unit.GetClinics(5);
             data.HospitalPatients = random.GetRandomDatapoint(5, 50, 500);
             data.TestStripPrice = 1.00;
-            data.TestStripCosts = CalculateStripCost();
+            data.TestStripCosts = CalculateTestStripCost();
         }
 
         public string[] GetClinics()
@@ -57,24 +57,24 @@ namespace JaunDetect.Backend_Data
             return data.HospitalPatients;
         }
 
-        public double GetStripPrice()
+        public double GetTestStripPrice()
         {
             return data.TestStripPrice;
         }
 
-        public bool UpdateStripPrice(double price)
+        public bool UpdateTestStripPrice(double price)
         {
             data.TestStripPrice = price;
             return true;
         }
 
-        public double[] GetStripCosts()
+        public double[] GetTestStripCosts()
         {
-            data.TestStripCosts = CalculateStripCost();
+            data.TestStripCosts = CalculateTestStripCost();
             return data.TestStripCosts;
         }
 
-        private double[] CalculateStripCost()
+        private double[] CalculateTestStripCost()
         {
             double[] result = new double[data.TestStripUsages.Count()];
             for (int i = 0; i < data.TestStripUsages.Count(); i++)
