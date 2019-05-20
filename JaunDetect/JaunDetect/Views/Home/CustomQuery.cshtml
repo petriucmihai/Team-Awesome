@@ -55,12 +55,16 @@
         </thead>
         <tbody>
             @{
-                if (Model.ClinicName.Equals("")
+                if (Model.ClinicName.Equals("example"))
                 { 
-                        <tr>
-                            <td>@Model.ClinicName</td>
-                        </tr>
-                    
+            <tr>
+                <td>@Model.ClinicName</td>
+
+                <td>@Model.Province</td>
+
+                <td>@Model.Device</td>
+            </tr>
+                   
                 }
             }
         </tbody>
