@@ -124,6 +124,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CustomQueryViewModel.cs" />
+    <Compile Include="Models\ResourcesChartModel.cs" />
     <Compile Include="Models\ResourcesViewModel.cs" />
     <Compile Include="Models\UsageViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
