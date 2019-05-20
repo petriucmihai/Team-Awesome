@@ -15,6 +15,10 @@ namespace JaunDetect.Models
 
         public int[] HospitalPatients { get; set; }
 
+        public double TestStripPrice { get; set; }
+
+        public double[] TestStripCosts { get; set; }
+
         /// <summary>
         /// Constructor for Log Model
         /// Calls to Initialize to set initial settings
