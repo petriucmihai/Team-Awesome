@@ -50,6 +50,13 @@ namespace JaunDetect.Controllers
             return View();
         }
 
+        public ActionResult QueryViewer()
+        {
+            ViewBag.Message = "Query Viewer";
+
+            return View();
+        }
+
         public ActionResult Photos()
         {
             ViewBag.Message = "Failed Photo Gallery";
