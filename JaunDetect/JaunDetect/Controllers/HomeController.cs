@@ -154,5 +154,22 @@ namespace JaunDetect.Controllers
 
             return null;
         }
+
+        [HttpPost]
+        public ActionResult UpdatePrice(ResourcesViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                DataBackend.Instance.UpdateStripPrice(model.TestStripPrice);
+
+                var resourceModel = new ResourcesViewModel();
+
+                resourceModel = DataBackend.Instance.GetResources();
+
+                return View("Resources", resourceModel);
+            }
+
+            return View("Resources", model);
+        }
     }
 }
