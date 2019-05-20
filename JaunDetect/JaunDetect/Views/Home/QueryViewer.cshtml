@@ -4,10 +4,11 @@
     ViewBag.Title = "QueryViewer";
 }
 
+
 @using (Html.BeginForm("QueryViewer", "Home", FormMethod.Post))
 {
     <div class="row">
         <h5> Clinic Name </h5>
         @Html.DisplayTextFor(model => model.ClinicName)
-          </div>
+    </div>
 }
