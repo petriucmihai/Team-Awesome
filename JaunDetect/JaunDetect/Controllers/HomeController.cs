@@ -70,9 +70,11 @@ namespace JaunDetect.Controllers
             var key = new Chart(width: 600, height: 400)
                 .AddSeries(
                     chartType: "bar",
-                    legend: "Test Strips Used",
                     xValue: resourceModel.Months,
                     yValues: resourceModel.TestStripUsages)
+                //.AddTitle("Testing Strips Used")
+                .SetXAxis("Months")
+                .SetYAxis("Number of Strips Used")
                 .Write();
 
             return null;
@@ -87,9 +89,10 @@ namespace JaunDetect.Controllers
             var key = new Chart(width: 600, height: 400)
                 .AddSeries(
                     chartType: "pie",
-                    legend: "Highest-Percentage Cases by Clinic",
                     xValue: resourceModel.Clinics,
                     yValues: resourceModel.HospitalPatients)
+                .SetXAxis("Clinics")
+                .SetYAxis("Number of Patients Sent to Hospitals")
                 .Write();
 
             return null;
@@ -102,9 +105,10 @@ namespace JaunDetect.Controllers
             var key = new Chart(width: 600, height: 400)
                 .AddSeries(
                     chartType: "column",
-                    legend: "CommonUsageTimes",
                     xValue: usageModel.TimesOfDay,
                     yValues: usageModel.UsageTimes)
+                .SetXAxis("Time of Day")
+                .SetYAxis("Usage Time")
                 .Write();
 
             return null;
@@ -117,9 +121,11 @@ namespace JaunDetect.Controllers
             var key = new Chart(width: 600, height: 400)
                 .AddSeries(
                     chartType: "pie",
-                    legend: "Device Models",
                     xValue: usageModel.DeviceTypes,
                     yValues: usageModel.NumbersOfDevices)
+                .SetXAxis("Device Type")
+                .SetYAxis("Number of Devices")
+                .AddLegend()
                 .Write();
 
             return null;
@@ -132,9 +138,10 @@ namespace JaunDetect.Controllers
             var key = new Chart(width: 600, height: 400)
                 .AddSeries(
                     chartType: "line",
-                    legend: "Downloads Per Month",
                     xValue: usageModel.Months,
                     yValues: usageModel.Downloads)
+                .SetXAxis("Months")
+                .SetYAxis("Number of App Downloads")
                 .Write();
 
             return null;
@@ -147,9 +154,10 @@ namespace JaunDetect.Controllers
             var key = new Chart(width: 600, height: 400)
                 .AddSeries(
                     chartType: "bar",
-                    legend: "Logins Per Month",
                     xValue: usageModel.Months,
                     yValues: usageModel.Logins)
+                .SetXAxis("Months")
+                .SetYAxis("Number of App Logins")
                 .Write();
 
             return null;
