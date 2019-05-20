@@ -19,6 +19,8 @@ namespace JaunDetect.Models
 
         public double[] TestStripCosts { get; set; }
 
+        
+        /*
         /// <summary>
         /// Constructor for Log Model
         /// Calls to Initialize to set initial settings
@@ -42,7 +44,7 @@ namespace JaunDetect.Models
             Clinics = unit.GetClinics(5);
             HospitalPatients = random.GetRandomDatapoint(5, 50, 500);
         }
-
+        */
 
         
     }

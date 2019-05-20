@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
 using JaunDetect.Models;
+using JaunDetect.Backend_Data;
 
 namespace JaunDetect.Controllers
 {
@@ -29,6 +30,8 @@ namespace JaunDetect.Controllers
             ViewBag.Message = "Resources and Budgeting";
 
             var resourceModel = new ResourcesViewModel();
+
+            resourceModel = DataBackend.Instance.GetResources();
 
             return View(resourceModel);
         }
@@ -62,6 +65,8 @@ namespace JaunDetect.Controllers
         {
             var resourceModel = new ResourcesViewModel();
 
+            resourceModel = DataBackend.Instance.GetResources();
+
             var key = new Chart(width: 600, height: 400)
                 .AddSeries(
                     chartType: "bar",
@@ -76,6 +81,8 @@ namespace JaunDetect.Controllers
         public ActionResult GetHospitalPatientChart()
         {
             var resourceModel = new ResourcesViewModel();
+
+            resourceModel = DataBackend.Instance.GetResources();
 
             var key = new Chart(width: 600, height: 400)
                 .AddSeries(
