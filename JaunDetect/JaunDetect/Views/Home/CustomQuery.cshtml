@@ -6,47 +6,64 @@
 
 <h3>@ViewBag.Message</h3>
 
-@using (Html.BeginForm("CustomQuery", "Home", FormMethod.Post))
-{
-    <div class="row">
-        <h5> Clinic Name </h5>
-        @Html.TextBoxFor(model => model.ClinicName)
-        @Html.ValidationMessageFor(model => model.ClinicName)
-    </div>
+<div class=" container">
+    @using (Html.BeginForm("CustomQuery", "Home", FormMethod.Post))
+    {
+        <div class="row">
+            <h5> Clinic Name </h5>
+            @Html.TextBoxFor(model => model.ClinicName)
+            @Html.ValidationMessageFor(model => model.ClinicName)
+        </div>
 
-    <div class="row">
-        <h5> Province </h5>
-        @Html.TextBoxFor(model => model.Province)
-        @Html.ValidationMessageFor(model => model.Province)
-    </div>
+        <div class="row">
+            <h5> Province </h5>
+            @Html.TextBoxFor(model => model.Province)
+            @Html.ValidationMessageFor(model => model.Province)
+        </div>
 
-    <div class="row">
-        <h5> Start Time </h5>
-        @Html.TextBoxFor(model => model.StartTime)
-        @Html.ValidationMessageFor(model => model.StartTime)
+        <div class="row">
+            <h5> Start Time </h5>
+            @Html.TextBoxFor(model => model.StartTime)
+            @Html.ValidationMessageFor(model => model.StartTime)
 
-    </div>
+        </div>
 
-    <div class="row">
-        <h5> End Time </h5>
-        @Html.TextBoxFor(model => model.EndTime)
-        @Html.ValidationMessageFor(model => model.EndTime)
-    </div>
+        <div class="row">
+            <h5> End Time </h5>
+            @Html.TextBoxFor(model => model.EndTime)
+            @Html.ValidationMessageFor(model => model.EndTime)
+        </div>
 
-    <div class="row">
-        <h5> Device Info </h5>
-        @Html.TextBoxFor(model => model.Device)
-        @Html.ValidationMessageFor(model => model.Device)
-    </div>
+        <div class="row">
+            <h5> Device Info </h5>
+            @Html.TextBoxFor(model => model.Device)
+            @Html.ValidationMessageFor(model => model.Device)
+        </div>
 
-    <input type="submit" />
+        <input type="submit" />
 
-}
+    }
+</div>
 
-<div class="col">
-    <div class="row">
-
-    </div>
-
+<div class="border border-dark rounded">
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">Clinic Name</th>
+              
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                if (Model.ClinicName.Equals("")
+                { 
+                        <tr>
+                            <td>@Model.ClinicName</td>
+                        </tr>
+                    
+                }
+            }
+        </tbody>
+    </table>
 </div>
 
