@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
 using JaunDetect.Models;
+using JaunDetect.Backend_Data;
 
 namespace JaunDetect.Controllers
 {
@@ -30,6 +31,8 @@ namespace JaunDetect.Controllers
 
             var resourceModel = new ResourcesViewModel();
 
+            resourceModel = DataBackend.Instance.GetResources();
+
             return View(resourceModel);
         }
 
@@ -54,9 +57,15 @@ namespace JaunDetect.Controllers
             return View();
         }
 
+        public ActionResult Settings()
+        {
+            return View();
+        }
         public ActionResult GetTestStripUsageChart()
         {
             var resourceModel = new ResourcesViewModel();
+
+            resourceModel = DataBackend.Instance.GetResources();
 
             var key = new Chart(width: 600, height: 400)
                 .AddSeries(
@@ -72,6 +81,8 @@ namespace JaunDetect.Controllers
         public ActionResult GetHospitalPatientChart()
         {
             var resourceModel = new ResourcesViewModel();
+
+            resourceModel = DataBackend.Instance.GetResources();
 
             var key = new Chart(width: 600, height: 400)
                 .AddSeries(

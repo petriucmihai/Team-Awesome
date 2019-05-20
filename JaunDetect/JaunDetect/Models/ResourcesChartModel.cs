@@ -2,30 +2,30 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using JaunDetect.Backend_Data;
 
 namespace JaunDetect.Models
 {
-    public class ResourcesViewModel{
+    public class ResourcesChartModel
+    {
+        // Months that will be shown on a chart over time
         public string[] Months { get; set; }
 
+        // Number of test strips used
         public int[] TestStripUsages { get; set; }
 
+        // List of the clinics at which the data was tracked
         public string[] Clinics { get; set; }
 
+        // Number of patients sent from a clinic to a nearby hospital
         public int[] HospitalPatients { get; set; }
 
+        // Price of a single test strip
         public double TestStripPrice { get; set; }
 
+        // Cost of the total amount of test strips used at a clinic
         public double[] TestStripCosts { get; set; }
 
-        
-        /*
-        /// <summary>
-        /// Constructor for Log Model
-        /// Calls to Initialize to set initial settings
-        /// </summary>
-        public ResourcesViewModel()
+        public ResourcesChartModel()
         {
             Initialize();
         }
@@ -36,16 +36,7 @@ namespace JaunDetect.Models
         /// </summary>
         public void Initialize()
         {
-            RandomDataGenerator random = new RandomDataGenerator();
-            UnitGenerator unit = new UnitGenerator();
-
-            Months = unit.GetMonths(5);
-            TestStripUsages = random.GetRandomDatapoint(5, 100, 400);
-            Clinics = unit.GetClinics(5);
-            HospitalPatients = random.GetRandomDatapoint(5, 50, 500);
+            // None right now...
         }
-        */
-
-        
     }
 }

@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "Settings";
+}
+
+<br />
+<h2>Settings</h2>
+
+
+<form>
+    <div class="custom-control custom-switch">
+        <input type="checkbox" class="custom-control-input" id="switch1">
+        <label class="custom-control-label" for="switch1">Demo Mode</label>
+    </div>
+</form>
+
+
+<br />
+<h4>Email Notifications</h4>
+<form>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+    </div>
+    <button class="btn btn-success" onclick="">Send me a test email</button>
+</form>
+
+<br />
+<h4>Frequency of Monitoring</h4>
+
+<div class="custom-control custom-radio">
+    <input type="radio" class="custom-control-input" id="defaultGroupExample1" name="freq" checked>
+    <label class="custom-control-label" for="defaultGroupExample1">Daily</label>
+</div>
+<div class="custom-control custom-radio">
+    <input type="radio" class="custom-control-input" id="defaultGroupExample2" name="freq" >
+    <label class="custom-control-label" for="defaultGroupExample2">Weekly</label>
+</div>
+<div class="custom-control custom-radio">
+    <input type="radio" class="custom-control-input" id="defaultGroupExample3" name="freq">
+    <label class="custom-control-label" for="defaultGroupExample3">Monthly</label>
+</div>
+
+<button type="submit" class="btn btn-primary" onclick="">Apply Changes</button>

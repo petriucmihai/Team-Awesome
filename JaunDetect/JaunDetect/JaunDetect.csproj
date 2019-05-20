@@ -47,12 +47,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -120,7 +114,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Backend_Data\Query.cs" />
+    <Compile Include="Backend_Data\DataBackend.cs" />
+    <Compile Include="Backend_Data\DataBackendRepository.cs" />
+    <Compile Include="Backend_Data\IDataRepository.cs" />
     <Compile Include="Backend_Data\RandomDataGenerator.cs" />
     <Compile Include="Backend_Data\UnitGenerator.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -128,6 +124,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CustomQueryViewModel.cs" />
+    <Compile Include="Models\ResourcesChartModel.cs" />
     <Compile Include="Models\ResourcesViewModel.cs" />
     <Compile Include="Models\UsageViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -143,6 +140,7 @@
     <Content Include="Content\Images\crashes2.png" />
     <Content Include="Content\Images\customquery1.png" />
     <Content Include="Content\Images\customquery2.png" />
+    <Content Include="Content\Images\heatmap.jpg" />
     <Content Include="Content\Images\homepage_photo1.png" />
     <Content Include="Content\Images\homepage_photo2.png" />
     <Content Include="Content\Images\photos1.png" />
@@ -220,12 +218,7 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\CustomQueryViewModel\Create.cshtml" />
-    <Content Include="Views\CustomQueryViewModel\Delete.cshtml" />
-    <Content Include="Views\CustomQueryViewModel\Details.cshtml" />
-    <Content Include="Views\CustomQueryViewModel\Edit.cshtml" />
-    <Content Include="Views\CustomQueryViewModel\Index.cshtml" />
-    <Content Include="Views\Home\QueryTemporary.cshtml" />
+    <Content Include="Views\Home\Settings.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
