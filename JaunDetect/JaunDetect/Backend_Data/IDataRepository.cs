@@ -18,11 +18,11 @@ namespace JaunDetect.Backend_Data
 
         int[] GetPatients();
 
-        double GetStripPrice();
+        double GetTestStripPrice();
 
-        bool UpdateStripPrice(double price);
+        bool UpdateTestStripPrice(double price);
 
-        double[] GetStripCosts();
+        double[] GetTestStripCosts();
         #endregion
     }
 }

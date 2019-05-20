@@ -19,7 +19,11 @@
         <div class="row">
             <div>
                 <p>Current price of test strip:</p>
-                <input type="text" />
+                @using (Html.BeginForm("UpdatePrice", "Home", FormMethod.Post))
+                {
+                    @Html.TextBoxFor(model => model.TestStripPrice)
+                    <button type="submit">Update</button>
+                }
             </div>
             <br />
             <div class="border border-dark rounded">
@@ -32,13 +36,13 @@
                     </thead>
                     <tbody>
                         @{
-                            if (Model.Clinics.Count() == Model.TestStripUsages.Count())
+                            if (Model.Clinics.Count() == Model.TestStripCosts.Count())
                             {
                                 for (int i = 0; i < Model.Clinics.Count(); i++)
                                 {
                                     <tr>
                                         <td>@Model.Clinics[i]</td>
-                                        <td>@Model.TestStripUsages[i]</td>
+                                        <td>$@Model.TestStripCosts[i]</td>
                                     </tr>
                                 }
                             }
@@ -47,6 +51,6 @@
                 </table>
             </div>
         </div>
-    </div>   
+    </div>
 
 </div>
