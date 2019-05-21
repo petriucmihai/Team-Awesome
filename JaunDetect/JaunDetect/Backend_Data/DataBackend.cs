@@ -57,6 +57,7 @@ namespace JaunDetect.Backend_Data
             myData.OptionsList = repository.GetOptionsList();
             myData.Timeframe = repository.GetTimeframe();
             myData.TimeOption = repository.GetTimeOption();
+            myData.TimeOptionString = repository.GetTimeOptionString();
 
             return myData;
         }

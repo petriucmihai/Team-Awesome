@@ -113,7 +113,12 @@ namespace JaunDetect.Backend_Data
             return homeData.Clinics;
         }
 
-        public string GetTimeOption()
+        public string GetTimeOptionString()
+        {
+            return homeData.TimeOptionString;
+        }
+
+        public int GetTimeOption()
         {
             return homeData.TimeOption;
         }
@@ -123,9 +128,10 @@ namespace JaunDetect.Backend_Data
             return homeData.OptionsList;
         }
 
-        public bool UpdateTimeOption(string timeOption)
+        public bool UpdateTimeOptionString(string timeOptionString)
         {
-            homeData.TimeOption = timeOption;
+            homeData.TimeOptionString = timeOptionString;
+            homeData.TimeOption = int.Parse(timeOptionString);
             return true;
         }
 
@@ -144,6 +150,8 @@ namespace JaunDetect.Backend_Data
             }
 
             homeData.BilirubinData = data;
+
+            homeData.TimeOption = 0;
 
             homeData.Timeframe = new string[3][];
             homeData.Timeframe[0] = unit.GetMonths(5);
