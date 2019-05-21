@@ -12,7 +12,7 @@
        
         <div class="row">
             <div>
-                @using (Html.BeginForm("QueryResults", "Home", FormMethod.Post))
+                @using (Html.BeginForm("QueryFound", "Home", FormMethod.Post))
                 {
                     <p> Clinic </p>
                     @Html.TextBoxFor(model => model.Clinic)
@@ -41,11 +41,15 @@
 
                     <tbody>
                         <tr>
-                            <td>@Model.Clinic</td>
-                            <td>@Model.Province</td>
+                            for (int i = 0; i < 10; i++) {
+                            
+                            <td>@</td>
+                            <td></td>
                             <td>@Model.Date</td>
                             <td>@Model.Device</td>
-                        
+                            }
+                            
+
                         </tr>
                     </tbody>
                 </table>

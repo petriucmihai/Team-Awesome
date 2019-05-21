@@ -41,6 +41,19 @@ namespace JaunDetect.Backend_Data
         {
             return data.Device;
         }
+
+        public bool QueryFound(int num, QueryDataBackendRepository database)
+        {
+            const int COLUMNS = 4;
+            bool result = false; 
+
+                if (String.Equals(data.Clinic, database.GetClinic(num)) || String.Equals(data.Province, database.GetProvince(num)) ||
+                    String.Equals(data.Date, database.GetDate(num)) || String.Equals(data.Device, database.GetDevice(num)))
+                {
+                result = true;
+                }       
+            return result;             
+        }
     }
 }
 

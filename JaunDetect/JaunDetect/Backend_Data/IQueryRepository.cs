@@ -13,6 +13,7 @@ namespace JaunDetect.Backend_Data
         string GetProvince();
         string GetDate();
         string GetDevice();
+        List<string[]> QueryFound(string[,] database); 
         #endregion
     }
 }

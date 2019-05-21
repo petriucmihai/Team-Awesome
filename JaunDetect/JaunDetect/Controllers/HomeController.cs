@@ -55,8 +55,13 @@ namespace JaunDetect.Controllers
 
         public ActionResult QueryResults(QueryViewModel queryModel)
         {
+            IQueryDataRepository database = new QueryDataBackendRepository(); 
             ViewBag.Message = "Query Results";
-            return View("CustomQuery", queryModel);
+            bool value = QueryBackendRepository.QueryFound(1, database); 
+            QueryDataBackend.Instance.GetQueryResources(1);
+
+
+            return View("QueryFound", queryModel);
         }
 
         public ActionResult Photos()
