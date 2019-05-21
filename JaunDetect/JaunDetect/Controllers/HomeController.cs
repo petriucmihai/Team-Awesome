@@ -188,5 +188,21 @@ namespace JaunDetect.Controllers
 
             return View("Resources", model);
         }
+
+        public ActionResult GetCrashesByTimeChart()
+        {
+            var crashModel = new CrashChartModel();
+
+            var key = new Chart(width: 600, height: 400)
+                .AddSeries(
+                    chartType: "column",
+                    xValue: crashModel.Days,
+                    yValues: crashModel.CrashesByTime)
+                .SetXAxis("Day")
+                .SetYAxis("Total Crashes Over Time")
+                .Write();
+
+            return null;
+        }
     }
 }
