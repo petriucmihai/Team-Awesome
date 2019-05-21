@@ -13,7 +13,11 @@ namespace JaunDetect.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            var homeModel = new HomeChartModel();
+
+            homeModel = DataBackend.Instance.GetHomeData();
+
+            return View(homeModel);
         }
 
         public ActionResult UsageData()
@@ -29,7 +33,7 @@ namespace JaunDetect.Controllers
         {
             ViewBag.Message = "Resources and Budgeting";
 
-            var resourceModel = new ResourcesViewModel();
+            var resourceModel = new ResourcesChartModel();
 
             resourceModel = DataBackend.Instance.GetResources();
 
@@ -77,7 +81,7 @@ namespace JaunDetect.Controllers
         }
         public ActionResult GetTestStripUsageChart()
         {
-            var resourceModel = new ResourcesViewModel();
+            var resourceModel = new ResourcesChartModel();
 
             resourceModel = DataBackend.Instance.GetResources();
 
@@ -96,7 +100,7 @@ namespace JaunDetect.Controllers
 
         public ActionResult GetHospitalPatientChart()
         {
-            var resourceModel = new ResourcesViewModel();
+            var resourceModel = new ResourcesChartModel();
 
             resourceModel = DataBackend.Instance.GetResources();
 
@@ -178,13 +182,13 @@ namespace JaunDetect.Controllers
         }
 
         [HttpPost]
-        public ActionResult UpdatePrice(ResourcesViewModel model)
+        public ActionResult UpdatePrice(ResourcesChartModel model)
         {
             if (ModelState.IsValid)
             {
                 DataBackend.Instance.UpdateStripPrice(model.TestStripPrice);
 
-                var resourceModel = new ResourcesViewModel();
+                var resourceModel = new ResourcesChartModel();
 
                 resourceModel = DataBackend.Instance.GetResources();
 
@@ -198,16 +202,105 @@ namespace JaunDetect.Controllers
         {
             var crashModel = new CrashChartModel();
 
-            var key = new Chart(width: 600, height: 400)
+            var key = new Chart(width: 900, height: 250)
                 .AddSeries(
-                    chartType: "column",
-                    xValue: crashModel.Days,
+                    chartType: "line",
+                    xValue: crashModel.Months,
                     yValues: crashModel.CrashesByTime)
-                .SetXAxis("Day")
-                .SetYAxis("Total Crashes Over Time")
+                .SetXAxis("Month")
+                .SetYAxis("Total Crashes")
                 .Write();
 
             return null;
+        }
+
+        public ActionResult GetCrashesByTypeChart()
+        {
+            var crashModel = new CrashChartModel();
+
+            var key = new Chart(width: 300, height: 400)
+                .AddSeries(
+                    chartType: "column",
+                    xValue: crashModel.CrashTypes,
+                    yValues: crashModel.CrashesByType)
+                .SetXAxis("Crash Type")
+                .SetYAxis("Total Crashes")
+                .Write();
+
+            return null;
+        }
+
+        public ActionResult GetCrashesByDeviceTypeChart()
+        {
+            var crashModel = new CrashChartModel();
+
+            var key = new Chart(width:300, height: 400)
+                .AddSeries(
+                    chartType: "pie",
+                    xValue: crashModel.DeviceTypes,
+                    yValues: crashModel.NumbersOfDevices)
+                .SetXAxis("Device Model")
+                .SetYAxis("Total Crashes")
+                .Write();
+
+            return null;
+        }
+
+        public ActionResult GetBilirubinLevelChart()
+        {
+            var homeModel = new HomeChartModel();
+            homeModel = DataBackend.Instance.GetHomeData();
+            int num = homeModel.TimeOption;
+
+            var key = new Chart(width: 900, height: 400)
+                .AddSeries(
+                    chartType: "column",
+                    name: homeModel.Clinics[0],
+                    xValue: homeModel.Timeframe[num],
+                    yValues: homeModel.BilirubinData[0])
+                .AddSeries(
+                    chartType: "column",
+                    name: homeModel.Clinics[1],
+                    xValue: homeModel.Timeframe[num],
+                    yValues: homeModel.BilirubinData[1])
+                .AddSeries(
+                    chartType: "column",
+                    name: homeModel.Clinics[2],
+                    xValue: homeModel.Timeframe[num],
+                    yValues: homeModel.BilirubinData[2])
+                .AddSeries(
+                    chartType: "column",
+                    name: homeModel.Clinics[3],
+                    xValue: homeModel.Timeframe[num],
+                    yValues: homeModel.BilirubinData[3])
+                .AddSeries(
+                    chartType: "column",
+                    name: homeModel.Clinics[4],
+                    xValue: homeModel.Timeframe[num],
+                    yValues: homeModel.BilirubinData[4])
+                .SetXAxis("Months")
+                .SetYAxis("Bilirubin Level (%)")
+                .AddLegend()
+                .Write();
+
+            return null;
+        }
+
+        [HttpPost]
+        public ActionResult UpdateHomeChartTimeOption(HomeChartModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                DataBackend.Instance.UpdateTimeOptionString(model.TimeOptionString);
+
+                var homeModel = new HomeChartModel();
+
+                homeModel = DataBackend.Instance.GetHomeData();
+
+                return View("Index", homeModel);
+            }
+
+            return View("Resources", model);
         }
     }
 }

@@ -35,9 +35,9 @@ namespace JaunDetect.Backend_Data
         // Hook up the Repositry
         private IDataRepository repository = new DataBackendRepository();
 
-        public ResourcesViewModel GetResources()
+        public ResourcesChartModel GetResources()
         {
-            var myData = new ResourcesViewModel();
+            var myData = new ResourcesChartModel();
             myData.Clinics = repository.GetClinics();
             myData.HospitalPatients = repository.GetPatients();
             myData.Months = repository.GetMonths();
@@ -48,9 +48,28 @@ namespace JaunDetect.Backend_Data
             return myData;
         }
 
+        public HomeChartModel GetHomeData()
+        {
+            var myData = new HomeChartModel();
+            myData.BilirubinData = repository.GetBilirubinData();
+            myData.BilirubinLevels = repository.GetBilirubinLevels();
+            myData.Clinics = repository.GetHomeClinics();
+            myData.OptionsList = repository.GetOptionsList();
+            myData.Timeframe = repository.GetTimeframe();
+            myData.TimeOption = repository.GetTimeOption();
+            myData.TimeOptionString = repository.GetTimeOptionString();
+
+            return myData;
+        }
+
         public bool UpdateStripPrice(double price)
         {
             return repository.UpdateTestStripPrice(price);
+        }
+
+        public bool UpdateTimeOptionString(string timeOptionString)
+        {
+            return repository.UpdateTimeOptionString(timeOptionString);
         }
     }
 }
