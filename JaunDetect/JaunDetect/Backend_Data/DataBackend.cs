@@ -66,5 +66,10 @@ namespace JaunDetect.Backend_Data
         {
             return repository.UpdateTestStripPrice(price);
         }
+
+        public bool UpdateTimeOptionString(string timeOptionString)
+        {
+            return repository.UpdateTimeOptionString(timeOptionString);
+        }
     }
 }

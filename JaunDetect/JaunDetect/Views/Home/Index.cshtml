@@ -17,7 +17,11 @@
     </div>
 
     <div class="col">
-        @Html.DropDownListFor(model => model.TimeOptionString, Model.OptionsList);
+        @using (Html.BeginForm("UpdateHomeChartTimeOption", "Home", FormMethod.Post))
+        {
+            @Html.DropDownListFor(model => model.TimeOptionString, Model.OptionsList);
+            <button type="submit">Update</button>
+        }
         <img src="/Home/GetBilirubinLevelChart" />
     </div>
 </div>
