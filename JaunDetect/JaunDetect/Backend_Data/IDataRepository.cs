@@ -36,11 +36,13 @@ namespace JaunDetect.Backend_Data
 
         string[] GetHomeClinics();
 
-        string GetTimeOption();
+        string GetTimeOptionString();
+
+        int GetTimeOption();
 
         List<SelectListItem> GetOptionsList();
 
-        bool UpdateTimeOption(string timeOption);
+        bool UpdateTimeOptionString(string timeOptionString);
         #endregion
     }
 }

@@ -51,7 +51,13 @@ namespace JaunDetect.Backend_Data
         public HomeChartModel GetHomeData()
         {
             var myData = new HomeChartModel();
-
+            myData.BilirubinData = repository.GetBilirubinData();
+            myData.BilirubinLevels = repository.GetBilirubinLevels();
+            myData.Clinics = repository.GetHomeClinics();
+            myData.OptionsList = repository.GetOptionsList();
+            myData.Timeframe = repository.GetTimeframe();
+            myData.TimeOption = repository.GetTimeOption();
+            myData.TimeOptionString = repository.GetTimeOptionString();
 
             return myData;
         }

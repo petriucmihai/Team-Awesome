@@ -17,15 +17,18 @@ namespace JaunDetect.Models
 
         public string[][] Timeframe { get; set; }
 
-        public string TimeOption { get; set; }
+        public string TimeOptionString { get; set; }
+
+        public int TimeOption { get; set; }
 
         public List<SelectListItem> OptionsList { get; set; } 
 
         public HomeChartModel()
         {
-            Initialize();
+            //Initialize();
         }
 
+        /*
         public void Initialize()
         {
             RandomDataGenerator random = new RandomDataGenerator();
@@ -76,5 +79,6 @@ namespace JaunDetect.Models
             OptionsList = items;
 
         }
+        */
     }
 }
