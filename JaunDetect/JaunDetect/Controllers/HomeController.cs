@@ -197,7 +197,7 @@ namespace JaunDetect.Controllers
         {
             var crashModel = new CrashChartModel();
 
-            var key = new Chart(width: 700, height: 250)
+            var key = new Chart(width: 900, height: 250)
                 .AddSeries(
                     chartType: "line",
                     xValue: crashModel.Months,
