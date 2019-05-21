@@ -229,7 +229,7 @@ namespace JaunDetect.Controllers
 
             var key = new Chart(width: 600, height: 400)
                 .AddSeries(
-                    chartType: "line",
+                    chartType: "pie",
                     xValue: crashModel.DeviceTypes,
                     yValues: crashModel.NumbersOfDevices)
                 .SetXAxis("Device Model")
