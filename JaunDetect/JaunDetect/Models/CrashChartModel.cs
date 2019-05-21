@@ -40,7 +40,7 @@ namespace JaunDetect.Models
             // init crashes by type
             CrashesByType = random.GetRandomDatapoint(5, 0, 30);
             // init crashes by time
-            CrashesByType = random.GetRandomDatapoint(5, 0, 30);
+            CrashesByTime = random.GetRandomDatapoint(5, 0, 30);
             // init months
             Months = unit.GetMonths(5);
             // init days
