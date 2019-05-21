@@ -245,7 +245,7 @@ namespace JaunDetect.Controllers
         {
             var homeModel = new HomeChartModel();
             homeModel = DataBackend.Instance.GetHomeData();
-            int num = 0;
+            int num = homeModel.TimeOption;
 
             var key = new Chart(width: 900, height: 400)
                 .AddSeries(
