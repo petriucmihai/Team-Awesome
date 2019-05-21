@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 using JaunDetect.Models;
 
 namespace JaunDetect.Backend_Data
@@ -11,7 +12,8 @@ namespace JaunDetect.Backend_Data
     /// </summary>
     public class DataBackendRepository : IDataRepository
     {
-        ResourcesChartModel data = new ResourcesChartModel();
+        ResourcesChartModel resourcesData = new ResourcesChartModel();
+        HomeChartModel homeData = new HomeChartModel();
 
         /// <summary>
         /// Constructor for data repository
@@ -29,59 +31,96 @@ namespace JaunDetect.Backend_Data
             RandomDataGenerator random = new RandomDataGenerator();
             UnitGenerator unit = new UnitGenerator();
 
-            data.Months = unit.GetMonths(5);
-            data.TestStripUsages = random.GetRandomDatapoint(5, 100, 400);
-            data.Clinics = unit.GetClinics(5);
-            data.HospitalPatients = random.GetRandomDatapoint(5, 50, 500);
-            data.TestStripPrice = 1.00;
-            data.TestStripCosts = CalculateTestStripCost();
+            resourcesData.Months = unit.GetMonths(5);
+            resourcesData.TestStripUsages = random.GetRandomDatapoint(5, 100, 400);
+            resourcesData.Clinics = unit.GetClinics(5);
+            resourcesData.HospitalPatients = random.GetRandomDatapoint(5, 50, 500);
+            resourcesData.TestStripPrice = 1.00;
+            resourcesData.TestStripCosts = CalculateTestStripCost();
         }
 
         public string[] GetClinics()
         {
-            return data.Clinics;
+            return resourcesData.Clinics;
         }
 
         public int[] GetUsages()
         {
-            return data.TestStripUsages;
+            return resourcesData.TestStripUsages;
         }
 
         public string[] GetMonths()
         {
-            return data.Months;
+            return resourcesData.Months;
         }
 
         public int[] GetPatients()
         {
-            return data.HospitalPatients;
+            return resourcesData.HospitalPatients;
         }
 
         public double GetTestStripPrice()
         {
-            return data.TestStripPrice;
+            return resourcesData.TestStripPrice;
         }
 
         public bool UpdateTestStripPrice(double price)
         {
-            data.TestStripPrice = price;
+            resourcesData.TestStripPrice = price;
             return true;
         }
 
         public double[] GetTestStripCosts()
         {
-            data.TestStripCosts = CalculateTestStripCost();
-            return data.TestStripCosts;
+            resourcesData.TestStripCosts = CalculateTestStripCost();
+            return resourcesData.TestStripCosts;
         }
 
         private double[] CalculateTestStripCost()
         {
-            double[] result = new double[data.TestStripUsages.Count()];
-            for (int i = 0; i < data.TestStripUsages.Count(); i++)
+            double[] result = new double[resourcesData.TestStripUsages.Count()];
+            for (int i = 0; i < resourcesData.TestStripUsages.Count(); i++)
             {
-                result[i] = data.TestStripUsages[i] * data.TestStripPrice;
+                result[i] = resourcesData.TestStripUsages[i] * resourcesData.TestStripPrice;
             }
             return result;
+        }
+
+        public int[] GetBilirubinLevels()
+        {
+            return homeData.BilirubinLevels;
+        }
+
+        public int[][] GetBilirubinData()
+        {
+            return homeData.BilirubinData;
+        }
+
+
+        public string[][] GetTimeframe()
+        {
+            return homeData.Timeframe;
+        }
+
+        public string[] GetHomeClinics()
+        {
+            return homeData.Clinics;
+        }
+
+        public string GetTimeOption()
+        {
+            return homeData.TimeOption;
+        }
+
+        public List<SelectListItem> GetOptionsList()
+        {
+            return homeData.OptionsList;
+        }
+
+        public bool UpdateTimeOption(string timeOption)
+        {
+            homeData.TimeOption = timeOption;
+            return true;
         }
     }
 }
