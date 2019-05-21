@@ -36,10 +36,15 @@ namespace JaunDetect.Models
             UnitGenerator unit = new UnitGenerator();
 
             // init crashtypes
+            CrashTypes = { "Device Incompatibility", "Force Close by User", "Fatal Bug", "Connectivity Exception", "Exception Handling/Error Condition"}
             // init crashes by type
+            CrashesByType = random.GetRandomDatapoint(5, 0, 30);
             // init crashes by time
+            CrashesByType = random.GetRandomDatapoint(5, 0, 30);
             // init months
+            Months = unit.GetMonths(5);
             // init days
+            Days = unit.GetDays(5);
         }
     }
 }
