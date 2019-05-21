@@ -16,10 +16,10 @@ namespace JaunDetect.Backend_Data
 
         public void Initialize()
         {
-            data.Clinic = "";
-            data.Province = "";
-            data.Date = "";
-            data.Device = "";
+            data.Clinic = GetClinic();
+            data.Province = GetProvince();
+            data.Date = GetDate();
+            data.Device = GetDevice();
         }
 
         public string GetClinic()

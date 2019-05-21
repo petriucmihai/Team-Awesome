@@ -4,42 +4,55 @@
 @{
     ViewBag.Title = "Query";
 }
-
 <h3>@ViewBag.Message</h3>
 
 <div class=" container">
     <div class="row">
-
+       
+       
         <div class="row">
             <div>
-                <p>Clinic:</p>
-                @using (Html.BeginForm("Clinic", "Home", FormMethod.Post))
+                @using (Html.BeginForm("QueryResults", "Home", FormMethod.Post))
                 {
+                    <p> Clinic </p>
                     @Html.TextBoxFor(model => model.Clinic)
+                    <p> Province </p>
+                    @Html.TextBoxFor(model => model.Province)
+                    <p> Date </p>
+                    @Html.TextBoxFor(model => model.Date)
+                    <p> Device </p>
+                    @Html.TextBoxFor(model => model.Device)
                     <button type="submit">Submit</button>
                 }
             </div>
-            <br />
+           <br />
+            
             <div class="border border-dark rounded">
+
                 <table>
                     <thead>
                         <tr>
                             <th scope="col">Clinic</th>
-
+                            <th scope="col">Province</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Device</th>
                         </tr>
                     </thead>
+
                     <tbody>
-
                         <tr>
-                            if (2 < 3) {
-                            <td>@model.Clinic</td>                            
-                            }
-                    </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
+                            <td>@Model.Clinic</td>
+                            <td>@Model.Province</td>
+                            <td>@Model.Date</td>
+                            <td>@Model.Device</td>
+                        
+                        </tr>
+                    </tbody>
+                </table>
 
+            </div>
+        </div>
+
+     </div>
 </div>
+    

@@ -47,10 +47,17 @@ namespace JaunDetect.Controllers
         {
             ViewBag.Message = "Custom Query";
 
-            return View();
+            var queryModel = new QueryViewModel();
+            queryModel = QueryBackend.Instance.GetQuery();
+
+            return View(queryModel);
         }
 
-       
+        public ActionResult QueryResults(QueryViewModel queryModel)
+        {
+            ViewBag.Message = "Query Results";
+            return View("CustomQuery", queryModel);
+        }
 
         public ActionResult Photos()
         {

@@ -34,18 +34,19 @@ namespace JaunDetect.Backend_Data
 
         // Hook up the Repositry
         private IQueryRepository queryRepository = new QueryBackendRepository();
+        QueryViewModel data = new QueryViewModel();
 
-        public QueryViewModel GetResources()
+        public QueryViewModel GetQuery()
         {
-            var data = new QueryViewModel();
+            
             data.Clinic = queryRepository.GetClinic();
             data.Province = queryRepository.GetProvince();
             data.Date = queryRepository.GetDate();
             data.Device = queryRepository.GetDevice();
 
-
             return data;
         }
+
     }
 }
 
