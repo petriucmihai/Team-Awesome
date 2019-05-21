@@ -23,9 +23,10 @@ namespace JaunDetect.Models
 
         public HomeChartModel()
         {
-            Initialize();
+            //Initialize();
         }
 
+        /*
         public void Initialize()
         {
             RandomDataGenerator random = new RandomDataGenerator();
@@ -76,5 +77,6 @@ namespace JaunDetect.Models
             OptionsList = items;
 
         }
+        */
     }
 }

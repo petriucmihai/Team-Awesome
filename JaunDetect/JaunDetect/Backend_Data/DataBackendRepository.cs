@@ -28,6 +28,12 @@ namespace JaunDetect.Backend_Data
         /// </summary>
         public void Initialize()
         {
+            InitializeResources();
+            InitializeHome();
+        }
+
+        public void InitializeResources()
+        {
             RandomDataGenerator random = new RandomDataGenerator();
             UnitGenerator unit = new UnitGenerator();
 
@@ -121,6 +127,57 @@ namespace JaunDetect.Backend_Data
         {
             homeData.TimeOption = timeOption;
             return true;
+        }
+
+        public void InitializeHome()
+        {
+            RandomDataGenerator random = new RandomDataGenerator();
+            UnitGenerator unit = new UnitGenerator();
+
+            homeData.Clinics = unit.GetClinics(5);
+            homeData.BilirubinLevels = new int[] { 5, 10, 15, 20, 25 };
+
+            int[][] data = new int[homeData.BilirubinLevels.Length][];
+            for (int i = 0; i < 5; i++)
+            {
+                data[i] = random.GetRandomDatapoint(5, 50, 200);
+            }
+
+            homeData.BilirubinData = data;
+
+            homeData.Timeframe = new string[3][];
+            homeData.Timeframe[0] = unit.GetMonths(5);
+            homeData.Timeframe[1] = new string[] { "Week1", "Week2", "Week3", "Week4", "Week5" };
+            homeData.Timeframe[2] = new string[] { "Year1", "Year2", "Year3", "Year4", "Year5" };
+
+            CreateSelectList();
+        }
+
+        private void CreateSelectList()
+        {
+            SelectListItem listItem1 = new SelectListItem
+            {
+                Text = "Months",
+                Value = "1"
+            };
+            SelectListItem listItem2 = new SelectListItem
+            {
+                Text = "Weeks",
+                Value = "2"
+            };
+            SelectListItem listItem3 = new SelectListItem
+            {
+                Text = "Years",
+                Value = "3"
+            };
+
+            List<SelectListItem> items = new List<SelectListItem>();
+            items.Add(listItem1);
+            items.Add(listItem2);
+            items.Add(listItem3);
+
+            homeData.OptionsList = items;
+
         }
     }
 }

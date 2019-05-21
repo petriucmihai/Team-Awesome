@@ -15,6 +15,8 @@ namespace JaunDetect.Controllers
         {
             var homeModel = new HomeChartModel();
 
+            homeModel = DataBackend.Instance.GetHomeData();
+
             return View(homeModel);
         }
 
@@ -242,6 +244,7 @@ namespace JaunDetect.Controllers
         public ActionResult GetBilirubinLevelChart()
         {
             var homeModel = new HomeChartModel();
+            homeModel = DataBackend.Instance.GetHomeData();
             int num = 0;
 
             var key = new Chart(width: 900, height: 400)
