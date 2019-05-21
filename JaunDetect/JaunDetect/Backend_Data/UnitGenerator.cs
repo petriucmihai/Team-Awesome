@@ -49,6 +49,33 @@ namespace JaunDetect.Backend_Data
             return result;
         }
 
+        public string[] GetDays(int numDaysBack)
+        {
+            string[] result = new string[numDaysBack];
+            List<string> days = getDaysBackFromToday(numDaysBack);
+
+            for (int i = 0; i < numDaysBack; i++)
+            {
+                result[i] = days[i];
+            }
+
+            return result;
+        }
+
+        private List<string> getDaysBackFromToday(int numDaysBack)
+        {
+            List<string> result = new List<string>();
+            DateTime today = DateTime.Now;
+
+            for (int i = 0; i < numDaysBack; i++)
+            {
+                DateTime day = today.AddDays(-i);
+                string dayString = day.ToString("MMMM");
+                result.Add(dayString);
+            }
+
+            return result;
+        }
         public string[] GetDevices(int num)
         {
             string[] result = new string[num];

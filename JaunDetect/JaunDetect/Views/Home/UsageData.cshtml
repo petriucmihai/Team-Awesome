@@ -4,25 +4,30 @@
 <h1>@ViewBag.Title </h1>
 <h3>@ViewBag.Message</h3>
 
-<div>
-    <h4>Current Users: @Model.CurrentUsers</h4>
-</div>
+
 <div class="container">
     <div class="row">
-        <div class="col-6">
-            <img src="/Home/GetCommonUsageTimesChart" />
+        <div class="col-1 my-auto">
+            <h4>Current Users: @Model.CurrentUsers</h4>
         </div>
-        <div class="col-6">
-            <img src="/Home/GetDeviceModelsPieChart" />
+        <div class="col-5">
+            <img src="/Home/GetDownloadsPerMonthChart" />
+        </div>
+        <div class="col-5">
+            <img src="/Home/GetLoginsPerMonthChart" />
         </div>
     </div>
 
     <div class="row">
-        <div class="col-6">
-            <img src="/Home/GetDownloadsPerMonthChart" />
+        <div class="col-1">
         </div>
-        <div class="col-6">
-            <img src="/Home/GetLoginsPerMonthChart" />
+        <div class="col-5">
+            <img src="/Home/GetCommonUsageTimesChart" />
+        </div>
+        <div class="col-5">
+            <img src="/Home/GetDeviceModelsPieChart" />
         </div>
     </div>
+
+
 </div>
