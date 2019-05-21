@@ -28,7 +28,7 @@ namespace JaunDetect.Backend_Data
 
             for (int i = 0; i < numMonthsBack; i++)
             {
-                result[i] = months[i];
+                result[i] = months[numMonthsBack-1-i];
             }
 
             return result;
@@ -56,7 +56,7 @@ namespace JaunDetect.Backend_Data
 
             for (int i = 0; i < numDaysBack; i++)
             {
-                result[i] = days[i];
+                result[i] = days[numDaysBack-1-i];
             }
 
             return result;
