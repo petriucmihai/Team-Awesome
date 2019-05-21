@@ -1,8 +1,11 @@
-﻿@{
+﻿@using JaunDetect.Models;
+@model HomeChartModel
+@{
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">:
+<div class="jumbotron">
+    :
     <h1>Welcome To JaunDetect</h1>
     <p class="lead">JaunDetect: A Telemetry Solution for a Low-Cost Jaundice Prevention Application</p>
     <p>Team Awesome: Mihai, Laura, and Onur</p>
@@ -14,27 +17,7 @@
     </div>
 
     <div class="col">
-        @{
-            List<SelectListItem> listItems = new List<SelectListItem>();
-            listItems.Add(new SelectListItem
-            {
-                Text = "Months",
-                Value = "0"
-            });
-            listItems.Add(new SelectListItem
-            {
-                Text = "Weeks",
-                Value = "1",
-                Selected = true
-            });
-            listItems.Add(new SelectListItem
-            {
-                Text = "Years",
-                Value = "2"
-            });
-        }
-
-        @Html.DropDownList("ddlTimeframe", listItems);
+        @Html.DropDownListFor(model => model.TimeOption, Model.OptionsList);
         <img src="/Home/GetBilirubinLevelChart" />
     </div>
 </div>
