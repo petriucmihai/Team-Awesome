@@ -280,5 +280,22 @@ namespace JaunDetect.Controllers
 
             return null;
         }
+
+        [HttpPost]
+        public ActionResult UpdateHomeChartTimeOption(HomeChartModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                DataBackend.Instance.UpdateTimeOptionString(model.TimeOptionString);
+
+                var homeModel = new HomeChartModel();
+
+                homeModel = DataBackend.Instance.GetHomeData();
+
+                return View("Index", homeModel);
+            }
+
+            return View("Resources", model);
+        }
     }
 }
