@@ -1,78 +1,73 @@
-﻿@model JaunDetect.Models.CustomQueryViewModel
+﻿@model JaunDetect.Models.ResourcesViewModel
 
-@{
-                /**/
-
-                /**/
-
-                ViewBag.Title = "Custom Query Tool";
+@{ 
+    ViewBag.Title = "Custom Query Tool";
 }
 
 <h3>@ViewBag.Message</h3>
 
 <div class=" container">
 
-    @using (Html.BeginForm("CustomQuery", "Home", FormMethod.Get))
+    @using (Html.BeginForm("CustomQuery", "Home", FormMethod.Post))
     {
         <script>
-            var name = document.getElementById("name").value;
-            var province = document.getElementById("province").value;
-            var startDate = document.getElementById("startDate").value;
-            var endDate = document.getElementById("endDate").value;
-            var device = document.getElementById("device").value;
-            document.getElementById("col1").value = name;
-            document.getElementById("col2").value = province;
-            document.getElementById("col3").value = startDate;
-            document.getElementById("col4").value = endDate;
-            document.getElementById("col5").value = device;
+            function matchFunction() {
+                var name = document.getElementById("name").value;
+                var province = document.getElementById("province").value;
+                var date = document.getElementById("date").value;
+                var device = document.getElementById("device").value;
+
+                for (int i = 0; i < Model.Clinics.Count(); i++) {
+                    if (name == Model.Clinics[i]) {
+                        document.getElementById("col1").value = name;
+                        document.getElementById("col2").value = province;
+                        document.getElementById("col3").value = date;
+                        document.getElementById("col4").value = device;
+                    }
+                }
+            }
+
+
         </script>
 
 
         <h5> Clinic Name </h5>
         <input type="text" id="name" value="">
 
-
-
         <h5> Province </h5>
         <input type="text" id="province" value="">
 
-
-
-        <h5> Start Time </h5>
-        <input type="text" id="startTime" value="">
-
-
-        <h5> End Time </h5>
-        <input type="text" id="endTime" value="">
-
+        <h5> Date </h5>
+        <input type="text" id="date" value="">
 
         <h5> Device Info </h5>
         <input type="text" id="device" value="">
-        
-        <button onclick="">Submit</button>
 
+        <button onclick="matchFunction()">Submit</button>
 
+   
         <div class=" container">
-            <div class="border border-dark rounded">
-                <table>
-                    <thead>
-                        <tr>
-                            <th scope="col">Query Results</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr id='col1'> Name </tr>
-                        <tr id='col2'> Province </tr>
-                        <tr id='col3'> Start Date </tr>
-                        <tr id='col4'> End Date </tr>
-                        <tr id='col5'> Device </tr>
-                    </tbody>
-                </table>
+            <div class="col">
+                <div class="border border-dark rounded">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th scope="col">Query Results</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td id='col1'> Name </td>
+                                <td id='col2'> Province </td>
+                                <td id='col3'> Date </td>
+                                <td id='col4'> Device </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
-
-
-    }
+   }
 </div>
 
