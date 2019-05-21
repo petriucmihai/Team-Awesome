@@ -70,7 +70,7 @@ namespace JaunDetect.Backend_Data
             for (int i = 0; i < numDaysBack; i++)
             {
                 DateTime day = today.AddDays(-i);
-                string dayString = day.ToString("MMMM");
+                string dayString = day.ToString("dddd");
                 result.Add(dayString);
             }
 
