@@ -48,6 +48,14 @@ namespace JaunDetect.Backend_Data
             return myData;
         }
 
+        public HomeChartModel GetHomeData()
+        {
+            var myData = new HomeChartModel();
+
+
+            return myData;
+        }
+
         public bool UpdateStripPrice(double price)
         {
             return repository.UpdateTestStripPrice(price);
