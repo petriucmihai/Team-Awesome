@@ -211,11 +211,27 @@ namespace JaunDetect.Controllers
 
             var key = new Chart(width: 600, height: 400)
                 .AddSeries(
-                    chartType: "pie",
+                    chartType: "column",
                     xValue: crashModel.CrashTypes,
                     yValues: crashModel.CrashesByType)
-                .SetXAxis("Day")
-                .SetYAxis("Total Crashes Over Time")
+                .SetXAxis("Crash Type")
+                .SetYAxis("Total Crashes")
+                .Write();
+
+            return null;
+        }
+
+        public ActionResult GetCrashesByDeviceTypeChart()
+        {
+            var crashModel = new CrashChartModel();
+
+            var key = new Chart(width: 600, height: 400)
+                .AddSeries(
+                    chartType: "pie",
+                    xValue: crashModel.DeviceTypes,
+                    yValues: crashModel.NumbersOfDevices)
+                .SetXAxis("Model Type")
+                .SetYAxis("Total Crashes")
                 .Write();
 
             return null;

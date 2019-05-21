@@ -45,7 +45,7 @@ namespace JaunDetect.Models
             CrashTypes = types;
             // init crashes by type and by time
             CrashesByType = random.GetRandomDatapoint(5, 0, 30);
-            CrashesByTime = random.GetRandomDatapoint(7, 0, 30);
+            CrashesByTime = random.GetRandomDatapoint(5, 0, 30);
 
             Months = unit.GetMonths(5);
             Days = unit.GetDays(5);
