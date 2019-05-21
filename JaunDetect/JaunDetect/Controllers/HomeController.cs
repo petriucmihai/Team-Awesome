@@ -197,12 +197,12 @@ namespace JaunDetect.Controllers
         {
             var crashModel = new CrashChartModel();
 
-            var key = new Chart(width: 600, height: 400)
+            var key = new Chart(width: 700, height: 250)
                 .AddSeries(
-                    chartType: "column",
-                    xValue: crashModel.Days,
+                    chartType: "line",
+                    xValue: crashModel.Months,
                     yValues: crashModel.CrashesByTime)
-                .SetXAxis("Day")
+                .SetXAxis("Month")
                 .SetYAxis("Total Crashes")
                 .Write();
 
@@ -213,7 +213,7 @@ namespace JaunDetect.Controllers
         {
             var crashModel = new CrashChartModel();
 
-            var key = new Chart(width: 600, height: 400)
+            var key = new Chart(width: 300, height: 400)
                 .AddSeries(
                     chartType: "column",
                     xValue: crashModel.CrashTypes,
@@ -229,7 +229,7 @@ namespace JaunDetect.Controllers
         {
             var crashModel = new CrashChartModel();
 
-            var key = new Chart(width: 600, height: 400)
+            var key = new Chart(width:300, height: 400)
                 .AddSeries(
                     chartType: "pie",
                     xValue: crashModel.DeviceTypes,
