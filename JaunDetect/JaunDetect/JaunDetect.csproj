@@ -129,7 +129,6 @@
     <Compile Include="Models\QueryViewModel.cs" />
     <Compile Include="Models\CrashChartModel.cs" />
     <Compile Include="Models\ResourcesChartModel.cs" />
-    <Compile Include="Models\ResourcesViewModel.cs" />
     <Compile Include="Models\UsageViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
