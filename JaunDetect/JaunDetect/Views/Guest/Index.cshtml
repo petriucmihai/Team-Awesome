@@ -1,7 +1,27 @@
-﻿
+﻿@using JaunDetect.Models;
+@model HomeChartModel
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Home Page";
 }
 
-<h2>Index</h2>
+<div class="jumbotron">
+    <h1>Welcome To JaunDetect</h1>
+    <p class="lead">JaunDetect: A Telemetry Solution for a Low-Cost Jaundice Prevention Application</p>
+    <p>Team Awesome: Mihai, Laura, and Onur</p>
+</div>
+
+<div class="row">
+    <div class="col">
+        <img src="~/Content/Images/heatmap2.jpg" />
+    </div>
+
+    <div class="col">
+        @using (Html.BeginForm("UpdateHomeChartTimeOption", "Home", FormMethod.Post))
+        {
+            @Html.DropDownListFor(model => model.TimeOptionString, Model.OptionsList);
+            <button type="submit">Update</button>
+        }
+        <img src="/Home/GetBilirubinLevelChart" />
+    </div>
+</div>
 
