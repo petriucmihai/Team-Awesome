@@ -204,5 +204,44 @@ namespace JaunDetect.Controllers
 
             return null;
         }
+
+        public ActionResult GetBilirubinLevelChart()
+        {
+            var homeModel = new HomeChartModel();
+            int num = 0;
+
+            var key = new Chart(width: 900, height: 400)
+                .AddSeries(
+                    chartType: "column",
+                    name: homeModel.Clinics[0],
+                    xValue: homeModel.Timeframe[num],
+                    yValues: homeModel.BilirubinData[0])
+                .AddSeries(
+                    chartType: "column",
+                    name: homeModel.Clinics[1],
+                    xValue: homeModel.Timeframe[num],
+                    yValues: homeModel.BilirubinData[1])
+                .AddSeries(
+                    chartType: "column",
+                    name: homeModel.Clinics[2],
+                    xValue: homeModel.Timeframe[homeModel.TimeOption],
+                    yValues: homeModel.BilirubinData[2])
+                .AddSeries(
+                    chartType: "column",
+                    name: homeModel.Clinics[3],
+                    xValue: homeModel.Timeframe[homeModel.TimeOption],
+                    yValues: homeModel.BilirubinData[3])
+                .AddSeries(
+                    chartType: "column",
+                    name: homeModel.Clinics[4],
+                    xValue: homeModel.Timeframe[homeModel.TimeOption],
+                    yValues: homeModel.BilirubinData[4])
+                .SetXAxis("Months")
+                .SetYAxis("Bilirubin Level (%)")
+                .AddLegend()
+                .Write();
+
+            return null;
+        }
     }
 }

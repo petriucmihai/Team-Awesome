@@ -14,6 +14,27 @@
     </div>
 
     <div class="col">
-        <img src="~/Content/Images/homepage_photo2.png" />
+        @{
+            List<SelectListItem> listItems = new List<SelectListItem>();
+            listItems.Add(new SelectListItem
+            {
+                Text = "Months",
+                Value = "0"
+            });
+            listItems.Add(new SelectListItem
+            {
+                Text = "Weeks",
+                Value = "1",
+                Selected = true
+            });
+            listItems.Add(new SelectListItem
+            {
+                Text = "Years",
+                Value = "2"
+            });
+        }
+
+        @Html.DropDownList("ddlTimeframe", listItems);
+        <img src="/Home/GetBilirubinLevelChart" />
     </div>
 </div>
