@@ -166,17 +166,17 @@ namespace JaunDetect.Backend_Data
             SelectListItem listItem1 = new SelectListItem
             {
                 Text = "Months",
-                Value = "1"
+                Value = "0"
             };
             SelectListItem listItem2 = new SelectListItem
             {
                 Text = "Weeks",
-                Value = "2"
+                Value = "1"
             };
             SelectListItem listItem3 = new SelectListItem
             {
                 Text = "Years",
-                Value = "3"
+                Value = "2"
             };
 
             List<SelectListItem> items = new List<SelectListItem>();
