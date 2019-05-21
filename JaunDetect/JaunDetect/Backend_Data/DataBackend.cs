@@ -35,9 +35,9 @@ namespace JaunDetect.Backend_Data
         // Hook up the Repositry
         private IDataRepository repository = new DataBackendRepository();
 
-        public ResourcesViewModel GetResources()
+        public ResourcesChartModel GetResources()
         {
-            var myData = new ResourcesViewModel();
+            var myData = new ResourcesChartModel();
             myData.Clinics = repository.GetClinics();
             myData.HospitalPatients = repository.GetPatients();
             myData.Months = repository.GetMonths();

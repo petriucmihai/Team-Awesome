@@ -29,7 +29,7 @@ namespace JaunDetect.Controllers
         {
             ViewBag.Message = "Resources and Budgeting";
 
-            var resourceModel = new ResourcesViewModel();
+            var resourceModel = new ResourcesChartModel();
 
             resourceModel = DataBackend.Instance.GetResources();
 
@@ -72,7 +72,7 @@ namespace JaunDetect.Controllers
         }
         public ActionResult GetTestStripUsageChart()
         {
-            var resourceModel = new ResourcesViewModel();
+            var resourceModel = new ResourcesChartModel();
 
             resourceModel = DataBackend.Instance.GetResources();
 
@@ -91,7 +91,7 @@ namespace JaunDetect.Controllers
 
         public ActionResult GetHospitalPatientChart()
         {
-            var resourceModel = new ResourcesViewModel();
+            var resourceModel = new ResourcesChartModel();
 
             resourceModel = DataBackend.Instance.GetResources();
 
@@ -173,13 +173,13 @@ namespace JaunDetect.Controllers
         }
 
         [HttpPost]
-        public ActionResult UpdatePrice(ResourcesViewModel model)
+        public ActionResult UpdatePrice(ResourcesChartModel model)
         {
             if (ModelState.IsValid)
             {
                 DataBackend.Instance.UpdateStripPrice(model.TestStripPrice);
 
-                var resourceModel = new ResourcesViewModel();
+                var resourceModel = new ResourcesChartModel();
 
                 resourceModel = DataBackend.Instance.GetResources();
 
