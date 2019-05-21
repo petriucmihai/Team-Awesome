@@ -24,6 +24,12 @@ namespace JaunDetect.Models
         public string[] CrashTypes
         { get; set; }
 
+        // Number of each type of device among the userbase
+        public int[] NumbersOfDevices { get; set; }
+
+        // List of the different types of devices the phone application is used on
+        public string[] DeviceTypes { get; set; }
+
         // Constructor
         public CrashChartModel()
         {
@@ -35,16 +41,18 @@ namespace JaunDetect.Models
             RandomDataGenerator random = new RandomDataGenerator();
             UnitGenerator unit = new UnitGenerator();
 
-            string[] types = { "Device Incompatibility", "Force Close by User", "Fatal Bug", "Connectivity Exception", "Exception Handling/Error Condition" };
+            string[] types = { "Device Incompatibility", "Force Close by User", "Fatal Bug", "Connectivity Exception", "Exception Handling" };
             CrashTypes = types;
-            // init crashes by type
+            // init crashes by type and by time
             CrashesByType = random.GetRandomDatapoint(5, 0, 30);
-            // init crashes by time
             CrashesByTime = random.GetRandomDatapoint(5, 0, 30);
-            // init months
+
             Months = unit.GetMonths(5);
-            // init days
             Days = unit.GetDays(5);
+
+            // 6 types of devices
+            NumbersOfDevices = random.GetRandomDatapoint(6, 3, 30);
+            DeviceTypes = unit.GetDevices(6);
         }
     }
 }

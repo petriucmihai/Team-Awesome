@@ -201,7 +201,39 @@ namespace JaunDetect.Controllers
                     xValue: crashModel.Days,
                     yValues: crashModel.CrashesByTime)
                 .SetXAxis("Day")
-                .SetYAxis("Total Crashes Over Time")
+                .SetYAxis("Total Crashes")
+                .Write();
+
+            return null;
+        }
+
+        public ActionResult GetCrashesByTypeChart()
+        {
+            var crashModel = new CrashChartModel();
+
+            var key = new Chart(width: 600, height: 400)
+                .AddSeries(
+                    chartType: "column",
+                    xValue: crashModel.CrashTypes,
+                    yValues: crashModel.CrashesByType)
+                .SetXAxis("Crash Type")
+                .SetYAxis("Total Crashes")
+                .Write();
+
+            return null;
+        }
+
+        public ActionResult GetCrashesByDeviceTypeChart()
+        {
+            var crashModel = new CrashChartModel();
+
+            var key = new Chart(width: 600, height: 400)
+                .AddSeries(
+                    chartType: "pie",
+                    xValue: crashModel.DeviceTypes,
+                    yValues: crashModel.NumbersOfDevices)
+                .SetXAxis("Device Model")
+                .SetYAxis("Total Crashes")
                 .Write();
 
             return null;
