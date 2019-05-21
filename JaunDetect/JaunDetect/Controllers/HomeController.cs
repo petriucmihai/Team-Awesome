@@ -230,7 +230,7 @@ namespace JaunDetect.Controllers
                     chartType: "pie",
                     xValue: crashModel.DeviceTypes,
                     yValues: crashModel.NumbersOfDevices)
-                .SetXAxis("Model Type")
+                .SetXAxis("Device Model")
                 .SetYAxis("Total Crashes")
                 .Write();
 
