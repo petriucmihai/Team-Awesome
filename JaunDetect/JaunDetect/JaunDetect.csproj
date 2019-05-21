@@ -114,6 +114,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Backend_Data\IQueryRepository.cs" />
+    <Compile Include="Backend_Data\QueryBackendRepository.cs" />
+    <Compile Include="Backend_Data\QueryBackend.cs" />
     <Compile Include="Backend_Data\DataBackend.cs" />
     <Compile Include="Backend_Data\DataBackendRepository.cs" />
     <Compile Include="Backend_Data\IDataRepository.cs" />
@@ -123,6 +126,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\QueryViewModel.cs" />
     <Compile Include="Models\CrashChartModel.cs" />
     <Compile Include="Models\ResourcesChartModel.cs" />
     <Compile Include="Models\ResourcesViewModel.cs" />

@@ -1,73 +1,45 @@
-﻿@model JaunDetect.Models.ResourcesViewModel
+﻿@using JaunDetect.Models;
+@model QueryViewModel
 
-@{ 
-    ViewBag.Title = "Custom Query Tool";
+@{
+    ViewBag.Title = "Query";
 }
 
 <h3>@ViewBag.Message</h3>
 
 <div class=" container">
+    <div class="row">
 
-    @using (Html.BeginForm("CustomQuery", "Home", FormMethod.Post))
-    {
-        <script>
-            function matchFunction() {
-                var name = document.getElementById("name").value;
-                var province = document.getElementById("province").value;
-                var date = document.getElementById("date").value;
-                var device = document.getElementById("device").value;
-
-                for (int i = 0; i < Model.Clinics.Count(); i++) {
-                    if (name == Model.Clinics[i]) {
-                        document.getElementById("col1").value = name;
-                        document.getElementById("col2").value = province;
-                        document.getElementById("col3").value = date;
-                        document.getElementById("col4").value = device;
-                    }
+        <div class="row">
+            <div>
+                <p>Clinic:</p>
+                @using (Html.BeginForm("Clinic", "Home", FormMethod.Post))
+                {
+                    @Html.TextBoxFor(model => model.Clinic)
+                    <button type="submit">Submit</button>
                 }
-            }
-
-
-        </script>
-
-
-        <h5> Clinic Name </h5>
-        <input type="text" id="name" value="">
-
-        <h5> Province </h5>
-        <input type="text" id="province" value="">
-
-        <h5> Date </h5>
-        <input type="text" id="date" value="">
-
-        <h5> Device Info </h5>
-        <input type="text" id="device" value="">
-
-        <button onclick="matchFunction()">Submit</button>
-
-   
-        <div class=" container">
-            <div class="col">
-                <div class="border border-dark rounded">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th scope="col">Query Results</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td id='col1'> Name </td>
-                                <td id='col2'> Province </td>
-                                <td id='col3'> Date </td>
-                                <td id='col4'> Device </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
             </div>
-        </div>
+            <br />
+            <div class="border border-dark rounded">
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">Clinic</th>
 
-   }
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr>
+                            if (2 < 3) {
+                            <td>@model.Clinic</td>                            
+                            }
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 
+</div>
