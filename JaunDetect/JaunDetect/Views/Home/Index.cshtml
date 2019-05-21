@@ -11,11 +11,11 @@
 </div>
 
 <div class="row">
-    <div class="col">
-        <img src="~/Content/Images/heatmap2.jpg" />
+    <div class="col-4">
+        <img src="~/Content/Images/heatmap.jpg" class="img-fluid" alt="Responsive image" />
     </div>
 
-    <div class="col">
+    <div class="col-8">
         @using (Html.BeginForm("UpdateHomeChartTimeOption", "Home", FormMethod.Post))
         {
             @Html.DropDownListFor(model => model.TimeOptionString, Model.OptionsList);
