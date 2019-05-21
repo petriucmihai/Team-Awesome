@@ -13,7 +13,9 @@ namespace JaunDetect.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            var homeModel = new HomeChartModel();
+
+            return View(homeModel);
         }
 
         public ActionResult UsageData()
@@ -224,17 +226,17 @@ namespace JaunDetect.Controllers
                 .AddSeries(
                     chartType: "column",
                     name: homeModel.Clinics[2],
-                    xValue: homeModel.Timeframe[homeModel.TimeOption],
+                    xValue: homeModel.Timeframe[num],
                     yValues: homeModel.BilirubinData[2])
                 .AddSeries(
                     chartType: "column",
                     name: homeModel.Clinics[3],
-                    xValue: homeModel.Timeframe[homeModel.TimeOption],
+                    xValue: homeModel.Timeframe[num],
                     yValues: homeModel.BilirubinData[3])
                 .AddSeries(
                     chartType: "column",
                     name: homeModel.Clinics[4],
-                    xValue: homeModel.Timeframe[homeModel.TimeOption],
+                    xValue: homeModel.Timeframe[num],
                     yValues: homeModel.BilirubinData[4])
                 .SetXAxis("Months")
                 .SetYAxis("Bilirubin Level (%)")
