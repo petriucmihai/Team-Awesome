@@ -1,67 +1,78 @@
 ﻿@model JaunDetect.Models.CustomQueryViewModel
 
 @{
-    ViewBag.Title = "Custom Query Tool";
+                /**/
+
+                /**/
+
+                ViewBag.Title = "Custom Query Tool";
 }
 
 <h3>@ViewBag.Message</h3>
 
 <div class=" container">
-    @using (Html.BeginForm("CustomQuery", "Home", FormMethod.Post))
+
+    @using (Html.BeginForm("CustomQuery", "Home", FormMethod.Get))
     {
-        <div class="row">
-            <h5> Clinic Name </h5>
-            <input type="text" id="name" value="">
-        </div>
-
-        <div class="row">
-            <h5> Province </h5>
-            <input type="text" id="province" value="">
-        </div>
-
-        <div class="row">
-            <h5> Start Time </h5>
-            <input type="text" id="startTime" value="">
-        </div>
-
-        <div class="row">
-            <h5> End Time </h5>
-            <input type="text" id="endTime" value="">
-        </div>
-
-        <div class="row">
-            <h5> Device Info </h5>
-            <input type="text" id="device" value="">
-        </div>
-            <button onclick="myFunction()">Submit</button>
-
-        <p id="data">abc</p>
-    }
-    <script>
-        function myFunction() {
+        <script>
             var name = document.getElementById("name").value;
             var province = document.getElementById("province").value;
             var startDate = document.getElementById("startDate").value;
             var endDate = document.getElementById("endDate").value;
             var device = document.getElementById("device").value;
-            document.getElementById("data").innerHTML = device;
-           
+            document.getElementById("col1").value = name;
+            document.getElementById("col2").value = province;
+            document.getElementById("col3").value = startDate;
+            document.getElementById("col4").value = endDate;
+            document.getElementById("col5").value = device;
+        </script>
 
-        }
-    </script>
-</div>
 
-<div class=" container">
-    <div class="border border-dark rounded">
-        <table>
-            <thead>
-                <tr>
-                    <th scope="col">Query Results</th>
+        <h5> Clinic Name </h5>
+        <input type="text" id="name" value="">
 
-                </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
-    </div>
+
+
+        <h5> Province </h5>
+        <input type="text" id="province" value="">
+
+
+
+        <h5> Start Time </h5>
+        <input type="text" id="startTime" value="">
+
+
+        <h5> End Time </h5>
+        <input type="text" id="endTime" value="">
+
+
+        <h5> Device Info </h5>
+        <input type="text" id="device" value="">
+        
+        <button onclick="">Submit</button>
+
+
+        <div class=" container">
+            <div class="border border-dark rounded">
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">Query Results</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id='col1'> Name </tr>
+                        <tr id='col2'> Province </tr>
+                        <tr id='col3'> Start Date </tr>
+                        <tr id='col4'> End Date </tr>
+                        <tr id='col5'> Device </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+
+    }
 </div>
 
