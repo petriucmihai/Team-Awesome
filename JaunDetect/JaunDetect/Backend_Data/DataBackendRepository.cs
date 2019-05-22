@@ -132,6 +132,7 @@ namespace JaunDetect.Backend_Data
         {
             homeData.TimeOptionString = timeOptionString;
             homeData.TimeOption = int.Parse(timeOptionString);
+            refreshData();
             return true;
         }
 
@@ -159,6 +160,18 @@ namespace JaunDetect.Backend_Data
             homeData.Timeframe[2] = new string[] { "Year1", "Year2", "Year3", "Year4", "Year5" };
 
             CreateSelectList();
+        }
+
+        private void refreshData()
+        {
+            RandomDataGenerator random = new RandomDataGenerator();
+            int[][] data = new int[homeData.BilirubinLevels.Length][];
+            for (int i = 0; i < 5; i++)
+            {
+                data[i] = random.GetRandomDatapoint(5, 50, 200);
+            }
+
+            homeData.BilirubinData = data;
         }
 
         private void CreateSelectList()
