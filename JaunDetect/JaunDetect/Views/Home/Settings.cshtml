@@ -7,35 +7,146 @@
 <h2>Settings</h2>
 
 <div class="accordion" id="accordionExample">
+    
     <div class="card">
-        <div class="card-header" id="headingOne">
+        <div class="card-header" id="headingZero">
             <h5 class="mb-0">
-                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                    Customization settings
+                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseZero" aria-expanded="true" aria-controls="collapseZero">
+                    Dashboard report settings
                 </button>
             </h5>
         </div>
 
-        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+        <div id="collapseZero" class="collapse show" aria-labelledby="headingZero" data-parent="#accordionExample">
             <div class="card-body">
                 <!--Customization settings here-->
-                <h4>Frequency of Monitoring</h4>
+                <div class="row">
 
-                <div class="custom-control custom-radio">
-                    <input type="radio" class="custom-control-input" id="defaultGroupExample1" name="freq" checked>
-                    <label class="custom-control-label" for="defaultGroupExample1">Daily</label>
+                    <div class="col">
+                        <h6>Default time period for dashboard reports:</h6>
+
+                        <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" id="defaultGroupExample1" name="freq" checked>
+                            <label class="custom-control-label" for="defaultGroupExample1">Hours</label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" id="defaultGroupExample2" name="freq">
+                            <label class="custom-control-label" for="defaultGroupExample2">Days</label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" id="defaultGroupExample3" name="freq">
+                            <label class="custom-control-label" for="defaultGroupExample3">Weeks</label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" id="defaultGroupExample4" name="freq">
+                            <label class="custom-control-label" for="defaultGroupExample4">Months</label>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <h6>Bilirubin alert level</h6>
+
+                        <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" id="defaultGroup1Example1" checked>
+                            <label class="custom-control-label" for="defaultGroup1Example1">25%</label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" id="defaultGroup1Example2">
+                            <label class="custom-control-label" for="defaultGroup1Example2">20%</label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" id="defaultGroup1Example3">
+                            <label class="custom-control-label" for="defaultGroup1Example3">15%</label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" id="defaultGroup1Example4">
+                            <label class="custom-control-label" for="defaultGroup1Example4">10%</label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" id="defaultGroup1Example5">
+                            <label class="custom-control-label" for="defaultGroup1Example5">5%</label>
+                        </div>
+                    </div>
+
                 </div>
-                <div class="custom-control custom-radio">
-                    <input type="radio" class="custom-control-input" id="defaultGroupExample2" name="freq">
-                    <label class="custom-control-label" for="defaultGroupExample2">Weekly</label>
-                </div>
-                <div class="custom-control custom-radio">
-                    <input type="radio" class="custom-control-input" id="defaultGroupExample3" name="freq">
-                    <label class="custom-control-label" for="defaultGroupExample3">Monthly</label>
+                <div class="row pt-3">
+                    <div class="col">
+                        <button type="submit" class="btn btn-primary" onclick="">Apply Changes</button>
+                    </div>
                 </div>
 
-                <button type="submit" class="btn btn-primary" onclick="">Apply Changes</button>
+            </div>
+        </div>
 
+    </div>
+    
+    <div class="card">
+        <div class="card-header" id="headingOne">
+            <h5 class="mb-0">
+                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                    Curated report settings
+                </button>
+            </h5>
+        </div>
+
+        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+                <!--Customization settings here-->
+                <div class="row">
+
+                    <div class="col">
+                        <h6>Frequency of Curated Reports:</h6>
+
+                        <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" id="defaultGroupExample1" name="freq" checked>
+                            <label class="custom-control-label" for="defaultGroupExample1">Daily</label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" id="defaultGroupExample2" name="freq">
+                            <label class="custom-control-label" for="defaultGroupExample2">Weekly</label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" id="defaultGroupExample3" name="freq">
+                            <label class="custom-control-label" for="defaultGroupExample3">Monthly</label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" id="defaultGroupExample4" name="freq">
+                            <label class="custom-control-label" for="defaultGroupExample4">Every 2 Months</label>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <h6>Preferred Content in Curated Reports</h6>
+
+                        <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" id="defaultGroup1Example1" checked>
+                            <label class="custom-control-label" for="defaultGroup1Example1">Bilirubin test results</label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" id="defaultGroup1Example2">
+                            <label class="custom-control-label" for="defaultGroup1Example2">Resources/budgeting</label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" id="defaultGroup1Example3">
+                            <label class="custom-control-label" for="defaultGroup1Example3">Phone app usage</label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" id="defaultGroup1Example4">
+                            <label class="custom-control-label" for="defaultGroup1Example4">Crashes</label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" id="defaultGroup1Example5">
+                            <label class="custom-control-label" for="defaultGroup1Example5">Photo results</label>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row pt-3">
+                    <div class="col">
+                        <button type="submit" class="btn btn-primary" onclick="">Apply Changes</button>
+                    </div>
+                </div>
 
             </div>
         </div>
