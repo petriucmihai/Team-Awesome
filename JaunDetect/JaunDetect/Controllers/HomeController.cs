@@ -166,7 +166,6 @@ namespace JaunDetect.Controllers
                     chartType: "bar",
                     xValue: resourceModel.Months,
                     yValues: resourceModel.TestStripUsages)
-                //.AddTitle("Testing Strips Used")
                 .SetXAxis("Months")
                 .SetYAxis("Number of Strips Used")
                 .Write();
@@ -187,6 +186,24 @@ namespace JaunDetect.Controllers
                     yValues: resourceModel.HospitalPatients)
                 .SetXAxis("Clinics")
                 .SetYAxis("Number of Patients Sent to Hospitals")
+                .Write();
+
+            return null;
+        }
+
+        public ActionResult GetClinicWorkersChart()
+        {
+            var resourceModel = new ResourcesChartModel();
+
+            resourceModel = DataBackend.Instance.GetResources();
+
+            var key = new Chart(width: 600, height: 400)
+                .AddSeries(
+                    chartType: "column",
+                    xValue: resourceModel.Clinics,
+                    yValues: resourceModel.ClinicWorkers)
+                .SetXAxis("Clinic")
+                .SetYAxis("Number of Individual Devices Registering Tests")
                 .Write();
 
             return null;
