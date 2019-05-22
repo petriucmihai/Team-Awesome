@@ -43,6 +43,7 @@ namespace JaunDetect.Backend_Data
             resourcesData.TestStripUsages = random.GetRandomDatapoint(5, 100, 400);
             resourcesData.Clinics = unit.GetClinics(5);
             resourcesData.HospitalPatients = random.GetRandomDatapoint(5, 50, 500);
+            resourcesData.ClinicWorkers = random.GetRandomDatapoint(5, 5, 15);
             resourcesData.TestStripPrice = 1.00;
             resourcesData.TestStripCosts = CalculateTestStripCost();
         }
@@ -118,6 +119,11 @@ namespace JaunDetect.Backend_Data
         public int[] GetPatients()
         {
             return resourcesData.HospitalPatients;
+        }
+
+        public int[] GetClinicWorkers()
+        {
+            return resourcesData.ClinicWorkers;
         }
 
         public double GetTestStripPrice()

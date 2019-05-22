@@ -40,6 +40,7 @@ namespace JaunDetect.Backend_Data
             var myData = new ResourcesChartModel();
             myData.Clinics = repository.GetClinics();
             myData.HospitalPatients = repository.GetPatients();
+            myData.ClinicWorkers = repository.GetClinicWorkers();
             myData.Months = repository.GetMonths();
             myData.TestStripUsages = repository.GetUsages();
             myData.TestStripPrice = repository.GetTestStripPrice();

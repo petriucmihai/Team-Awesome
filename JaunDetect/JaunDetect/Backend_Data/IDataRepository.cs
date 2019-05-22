@@ -19,6 +19,8 @@ namespace JaunDetect.Backend_Data
 
         int[] GetPatients();
 
+        int[] GetClinicWorkers();
+
         double GetTestStripPrice();
 
         bool UpdateTestStripPrice(double price);
