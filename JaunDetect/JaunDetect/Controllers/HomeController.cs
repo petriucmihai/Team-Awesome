@@ -268,7 +268,7 @@ namespace JaunDetect.Controllers
         {
             if (ModelState.IsValid)
             {
-                DataBackend.Instance.UpdateTimeOptionString(model.TimeOptionString);
+                DataBackend.Instance.UpdateCrashTimeOptionString(model.TimeOptionString);
 
                 var crashModel = new CrashChartModel();
 
