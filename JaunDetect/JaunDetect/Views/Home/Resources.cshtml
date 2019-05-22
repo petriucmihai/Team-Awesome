@@ -14,28 +14,24 @@
         <div class="col">
 
             <div class="row">
+                <h6 class="mx-auto">Test Strip Usage per Month</h6>
                 <img src="/Home/GetTestStripUsageChart" class="img-fluid rounded" />
             </div>
 
             <div class="row">
                 <div class="col">
-                    <div class="row">
-                        <p>Current price of test strip:</p>
+                    <div class="row mb-3">
+                        <p class="pr-2">Current price of test strip:</p>
                         @using (Html.BeginForm("UpdatePrice", "Home", FormMethod.Post))
                         {
-                            @Html.TextBoxFor(model => model.TestStripPrice)
-                            <button type="submit">Update</button>
+                            @Html.TextBoxFor(model => model.TestStripPrice, new { Class = "form-control w-50 d-inline" })
+                            <button type="submit" class="btn btn-outline-primary d-inline align-top">Update</button>
                         }
                     </div>
 
-                    <div class="row border border-dark rounded w-75 text-center">
+                    <div class="row border border-dark rounded w-75 text-center mx-auto">
+                        <h6 class="mx-auto p-2">Resources used this month by clinic</h6>
                         <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Clinic</th>
-                                    <th scope="col">Amount</th>
-                                </tr>
-                            </thead>
                             <tbody>
                                 @{
                                     if (Model.Clinics.Count() == Model.TestStripCosts.Count())
@@ -61,17 +57,13 @@
         <div class="col">
 
             <div class="row">
+                <h6 class="mx-auto">High-Bilirubin Cases by Clinic</h6>
                 <img src="/Home/GetHospitalPatientChart" class="img-fluid rounded" />
             </div>
 
-            <div class="row border border-dark rounded w-75 text-center">
+            <div class="row border border-dark rounded w-75 text-center mx-auto">
+                <h6 class="mx-auto p-2">Clinics that send the most patients to in-area hospitals</h6>
                 <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Clinic</th>
-                            <th scope="col">Amount</th>
-                        </tr>
-                    </thead>
                     <tbody>
                         @{
                             if (Model.Clinics.Count() == Model.HospitalPatients.Count())
@@ -92,30 +84,26 @@
         </div>
 
     </div>
-    <div class="row">
+    <div class="row mt-3">
 
-        <div class="col">
+        <div class="col text-center">
+            <h6 class="mx-auto">Individual Devices Registered by Clinic</h6>
             <img src="/Home/GetClinicWorkersChart" class="img-fluid rounded" />
         </div>
 
         <div class="col">
-            <div class="row">
-                <p>Current price of test strip:</p>
+            <div class="row mb-3">
+                <p class="pr-2 d-inline">Current per-hour salary:</p>
                 @using (Html.BeginForm("UpdateSalary", "Home", FormMethod.Post))
                 {
-                    @Html.TextBoxFor(model => model.WorkerSalary)
-                    <button type="submit">Update</button>
+                    @Html.TextBoxFor(model => model.WorkerSalary, new { Class = "form-control w-50 d-inline" })
+                <button type="submit" class="btn btn-outline-primary d-inline align-top">Update</button>
                 }
             </div>
 
             <div class="row border border-dark rounded w-75 text-center">
+                <h6 class="mx-auto p-2">Resources used this month by clinic</h6>
                 <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Clinic</th>
-                            <th scope="col">Amount</th>
-                        </tr>
-                    </thead>
                     <tbody>
                         @{
                             if (Model.Clinics.Count() == Model.ClinicWorkers.Count())
