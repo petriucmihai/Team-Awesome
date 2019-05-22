@@ -63,7 +63,6 @@ namespace JaunDetect.Controllers
         public ActionResult QueryResults()
         {
             ViewBag.Message = "Query Results";
-     
             var queryResultModel = new QueryResultViewModel();
             queryResultModel = QueryBackend.Instance.GetResultQuery();
             return View(queryResultModel);
