@@ -5,11 +5,27 @@
     /**/
 
     ViewBag.Title = "QueryResults";
-   
+
 }
 
-<div class=" container">
-    <div class="row">
-       @Html.TextBox("Table", @Model.Dt)
-    </div>
+<div class="border border-dark rounded">
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">Query Results</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @{
+            <tr>
+                <td>@Model.List[0]</td>
+                <td>@Model.Province</td>
+
+            </tr>
+                   
+               
+             }
+        </tbody>
+    </table>
 </div>

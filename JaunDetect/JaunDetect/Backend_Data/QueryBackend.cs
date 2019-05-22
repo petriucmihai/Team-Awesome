@@ -54,7 +54,7 @@ namespace JaunDetect.Backend_Data
             data.Province = queryResultRepository.GetProvince(0);
             data.Date = queryResultRepository.GetDate(0);
             data.Device = queryResultRepository.GetDevice(0);
-            data.Dt = queryResultRepository.GetDataTable();
+            data.List = queryResultRepository.GetDataTable();
               
             return data;
         }

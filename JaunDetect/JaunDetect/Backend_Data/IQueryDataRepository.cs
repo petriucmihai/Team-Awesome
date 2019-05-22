@@ -13,6 +13,6 @@ namespace JaunDetect.Backend_Data
         string GetProvince(int num);
         string GetDate(int num);
         string GetDevice(int num);
-        DataTable GetDataTable();
+         string[] GetDataTable();
     }
 }
