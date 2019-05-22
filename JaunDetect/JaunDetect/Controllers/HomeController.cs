@@ -310,12 +310,10 @@ namespace JaunDetect.Controllers
             var key = new Chart(width: 300, height: 400)
                 .AddSeries(
                     chartType: "pie",
-                    name: homeModel.Clinics[0],
-                    xValue: homeModel.BilirubinLevels,
+                    xValue: homeModel.ConvertDataToString(homeModel.BilirubinLevels),
                     yValues: homeModel.BilirubinData[0])
                 .SetXAxis("Clinic " + homeModel.Clinics[0])
                 .SetYAxis("Bilirubin Levels (%)")
-                .AddLegend()
                 .Write();
 
             return null;
@@ -329,12 +327,10 @@ namespace JaunDetect.Controllers
             var key = new Chart(width: 300, height: 400)
                 .AddSeries(
                     chartType: "pie",
-                    name: homeModel.Clinics[1],
-                    xValue: homeModel.BilirubinLevels,
+                    xValue: homeModel.ConvertDataToString(homeModel.BilirubinLevels),
                     yValues: homeModel.BilirubinData[1])
                 .SetXAxis("Clinic " + homeModel.Clinics[1])
                 .SetYAxis("Bilirubin Levels (%)")
-                .AddLegend()
                 .Write();
 
             return null;
@@ -348,12 +344,10 @@ namespace JaunDetect.Controllers
             var key = new Chart(width: 300, height: 400)
                 .AddSeries(
                     chartType: "pie",
-                    name: homeModel.Clinics[2],
-                    xValue: homeModel.BilirubinLevels,
+                    xValue: homeModel.ConvertDataToString(homeModel.BilirubinLevels),
                     yValues: homeModel.BilirubinData[2])
                 .SetXAxis("Clinic " + homeModel.Clinics[2])
                 .SetYAxis("Bilirubin Levels (%)")
-                .AddLegend()
                 .Write();
 
             return null;
@@ -367,12 +361,10 @@ namespace JaunDetect.Controllers
             var key = new Chart(width: 300, height: 400)
                 .AddSeries(
                     chartType: "pie",
-                    name: homeModel.Clinics[3],
-                    xValue: homeModel.BilirubinLevels,
+                    xValue: homeModel.ConvertDataToString(homeModel.BilirubinLevels),
                     yValues: homeModel.BilirubinData[3])
                 .SetXAxis("Clinic " + homeModel.Clinics[3])
                 .SetYAxis("Bilirubin Levels (%)")
-                .AddLegend()
                 .Write();
 
             return null;
@@ -386,12 +378,10 @@ namespace JaunDetect.Controllers
             var key = new Chart(width: 300, height: 400)
                 .AddSeries(
                     chartType: "pie",
-                    name: homeModel.Clinics[4],
-                    xValue: homeModel.BilirubinLevels,
+                    xValue: homeModel.ConvertDataToString(homeModel.BilirubinLevels),
                     yValues: homeModel.BilirubinData[4])
                 .SetXAxis("Clinic " + homeModel.Clinics[4])
                 .SetYAxis("Bilirubin Levels (%)")
-                .AddLegend()
                 .Write();
 
             return null;

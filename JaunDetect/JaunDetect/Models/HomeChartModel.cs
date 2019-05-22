@@ -28,6 +28,16 @@ namespace JaunDetect.Models
             //Initialize();
         }
 
+        public string[] ConvertDataToString(int[] data)
+        {
+            string[] result = new string[data.Length];
+            for (int i = 0; i < data.Length; i++)
+            {
+                result[i] = data[i].ToString() + "%";
+            }
+            return result;
+        }
+
         /*
         public void Initialize()
         {
