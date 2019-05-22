@@ -238,6 +238,7 @@ namespace JaunDetect.Controllers
         public ActionResult GetCrashesByTypeChart()
         {
             var crashModel = new CrashChartModel();
+            crashModel = DataBackend.Instance.GetCrashData();
 
             var key = new Chart(width: 300, height: 400)
                 .AddSeries(
@@ -254,6 +255,7 @@ namespace JaunDetect.Controllers
         public ActionResult GetCrashesByDeviceTypeChart()
         {
             var crashModel = new CrashChartModel();
+            crashModel = DataBackend.Instance.GetCrashData();
 
             var key = new Chart(width:300, height: 400)
                 .AddSeries(
