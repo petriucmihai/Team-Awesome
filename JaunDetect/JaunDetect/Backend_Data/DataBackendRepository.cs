@@ -156,8 +156,8 @@ namespace JaunDetect.Backend_Data
 
             homeData.Timeframe = new string[3][];
             homeData.Timeframe[0] = unit.GetMonths(5);
-            homeData.Timeframe[1] = new string[] { "Week1", "Week2", "Week3", "Week4", "Week5" };
-            homeData.Timeframe[2] = new string[] { "Year1", "Year2", "Year3", "Year4", "Year5" };
+            homeData.Timeframe[1] = unit.GetWeeks(5);
+            homeData.Timeframe[2] = unit.GetYears(5);
 
             CreateSelectList();
         }
