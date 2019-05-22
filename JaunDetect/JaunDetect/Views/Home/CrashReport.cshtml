@@ -11,7 +11,7 @@
 <div class="container-fluid">
     <div class="row justify-content-center">
         <h4>Crashes Over Time</h4>
-        @using (Html.BeginForm("UpdateCrashChartTimeOption", "CrashReport", FormMethod.Post))
+        @using (Html.BeginForm("UpdateCrashChartTimeOption", "Home", FormMethod.Post))
         {
             @Html.DropDownListFor(model => model.TimeOptionString, Model.OptionsList);
             <button type="submit">Update</button>
