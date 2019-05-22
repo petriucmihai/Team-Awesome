@@ -45,6 +45,34 @@ namespace JaunDetect.Backend_Data
             resourcesData.TestStripCosts = CalculateTestStripCost();
         }
 
+        public void InitializeHome()
+        {
+            RandomDataGenerator random = new RandomDataGenerator();
+            UnitGenerator unit = new UnitGenerator();
+
+            homeData.Clinics = unit.GetClinics(5);
+            homeData.BilirubinLevels = new int[] { 5, 10, 15, 20, 25 };
+
+            int[][] data = new int[homeData.BilirubinLevels.Length][];
+            for (int i = 0; i < 5; i++)
+            {
+                data[i] = random.GetRandomDatapoint(5, 50, 200);
+            }
+
+            homeData.BilirubinData = data;
+
+            homeData.TimeOption = 0;
+
+            homeData.Timeframe = new string[3][];
+            homeData.Timeframe[0] = unit.GetMonths(5);
+            homeData.Timeframe[1] = unit.GetWeeks(5);
+            homeData.Timeframe[2] = unit.GetYears(5);
+
+            CreateSelectList();
+        }
+
+        #region Resources charts methods
+
         public string[] GetClinics()
         {
             return resourcesData.Clinics;
@@ -92,6 +120,10 @@ namespace JaunDetect.Backend_Data
             return result;
         }
 
+        #endregion
+
+        #region Homepage charts methods 
+
         public int[] GetBilirubinLevels()
         {
             return homeData.BilirubinLevels;
@@ -136,32 +168,6 @@ namespace JaunDetect.Backend_Data
             return true;
         }
 
-        public void InitializeHome()
-        {
-            RandomDataGenerator random = new RandomDataGenerator();
-            UnitGenerator unit = new UnitGenerator();
-
-            homeData.Clinics = unit.GetClinics(5);
-            homeData.BilirubinLevels = new int[] { 5, 10, 15, 20, 25 };
-
-            int[][] data = new int[homeData.BilirubinLevels.Length][];
-            for (int i = 0; i < 5; i++)
-            {
-                data[i] = random.GetRandomDatapoint(5, 50, 200);
-            }
-
-            homeData.BilirubinData = data;
-
-            homeData.TimeOption = 0;
-
-            homeData.Timeframe = new string[3][];
-            homeData.Timeframe[0] = unit.GetMonths(5);
-            homeData.Timeframe[1] = unit.GetWeeks(5);
-            homeData.Timeframe[2] = unit.GetYears(5);
-
-            CreateSelectList();
-        }
-
         private void refreshData()
         {
             RandomDataGenerator random = new RandomDataGenerator();
@@ -200,5 +206,9 @@ namespace JaunDetect.Backend_Data
             homeData.OptionsList = items;
 
         }
+
+        #endregion
+
+
     }
 }
