@@ -318,9 +318,12 @@ namespace JaunDetect.Controllers
 
             return View("Resources", model);
         }
-    }
 
-    #endregion
+        #endregion
+
+
+
+    }
 
 
 }
