@@ -11,6 +11,12 @@ namespace JaunDetect.Models
         // Number of users that are currently using the phone application
         public int CurrentUsers { get; set; }
 
+        // Number of Downloads registered today
+        public int CurrentDownloads { get; set; }
+
+        // Number of Logins registered today
+        public int CurrentLogins { get; set; }
+
         // Amount of usages at each unit time of day
         public int[] UsageTimes { get; set; }
 
@@ -51,6 +57,8 @@ namespace JaunDetect.Models
             UnitGenerator unit = new UnitGenerator();
 
             CurrentUsers = random.GetRandomInt(10, 50);
+            CurrentDownloads = random.GetRandomInt(2, 15);
+            CurrentLogins = random.GetRandomInt(30, 70);
 
             // Break the day up into 7 units: 2 hour intervals from 8AM to 8PM
             UsageTimes = random.GetRandomDatapoint(7, 10, 50);
