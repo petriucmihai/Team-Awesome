@@ -295,7 +295,7 @@ namespace JaunDetect.Controllers
                     xValue: homeModel.Timeframe[num],
                     yValues: homeModel.BilirubinData[4])
                 .SetXAxis("Months")
-                .SetYAxis("Bilirubin Level (%)")
+                .SetYAxis("Number of Tests Taken")
                 .AddLegend()
                 .Write();
 
