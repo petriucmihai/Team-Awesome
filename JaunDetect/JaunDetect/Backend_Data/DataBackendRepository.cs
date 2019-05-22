@@ -90,6 +90,7 @@ namespace JaunDetect.Backend_Data
             // 6 types of devices
             crashesData.NumbersOfDevices = random.GetRandomDatapoint(6, 3, 30);
             crashesData.DeviceTypes = unit.GetDevices(6);
+            crashesData.DeviceIDs = unit.GetIDs(6);
 
             crashesData.TimeOption = 0;
 
@@ -293,6 +294,11 @@ namespace JaunDetect.Backend_Data
         public string[] GetDeviceTypes()
         {
             return crashesData.DeviceTypes;
+        }
+
+        public string[] GetDeviceIDs()
+        {
+            return crashesData.DeviceIDs;
         }
 
         public int[] GetNumbersOfDevices()
