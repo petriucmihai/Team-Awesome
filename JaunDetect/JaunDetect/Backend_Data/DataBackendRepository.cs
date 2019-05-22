@@ -268,10 +268,7 @@ namespace JaunDetect.Backend_Data
             return crashesData.Timeframe;
         }
 
-        public List<SelectListItem> GetCrashOptionsList()
-        {
-            return crashesData.OptionsList;
-        }
+       
         public bool UpdateCrashTimeOptionString(string timeOptionString)
         {
             crashesData.TimeOptionString = timeOptionString;
