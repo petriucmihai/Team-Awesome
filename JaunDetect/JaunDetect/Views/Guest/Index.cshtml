@@ -13,24 +13,67 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tour/0.11.0/js/bootstrap-tour-standalone.min.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tour/0.11.0/css/bootstrap-tour-standalone.min.css" rel="stylesheet" />
 
-<div class="jumbotron">
-    <h1 id="TitleHeader">Welcome To JaunDetect GUEST</h1>
-    <p class="lead">JaunDetect: A Telemetry Solution for a Low-Cost Jaundice Prevention Application</p>
-    <p>Team Awesome: Mihai, Laura, and Onur</p>
+<div class="position-relative overflow-hidden p-1 p-md-1 m-md-1 text-center">
+    <div class="col-md-5 p-1 mx-auto my-5">
+        <h1 class="display-6 font-weight-normal" id="TitleHeader">Welcome to JaunDetect</h1>
+        <div class="row pt-2">
+            <div class="col">
+                <h6 class="display">Seattle, Washington</h6>
+                <p class="font-weight-normal">@DateTime.Now.ToString("MM/dd/yyyy h:mm tt")</p>
+            </div>
+            <div class="col">
+                <h6 class="display">Lagos, Nigeria</h6>
+                <p class="font-weight-normal">@DateTime.Now.AddHours(8).ToString("MM/dd/yyyy h:mm tt")</p>
+            </div>
+        </div>
+    </div>
+    <div class="product-device box-shadow d-none d-md-block"></div>
+    <div class="product-device product-device-2 box-shadow d-none d-md-block"></div>
 </div>
 
 <div class="row">
-    <div class="col">
-        <img id="HeatMap" src="~/Content/Images/heatmap2.jpg" />
+    <div class="col-4">
+        <h6 class="text-center">Map of Bilirubin Concentrations</h6>
+        <img src="~/Content/Images/heatmap.jpg" class="img-fluid rounded" alt="Responsive image" id="HeatMap" />
     </div>
 
-    <div class="col">
-        @using (Html.BeginForm("UpdateHomeChartTimeOption", "Home", FormMethod.Post))
-        {
-            @Html.DropDownListFor(model => model.TimeOptionString, Model.OptionsList);
-            <button type="submit">Update</button>
-        }
-        <img id="LevelChart" src="/Home/GetBilirubinLevelChart" />
+    <div class="col-8">
+        <h6 class="text-center">Number of Tests Taken by each Clinic</h6>
+        <div>
+            @using (Html.BeginForm("UpdateHomeChartTimeOption", "Home", FormMethod.Post))
+            {
+                @Html.DropDownListFor(model => model.TimeOptionString, Model.OptionsList);
+                <button type="submit">Update</button>
+            }
+        </div>
+        <img src="/Home/GetBilirubinLevelChart" class="img-fluid rounded" id="LevelChart" />
+    </div>
+</div>
+<div class="row">
+    <div class="col text-center">
+        <h5 class="text-center" id="Concentrations">Bilirubin Concentrations (%) per Clinic</h5>
+    </div>
+</div>
+<div class="row">
+    <div class="col text-center">
+        <img src="/Home/GetClinic0BilirubinLevelChart" />
+        <h6 class="text-center">Clinic @Model.Clinics[0]</h6>
+    </div>
+    <div class="col text-center">
+        <img src="/Home/GetClinic1BilirubinLevelChart" />
+        <h6 class="text-center">Clinic @Model.Clinics[1]</h6>
+    </div>
+    <div class="col text-center">
+        <img src="/Home/GetClinic2BilirubinLevelChart" />
+        <h6 class="text-center">Clinic @Model.Clinics[2]</h6>
+    </div>
+    <div class="col text-center">
+        <img src="/Home/GetClinic3BilirubinLevelChart" />
+        <h6 class="text-center">Clinic @Model.Clinics[3]</h6>
+    </div>
+    <div class="col text-center">
+        <img src="/Home/GetClinic4BilirubinLevelChart" />
+        <h6 class="text-center">Clinic @Model.Clinics[4]</h6>
     </div>
 </div>
 
@@ -51,6 +94,11 @@
                 element: "#LevelChart",
                 title: "Bilirubin test results over time",
                 content: "JaunDetect lets you track the bilirubin test results over time and in terms of clinic at the same time. Change the timeframe in the dropdown to see the data over different periods of time."
+            },
+            {
+                element: "#Concentrations",
+                title: "Concentrations of Bilirubin for each clinic",
+                content: "Here you'll see the breakdown of bilirubin concentrations of patients at each clinic."
             }
         ]
     });
