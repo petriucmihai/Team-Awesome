@@ -47,7 +47,10 @@ namespace JaunDetect.Controllers
         {
             ViewBag.Message = "Crash Reports";
 
-            return View();
+            var crashReportModel = new CrashChartModel();
+            crashReportModel = DataBackend.Instance.GetCrashData();
+
+            return View(crashReportModel);
         }
 
         public ActionResult CustomQuery()
@@ -111,7 +114,6 @@ namespace JaunDetect.Controllers
                     yValues: usageModel.NumbersOfDevices)
                 .SetXAxis("Device Type")
                 .SetYAxis("Number of Devices")
-                .AddLegend()
                 .Write();
 
             return null;
@@ -214,53 +216,72 @@ namespace JaunDetect.Controllers
         #region Crash Report Charts
 
         public ActionResult GetCrashesByTimeChart()
-                {
-                    var crashModel = new CrashChartModel();
+        {
+            var crashModel = new CrashChartModel();
+            crashModel = DataBackend.Instance.GetCrashData();
+            int num = crashModel.TimeOption;
 
-                    var key = new Chart(width: 900, height: 250)
-                        .AddSeries(
-                            chartType: "line",
-                            xValue: crashModel.Months,
-                            yValues: crashModel.CrashesByTime)
-                        .SetXAxis("Month")
-                        .SetYAxis("Total Crashes")
-                        .Write();
 
-                    return null;
-                }
+            var key = new Chart(width: 900, height: 250)
+                .AddSeries(
+                    chartType: "line",
+                    xValue: crashModel.Timeframe[num],
+                    yValues: crashModel.CrashesByTime)
+                .SetXAxis("Time")
+                .SetYAxis("Total Crashes")
+                .Write();
 
-                public ActionResult GetCrashesByTypeChart()
-                {
-                    var crashModel = new CrashChartModel();
+            return null;
 
-                    var key = new Chart(width: 300, height: 400)
-                        .AddSeries(
-                            chartType: "column",
-                            xValue: crashModel.CrashTypes,
-                            yValues: crashModel.CrashesByType)
-                        .SetXAxis("Crash Type")
-                        .SetYAxis("Total Crashes")
-                        .Write();
+        }
 
-                    return null;
-                }
+        public ActionResult GetCrashesByTypeChart()
+        {
+            var crashModel = new CrashChartModel();
 
-                public ActionResult GetCrashesByDeviceTypeChart()
-                {
-                    var crashModel = new CrashChartModel();
+            var key = new Chart(width: 300, height: 400)
+                .AddSeries(
+                    chartType: "column",
+                    xValue: crashModel.CrashTypes,
+                    yValues: crashModel.CrashesByType)
+                 .SetXAxis("Crash Type")
+                 .SetYAxis("Total Crashes")
+                 .Write();
 
-                    var key = new Chart(width:300, height: 400)
-                        .AddSeries(
-                            chartType: "pie",
-                            xValue: crashModel.DeviceTypes,
-                            yValues: crashModel.NumbersOfDevices)
-                        .SetXAxis("Device Model")
-                        .SetYAxis("Total Crashes")
-                        .Write();
+            return null;
+        }
 
-                    return null;
-                }
+        public ActionResult GetCrashesByDeviceTypeChart()
+        {
+            var crashModel = new CrashChartModel();
 
+            var key = new Chart(width:300, height: 400)
+                .AddSeries(
+                    chartType: "pie",
+                    xValue: crashModel.DeviceTypes,
+                    yValues: crashModel.NumbersOfDevices)
+                .SetXAxis("Device Model")
+                .SetYAxis("Total Crashes")
+                .Write();
+
+            return null;
+        }
+
+        public ActionResult UpdateCrashChartTimeOption(CrashChartModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                DataBackend.Instance.UpdateCrashTimeOptionString(model.TimeOptionString);
+
+                var crashModel = new CrashChartModel();
+
+                crashModel = DataBackend.Instance.GetCrashData();
+
+                return View("CrashReport", crashModel);
+            }
+
+            return View("Crash Report", model);
+        }
         #endregion
 
         #region Home Charts
@@ -271,7 +292,7 @@ namespace JaunDetect.Controllers
             homeModel = DataBackend.Instance.GetHomeData();
             int num = homeModel.TimeOption;
 
-            var key = new Chart(width: 900, height: 400)
+            var key = new Chart(width: 700, height: 400)
                 .AddSeries(
                     chartType: "column",
                     name: homeModel.Clinics[0],
@@ -297,9 +318,94 @@ namespace JaunDetect.Controllers
                     name: homeModel.Clinics[4],
                     xValue: homeModel.Timeframe[num],
                     yValues: homeModel.BilirubinData[4])
-                .SetXAxis("Months")
+                .SetXAxis("Time")
                 .SetYAxis("Number of Tests Taken")
                 .AddLegend()
+                .Write();
+
+            return null;
+        }
+
+        public ActionResult GetClinic0BilirubinLevelChart()
+        {
+            var homeModel = new HomeChartModel();
+            homeModel = DataBackend.Instance.GetHomeData();
+
+            var key = new Chart(width: 300, height: 400)
+                .AddSeries(
+                    chartType: "pie",
+                    xValue: homeModel.ConvertDataToString(homeModel.BilirubinLevels),
+                    yValues: homeModel.BilirubinData[0])
+                .SetXAxis("Clinic " + homeModel.Clinics[0])
+                .SetYAxis("Bilirubin Levels (%)")
+                .Write();
+
+            return null;
+        }
+
+        public ActionResult GetClinic1BilirubinLevelChart()
+        {
+            var homeModel = new HomeChartModel();
+            homeModel = DataBackend.Instance.GetHomeData();
+
+            var key = new Chart(width: 300, height: 400)
+                .AddSeries(
+                    chartType: "pie",
+                    xValue: homeModel.ConvertDataToString(homeModel.BilirubinLevels),
+                    yValues: homeModel.BilirubinData[1])
+                .SetXAxis("Clinic " + homeModel.Clinics[1])
+                .SetYAxis("Bilirubin Levels (%)")
+                .Write();
+
+            return null;
+        }
+
+        public ActionResult GetClinic2BilirubinLevelChart()
+        {
+            var homeModel = new HomeChartModel();
+            homeModel = DataBackend.Instance.GetHomeData();
+
+            var key = new Chart(width: 300, height: 400)
+                .AddSeries(
+                    chartType: "pie",
+                    xValue: homeModel.ConvertDataToString(homeModel.BilirubinLevels),
+                    yValues: homeModel.BilirubinData[2])
+                .SetXAxis("Clinic " + homeModel.Clinics[2])
+                .SetYAxis("Bilirubin Levels (%)")
+                .Write();
+
+            return null;
+        }
+
+        public ActionResult GetClinic3BilirubinLevelChart()
+        {
+            var homeModel = new HomeChartModel();
+            homeModel = DataBackend.Instance.GetHomeData();
+
+            var key = new Chart(width: 300, height: 400)
+                .AddSeries(
+                    chartType: "pie",
+                    xValue: homeModel.ConvertDataToString(homeModel.BilirubinLevels),
+                    yValues: homeModel.BilirubinData[3])
+                .SetXAxis("Clinic " + homeModel.Clinics[3])
+                .SetYAxis("Bilirubin Levels (%)")
+                .Write();
+
+            return null;
+        }
+
+        public ActionResult GetClinic4BilirubinLevelChart()
+        {
+            var homeModel = new HomeChartModel();
+            homeModel = DataBackend.Instance.GetHomeData();
+
+            var key = new Chart(width: 300, height: 400)
+                .AddSeries(
+                    chartType: "pie",
+                    xValue: homeModel.ConvertDataToString(homeModel.BilirubinLevels),
+                    yValues: homeModel.BilirubinData[4])
+                .SetXAxis("Clinic " + homeModel.Clinics[4])
+                .SetYAxis("Bilirubin Levels (%)")
                 .Write();
 
             return null;
@@ -321,6 +427,8 @@ namespace JaunDetect.Controllers
 
             return View("Resources", model);
         }
+
+        
 
         #endregion
 

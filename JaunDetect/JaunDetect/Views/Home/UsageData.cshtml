@@ -1,33 +1,47 @@
-﻿@{
-    ViewBag.Title = "Usage Data";
-}
-<h1>@ViewBag.Title </h1>
-<h3>@ViewBag.Message</h3>
-
+﻿<div class="row">
+    <div class="col text-center">
+        <div class="col-md-5 p-1 mx-auto my-3">
+            <h2 class="display-6 font-weight-normal">Usage Data</h2>
+        </div>
+    </div>
+</div>
 
 <div class="container">
     <div class="row">
-        <div class="col-1 my-auto">
-            <h4>Current Users: @Model.CurrentUsers</h4>
+        <div class="col">
+            <h5 class="text-center">Current Users:</h5>
+            <h4 class="text-center">@Model.CurrentUsers</h4>
         </div>
-        <div class="col-5">
-            <img src="/Home/GetDownloadsPerMonthChart" />
+        <div class="col">
+            <h5 class="text-center">Downloads Today:</h5>
+            <h4 class="text-center">@Model.CurrentDownloads</h4>
         </div>
-        <div class="col-5">
-            <img src="/Home/GetLoginsPerMonthChart" />
+        <div class="col">
+            <h5 class="text-center">Logins Today:</h5>
+            <h4 class="text-center">@Model.CurrentLogins</h4>
+        </div>
+    </div>
+
+    <div class="row pt-lg-4">
+        <div class="col">
+            <h6 class="text-center">App Downloads per Month</h6>
+            <img src="/Home/GetDownloadsPerMonthChart" class="img-fluid rounded" />
+        </div>
+        <div class="col">
+            <h6 class="text-center">App Logins Per Month</h6>
+            <img src="/Home/GetLoginsPerMonthChart" class="img-fluid rounded" />
         </div>
     </div>
 
     <div class="row">
-        <div class="col-1">
+        <div class="col">
+            <h6 class="text-center">Most Common Usage Times of Day</h6>
+            <img src="/Home/GetCommonUsageTimesChart" class="img-fluid rounded" />
         </div>
-        <div class="col-5">
-            <img src="/Home/GetCommonUsageTimesChart" />
-        </div>
-        <div class="col-5">
-            <img src="/Home/GetDeviceModelsPieChart" />
+        <div class="col">
+            <h6 class="text-center">Registered Device Models</h6>
+            <img src="/Home/GetDeviceModelsPieChart" class="img-fluid rounded" />
         </div>
     </div>
-
 
 </div>

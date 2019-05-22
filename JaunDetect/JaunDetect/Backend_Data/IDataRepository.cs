@@ -44,5 +44,22 @@ namespace JaunDetect.Backend_Data
 
         bool UpdateTimeOptionString(string timeOptionString);
         #endregion
+
+        #region Crash charts backend methods
+        int[] GetCrashesByTime();
+
+        int[] GetCrashesByType();
+
+        string[] GetCrashTypes();
+
+        string[] GetDeviceTypes();
+
+        int[] GetNumbersOfDevices();
+
+        string[][] GetCrashesTimeframe();
+
+        bool UpdateCrashTimeOptionString(string timeOptionString);
+
+        #endregion
     }
 }

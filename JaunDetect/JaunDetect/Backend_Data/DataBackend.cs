@@ -62,6 +62,22 @@ namespace JaunDetect.Backend_Data
             return myData;
         }
 
+        public CrashChartModel GetCrashData()
+        {
+            var myData = new CrashChartModel();
+            myData.CrashesByTime = repository.GetCrashesByTime();
+            myData.CrashesByType = repository.GetCrashesByType();
+            myData.CrashTypes = repository.GetCrashTypes();
+            myData.DeviceTypes = repository.GetDeviceTypes();
+            myData.NumbersOfDevices = repository.GetNumbersOfDevices();
+            myData.OptionsList = repository.GetOptionsList();
+            myData.Timeframe = repository.GetCrashesTimeframe();
+            myData.TimeOption = repository.GetTimeOption();
+            myData.TimeOptionString = repository.GetTimeOptionString();
+
+            return myData;
+        }
+
         public bool UpdateStripPrice(double price)
         {
             return repository.UpdateTestStripPrice(price);
@@ -70,6 +86,11 @@ namespace JaunDetect.Backend_Data
         public bool UpdateTimeOptionString(string timeOptionString)
         {
             return repository.UpdateTimeOptionString(timeOptionString);
+        }
+
+        public bool UpdateCrashTimeOptionString(string timeOptionString)
+        {
+            return repository.UpdateCrashTimeOptionString(timeOptionString);
         }
     }
 }
