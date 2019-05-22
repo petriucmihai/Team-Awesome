@@ -50,8 +50,11 @@ namespace JaunDetect.Backend_Data
 
         public QueryResultViewModel GetResultQuery()
         {
-                data.Dt = queryResultRepository.GetDataTable();
-          
+            data.Clinic = queryResultRepository.GetClinic(0);
+            data.Province = queryResultRepository.GetProvince(0);
+            data.Date = queryResultRepository.GetDate(0);
+            data.Device = queryResultRepository.GetDevice(0);
+            data.Dt = queryResultRepository.GetDataTable();
               
             return data;
         }
