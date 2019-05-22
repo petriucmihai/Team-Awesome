@@ -179,7 +179,7 @@ namespace JaunDetect.Controllers
 
             resourceModel = DataBackend.Instance.GetResources();
 
-            var key = new Chart(width: 600, height: 400)
+            var key = new Chart(width: 500, height: 400)
                 .AddSeries(
                     chartType: "pie",
                     xValue: resourceModel.Clinics,
