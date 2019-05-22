@@ -25,5 +25,24 @@ namespace JaunDetect.Backend_Data
         {
             return _rand.Next(low, high);
         }
+
+        public string[] GetIDs (int num)
+        {
+            string[] uids = new string[num];
+            for (int i = 0; i < num; i++)
+            {
+                uids[i] = RandomString(10);
+            }
+            return uids;
+        }
+
+        public static string RandomString(int length)
+        {
+            Random random = new Random();
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            return new string(Enumerable.Repeat(chars, length)
+              .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+
     }
 }
