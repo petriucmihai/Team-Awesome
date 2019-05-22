@@ -12,35 +12,60 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            
+
             <div class="row">
-                <img src="/Home/GetTestStripUsageChart" />
+                <img src="/Home/GetTestStripUsageChart" class="img-fluid rounded" />
             </div>
 
             <div class="row">
+                <div class="col">
+                    <div class="row">
+                        <p>Current price of test strip:</p>
+                        @using (Html.BeginForm("UpdatePrice", "Home", FormMethod.Post))
+                        {
+                            @Html.TextBoxFor(model => model.TestStripPrice)
+                            <button type="submit">Update</button>
+                        }
+                    </div>
+
+                    <div class="row border border-dark rounded w-75 text-center">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Clinic</th>
+                                    <th scope="col">Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    if (Model.Clinics.Count() == Model.TestStripCosts.Count())
+                                    {
+                                        for (int i = 0; i < Model.Clinics.Count(); i++)
+                                        {
+                                            <tr>
+                                                <td>@Model.Clinics[i]</td>
+                                                <td>$@Model.TestStripCosts[i]</td>
+                                            </tr>
+                                        }
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
 
             </div>
-            
-
-
 
         </div>
 
         <div class="col">
-            <img src="/Home/GetHospitalPatientChart" />
-        </div>
-        <div class="row">
-            <div>
-                <p>Current price of test strip:</p>
-                @using (Html.BeginForm("UpdatePrice", "Home", FormMethod.Post))
-                {
-                    @Html.TextBoxFor(model => model.TestStripPrice)
-                    <button type="submit">Update</button>
-                }
+
+            <div class="row">
+                <img src="/Home/GetHospitalPatientChart" class="img-fluid rounded" />
             </div>
-            <br />
-            <div class="border border-dark rounded">
-                <table>
+
+            <div class="row border border-dark rounded w-75 text-center">
+                <table class="table">
                     <thead>
                         <tr>
                             <th scope="col">Clinic</th>
@@ -49,13 +74,13 @@
                     </thead>
                     <tbody>
                         @{
-                            if (Model.Clinics.Count() == Model.TestStripCosts.Count())
+                            if (Model.Clinics.Count() == Model.HospitalPatients.Count())
                             {
                                 for (int i = 0; i < Model.Clinics.Count(); i++)
                                 {
                                     <tr>
                                         <td>@Model.Clinics[i]</td>
-                                        <td>$@Model.TestStripCosts[i]</td>
+                                        <td>@Model.HospitalPatients[i]</td>
                                     </tr>
                                 }
                             }
@@ -63,7 +88,11 @@
                     </tbody>
                 </table>
             </div>
+
+
         </div>
+
     </div>
 
 </div>
+    
