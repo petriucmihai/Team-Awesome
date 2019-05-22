@@ -237,7 +237,7 @@ namespace JaunDetect.Backend_Data
 
         #endregion
 
-
+        #region Crash Chart methods
         public int[] GetCrashesByTime()
         {
             return crashesData.CrashesByTime;
@@ -268,6 +268,10 @@ namespace JaunDetect.Backend_Data
             return crashesData.Timeframe;
         }
 
+        public List<SelectListItem> GetCrashOptionsList()
+        {
+            return crashesData.OptionsList;
+        }
         public bool UpdateCrashTimeOptionString(string timeOptionString)
         {
             crashesData.TimeOptionString = timeOptionString;
@@ -280,6 +284,6 @@ namespace JaunDetect.Backend_Data
             RandomDataGenerator random = new RandomDataGenerator();
             crashesData.CrashesByTime = random.GetRandomDatapoint(9, 0, 30);
         }
-
+        #endregion
     }
 }

@@ -46,7 +46,10 @@ namespace JaunDetect.Controllers
         {
             ViewBag.Message = "Crash Reports";
 
-            return View();
+            var crashReportModel = new CrashChartModel();
+            crashReportModel = DataBackend.Instance.GetCrashData();
+
+            return View(crashReportModel);
         }
 
         public ActionResult CustomQuery()
