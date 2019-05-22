@@ -274,7 +274,7 @@ namespace JaunDetect.Controllers
 
                 crashModel = DataBackend.Instance.GetCrashData();
 
-                return View("Crash Report", crashModel);
+                return View("CrashReport", crashModel);
             }
 
             return View("Crash Report", model);

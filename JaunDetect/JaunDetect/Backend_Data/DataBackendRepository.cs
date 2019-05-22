@@ -276,6 +276,7 @@ namespace JaunDetect.Backend_Data
             refreshCrashData();
             return true;
         }
+
         private void refreshCrashData()
         {
             RandomDataGenerator random = new RandomDataGenerator();
