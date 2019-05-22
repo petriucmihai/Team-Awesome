@@ -24,15 +24,46 @@
 
 <div class="row">
     <div class="col-4">
-        <img src="~/Content/Images/heatmap.jpg" class="img-fluid" alt="Responsive image" />
+        <h6 class="text-center">Map of Bilirubin Concentrations</h6>
+        <img src="~/Content/Images/heatmap.jpg" class="img-fluid rounded" alt="Responsive image" />
     </div>
 
     <div class="col-8">
-        @using (Html.BeginForm("UpdateHomeChartTimeOption", "Home", FormMethod.Post))
-        {
-            @Html.DropDownListFor(model => model.TimeOptionString, Model.OptionsList);
-            <button type="submit">Update</button>
-        }
-        <img src="/Home/GetBilirubinLevelChart" />
+        <h6 class="text-center">Number of Tests Taken by each Clinic</h6>
+        <div>
+            @using (Html.BeginForm("UpdateHomeChartTimeOption", "Home", FormMethod.Post))
+            {
+                @Html.DropDownListFor(model => model.TimeOptionString, Model.OptionsList);
+                <button type="submit">Update</button>
+            }
+        </div>
+        <img src="/Home/GetBilirubinLevelChart" class="img-fluid rounded" />
+    </div>
+</div>
+<div class="row">
+    <div class="col text-center">
+        <h5 class="text-center">Bilirubin Concentrations (%) per Clinic</h5>
+    </div>
+</div>
+<div class="row">
+    <div class="col text-center">
+        <img src="/Home/GetClinic0BilirubinLevelChart" />
+        <h6 class="text-center">Clinic @Model.Clinics[0]</h6>
+    </div>
+    <div class="col text-center">
+        <img src="/Home/GetClinic1BilirubinLevelChart" />
+        <h6 class="text-center">Clinic @Model.Clinics[1]</h6>
+    </div>
+    <div class="col text-center">
+        <img src="/Home/GetClinic2BilirubinLevelChart" />
+        <h6 class="text-center">Clinic @Model.Clinics[2]</h6>
+    </div>
+    <div class="col text-center">
+        <img src="/Home/GetClinic3BilirubinLevelChart" />
+        <h6 class="text-center">Clinic @Model.Clinics[3]</h6>
+    </div>
+    <div class="col text-center">
+        <img src="/Home/GetClinic4BilirubinLevelChart" />
+        <h6 class="text-center">Clinic @Model.Clinics[4]</h6>
     </div>
 </div>
