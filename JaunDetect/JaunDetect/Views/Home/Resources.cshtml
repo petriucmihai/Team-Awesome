@@ -99,7 +99,39 @@
         </div>
 
         <div class="col">
+            <div class="row">
+                <p>Current price of test strip:</p>
+                @using (Html.BeginForm("UpdateSalary", "Home", FormMethod.Post))
+                {
+                    @Html.TextBoxFor(model => model.WorkerSalary)
+                    <button type="submit">Update</button>
+                }
+            </div>
 
+            <div class="row border border-dark rounded w-75 text-center">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Clinic</th>
+                            <th scope="col">Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            if (Model.Clinics.Count() == Model.ClinicWorkers.Count())
+                            {
+                                for (int i = 0; i < Model.Clinics.Count(); i++)
+                                {
+                                    <tr>
+                                        <td>@Model.Clinics[i]</td>
+                                        <td>$@Model.SalaryCosts[i]</td>
+                                    </tr>
+                                }
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
         </div>
         
     </div>

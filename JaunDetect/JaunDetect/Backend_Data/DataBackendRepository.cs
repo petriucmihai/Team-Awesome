@@ -46,6 +46,8 @@ namespace JaunDetect.Backend_Data
             resourcesData.ClinicWorkers = random.GetRandomDatapoint(5, 5, 15);
             resourcesData.TestStripPrice = 1.00;
             resourcesData.TestStripCosts = CalculateTestStripCost();
+            resourcesData.WorkerSalary = 25.00;
+            resourcesData.SalaryCosts = CalculateSalaryCost();
         }
 
         public void InitializeHome()
@@ -168,7 +170,7 @@ namespace JaunDetect.Backend_Data
 
         public double[] GetSalaryCosts()
         {
-            resourcesData.TestStripCosts = CalculateSalaryCost();
+            resourcesData.SalaryCosts = CalculateSalaryCost();
             return resourcesData.SalaryCosts;
         }
 

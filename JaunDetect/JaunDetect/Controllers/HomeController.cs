@@ -228,6 +228,23 @@ namespace JaunDetect.Controllers
             return View("Resources", model);
         }
 
+        [HttpPost]
+        public ActionResult UpdateSalary(ResourcesChartModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                DataBackend.Instance.UpdateWorkerSalary(model.WorkerSalary);
+
+                var resourceModel = new ResourcesChartModel();
+
+                resourceModel = DataBackend.Instance.GetResources();
+
+                return View("Resources", resourceModel);
+            }
+
+            return View("Resources", model);
+        }
+
         #endregion
 
         #region Crash Report Charts
