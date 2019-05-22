@@ -4,10 +4,22 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>Welcome To JaunDetect</h1>
-    <p class="lead">JaunDetect: A Telemetry Solution for a Low-Cost Jaundice Prevention Application</p>
-    <p>Team Awesome: Mihai, Laura, and Onur</p>
+<div class="position-relative overflow-hidden p-1 p-md-1 m-md-1 text-center">
+    <div class="col-md-5 p-1 mx-auto my-5">
+        <h1 class="display-6 font-weight-normal">Welcome to JaunDetect</h1>
+        <div class="row pt-2">
+            <div class="col">
+                <h6 class="display">Seattle, Washington</h6>
+                <p class="font-weight-normal">@DateTime.Now.ToString("MM/dd/yyyy h:mm tt")</p>
+            </div>
+            <div class="col">
+                <h6 class="display">Lagos, Nigeria</h6>
+                <p class="font-weight-normal">@DateTime.Now.AddHours(8).ToString("MM/dd/yyyy h:mm tt")</p>
+            </div>
+        </div>
+    </div>
+    <div class="product-device box-shadow d-none d-md-block"></div>
+    <div class="product-device product-device-2 box-shadow d-none d-md-block"></div>
 </div>
 
 <div class="row">
