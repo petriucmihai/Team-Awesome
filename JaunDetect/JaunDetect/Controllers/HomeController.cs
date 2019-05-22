@@ -108,7 +108,6 @@ namespace JaunDetect.Controllers
                     yValues: usageModel.NumbersOfDevices)
                 .SetXAxis("Device Type")
                 .SetYAxis("Number of Devices")
-                .AddLegend()
                 .Write();
 
             return null;
