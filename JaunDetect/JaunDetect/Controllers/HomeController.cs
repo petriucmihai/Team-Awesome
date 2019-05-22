@@ -11,6 +11,8 @@ namespace JaunDetect.Controllers
 {
     public class HomeController : Controller
     {
+        #region Redirect Methods
+
         public ActionResult Index()
         {
             var homeModel = new HomeChartModel();
@@ -74,42 +76,10 @@ namespace JaunDetect.Controllers
         {
             return View();
         }
-        public ActionResult GetTestStripUsageChart()
-        {
-            var resourceModel = new ResourcesChartModel();
 
-            resourceModel = DataBackend.Instance.GetResources();
+        #endregion
 
-            var key = new Chart(width: 600, height: 400)
-                .AddSeries(
-                    chartType: "bar",
-                    xValue: resourceModel.Months,
-                    yValues: resourceModel.TestStripUsages)
-                //.AddTitle("Testing Strips Used")
-                .SetXAxis("Months")
-                .SetYAxis("Number of Strips Used")
-                .Write();
-
-            return null;
-        }
-
-        public ActionResult GetHospitalPatientChart()
-        {
-            var resourceModel = new ResourcesChartModel();
-
-            resourceModel = DataBackend.Instance.GetResources();
-
-            var key = new Chart(width: 600, height: 400)
-                .AddSeries(
-                    chartType: "pie",
-                    xValue: resourceModel.Clinics,
-                    yValues: resourceModel.HospitalPatients)
-                .SetXAxis("Clinics")
-                .SetYAxis("Number of Patients Sent to Hospitals")
-                .Write();
-
-            return null;
-        }
+        #region Usage Data Charts
 
         public ActionResult GetCommonUsageTimesChart()
         {
@@ -176,6 +146,49 @@ namespace JaunDetect.Controllers
             return null;
         }
 
+        #endregion
+
+        #region Resources Charts
+
+        public ActionResult GetTestStripUsageChart()
+        {
+            var resourceModel = new ResourcesChartModel();
+
+            resourceModel = DataBackend.Instance.GetResources();
+
+            var key = new Chart(width: 600, height: 400)
+                .AddSeries(
+                    chartType: "bar",
+                    xValue: resourceModel.Months,
+                    yValues: resourceModel.TestStripUsages)
+                //.AddTitle("Testing Strips Used")
+                .SetXAxis("Months")
+                .SetYAxis("Number of Strips Used")
+                .Write();
+
+            return null;
+        }
+
+        public ActionResult GetHospitalPatientChart()
+        {
+            var resourceModel = new ResourcesChartModel();
+
+            resourceModel = DataBackend.Instance.GetResources();
+
+            var key = new Chart(width: 600, height: 400)
+                .AddSeries(
+                    chartType: "pie",
+                    xValue: resourceModel.Clinics,
+                    yValues: resourceModel.HospitalPatients)
+                .SetXAxis("Clinics")
+                .SetYAxis("Number of Patients Sent to Hospitals")
+                .Write();
+
+            return null;
+        }
+
+
+
         [HttpPost]
         public ActionResult UpdatePrice(ResourcesChartModel model)
         {
@@ -193,53 +206,61 @@ namespace JaunDetect.Controllers
             return View("Resources", model);
         }
 
+        #endregion
+
+        #region Crash Report Charts
+
         public ActionResult GetCrashesByTimeChart()
-        {
-            var crashModel = new CrashChartModel();
+                {
+                    var crashModel = new CrashChartModel();
 
-            var key = new Chart(width: 900, height: 250)
-                .AddSeries(
-                    chartType: "line",
-                    xValue: crashModel.Months,
-                    yValues: crashModel.CrashesByTime)
-                .SetXAxis("Month")
-                .SetYAxis("Total Crashes")
-                .Write();
+                    var key = new Chart(width: 900, height: 250)
+                        .AddSeries(
+                            chartType: "line",
+                            xValue: crashModel.Months,
+                            yValues: crashModel.CrashesByTime)
+                        .SetXAxis("Month")
+                        .SetYAxis("Total Crashes")
+                        .Write();
 
-            return null;
-        }
+                    return null;
+                }
 
-        public ActionResult GetCrashesByTypeChart()
-        {
-            var crashModel = new CrashChartModel();
+                public ActionResult GetCrashesByTypeChart()
+                {
+                    var crashModel = new CrashChartModel();
 
-            var key = new Chart(width: 300, height: 400)
-                .AddSeries(
-                    chartType: "column",
-                    xValue: crashModel.CrashTypes,
-                    yValues: crashModel.CrashesByType)
-                .SetXAxis("Crash Type")
-                .SetYAxis("Total Crashes")
-                .Write();
+                    var key = new Chart(width: 300, height: 400)
+                        .AddSeries(
+                            chartType: "column",
+                            xValue: crashModel.CrashTypes,
+                            yValues: crashModel.CrashesByType)
+                        .SetXAxis("Crash Type")
+                        .SetYAxis("Total Crashes")
+                        .Write();
 
-            return null;
-        }
+                    return null;
+                }
 
-        public ActionResult GetCrashesByDeviceTypeChart()
-        {
-            var crashModel = new CrashChartModel();
+                public ActionResult GetCrashesByDeviceTypeChart()
+                {
+                    var crashModel = new CrashChartModel();
 
-            var key = new Chart(width:300, height: 400)
-                .AddSeries(
-                    chartType: "pie",
-                    xValue: crashModel.DeviceTypes,
-                    yValues: crashModel.NumbersOfDevices)
-                .SetXAxis("Device Model")
-                .SetYAxis("Total Crashes")
-                .Write();
+                    var key = new Chart(width:300, height: 400)
+                        .AddSeries(
+                            chartType: "pie",
+                            xValue: crashModel.DeviceTypes,
+                            yValues: crashModel.NumbersOfDevices)
+                        .SetXAxis("Device Model")
+                        .SetYAxis("Total Crashes")
+                        .Write();
 
-            return null;
-        }
+                    return null;
+                }
+
+        #endregion
+
+        #region Home Charts
 
         public ActionResult GetBilirubinLevelChart()
         {
@@ -298,4 +319,8 @@ namespace JaunDetect.Controllers
             return View("Resources", model);
         }
     }
+
+    #endregion
+
+
 }
