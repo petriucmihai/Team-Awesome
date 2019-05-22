@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using JaunDetect.Models;
+using System.Data;
 
 namespace JaunDetect.Backend_Data
 {
@@ -53,6 +54,27 @@ namespace JaunDetect.Backend_Data
             return queryrows[num, 3];
         }
 
+        public DataTable GetDataTable()
+        {
+            const int ROWS = 10;
+
+            
+            QueryViewModel userData = new QueryViewModel();
+            DataTable dt = new DataTable("Query Results");
+            dt.Columns.Add(new DataColumn("Clinic"));
+            dt.Columns.Add(new DataColumn("Province"));
+            dt.Columns.Add(new DataColumn("Date"));
+            dt.Columns.Add(new DataColumn("Device"));
+            for (int i = 0; i < ROWS; i++)
+            {
+                if (String.Equals(userData.Clinic, GetClinic(i)) || String.Equals(userData.Province, GetProvince(i)) ||
+                    String.Equals(userData.Date, GetDate(i)) || String.Equals(userData.Device, GetDevice(i)))
+                {
+                    dt.Rows.Add(GetClinic(i), GetProvince(i), GetDate(i), GetDevice(i));
+                }
+            }
+            return dt; 
+        }
     }
 }
 

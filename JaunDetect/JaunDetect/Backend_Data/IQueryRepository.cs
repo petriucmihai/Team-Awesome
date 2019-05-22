@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
 
 namespace JaunDetect.Backend_Data
 {
@@ -13,7 +14,8 @@ namespace JaunDetect.Backend_Data
         string GetProvince();
         string GetDate();
         string GetDevice();
-        List<string[]> QueryFound(string[,] database); 
+      
         #endregion
+
     }
 }
