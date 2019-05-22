@@ -1,17 +1,54 @@
-﻿
+﻿@using JaunDetect.Models;
+@model ResourcesChartModel
+
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/GuestAccountLayout.cshtml";
 }
 
-<!DOCTYPE html>
+<div class=" container">
+    <div class="row">
+        <div class="col-6">
+            <img src="/Home/GetTestStripUsageChart" />
+        </div>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>GuestResources</title>
-</head>
-<body>
-    <div> 
+        <div class="col-6">
+            <img src="/Home/GetHospitalPatientChart" />
+        </div>
+        <div class="row">
+            <div>
+                <p>Current price of test strip:</p>
+                @using (Html.BeginForm("UpdatePrice", "Home", FormMethod.Post))
+                {
+                    @Html.TextBoxFor(model => model.TestStripPrice)
+                    <button type="submit">Update</button>
+                }
+            </div>
+            <br />
+            <div class="border border-dark rounded">
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">Clinic</th>
+                            <th scope="col">Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            if (Model.Clinics.Count() == Model.TestStripCosts.Count())
+                            {
+                                for (int i = 0; i < Model.Clinics.Count(); i++)
+                                {
+                                    <tr>
+                                        <td>@Model.Clinics[i]</td>
+                                        <td>$@Model.TestStripCosts[i]</td>
+                                    </tr>
+                                }
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
-</body>
-</html>
+
+</div>

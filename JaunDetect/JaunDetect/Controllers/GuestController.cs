@@ -21,6 +21,15 @@ namespace JaunDetect.Controllers
             return View(homeModel);
         }
 
+        public ActionResult GuestResources()
+        {
+            var resourcesModel = new ResourcesChartModel();
+
+            resourcesModel = DataBackend.Instance.GetResources();
+
+            return View(resourcesModel);
+        }
+
         public ActionResult GetBilirubinLevelChart()
         {
             var homeModel = new HomeChartModel();
