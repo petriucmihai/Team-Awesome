@@ -302,6 +302,101 @@ namespace JaunDetect.Controllers
             return null;
         }
 
+        public ActionResult GetClinic0BilirubinLevelChart()
+        {
+            var homeModel = new HomeChartModel();
+            homeModel = DataBackend.Instance.GetHomeData();
+
+            var key = new Chart(width: 300, height: 400)
+                .AddSeries(
+                    chartType: "pie",
+                    name: homeModel.Clinics[0],
+                    xValue: homeModel.BilirubinLevels,
+                    yValues: homeModel.BilirubinData[0])
+                .SetXAxis("Clinic " + homeModel.Clinics[0])
+                .SetYAxis("Bilirubin Levels (%)")
+                .AddLegend()
+                .Write();
+
+            return null;
+        }
+
+        public ActionResult GetClinic1BilirubinLevelChart()
+        {
+            var homeModel = new HomeChartModel();
+            homeModel = DataBackend.Instance.GetHomeData();
+
+            var key = new Chart(width: 300, height: 400)
+                .AddSeries(
+                    chartType: "pie",
+                    name: homeModel.Clinics[1],
+                    xValue: homeModel.BilirubinLevels,
+                    yValues: homeModel.BilirubinData[1])
+                .SetXAxis("Clinic " + homeModel.Clinics[1])
+                .SetYAxis("Bilirubin Levels (%)")
+                .AddLegend()
+                .Write();
+
+            return null;
+        }
+
+        public ActionResult GetClinic2BilirubinLevelChart()
+        {
+            var homeModel = new HomeChartModel();
+            homeModel = DataBackend.Instance.GetHomeData();
+
+            var key = new Chart(width: 300, height: 400)
+                .AddSeries(
+                    chartType: "pie",
+                    name: homeModel.Clinics[2],
+                    xValue: homeModel.BilirubinLevels,
+                    yValues: homeModel.BilirubinData[2])
+                .SetXAxis("Clinic " + homeModel.Clinics[2])
+                .SetYAxis("Bilirubin Levels (%)")
+                .AddLegend()
+                .Write();
+
+            return null;
+        }
+
+        public ActionResult GetClinic3BilirubinLevelChart()
+        {
+            var homeModel = new HomeChartModel();
+            homeModel = DataBackend.Instance.GetHomeData();
+
+            var key = new Chart(width: 300, height: 400)
+                .AddSeries(
+                    chartType: "pie",
+                    name: homeModel.Clinics[3],
+                    xValue: homeModel.BilirubinLevels,
+                    yValues: homeModel.BilirubinData[3])
+                .SetXAxis("Clinic " + homeModel.Clinics[3])
+                .SetYAxis("Bilirubin Levels (%)")
+                .AddLegend()
+                .Write();
+
+            return null;
+        }
+
+        public ActionResult GetClinic4BilirubinLevelChart()
+        {
+            var homeModel = new HomeChartModel();
+            homeModel = DataBackend.Instance.GetHomeData();
+
+            var key = new Chart(width: 300, height: 400)
+                .AddSeries(
+                    chartType: "pie",
+                    name: homeModel.Clinics[4],
+                    xValue: homeModel.BilirubinLevels,
+                    yValues: homeModel.BilirubinData[4])
+                .SetXAxis("Clinic " + homeModel.Clinics[4])
+                .SetYAxis("Bilirubin Levels (%)")
+                .AddLegend()
+                .Write();
+
+            return null;
+        }
+
         [HttpPost]
         public ActionResult UpdateHomeChartTimeOption(HomeChartModel model)
         {
