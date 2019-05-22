@@ -1,62 +1,69 @@
-﻿
+﻿@using JaunDetect.Models;
+@model CrashChartModel
 @{
     ViewBag.Title = "CrashReport";
 }
 
- <br />
+<br />
 <h2>Crash Report</h2>
-   
+
 
 <div class="container-fluid">
     <div class="row justify-content-center">
         <h4>Crashes Over Time</h4>
+        @using (Html.BeginForm("UpdateCrashChartTimeOption", "CrashReport", FormMethod.Post))
+        {
+            @Html.DropDownListFor(model => model.TimeOptionString, Model.OptionsList);
+            <button type="submit">Update</button>
+        }
     </div>
+
     <div class="row justify-content-center">
-        <img src="/Home/GetCrashesByTimeChart" />  
+        <img src="/Home/GetCrashesByTimeChart" />
     </div>
 </div>
 <br />
-  <div class="container">
+<div class="container">
     <div class="row">
-      <div class="col-md-4">
-        <h4>Crashes by Type</h4>
-        <img src="/Home/GetCrashesByTypeChart" />
-      </div>
-      <div class="col-md-4">
-        <h4>Crashes by Device Model</h4>
-        <img src="/Home/GetCrashesByDeviceTypeChart" />
-      </div>
-      <div class="col-md-4">
-          <h5>Highest Total Crashes by Device</h5>
-          <div class="container">
-              <table class="table table-dark table-striped">
-                  <thead>
-                      <tr>
-                          <th>DeviceID</th>
-                          <th>Number of Crashes</th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                      <tr>
-                          <td>John</td>
-                          <td>Doe</td>
-                      </tr>
-                      <tr>
-                          <td>Mary</td>
-                          <td>Moe</td>
-                      </tr>
-                      <tr>
-                          <td>July</td>
-                          <td>Dooley</td>
-                      </tr>
-                  </tbody>
-              </table>
-          </div>
+        <div class="col-md-4">
+            <h4>Crashes by Type</h4>
+            <img src="/Home/GetCrashesByTypeChart" />
+        </div>
+        <div class="col-md-4">
+            <h4>Crashes by Device Model</h4>
+            <img src="/Home/GetCrashesByDeviceTypeChart" />
+        </div>
+        <div class="col-md-4">
+            <h5>Highest Total Crashes by Device</h5>
+            <div class="container">
+                <table class="table table-dark table-striped">
+                    <thead>
+                        <tr>
+                            <th>DeviceID</th>
+                            <th>Number of Crashes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>John</td>
+                            <td>Doe</td>
+                        </tr>
+                        <tr>
+                            <td>Mary</td>
+                            <td>Moe</td>
+                        </tr>
+                        <tr>
+                            <td>July</td>
+                            <td>Dooley</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
-      </div>
+        </div>
     </div>
 
-   
 
-  </div>
+
+</div>
 
