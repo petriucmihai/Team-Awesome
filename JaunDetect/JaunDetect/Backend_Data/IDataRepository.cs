@@ -19,11 +19,20 @@ namespace JaunDetect.Backend_Data
 
         int[] GetPatients();
 
+        int[] GetClinicWorkers();
+
         double GetTestStripPrice();
 
         bool UpdateTestStripPrice(double price);
 
         double[] GetTestStripCosts();
+
+        double GetWorkerSalary();
+
+        bool UpdateWorkerSalary(double salary);
+
+        double[] GetSalaryCosts();
+
         #endregion
 
         // Methods needed to provide data for charts on the Home page

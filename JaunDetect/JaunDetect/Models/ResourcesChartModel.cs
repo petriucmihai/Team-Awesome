@@ -19,11 +19,20 @@ namespace JaunDetect.Models
         // Number of patients sent from a clinic to a nearby hospital
         public int[] HospitalPatients { get; set; }
 
+        // Number of people that submit tests from each clinic
+        public int[] ClinicWorkers { get; set; }
+
         // Price of a single test strip
         public double TestStripPrice { get; set; }
 
         // Cost of the total amount of test strips used at a clinic
         public double[] TestStripCosts { get; set; }
+
+        // Salary of single clinic worker per hour
+        public double WorkerSalary { get; set; }
+
+        // Cost of the total workforce salary at a clinic
+        public double[] SalaryCosts { get; set; }
 
         public ResourcesChartModel()
         {

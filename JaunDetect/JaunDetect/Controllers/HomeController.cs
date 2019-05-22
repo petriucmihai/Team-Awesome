@@ -166,7 +166,6 @@ namespace JaunDetect.Controllers
                     chartType: "bar",
                     xValue: resourceModel.Months,
                     yValues: resourceModel.TestStripUsages)
-                //.AddTitle("Testing Strips Used")
                 .SetXAxis("Months")
                 .SetYAxis("Number of Strips Used")
                 .Write();
@@ -192,6 +191,24 @@ namespace JaunDetect.Controllers
             return null;
         }
 
+        public ActionResult GetClinicWorkersChart()
+        {
+            var resourceModel = new ResourcesChartModel();
+
+            resourceModel = DataBackend.Instance.GetResources();
+
+            var key = new Chart(width: 600, height: 400)
+                .AddSeries(
+                    chartType: "column",
+                    xValue: resourceModel.Clinics,
+                    yValues: resourceModel.ClinicWorkers)
+                .SetXAxis("Clinic")
+                .SetYAxis("Number of Individual Devices Registering Tests")
+                .Write();
+
+            return null;
+        }
+
 
 
         [HttpPost]
@@ -200,6 +217,23 @@ namespace JaunDetect.Controllers
             if (ModelState.IsValid)
             {
                 DataBackend.Instance.UpdateStripPrice(model.TestStripPrice);
+
+                var resourceModel = new ResourcesChartModel();
+
+                resourceModel = DataBackend.Instance.GetResources();
+
+                return View("Resources", resourceModel);
+            }
+
+            return View("Resources", model);
+        }
+
+        [HttpPost]
+        public ActionResult UpdateSalary(ResourcesChartModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                DataBackend.Instance.UpdateWorkerSalary(model.WorkerSalary);
 
                 var resourceModel = new ResourcesChartModel();
 
@@ -238,6 +272,7 @@ namespace JaunDetect.Controllers
         public ActionResult GetCrashesByTypeChart()
         {
             var crashModel = new CrashChartModel();
+            crashModel = DataBackend.Instance.GetCrashData();
 
             var key = new Chart(width: 300, height: 400)
                 .AddSeries(
@@ -254,6 +289,7 @@ namespace JaunDetect.Controllers
         public ActionResult GetCrashesByDeviceTypeChart()
         {
             var crashModel = new CrashChartModel();
+            crashModel = DataBackend.Instance.GetCrashData();
 
             var key = new Chart(width:300, height: 400)
                 .AddSeries(

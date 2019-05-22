@@ -43,8 +43,11 @@ namespace JaunDetect.Backend_Data
             resourcesData.TestStripUsages = random.GetRandomDatapoint(5, 100, 400);
             resourcesData.Clinics = unit.GetClinics(5);
             resourcesData.HospitalPatients = random.GetRandomDatapoint(5, 50, 500);
+            resourcesData.ClinicWorkers = random.GetRandomDatapoint(5, 5, 15);
             resourcesData.TestStripPrice = 1.00;
             resourcesData.TestStripCosts = CalculateTestStripCost();
+            resourcesData.WorkerSalary = 25.00;
+            resourcesData.SalaryCosts = CalculateSalaryCost();
         }
 
         public void InitializeHome()
@@ -120,6 +123,11 @@ namespace JaunDetect.Backend_Data
             return resourcesData.HospitalPatients;
         }
 
+        public int[] GetClinicWorkers()
+        {
+            return resourcesData.ClinicWorkers;
+        }
+
         public double GetTestStripPrice()
         {
             return resourcesData.TestStripPrice;
@@ -143,6 +151,35 @@ namespace JaunDetect.Backend_Data
             for (int i = 0; i < resourcesData.TestStripUsages.Count(); i++)
             {
                 result[i] = resourcesData.TestStripUsages[i] * resourcesData.TestStripPrice;
+            }
+            return result;
+        }
+
+        // new code here
+
+        public double GetWorkerSalary()
+        {
+            return resourcesData.WorkerSalary;
+        }
+
+        public bool UpdateWorkerSalary(double salary)
+        {
+            resourcesData.WorkerSalary = salary;
+            return true;
+        }
+
+        public double[] GetSalaryCosts()
+        {
+            resourcesData.SalaryCosts = CalculateSalaryCost();
+            return resourcesData.SalaryCosts;
+        }
+
+        private double[] CalculateSalaryCost()
+        {
+            double[] result = new double[resourcesData.ClinicWorkers.Count()];
+            for (int i = 0; i < resourcesData.ClinicWorkers.Count(); i++)
+            {
+                result[i] = resourcesData.ClinicWorkers[i] * resourcesData.WorkerSalary;
             }
             return result;
         }

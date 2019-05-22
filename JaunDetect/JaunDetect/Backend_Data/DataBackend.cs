@@ -40,10 +40,13 @@ namespace JaunDetect.Backend_Data
             var myData = new ResourcesChartModel();
             myData.Clinics = repository.GetClinics();
             myData.HospitalPatients = repository.GetPatients();
+            myData.ClinicWorkers = repository.GetClinicWorkers();
             myData.Months = repository.GetMonths();
             myData.TestStripUsages = repository.GetUsages();
             myData.TestStripPrice = repository.GetTestStripPrice();
             myData.TestStripCosts = repository.GetTestStripCosts();
+            myData.WorkerSalary = repository.GetWorkerSalary();
+            myData.SalaryCosts = repository.GetSalaryCosts();
 
             return myData;
         }
@@ -81,6 +84,11 @@ namespace JaunDetect.Backend_Data
         public bool UpdateStripPrice(double price)
         {
             return repository.UpdateTestStripPrice(price);
+        }
+
+        public bool UpdateWorkerSalary(double salary)
+        {
+            return repository.UpdateWorkerSalary(salary);
         }
 
         public bool UpdateTimeOptionString(string timeOptionString)
