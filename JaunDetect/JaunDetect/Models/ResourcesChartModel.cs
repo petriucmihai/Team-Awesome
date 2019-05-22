@@ -28,6 +28,12 @@ namespace JaunDetect.Models
         // Cost of the total amount of test strips used at a clinic
         public double[] TestStripCosts { get; set; }
 
+        // Salary of single clinic worker per hour
+        public double WorkerSalary { get; set; }
+
+        // Cost of the total workforce salary at a clinic
+        public double[] SalaryCosts { get; set; }
+
         public ResourcesChartModel()
         {
             Initialize();

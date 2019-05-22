@@ -153,6 +153,35 @@ namespace JaunDetect.Backend_Data
             return result;
         }
 
+        // new code here
+
+        public double GetWorkerSalary()
+        {
+            return resourcesData.WorkerSalary;
+        }
+
+        public bool UpdateWorkerSalary(double salary)
+        {
+            resourcesData.WorkerSalary = salary;
+            return true;
+        }
+
+        public double[] GetSalaryCosts()
+        {
+            resourcesData.TestStripCosts = CalculateSalaryCost();
+            return resourcesData.SalaryCosts;
+        }
+
+        private double[] CalculateSalaryCost()
+        {
+            double[] result = new double[resourcesData.ClinicWorkers.Count()];
+            for (int i = 0; i < resourcesData.ClinicWorkers.Count(); i++)
+            {
+                result[i] = resourcesData.ClinicWorkers[i] * resourcesData.WorkerSalary;
+            }
+            return result;
+        }
+
         #endregion
 
         #region Homepage charts methods 

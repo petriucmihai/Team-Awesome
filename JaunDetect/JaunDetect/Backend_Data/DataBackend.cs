@@ -45,6 +45,8 @@ namespace JaunDetect.Backend_Data
             myData.TestStripUsages = repository.GetUsages();
             myData.TestStripPrice = repository.GetTestStripPrice();
             myData.TestStripCosts = repository.GetTestStripCosts();
+            myData.WorkerSalary = repository.GetWorkerSalary();
+            myData.SalaryCosts = repository.GetSalaryCosts();
 
             return myData;
         }
@@ -82,6 +84,11 @@ namespace JaunDetect.Backend_Data
         public bool UpdateStripPrice(double price)
         {
             return repository.UpdateTestStripPrice(price);
+        }
+
+        public bool UpdateWorkerSalary(double salary)
+        {
+            return repository.UpdateWorkerSalary(salary);
         }
 
         public bool UpdateTimeOptionString(string timeOptionString)

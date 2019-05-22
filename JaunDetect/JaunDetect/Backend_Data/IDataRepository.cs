@@ -26,6 +26,13 @@ namespace JaunDetect.Backend_Data
         bool UpdateTestStripPrice(double price);
 
         double[] GetTestStripCosts();
+
+        double GetWorkerSalary();
+
+        bool UpdateWorkerSalary(double salary);
+
+        double[] GetSalaryCosts();
+
         #endregion
 
         // Methods needed to provide data for charts on the Home page
