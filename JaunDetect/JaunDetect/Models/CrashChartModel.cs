@@ -2,17 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 using JaunDetect.Backend_Data;
 
 namespace JaunDetect.Models
 {
     public class CrashChartModel
     {
-        // Days going back from today
-        public string[] Days { get; set; }
+        public string[][] Timeframe { get; set; }
 
-        // Months going back from this month
-        public string[] Months { get; set; }
+        public string TimeOptionString { get; set; }
+
+        public int TimeOption { get; set; }
+
+        public List<SelectListItem> OptionsList { get; set; }
 
         // Number of crashes by time
         public int[] CrashesByTime { get; set; }
@@ -33,11 +36,12 @@ namespace JaunDetect.Models
         // Constructor
         public CrashChartModel()
         {
-            Initialize();
+            //Initialize();
         }
 
-        public void Initialize()
+        /*public void Initialize()
         {
+            
             RandomDataGenerator random = new RandomDataGenerator();
             UnitGenerator unit = new UnitGenerator();
 
@@ -53,6 +57,7 @@ namespace JaunDetect.Models
             // 6 types of devices
             NumbersOfDevices = random.GetRandomDatapoint(6, 3, 30);
             DeviceTypes = unit.GetDevices(6);
-        }
+            
+        }*/
     }
 }
