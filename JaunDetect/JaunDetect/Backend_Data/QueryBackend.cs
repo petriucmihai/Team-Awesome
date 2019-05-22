@@ -33,7 +33,7 @@ namespace JaunDetect.Backend_Data
         #endregion SingletonPattern
 
         // Hook up the Repositry
-        private IQueryRepository queryRepository = new QueryBackendRepository();
+        private IQueryUserInputRepository queryRepository = new QueryUserInputBackendRepository();
         QueryViewModel userData = new QueryViewModel();
 
         public QueryViewModel GetQuery()
@@ -45,7 +45,7 @@ namespace JaunDetect.Backend_Data
             return userData;
         }
 
-        private IQueryDataRepository queryResultRepository = new QueryDataBackendRepository();
+        private IQuerySampleDataRepository queryResultRepository = new QuerySampleDataBackendRepository();
         QueryResultViewModel data = new QueryResultViewModel();
 
         public QueryResultViewModel GetResultQuery()
@@ -54,7 +54,7 @@ namespace JaunDetect.Backend_Data
             data.Province = queryResultRepository.GetProvince(0);
             data.Date = queryResultRepository.GetDate(0);
             data.Device = queryResultRepository.GetDevice(0);
-            data.List = queryResultRepository.GetDataTable();
+            data.List = queryResultRepository.GetList();
               
             return data;
         }

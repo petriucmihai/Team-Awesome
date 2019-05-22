@@ -7,12 +7,12 @@ using System.Data;
 
 namespace JaunDetect.Backend_Data
 {
-    interface IQueryDataRepository
+    interface IQuerySampleDataRepository
     {
         string GetClinic(int num);
         string GetProvince(int num);
         string GetDate(int num);
         string GetDevice(int num);
-         string[] GetDataTable();
+        List<String> GetList();
     }
 }

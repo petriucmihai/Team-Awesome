@@ -7,19 +7,19 @@ using JaunDetect.Models;
 
 namespace JaunDetect.Backend_Data
 {
-    public class QueryDataBackendRepository : IQueryDataRepository
+    public class QuerySampleDataBackendRepository : IQuerySampleDataRepository
     {
         // some hard-coded query data to test
         const int ROWS = 10;
         const int COLUMNS = 4;
         string[,] queryrows = new string[ROWS, COLUMNS];
-        string[] clinics = { "Lagos First Clinic", "Lagos Second Clinic", "Onitsha Clinic", "Kano Clinic", "Ibadan Clinic",
+        string[] clinics = {"Lagos First Clinic", "Lagos Second Clinic", "Onitsha Clinic", "Kano Clinic", "Ibadan Clinic",
             "Uyo Clinic", "Nsukka Clinic", "Abuja First Clinic", "Abuja Second Clinic", "Aba Clinic" };
-        string[] provinces = { "Lagos", "Lagos", "Onitsha", "Kano", "Ibadan", "Uyo", "Nsukka", "Abuja", "Abuja", "Aba" };
+        string[] provinces = {"Lagos", "Lagos", "Onitsha", "Kano", "Ibadan", "Uyo", "Nsukka", "Abuja", "Abuja", "Aba" };
         string[] dates = { "1/1/2019", "2/2/2019", "3/3/2019", "4/4/2019", "5/5/2019", "6/6/2019", "7/7/2019", "8/8/2019", "9/9/2019", "10/10/2019" };
-        string[] devices = { "Samsung Galaxy S8", "Samsung Galaxy Note", "Sony Xperia", "Sony Xperia", "Tecno Spark", "Motorola One", "Huawei Y9", "Huawei P10", "Huawei P10", "OnePlus 5" };
+        string[] devices = {"Samsung Galaxy S8", "Samsung Galaxy Note", "Sony Xperia", "Sony Xperia", "Tecno Spark", "Motorola One", "Huawei Y9", "Huawei P10", "Huawei P10", "OnePlus 5" };
 
-        public QueryDataBackendRepository()
+        public QuerySampleDataBackendRepository()
         {
             Initialize();
         }
@@ -56,25 +56,27 @@ namespace JaunDetect.Backend_Data
         }
 
         // returns an array with matching query results 
-        public string[] GetDataTable()
-        { 
+        public List<String> GetList()
+        {
             const int ROWS = 10;
+            String lagos = "Lagos";
+    
+            List<String> list = new List<String>();
 
-            string[] List = new string[ROWS];
-
-            IQueryRepository repository = new QueryBackendRepository();
+   
+            IQueryUserInputRepository repository = new QueryUserInputBackendRepository();
 
             for (int i = 0; i < ROWS; i++)
             {
-                if (string.Equals(repository.GetClinic(), GetClinic(i)) || string.Equals(repository.GetProvince(), GetProvince(i)) ||
-                     string.Equals(repository.GetDate(), GetDate(i)) || string.Equals(repository.GetDevice(), GetDevice(i)))
-
+               if (String.Equals(GetProvince(i), lagos))
                 {
-                    List[i] = repository.GetClinic() + "\t" + GetClinic(i) + "\t" + GetProvince(i) + "\t" + GetDate(i) + "\t" + GetDevice(i);
+                    string toAdd = GetClinic(i) + GetProvince(i) + GetDate(i) + GetDevice(i);
+                    list.Add(toAdd);
+                        
                 }
    
             }
-            return List; 
+            return list; 
         }
     }
 }

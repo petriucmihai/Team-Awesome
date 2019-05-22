@@ -8,8 +8,6 @@
 
 <div class=" container">
     <div class="row">
-       
-       
         <div class="row">
             <div>
                 @using (Html.BeginForm("QueryResults", "Home", FormMethod.Post))
@@ -22,13 +20,11 @@
                     @Html.TextBoxFor(model => model.Date)
                     <p> Device </p>
                     @Html.TextBoxFor(model => model.Device)
-                    <button type="submit" >Submit</button>
-                   
+                    <button type="submit" >Submit</button>      
                 }
             </div>
            <br />
         </div>
-      
      </div>
 </div>
     

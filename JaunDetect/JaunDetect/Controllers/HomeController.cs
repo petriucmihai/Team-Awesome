@@ -53,13 +53,13 @@ namespace JaunDetect.Controllers
             return View(crashReportModel);
         }
 
+
         public ActionResult CustomQuery()
         {
             ViewBag.Message = "Custom Query";
 
             var queryModel = new QueryViewModel();
             queryModel = QueryBackend.Instance.GetQuery();
-
             return View(queryModel);
         }
 

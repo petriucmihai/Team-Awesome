@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JaunDetect.Backend_Data
 {
-    interface IQueryRepository
+    interface IQueryUserInputRepository
     {
         #region
         string GetClinic();

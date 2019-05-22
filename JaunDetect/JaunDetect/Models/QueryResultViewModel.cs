@@ -13,7 +13,7 @@ namespace JaunDetect.Models
         public string Province { get; set; }
         public string Date { get; set; }
         public string Device { get; set; }
-        public string[] List { get; set; }
+        public List<string> List { get; set; }
     }
 
 }

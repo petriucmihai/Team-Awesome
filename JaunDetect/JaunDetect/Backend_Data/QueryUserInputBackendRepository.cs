@@ -7,10 +7,10 @@ using JaunDetect.Models;
 
 namespace JaunDetect.Backend_Data
 {
-    public class QueryBackendRepository : IQueryRepository
+    public class QueryUserInputBackendRepository : IQueryUserInputRepository
     {
         QueryViewModel userData = new QueryViewModel();
-        public QueryBackendRepository()
+        public QueryUserInputBackendRepository()
         {
             Initialize();
         }
@@ -22,7 +22,7 @@ namespace JaunDetect.Backend_Data
             userData.Date = GetDate();
             userData.Device = GetDevice();
         }
-
+        
         public string GetClinic()
         {
             return userData.Clinic;
