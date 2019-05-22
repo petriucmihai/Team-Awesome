@@ -21,6 +21,36 @@ namespace JaunDetect.Backend_Data
             return result;
         }
 
+        public string[] GetWeeks(int numWeeksBack)
+        {
+            string[] result = new string[numWeeksBack];
+            List<string> weeks = getWeeksBackFromThisWeek(numWeeksBack);
+
+            for (int i = 0; i < numWeeksBack; i++)
+            {
+                result[i] = weeks[numWeeksBack - 1 - i];
+            }
+
+            return result;
+        }
+
+        private List<string> getWeeksBackFromThisWeek(int numWeeksBack)
+        {
+            List<string> result = new List<string>();
+            DateTime thisWeek = DateTime.Now;
+
+            for (int i = 0; i < numWeeksBack * 7; i+= 7)
+            {
+                DateTime week1 = thisWeek.AddDays(-i);
+                string weekString = week1.ToString("MMMM dd");
+                DateTime week2 = thisWeek.AddDays(-i - 7);
+                weekString += " - " + week2.ToString("MMMM dd");
+                result.Add(weekString);
+            }
+
+            return result;
+        }
+
         public string[] GetMonths(int numMonthsBack)
         {
             string[] result = new string[numMonthsBack];
@@ -44,6 +74,34 @@ namespace JaunDetect.Backend_Data
                 DateTime month = thisMonth.AddMonths(-i);
                 string monthString = month.ToString("MMMM");
                 result.Add(monthString);
+            }
+
+            return result;
+        }
+
+        public string[] GetYears(int numYearsBack)
+        {
+            string[] result = new string[numYearsBack];
+            List<string> years = getYearsBackFromThisYear(numYearsBack);
+
+            for (int i = 0; i < numYearsBack; i++)
+            {
+                result[i] = years[numYearsBack - 1 - i];
+            }
+
+            return result;
+        }
+
+        private List<string> getYearsBackFromThisYear(int numYearsBack)
+        {
+            List<string> result = new List<string>();
+            DateTime thisYear = DateTime.Now;
+
+            for (int i = 0; i < numYearsBack; i++)
+            {
+                DateTime year = thisYear.AddYears(-i);
+                string yearString = year.ToString("yyyy");
+                result.Add(yearString);
             }
 
             return result;
