@@ -1,0 +1,65 @@
+﻿@using JaunDetect.Models;
+@model HomeChartModel
+@{
+    ViewBag.Title = "Guest Home Page";
+}
+
+@{
+    Layout = "~/Views/Shared/GuestAccountLayout.cshtml";
+}
+<!--GUEST HOME-->
+<!--Needed for new user onboarding tour-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tour/0.11.0/js/bootstrap-tour-standalone.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tour/0.11.0/css/bootstrap-tour-standalone.min.css" rel="stylesheet" />
+
+<div class="jumbotron">
+    <h1 id="TitleHeader">Welcome To JaunDetect GUEST</h1>
+    <p class="lead">JaunDetect: A Telemetry Solution for a Low-Cost Jaundice Prevention Application</p>
+    <p>Team Awesome: Mihai, Laura, and Onur</p>
+</div>
+
+<div class="row">
+    <div class="col">
+        <img id="HeatMap" src="~/Content/Images/heatmap2.jpg" />
+    </div>
+
+    <div class="col">
+        @using (Html.BeginForm("UpdateHomeChartTimeOption", "Home", FormMethod.Post))
+        {
+            @Html.DropDownListFor(model => model.TimeOptionString, Model.OptionsList);
+            <button type="submit">Update</button>
+        }
+        <img id="LevelChart" src="/Home/GetBilirubinLevelChart" />
+    </div>
+</div>
+
+<script type="text/javascript">
+    var tour = new Tour({
+        steps: [
+            {
+                element: "#TitleHeader",
+                title: "Welcome to your JaunDetect Guest Account!",
+                content: "Follow these quick and easy steps to get up to speed."
+            },
+            {
+                element: "#HeatMap",
+                title: "Bilirubin test results by location",
+                content: "Here you'll see the concentrations of bilirubin in patients in terms of location. Darker spots mean more high-risk tests are being returned in that area."
+            },
+            {
+                element: "#LevelChart",
+                title: "Bilirubin test results over time",
+                content: "JaunDetect lets you track the bilirubin test results over time and in terms of clinic at the same time. Change the timeframe in the dropdown to see the data over different periods of time."
+            }
+        ]
+    });
+
+    // Initialize the tour
+    tour.init();
+
+    // Start the tour -- restart allows it to start every time the page is navigated to
+    tour.restart();
+
+</script>
+

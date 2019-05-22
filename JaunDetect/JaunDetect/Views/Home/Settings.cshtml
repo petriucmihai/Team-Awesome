@@ -6,39 +6,80 @@
 <br />
 <h2>Settings</h2>
 
+<div class="accordion" id="accordionExample">
+    <div class="card">
+        <div class="card-header" id="headingOne">
+            <h5 class="mb-0">
+                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Customization settings
+                </button>
+            </h5>
+        </div>
 
-<form>
-    <div class="custom-control custom-switch">
-        <input type="checkbox" class="custom-control-input" id="switch1">
-        <label class="custom-control-label" for="switch1">Demo Mode</label>
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+                <!--Customization settings here-->
+                <h4>Frequency of Monitoring</h4>
+
+                <div class="custom-control custom-radio">
+                    <input type="radio" class="custom-control-input" id="defaultGroupExample1" name="freq" checked>
+                    <label class="custom-control-label" for="defaultGroupExample1">Daily</label>
+                </div>
+                <div class="custom-control custom-radio">
+                    <input type="radio" class="custom-control-input" id="defaultGroupExample2" name="freq">
+                    <label class="custom-control-label" for="defaultGroupExample2">Weekly</label>
+                </div>
+                <div class="custom-control custom-radio">
+                    <input type="radio" class="custom-control-input" id="defaultGroupExample3" name="freq">
+                    <label class="custom-control-label" for="defaultGroupExample3">Monthly</label>
+                </div>
+
+                <button type="submit" class="btn btn-primary" onclick="">Apply Changes</button>
+
+
+            </div>
+        </div>
+
     </div>
-</form>
+    <div class="card">
+        <div class="card-header" id="headingTwo">
+            <h5 class="mb-0">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Send test email notification
+                </button>
+            </h5>
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+            <div class="card-body">
+                <!--Email test here-->
+                <form>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                    </div>
+                    <button class="btn btn-success" onclick="">Send me a test email</button>
+                </form>
 
-
-<br />
-<h4>Email Notifications</h4>
-<form>
-    <div class="form-group">
-        <label for="exampleInputEmail1">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+            </div>
+        </div>
     </div>
-    <button class="btn btn-success" onclick="">Send me a test email</button>
-</form>
-
-<br />
-<h4>Frequency of Monitoring</h4>
-
-<div class="custom-control custom-radio">
-    <input type="radio" class="custom-control-input" id="defaultGroupExample1" name="freq" checked>
-    <label class="custom-control-label" for="defaultGroupExample1">Daily</label>
-</div>
-<div class="custom-control custom-radio">
-    <input type="radio" class="custom-control-input" id="defaultGroupExample2" name="freq" >
-    <label class="custom-control-label" for="defaultGroupExample2">Weekly</label>
-</div>
-<div class="custom-control custom-radio">
-    <input type="radio" class="custom-control-input" id="defaultGroupExample3" name="freq">
-    <label class="custom-control-label" for="defaultGroupExample3">Monthly</label>
+    <div class="card">
+        <div class="card-header" id="headingThree">
+            <h5 class="mb-0">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    Create link for JaunDetect guest account
+                </button>
+            </h5>
+        </div>
+        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+            <div class="card-body">
+                <p>Use this link to provide guest access to JaunDetect's telemetry reports:</p>
+                <a href="@Url.Action("Index", "Guest")">https://jaundetecttest.azurewebsites.net/Guest/Index/1496580ers23</a>
+            </div>
+        </div>
+    </div>
 </div>
 
-<button type="submit" class="btn btn-primary" onclick="">Apply Changes</button>
+
+
+

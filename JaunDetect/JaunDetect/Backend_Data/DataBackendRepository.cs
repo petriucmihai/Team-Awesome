@@ -132,6 +132,7 @@ namespace JaunDetect.Backend_Data
         {
             homeData.TimeOptionString = timeOptionString;
             homeData.TimeOption = int.Parse(timeOptionString);
+            refreshData();
             return true;
         }
 
@@ -155,10 +156,22 @@ namespace JaunDetect.Backend_Data
 
             homeData.Timeframe = new string[3][];
             homeData.Timeframe[0] = unit.GetMonths(5);
-            homeData.Timeframe[1] = new string[] { "Week1", "Week2", "Week3", "Week4", "Week5" };
-            homeData.Timeframe[2] = new string[] { "Year1", "Year2", "Year3", "Year4", "Year5" };
+            homeData.Timeframe[1] = unit.GetWeeks(5);
+            homeData.Timeframe[2] = unit.GetYears(5);
 
             CreateSelectList();
+        }
+
+        private void refreshData()
+        {
+            RandomDataGenerator random = new RandomDataGenerator();
+            int[][] data = new int[homeData.BilirubinLevels.Length][];
+            for (int i = 0; i < 5; i++)
+            {
+                data[i] = random.GetRandomDatapoint(5, 50, 200);
+            }
+
+            homeData.BilirubinData = data;
         }
 
         private void CreateSelectList()
@@ -166,17 +179,17 @@ namespace JaunDetect.Backend_Data
             SelectListItem listItem1 = new SelectListItem
             {
                 Text = "Months",
-                Value = "1"
+                Value = "0"
             };
             SelectListItem listItem2 = new SelectListItem
             {
                 Text = "Weeks",
-                Value = "2"
+                Value = "1"
             };
             SelectListItem listItem3 = new SelectListItem
             {
                 Text = "Years",
-                Value = "3"
+                Value = "2"
             };
 
             List<SelectListItem> items = new List<SelectListItem>();
