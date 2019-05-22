@@ -40,8 +40,8 @@
         </div>
         <div class="col-md-4">
             <h5>Highest Total Crashes by Device</h5>
-            <div class="container">
-                <table class="table table-dark table-striped">
+            <div class="container border border-dark rounded w-75 text-center mx-auto">
+                <table class="table">
                     <thead>
                         <tr>
                             <th>DeviceID</th>
@@ -49,18 +49,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>John</td>
-                            <td>Doe</td>
-                        </tr>
-                        <tr>
-                            <td>Mary</td>
-                            <td>Moe</td>
-                        </tr>
-                        <tr>
-                            <td>July</td>
-                            <td>Dooley</td>
-                        </tr>
+                        @{ 
+                            for (int i = 0; i < Model.DeviceIDs.Length; i++)
+                            {
+                                <tr>
+                                    <td>@Model.DeviceIDs[i]</td>
+                                    <td>@Model.CrashesByType[i]</td>
+                                </tr>
+                            }
+                        }
                     </tbody>
                 </table>
             </div>
