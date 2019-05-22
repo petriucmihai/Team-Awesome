@@ -14,6 +14,7 @@ namespace JaunDetect.Backend_Data
     {
         ResourcesChartModel resourcesData = new ResourcesChartModel();
         HomeChartModel homeData = new HomeChartModel();
+        CrashChartModel crashesData = new CrashChartModel();
 
         /// <summary>
         /// Constructor for data repository
@@ -30,6 +31,7 @@ namespace JaunDetect.Backend_Data
         {
             InitializeResources();
             InitializeHome();
+            InitializeCrashReport();
         }
 
         public void InitializeResources()
@@ -67,6 +69,31 @@ namespace JaunDetect.Backend_Data
             homeData.Timeframe[0] = unit.GetMonths(5);
             homeData.Timeframe[1] = unit.GetWeeks(5);
             homeData.Timeframe[2] = unit.GetYears(5);
+
+            CreateSelectList();
+        }
+
+        public void InitializeCrashReport()
+        {
+            RandomDataGenerator random = new RandomDataGenerator();
+            UnitGenerator unit = new UnitGenerator();
+
+            string[] types = { "Device Incompatibility", "Force Close by User", "Fatal Bug", "Connectivity Exception", "Exception Handling" };
+            crashesData.CrashTypes = types;
+            // init crashes by type and by time
+            crashesData.CrashesByType = random.GetRandomDatapoint(5, 0, 30);
+            crashesData.CrashesByTime = random.GetRandomDatapoint(9, 0, 30);
+
+            // 6 types of devices
+            crashesData.NumbersOfDevices = random.GetRandomDatapoint(6, 3, 30);
+            crashesData.DeviceTypes = unit.GetDevices(6);
+
+            crashesData.TimeOption = 0;
+
+            crashesData.Timeframe = new string[3][];
+            crashesData.Timeframe[0] = unit.GetMonths(9);
+            crashesData.Timeframe[1] = unit.GetWeeks(9);
+            crashesData.Timeframe[2] = unit.GetYears(9);
 
             CreateSelectList();
         }
@@ -204,11 +231,55 @@ namespace JaunDetect.Backend_Data
             items.Add(listItem3);
 
             homeData.OptionsList = items;
+            crashesData.OptionsList = items;
 
         }
 
         #endregion
 
+
+        public int[] GetCrashesByTime()
+        {
+            return crashesData.CrashesByTime;
+        }
+
+        public int[] GetCrashesByType()
+        {
+            return crashesData.CrashesByType;
+        }
+
+        public string[] GetCrashTypes()
+        {
+            return crashesData.CrashTypes;
+        }
+
+        public string[] GetDeviceTypes()
+        {
+            return crashesData.DeviceTypes;
+        }
+
+        public int[] GetNumbersOfDevices()
+        {
+            return crashesData.NumbersOfDevices;
+        }
+
+        public string[][] GetCrashesTimeframe()
+        {
+            return crashesData.Timeframe;
+        }
+
+        public bool UpdateCrashTimeOptionString(string timeOptionString)
+        {
+            crashesData.TimeOptionString = timeOptionString;
+            crashesData.TimeOption = int.Parse(timeOptionString);
+            refreshCrashData();
+            return true;
+        }
+        private void refreshCrashData()
+        {
+            RandomDataGenerator random = new RandomDataGenerator();
+            crashesData.CrashesByTime = random.GetRandomDatapoint(9, 0, 30);
+        }
 
     }
 }

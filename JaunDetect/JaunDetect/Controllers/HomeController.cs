@@ -211,53 +211,72 @@ namespace JaunDetect.Controllers
         #region Crash Report Charts
 
         public ActionResult GetCrashesByTimeChart()
-                {
-                    var crashModel = new CrashChartModel();
+        {
+            var crashModel = new CrashChartModel();
+            crashModel = DataBackend.Instance.GetCrashData();
+            int num = crashModel.TimeOption;
 
-                    var key = new Chart(width: 900, height: 250)
-                        .AddSeries(
-                            chartType: "line",
-                            xValue: crashModel.Months,
-                            yValues: crashModel.CrashesByTime)
-                        .SetXAxis("Month")
-                        .SetYAxis("Total Crashes")
-                        .Write();
 
-                    return null;
-                }
+            var key = new Chart(width: 900, height: 250)
+                .AddSeries(
+                    chartType: "line",
+                    xValue: crashModel.Timeframe[num],
+                    yValues: crashModel.CrashesByTime)
+                .SetXAxis("Time")
+                .SetYAxis("Total Crashes")
+                .Write();
 
-                public ActionResult GetCrashesByTypeChart()
-                {
-                    var crashModel = new CrashChartModel();
+            return null;
 
-                    var key = new Chart(width: 300, height: 400)
-                        .AddSeries(
-                            chartType: "column",
-                            xValue: crashModel.CrashTypes,
-                            yValues: crashModel.CrashesByType)
-                        .SetXAxis("Crash Type")
-                        .SetYAxis("Total Crashes")
-                        .Write();
+        }
 
-                    return null;
-                }
+        public ActionResult GetCrashesByTypeChart()
+        {
+            var crashModel = new CrashChartModel();
 
-                public ActionResult GetCrashesByDeviceTypeChart()
-                {
-                    var crashModel = new CrashChartModel();
+            var key = new Chart(width: 300, height: 400)
+                .AddSeries(
+                    chartType: "column",
+                    xValue: crashModel.CrashTypes,
+                    yValues: crashModel.CrashesByType)
+                 .SetXAxis("Crash Type")
+                 .SetYAxis("Total Crashes")
+                 .Write();
 
-                    var key = new Chart(width:300, height: 400)
-                        .AddSeries(
-                            chartType: "pie",
-                            xValue: crashModel.DeviceTypes,
-                            yValues: crashModel.NumbersOfDevices)
-                        .SetXAxis("Device Model")
-                        .SetYAxis("Total Crashes")
-                        .Write();
+            return null;
+        }
 
-                    return null;
-                }
+        public ActionResult GetCrashesByDeviceTypeChart()
+        {
+            var crashModel = new CrashChartModel();
 
+            var key = new Chart(width:300, height: 400)
+                .AddSeries(
+                    chartType: "pie",
+                    xValue: crashModel.DeviceTypes,
+                    yValues: crashModel.NumbersOfDevices)
+                .SetXAxis("Device Model")
+                .SetYAxis("Total Crashes")
+                .Write();
+
+            return null;
+        }
+
+        public ActionResult UpdateCrashChartTimeOption(CrashChartModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                DataBackend.Instance.UpdateTimeOptionString(model.TimeOptionString);
+
+                var crashModel = new CrashChartModel();
+
+                crashModel = DataBackend.Instance.GetCrashData();
+
+                return View("Crash Report", crashModel);
+            }
+
+            return View("Crash Report", model);
+        }
         #endregion
 
         #region Home Charts
@@ -294,7 +313,7 @@ namespace JaunDetect.Controllers
                     name: homeModel.Clinics[4],
                     xValue: homeModel.Timeframe[num],
                     yValues: homeModel.BilirubinData[4])
-                .SetXAxis("Months")
+                .SetXAxis("Time")
                 .SetYAxis("Number of Tests Taken")
                 .AddLegend()
                 .Write();
@@ -318,6 +337,8 @@ namespace JaunDetect.Controllers
 
             return View("Resources", model);
         }
+
+        
 
         #endregion
 
