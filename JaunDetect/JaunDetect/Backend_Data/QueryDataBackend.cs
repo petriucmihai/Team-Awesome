@@ -34,10 +34,23 @@ namespace JaunDetect.Backend_Data
         #endregion SingletonPattern
 
         private IQueryDataRepository queryRepository = new QueryDataBackendRepository();
+        private IQueryRepository repository = new QueryBackendRepository();
 
-        public QueryViewModel GetQueryResources(int num)
+        public QueryViewModel GetQuery()
         {
-            QueryViewModel data = new QueryViewModel();
+            QueryViewModel userData = new QueryViewModel();
+
+            userData.Clinic = repository.GetClinic();
+            userData.Province = repository.GetProvince();
+            userData.Date = repository.GetDate();
+            userData.Device = repository.GetDevice();
+
+            return userData; 
+        }
+
+        public QueryResultViewModel GetQueryResources(int num)
+        {
+            QueryResultViewModel data = new QueryResultViewModel();
 
             data.Clinic = queryRepository.GetClinic(num);
             data.Province = queryRepository.GetProvince(num);

@@ -57,19 +57,20 @@ namespace JaunDetect.Backend_Data
 
         // returns an array with matching query results 
         public string[] GetDataTable()
-        {
+        { 
             const int ROWS = 10;
 
             string[] List = new string[ROWS];
 
-            QueryViewModel userData = new QueryViewModel();
-           
+            IQueryRepository repository = new QueryBackendRepository();
+
             for (int i = 0; i < ROWS; i++)
             {
-                if (String.Equals(userData.Clinic, GetClinic(i)) || String.Equals(userData.Province, GetProvince(i)) ||
-                    String.Equals(userData.Date, GetDate(i)) || String.Equals(userData.Device, GetDevice(i)))
+                if (string.Equals(repository.GetClinic(), GetClinic(i)) || string.Equals(repository.GetProvince(), GetProvince(i)) ||
+                     string.Equals(repository.GetDate(), GetDate(i)) || string.Equals(repository.GetDevice(), GetDevice(i)))
+
                 {
-                    List[i] = GetClinic(i) + GetProvince(i) + GetDate(i) + GetDevice(i);
+                    List[i] = repository.GetClinic() + "\t" + GetClinic(i) + "\t" + GetProvince(i) + "\t" + GetDate(i) + "\t" + GetDevice(i);
                 }
    
             }
