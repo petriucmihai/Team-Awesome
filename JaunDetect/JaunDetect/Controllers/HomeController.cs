@@ -6,7 +6,6 @@ using System.Web.Helpers;
 using System.Web.Mvc;
 using JaunDetect.Models;
 using JaunDetect.Backend_Data;
-using System.Data;
 
 namespace JaunDetect.Controllers
 {
