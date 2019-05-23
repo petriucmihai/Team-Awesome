@@ -464,11 +464,28 @@ namespace JaunDetect.Controllers
             return View("Resources", model);
         }
 
-        
+
 
         #endregion
 
+        #region Photo Charts
+        public ActionResult GetPhotosTakenByTimeChart()
+        {
+            var photoModel = new PhotoChartModel();
 
+            var key = new Chart(width: 600, height: 400)
+                .AddSeries(
+                    chartType: "line",
+                    xValue: photoModel.PhotosTakenByTime,
+                    yValues: photoModel.Weeks)
+                .SetXAxis("Photos Taken")
+                .SetYAxis("Weeks")
+                .Write();
+
+            return null;
+        }
+
+        #endregion
 
     }
 
