@@ -13,7 +13,7 @@ namespace JaunDetect.Models
         public string Province { get; set; }
         public string Date { get; set; }
         public string Device { get; set; }
-        public List<string> List { get; set; }s
+        public List<string> List { get; set; }
 
         public QueryResultViewModel()
         {
@@ -22,7 +22,7 @@ namespace JaunDetect.Models
 
         public void Initialize()
         {
-            s
+            
         }
     }
 
