@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -18,8 +18,9 @@ namespace JaunDetect.Backend_Data
         string[] provinces = {"Lagos", "Lagos", "Onitsha", "Kano", "Ibadan", "Uyo", "Nsukka", "Abuja", "Abuja", "Aba" };
         string[] dates = { "1/1/2019", "2/2/2019", "3/3/2019", "4/4/2019", "5/5/2019", "6/6/2019", "7/7/2019", "8/8/2019", "9/9/2019", "10/10/2019" };
         string[] devices = {"Samsung Galaxy S8", "Samsung Galaxy Note", "Sony Xperia", "Sony Xperia", "Tecno Spark", "Motorola One", "Huawei Y9", "Huawei P10", "Huawei P10", "OnePlus 5" };
+        
 
-        public QuerySampleDataBackendRepository()
+    public QuerySampleDataBackendRepository()
         {
             Initialize();
         }
@@ -70,9 +71,12 @@ namespace JaunDetect.Backend_Data
             {
                if (String.Equals(GetProvince(i), lagos))
                 {
-                    string toAdd = GetClinic(i) + GetProvince(i) + GetDate(i) + GetDevice(i);
+                    string toAdd = GetClinic(i) + "\t" + GetProvince(i) + "\t" + GetDate(i) + "\t" + GetDevice(i);
                     list.Add(toAdd);
-                        
+                    list.Add(repository.GetClinic());
+                    list.Add(repository.GetProvince());
+                    list.Add(repository.GetDate());
+                    list.Add(repository.GetDevice());
                 }
    
             }
@@ -81,4 +85,4 @@ namespace JaunDetect.Backend_Data
     }
 }
 
-
+*/

@@ -14,6 +14,16 @@ namespace JaunDetect.Models
         public string Date { get; set; }
         public string Device { get; set; }
         public List<string> List { get; set; }
+
+        public QueryResultViewModel()
+        {
+            Initialize();
+        }
+
+        public void Initialize()
+        {
+            
+        }
     }
 
 }

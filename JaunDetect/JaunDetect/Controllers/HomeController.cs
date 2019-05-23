@@ -6,7 +6,6 @@ using System.Web.Helpers;
 using System.Web.Mvc;
 using JaunDetect.Models;
 using JaunDetect.Backend_Data;
-using System.Data;
 
 namespace JaunDetect.Controllers
 {
@@ -63,13 +62,32 @@ namespace JaunDetect.Controllers
             return View(queryModel);
         }
 
-        public ActionResult QueryResults()
+        public ActionResult QueryResults(QueryViewModel model)
         {
             ViewBag.Message = "Query Results";
-            var queryResultModel = new QueryResultViewModel();
-            queryResultModel = QueryBackend.Instance.GetResultQuery();
-            return View(queryResultModel);
+            if (ModelState.IsValid)
+            {
+                QueryBackend.Instance.UpdateUserInputClinic(model.Clinic);
+                QueryBackend.Instance.UpdateUserInputProvince(model.Province);
+                QueryBackend.Instance.UpdateUserInputDate(model.Date);
+                QueryBackend.Instance.UpdateUserInputDevice(model.Device);
+
+                var queryViewModel = new QueryViewModel();
+
+                queryViewModel = QueryBackend.Instance.GetQuery();
+                //var queryResultModel = new QueryResultViewModel();
+                //queryResultModel = QueryBackend.Instance.GetQuery();
+                //return View("CustomQuery", queryResultModel);
+                return View("CustomQuery", queryViewModel);
+            }
+            
+            return View("CustomQuery", model);
         }
+
+
+
+
+        
 
         public ActionResult Photos()
         {

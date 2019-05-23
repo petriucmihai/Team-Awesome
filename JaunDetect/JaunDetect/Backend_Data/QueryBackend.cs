@@ -34,17 +34,19 @@ namespace JaunDetect.Backend_Data
 
         // Hook up the Repositry
         private IQueryUserInputRepository queryRepository = new QueryUserInputBackendRepository();
-        QueryViewModel userData = new QueryViewModel();
+        QueryViewModel model = new QueryViewModel();
 
         public QueryViewModel GetQuery()
         {     
-            userData.Clinic = queryRepository.GetClinic();
-            userData.Province = queryRepository.GetProvince();
-            userData.Date = queryRepository.GetDate();
-            userData.Device = queryRepository.GetDevice();
-            return userData;
+            model.UserInputClinic = queryRepository.GetUserInputClinic();
+            model.UserInputProvince = queryRepository.GetUserInputProvince();
+            model.UserInputDate = queryRepository.GetUserInputDate();
+            model.UserInputDevice = queryRepository.GetUserInputDevice();
+            model.List = queryRepository.GetList();
+            return model;
         }
 
+        /*
         private IQuerySampleDataRepository queryResultRepository = new QuerySampleDataBackendRepository();
         QueryResultViewModel data = new QueryResultViewModel();
 
@@ -58,7 +60,26 @@ namespace JaunDetect.Backend_Data
               
             return data;
         }
+        */
+        public bool UpdateUserInputClinic(string newData)
+        {
+            return queryRepository.UpdateClinic(newData);
+        }
 
+        public bool UpdateUserInputProvince(string newData)
+        {
+            return queryRepository.UpdateProvince(newData);
+        }
+
+        public bool UpdateUserInputDate(string newData)
+        {
+            return queryRepository.UpdateDate(newData);
+        }
+
+        public bool UpdateUserInputDevice(string newData)
+        {
+            return queryRepository.UpdateDevice(newData);
+        }
     }
 }
 
