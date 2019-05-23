@@ -72,13 +72,13 @@ namespace JaunDetect.Controllers
                 QueryBackend.Instance.UpdateUserInputDate(model.Date);
                 QueryBackend.Instance.UpdateUserInputDevice(model.Device);
 
-                //var queryViewModel = new QueryViewModel();
+                var queryViewModel = new QueryViewModel();
 
-                //queryViewModel = QueryBackend.Instance.GetQuery();
-                var queryResultModel = new QueryResultViewModel();
-                queryResultModel = QueryBackend.Instance.GetResultQuery();
-                return View("CustomQuery", queryResultModel);
-                //return View("CustomQuery", queryViewModel);
+                queryViewModel = QueryBackend.Instance.GetQuery();
+                //var queryResultModel = new QueryResultViewModel();
+                //queryResultModel = QueryBackend.Instance.GetQuery();
+                //return View("CustomQuery", queryResultModel);
+                return View("CustomQuery", queryViewModel);
             }
             
             return View("CustomQuery", model);

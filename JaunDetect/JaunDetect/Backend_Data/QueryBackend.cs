@@ -38,18 +38,15 @@ namespace JaunDetect.Backend_Data
 
         public QueryViewModel GetQuery()
         {     
-            model.UserInputClinic = queryRepository.GetClinic();
-            model.UserInputProvince = queryRepository.GetProvince();
-            model.UserInputDate = queryRepository.GetDate();
-            model.UserInputDevice = queryRepository.GetDevice();
-            model.Clinic = queryResultRepository.GetClinic(0);
-            model.Province = queryResultRepository.GetProvince(0);
-            model.Date = queryResultRepository.GetDate(0);
-            model.Device = queryResultRepository.GetDevice(0);
-            model.List = queryResultRepository.GetList();
+            model.UserInputClinic = queryRepository.GetUserInputClinic();
+            model.UserInputProvince = queryRepository.GetUserInputProvince();
+            model.UserInputDate = queryRepository.GetUserInputDate();
+            model.UserInputDevice = queryRepository.GetUserInputDevice();
+            model.List = queryRepository.GetList();
             return model;
         }
 
+        /*
         private IQuerySampleDataRepository queryResultRepository = new QuerySampleDataBackendRepository();
         QueryResultViewModel data = new QueryResultViewModel();
 
@@ -63,7 +60,7 @@ namespace JaunDetect.Backend_Data
               
             return data;
         }
-
+        */
         public bool UpdateUserInputClinic(string newData)
         {
             return queryRepository.UpdateClinic(newData);
