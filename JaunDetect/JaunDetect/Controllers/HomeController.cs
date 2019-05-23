@@ -73,7 +73,7 @@ namespace JaunDetect.Controllers
 
         public ActionResult Photos()
         {
-            ViewBag.Message = "Failed Photo Gallery";
+            ViewBag.Message = "Photo Data";
 
             return View();
         }
