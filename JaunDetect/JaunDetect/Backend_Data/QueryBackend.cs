@@ -34,15 +34,20 @@ namespace JaunDetect.Backend_Data
 
         // Hook up the Repositry
         private IQueryUserInputRepository queryRepository = new QueryUserInputBackendRepository();
-        QueryViewModel userData = new QueryViewModel();
+        QueryViewModel model = new QueryViewModel();
 
         public QueryViewModel GetQuery()
         {     
-            userData.Clinic = queryRepository.GetClinic();
-            userData.Province = queryRepository.GetProvince();
-            userData.Date = queryRepository.GetDate();
-            userData.Device = queryRepository.GetDevice();
-            return userData;
+            model.UserInputClinic = queryRepository.GetClinic();
+            model.UserInputProvince = queryRepository.GetProvince();
+            model.UserInputDate = queryRepository.GetDate();
+            model.UserInputDevice = queryRepository.GetDevice();
+            model.Clinic = queryResultRepository.GetClinic(0);
+            model.Province = queryResultRepository.GetProvince(0);
+            model.Date = queryResultRepository.GetDate(0);
+            model.Device = queryResultRepository.GetDevice(0);
+            model.List = queryResultRepository.GetList();
+            return model;
         }
 
         private IQuerySampleDataRepository queryResultRepository = new QuerySampleDataBackendRepository();

@@ -13,18 +13,58 @@
                 @using (Html.BeginForm("QueryResults", "Home", FormMethod.Post))
                 {
                     <p> Clinic </p>
-                    @Html.TextBoxFor(model => model.Clinic)
+                    @Html.TextBoxFor(model => model.UserInputClinic)
                     <p> Province </p>
-                    @Html.TextBoxFor(model => model.Province)
+                    @Html.TextBoxFor(model => model.UserInputProvince)
                     <p> Date </p>
-                    @Html.TextBoxFor(model => model.Date)
+                    @Html.TextBoxFor(model => model.UserInputDate)
                     <p> Device </p>
-                    @Html.TextBoxFor(model => model.Device)
-                    <button type="submit" >Submit</button>      
+                    @Html.TextBoxFor(model => model.UserInputDevice)
+                    <button type="submit">Submit</button>
                 }
             </div>
-           <br />
+            <br />
         </div>
-     </div>
+    </div>
 </div>
-    
+
+@{
+    /**/
+
+    ViewBag.Title = "QueryResults";
+
+}
+
+<div class="border border-dark rounded">
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">Query Results</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td> </td>
+                <td>
+                    <strong style="padding-right: 50px">Clinic Name</strong>
+                    <strong style="padding-right: 50px">Province</strong>
+                    <strong style="padding-right: 50px">Date</strong>
+                    <strong style="padding-right: 50px">Device</strong>
+                </td>
+            </tr>
+            @{
+
+                for (int i = 0; i < Model.List.Count; i++)
+                {
+                    <tr>
+                        <td> @(i + 1)</td>
+                        <td>@(Model.List[i])</td>
+
+                    </tr>
+                }
+
+            }
+        </tbody>
+    </table>
+</div>

@@ -62,77 +62,32 @@ namespace JaunDetect.Controllers
             return View(queryModel);
         }
 
-        public ActionResult QueryResults()
+        public ActionResult QueryResults(QueryViewModel model)
         {
             ViewBag.Message = "Query Results";
-            var queryResultModel = new QueryResultViewModel();
-            queryResultModel = QueryBackend.Instance.GetResultQuery();
-            return View(queryResultModel);
-        }
-
-        public ActionResult UpdateClinic(QueryViewModel model)
-        {
             if (ModelState.IsValid)
             {
                 QueryBackend.Instance.UpdateUserInputClinic(model.Clinic);
+                QueryBackend.Instance.UpdateUserInputProvince(model.Province);
+                QueryBackend.Instance.UpdateUserInputDate(model.Date);
+                QueryBackend.Instance.UpdateUserInputDevice(model.Device);
 
-                var queryViewModel = new QueryViewModel();
+                //var queryViewModel = new QueryViewModel();
 
-                queryViewModel = QueryBackend.Instance.GetQuery();
-
-                return View("CustomQuery", queryViewModel);
+                //queryViewModel = QueryBackend.Instance.GetQuery();
+                var queryResultModel = new QueryResultViewModel();
+                queryResultModel = QueryBackend.Instance.GetResultQuery();
+                return View("CustomQuery", queryResultModel);
+                //return View("CustomQuery", queryViewModel);
             }
-
+            
             return View("CustomQuery", model);
         }
 
-        public ActionResult UpdateProvince(QueryViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                QueryBackend.Instance.UpdateUserInputProvince(model.Clinic);
 
-                var queryViewModel = new QueryViewModel();
 
-                queryViewModel = QueryBackend.Instance.GetQuery();
 
-                return View("CustomQuery", queryViewModel);
-            }
-
-            return View("CustomQuery", model);
-        }
-
-        public ActionResult UpdateDate(QueryViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                QueryBackend.Instance.UpdateUserInputDate(model.Clinic);
-
-                var queryViewModel = new QueryViewModel();
-
-                queryViewModel = QueryBackend.Instance.GetQuery();
-
-                return View("CustomQuery", queryViewModel);
-            }
-
-            return View("CustomQuery", model);
-        }
-
-        public ActionResult UpdateDevice(QueryViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                QueryBackend.Instance.UpdateUserInputDevice(model.Clinic);
-
-                var queryViewModel = new QueryViewModel();
-
-                queryViewModel = QueryBackend.Instance.GetQuery();
-
-                return View("CustomQuery", queryViewModel);
-            }
-
-            return View("CustomQuery", model);
-        }
+        
 
         public ActionResult Photos()
         {
