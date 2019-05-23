@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Data;
 using JaunDetect.Models;
+using System.Text.RegularExpressions;
 
 namespace JaunDetect.Backend_Data
 {
@@ -88,10 +89,123 @@ namespace JaunDetect.Backend_Data
             
             for (int i = 0; i < ROWS; i++)
             {
-                //if (String.Equals(clinics[i], model.UserInputClinic))
+                // if no query is entered, the whole list is presented
+                if (String.Equals(model.UserInputClinic, null) && String.Equals(model.UserInputProvince, null) &&
+                    String.Equals(model.UserInputDate, null) && String.Equals(model.UserInputDevice, null)) {
+                    {
+                        list.Add(clinics[i].PadRight(24, ' ') + provinces[i].PadRight(24, ' ') +
+                            dates[i].PadRight(24, ' ') + devices[i].PadRight(24, ' '));
+                    }
+                }
+
+                // if only the clinic matches, that query is returned
+                if (String.Equals(clinics[i], model.UserInputClinic) && String.Equals(null, model.UserInputProvince)
+                    && String.Equals(null, model.UserInputDate) && String.Equals(null, model.UserInputDevice))
                 {
-                    list.Add(clinics[i] + "/t" + model.UserInputClinic+ "/t" + provinces[i] + "/t" +
-                        dates[i] + "/t" + devices[i]);           
+                    list.Add(clinics[i].PadRight(24, ' ') + provinces[i].PadRight(24, ' ') +
+                        dates[i].PadRight(24, ' ') + devices[i].PadRight(24, ' '));
+                }
+
+                // if only the province matches, that query is returned 
+                if (String.Equals(null, model.UserInputClinic) && String.Equals(provinces[i], model.UserInputProvince)
+                    && String.Equals(null, model.UserInputDate) && String.Equals(null, model.UserInputDevice))
+                {
+                    list.Add(clinics[i].PadRight(24, ' ') + provinces[i].PadRight(24, ' ') +
+                        dates[i].PadRight(24, ' ') + devices[i].PadRight(24, ' '));
+                }
+
+                // if only the date matches, that query is returned
+                if (String.Equals(null, model.UserInputClinic) && String.Equals(null, model.UserInputProvince)
+                    && String.Equals(dates[i], model.UserInputDate) && String.Equals(null, model.UserInputDevice))
+                {
+                    list.Add(clinics[i].PadRight(24, ' ') + provinces[i].PadRight(24, ' ') +
+                        dates[i].PadRight(24, ' ') + devices[i].PadRight(24, ' '));
+                }
+
+                //if only the device matches, that query is returned 
+                if (String.Equals(null, model.UserInputClinic) && String.Equals(null, model.UserInputProvince)
+                     && String.Equals(null, model.UserInputDate) && String.Equals(devices[i], model.UserInputDevice))
+                {
+                    list.Add(clinics[i].PadRight(24, ' ') + provinces[i].PadRight(24, ' ') +
+                        dates[i].PadRight(24, ' ') + devices[i].PadRight(24, ' '));
+                }
+
+                if (String.Equals(clinics[i], model.UserInputClinic) && String.Equals(provinces[i], model.UserInputProvince)
+                    && String.Equals(null, model.UserInputDate) && String.Equals(null, model.UserInputDevice))
+                {
+                    list.Add(clinics[i].PadRight(24, ' ') + provinces[i].PadRight(24, ' ') +
+                        dates[i].PadRight(24, ' ') + devices[i].PadRight(24, ' '));
+                }
+
+                if (String.Equals(clinics[i], model.UserInputClinic) && String.Equals(null, model.UserInputProvince)
+                    && String.Equals(dates[i], model.UserInputDate) && String.Equals(null, model.UserInputDevice))
+                {
+                    list.Add(clinics[i].PadRight(24, ' ') + provinces[i].PadRight(24, ' ') +
+                        dates[i].PadRight(24, ' ') + devices[i].PadRight(24, ' '));
+                }
+
+                if (String.Equals(clinics[i], model.UserInputClinic) && String.Equals(null, model.UserInputProvince)
+                    && String.Equals(null, model.UserInputDate) && String.Equals(devices[i], model.UserInputDevice))
+                {
+                    list.Add(clinics[i].PadRight(24, ' ') + provinces[i].PadRight(24, ' ') +
+                        dates[i].PadRight(24, ' ') + devices[i].PadRight(24, ' '));
+                }
+
+                if (String.Equals(null, model.UserInputClinic) && String.Equals(provinces[i], model.UserInputProvince)
+                    && String.Equals(dates[i], model.UserInputDate) && String.Equals(null, model.UserInputDevice))
+                {
+                    list.Add(clinics[i].PadRight(24, ' ') + provinces[i].PadRight(24, ' ') +
+                        dates[i].PadRight(24, ' ') + devices[i].PadRight(24, ' '));
+                }
+
+                if (String.Equals(null, model.UserInputClinic) && String.Equals(provinces[i], model.UserInputProvince)
+                    && String.Equals(null, model.UserInputDate) && String.Equals(devices[i], model.UserInputDevice))
+                {
+                    list.Add(clinics[i].PadRight(24, ' ') + provinces[i].PadRight(24, ' ') +
+                        dates[i].PadRight(24, ' ') + devices[i].PadRight(24, ' '));
+                }
+
+                if (String.Equals(null, model.UserInputClinic) && String.Equals(null, model.UserInputProvince)
+                     && String.Equals(dates[i], model.UserInputDate) && String.Equals(devices[i], model.UserInputDevice))
+                {
+                    list.Add(clinics[i].PadRight(24, ' ') + provinces[i].PadRight(24, ' ') +
+                        dates[i].PadRight(24, ' ') + devices[i].PadRight(24, ' '));
+                }
+
+                if (String.Equals(null, model.UserInputClinic) && String.Equals(provinces[i], model.UserInputProvince)
+                     && String.Equals(dates[i], model.UserInputDate) && String.Equals(devices[i], model.UserInputDevice))
+                {
+                    list.Add(clinics[i].PadRight(24, ' ') + provinces[i].PadRight(24, ' ') +
+                        dates[i].PadRight(24, ' ') + devices[i].PadRight(24, ' '));
+                }
+
+                if (String.Equals(clinics[i], model.UserInputClinic) && String.Equals(null, model.UserInputProvince)
+                    && String.Equals(dates[i], model.UserInputDate) && String.Equals(devices[i], model.UserInputDevice))
+                {
+                    list.Add(clinics[i].PadRight(24, ' ') + provinces[i].PadRight(24, ' ') +
+                        dates[i].PadRight(24, ' ') + devices[i].PadRight(24, ' '));
+                }
+
+                if (String.Equals(clinics[i], model.UserInputClinic) && String.Equals(provinces[i], model.UserInputProvince)
+                    && String.Equals(null, model.UserInputDate) && String.Equals(devices[i], model.UserInputDevice))
+                {
+                    list.Add(clinics[i].PadRight(24, ' ') + provinces[i].PadRight(24, ' ') +
+                        dates[i].PadRight(24, ' ') + devices[i].PadRight(24, ' '));
+                }
+
+                if (String.Equals(clinics[i], model.UserInputClinic) && String.Equals(provinces[i], model.UserInputProvince)
+                    && String.Equals(dates[i], model.UserInputDate) && String.Equals(null, model.UserInputDevice))
+                {
+                    list.Add(clinics[i].PadRight(24, ' ') + provinces[i].PadRight(24, ' ') +
+                        dates[i].PadRight(24, ' ') + devices[i].PadRight(24, ' '));
+                }
+
+
+                if (String.Equals(clinics[i], model.UserInputClinic) && String.Equals(provinces[i], model.UserInputProvince)
+                    && String.Equals(dates[i], model.UserInputDate) && String.Equals(devices[i], model.UserInputDevice))
+                {
+                    list.Add(clinics[i].PadRight(24, ' ') + provinces[i].PadRight(24, ' ') +
+                        dates[i].PadRight(24, ' ') + devices[i].PadRight(24, ' '));           
                 }
 
             }
