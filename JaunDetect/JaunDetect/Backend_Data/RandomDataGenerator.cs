@@ -28,19 +28,19 @@ namespace JaunDetect.Backend_Data
 
         public string[] GetIDs (int num)
         {
+            Random random = new Random();
             string[] uids = new string[num];
             for (int i = 0; i < num; i++)
             {
-                uids[i] = RandomString(10);
+                uids[i] = RandomString(random, 10);
             }
             return uids;
         }
 
-        public static string RandomString(int length)
+        public static string RandomString(Random rand, int length)
         {
-            Random random = new Random();
             string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-            return new string(Enumerable.Range(1, length).Select(_ => chars[random.Next(chars.Length)]).ToArray());
+            return new string(Enumerable.Range(1, length).Select(_ => chars[rand.Next(chars.Length)]).ToArray());
         }
 
     }

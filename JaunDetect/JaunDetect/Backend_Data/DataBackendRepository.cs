@@ -91,7 +91,7 @@ namespace JaunDetect.Backend_Data
             crashesData.NumbersOfDevices = random.GetRandomDatapoint(6, 3, 30);
             crashesData.DeviceTypes = unit.GetDevices(6);
 
-            int[] unsortedCrashes = random.GetRandomDatapoint(8, 0, 15);
+            int[] unsortedCrashes = random.GetRandomDatapoint(8, 1, 15);
             Array.Sort(unsortedCrashes);
             Array.Reverse(unsortedCrashes);
             crashesData.CrashesByID = unsortedCrashes;
