@@ -476,10 +476,10 @@ namespace JaunDetect.Controllers
             var key = new Chart(width: 600, height: 400)
                 .AddSeries(
                     chartType: "line",
-                    xValue: photoModel.PhotosTakenByTime,
-                    yValues: photoModel.Weeks)
-                .SetXAxis("Photos Taken")
-                .SetYAxis("Weeks")
+                    xValue: photoModel.Weeks,
+                    yValues: photoModel.PhotosTakenByTime)
+                .SetXAxis("Weeks")
+                .SetYAxis("Total Photos Taken")
                 .Write();
 
             return null;
