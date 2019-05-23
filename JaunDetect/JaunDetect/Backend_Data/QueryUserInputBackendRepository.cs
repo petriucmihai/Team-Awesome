@@ -84,25 +84,18 @@ namespace JaunDetect.Backend_Data
 
         public List<String> GetList()
         {
-           
-            String lagos = "Lagos";
-
-            List<String> list = new List<String>();
-
-
             IQueryUserInputRepository repository = new QueryUserInputBackendRepository();
 
             for (int i = 0; i < ROWS; i++)
             {
                 //if (String.Equals(GetUserInputProvince(), lagos))
                 {
-                    string toAdd = clinics[i] + repository.GetUserInputClinic() + provinces[i] + repository.GetUserInputProvince() +
-                        dates[i] + repository.GetUserInputDate() + devices[i] + repository.GetUserInputDevice();
-                    
+                    model.List.Add(clinics[i] + repository.GetUserInputClinic() + provinces[i] + repository.GetUserInputProvince() +
+                        dates[i] + repository.GetUserInputDate() + devices[i] + repository.GetUserInputDevice());           
                 }
 
             }
-            return list;
+            return model.List;
         }
     }
 }
