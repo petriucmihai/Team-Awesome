@@ -70,6 +70,70 @@ namespace JaunDetect.Controllers
             return View(queryResultModel);
         }
 
+        public ActionResult UpdateClinic(QueryViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                QueryBackend.Instance.UpdateUserInputClinic(model.Clinic);
+
+                var queryViewModel = new QueryViewModel();
+
+                queryViewModel = QueryBackend.Instance.GetQuery();
+
+                return View("CustomQuery", queryViewModel);
+            }
+
+            return View("CustomQuery", model);
+        }
+
+        public ActionResult UpdateProvince(QueryViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                QueryBackend.Instance.UpdateUserInputProvince(model.Clinic);
+
+                var queryViewModel = new QueryViewModel();
+
+                queryViewModel = QueryBackend.Instance.GetQuery();
+
+                return View("CustomQuery", queryViewModel);
+            }
+
+            return View("CustomQuery", model);
+        }
+
+        public ActionResult UpdateDate(QueryViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                QueryBackend.Instance.UpdateUserInputDate(model.Clinic);
+
+                var queryViewModel = new QueryViewModel();
+
+                queryViewModel = QueryBackend.Instance.GetQuery();
+
+                return View("CustomQuery", queryViewModel);
+            }
+
+            return View("CustomQuery", model);
+        }
+
+        public ActionResult UpdateDevice(QueryViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                QueryBackend.Instance.UpdateUserInputDevice(model.Clinic);
+
+                var queryViewModel = new QueryViewModel();
+
+                queryViewModel = QueryBackend.Instance.GetQuery();
+
+                return View("CustomQuery", queryViewModel);
+            }
+
+            return View("CustomQuery", model);
+        }
+
         public ActionResult Photos()
         {
             ViewBag.Message = "Failed Photo Gallery";
