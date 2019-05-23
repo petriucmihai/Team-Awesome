@@ -35,6 +35,8 @@ namespace JaunDetect.Models
 
         public string[] DeviceIDs { get; set; }
 
+        public int[] CrashesByID { get; set; }
+
         // Constructor
         public CrashChartModel()
         {

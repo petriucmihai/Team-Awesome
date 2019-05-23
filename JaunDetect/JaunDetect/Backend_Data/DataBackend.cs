@@ -73,6 +73,7 @@ namespace JaunDetect.Backend_Data
             myData.CrashTypes = repository.GetCrashTypes();
             myData.DeviceTypes = repository.GetDeviceTypes();
             myData.DeviceIDs = repository.GetDeviceIDs();
+            myData.CrashesByID = repository.GetCrashesByID();
             myData.NumbersOfDevices = repository.GetNumbersOfDevices();
             myData.OptionsList = repository.GetOptionsList();
             myData.Timeframe = repository.GetCrashesTimeframe();

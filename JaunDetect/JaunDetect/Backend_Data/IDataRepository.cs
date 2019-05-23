@@ -65,6 +65,8 @@ namespace JaunDetect.Backend_Data
 
         string[] GetDeviceIDs();
 
+        int[] GetCrashesByID();
+
         int[] GetNumbersOfDevices();
 
         string[][] GetCrashesTimeframe();
