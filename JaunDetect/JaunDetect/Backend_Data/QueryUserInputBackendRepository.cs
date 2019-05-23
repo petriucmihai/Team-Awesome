@@ -26,10 +26,10 @@ namespace JaunDetect.Backend_Data
 
         public void Initialize(int i)
         {
-            model.UserInputClinic = GetUserInputClinic();
-            model.UserInputProvince = GetUserInputProvince();
-            model.UserInputDate = GetUserInputDate();
-            model.UserInputDevice = GetUserInputDevice();
+            model.UserInputClinic = "";
+            model.UserInputProvince = "";
+            model.UserInputDate = "";
+            model.UserInputDevice = "";
             model.Clinic = clinics[i];
             model.Province = provinces[i];
             model.Date = dates[i];
@@ -84,18 +84,19 @@ namespace JaunDetect.Backend_Data
 
         public List<String> GetList()
         {
-            IQueryUserInputRepository repository = new QueryUserInputBackendRepository();
+            List<String> list = new List<String>(); 
+            //IQueryUserInputRepository repository = new QueryUserInputBackendRepository();
 
             for (int i = 0; i < ROWS; i++)
             {
                 //if (String.Equals(GetUserInputProvince(), lagos))
                 {
-                    model.List.Add(clinics[i] + repository.GetUserInputClinic() + provinces[i] + repository.GetUserInputProvince() +
-                        dates[i] + repository.GetUserInputDate() + devices[i] + repository.GetUserInputDevice());           
+                    list.Add(clinics[i] + model.UserInputClinic  + provinces[i] + model.UserInputProvince +
+                        dates[i] +model.UserInputDate + devices[i] + model.UserInputDevice);           
                 }
 
             }
-            return model.List;
+            return list;
         }
     }
 }

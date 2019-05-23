@@ -67,27 +67,22 @@ namespace JaunDetect.Controllers
             ViewBag.Message = "Query Results";
             if (ModelState.IsValid)
             {
-                QueryBackend.Instance.UpdateUserInputClinic(model.Clinic);
-                QueryBackend.Instance.UpdateUserInputProvince(model.Province);
-                QueryBackend.Instance.UpdateUserInputDate(model.Date);
-                QueryBackend.Instance.UpdateUserInputDevice(model.Device);
+                QueryBackend.Instance.UpdateUserInputClinic(model.UserInputClinic);
+                QueryBackend.Instance.UpdateUserInputProvince(model.UserInputProvince);
+                QueryBackend.Instance.UpdateUserInputDate(model.UserInputDate);
+                QueryBackend.Instance.UpdateUserInputDevice(model.UserInputDevice);
 
                 var queryViewModel = new QueryViewModel();
 
                 queryViewModel = QueryBackend.Instance.GetQuery();
-                //var queryResultModel = new QueryResultViewModel();
-                //queryResultModel = QueryBackend.Instance.GetQuery();
-                //return View("CustomQuery", queryResultModel);
+
                 return View("CustomQuery", queryViewModel);
             }
             
-            return View("CustomQuery", model);
+            return View("QueryResults", model);
         }
 
 
-
-
-        
 
         public ActionResult Photos()
         {
