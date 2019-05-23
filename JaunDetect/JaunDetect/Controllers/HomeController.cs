@@ -503,6 +503,27 @@ namespace JaunDetect.Controllers
             return null;
         }
 
+        public ActionResult GetSuccessfulFailedPhotosTaken()
+        {
+            var photoModel = new PhotoChartModel();
+
+            var key = new Chart(width: 600, height: 400)
+                .AddSeries(
+                    chartType: "line",
+                    name: "Successful Photos",
+                    xValue: photoModel.Days,
+                    yValues: photoModel.SuccessfulPhotosTaken)
+                .AddSeries(
+                    chartType: "line",
+                    name: "Failed Photos",
+                    xValue: photoModel.Days,
+                    yValues: photoModel.FailedPhotosTaken)
+                .SetXAxis("Days")
+                .SetYAxis("Total Photos Taken")
+                .Write();
+
+            return null;
+        }
         #endregion
 
     }
