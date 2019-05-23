@@ -70,9 +70,12 @@ namespace JaunDetect.Backend_Data
             {
                if (String.Equals(GetProvince(i), lagos))
                 {
-                    string toAdd = GetClinic(i) + GetProvince(i) + GetDate(i) + GetDevice(i);
+                    string toAdd = GetClinic(i) + "\t" + GetProvince(i) + "\t" + GetDate(i) + "\t" + GetDevice(i);
                     list.Add(toAdd);
-                        
+                    list.Add(repository.GetClinic());
+                    list.Add(repository.GetProvince());
+                    list.Add(repository.GetDate());
+                    list.Add(repository.GetDevice());
                 }
    
             }
