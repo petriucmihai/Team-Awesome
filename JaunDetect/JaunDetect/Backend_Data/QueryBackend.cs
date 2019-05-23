@@ -59,6 +59,25 @@ namespace JaunDetect.Backend_Data
             return data;
         }
 
+        public bool UpdateUserInputClinic(string newData)
+        {
+            return queryRepository.UpdateClinic(newData);
+        }
+
+        public bool UpdateUserInputProvince(string newData)
+        {
+            return queryRepository.UpdateProvince(newData);
+        }
+
+        public bool UpdateUserInputDate(string newData)
+        {
+            return queryRepository.UpdateDate(newData);
+        }
+
+        public bool UpdateUserInputDevice(string newData)
+        {
+            return queryRepository.UpdateDevice(newData);
+        }
     }
 }
 
