@@ -4,28 +4,40 @@
 @{
     ViewBag.Title = "Query";
 }
-<h3>@ViewBag.Message</h3>
-
-<div class=" container">
-    <div class="row">
-        <div class="row">
-            <div>
-                @using (Html.BeginForm("QueryResults", "Home", FormMethod.Post))
-                {
-                    <p> Clinic </p>
-                    @Html.TextBoxFor(model => model.UserInputClinic)
-                    <p> Province </p>
-                    @Html.TextBoxFor(model => model.UserInputProvince)
-                    <p> Date </p>
-                    @Html.TextBoxFor(model => model.UserInputDate)
-                    <p> Device </p>
-                    @Html.TextBoxFor(model => model.UserInputDevice)
-                    <button type="submit">Submit</button>
-                }
-            </div>
-            <br />
+<div class="row">
+    <div class="col text-center">
+        <div class="col-md-5 p-1 mx-auto my-3">
+            <h2 class="display-6 font-weight-normal">Custom Query</h2>
         </div>
     </div>
+</div>
+
+<div class=" container">
+                <style>
+                input [type = text] {
+                width: 50%;
+                padding: 12px 24px;
+                }
+                </style>
+                <div margin="48px"> Enter your search terms in the boxes below </div>
+                @using (Html.BeginForm("QueryResults", "Home", FormMethod.Post))
+                {
+                <div class="btn-group-vertical" role="group">
+                    <p><b> Clinic </b></p>
+                    @Html.TextBoxFor(model => model.UserInputClinic, new { @style = "margin-top:-5px; margin-bottom:10px" })
+                    <p><b> Province </b></p>
+                    @Html.TextBoxFor(model => model.UserInputProvince, new { @style = "margin-top:-5px; margin-bottom:10px" })
+                    <p><b> Date </b></p>
+                    @Html.TextBoxFor(model => model.UserInputDate, new { @style = "margin-top:-5px; margin-bottom:10px" })
+                    <p><b> Device </b></p>
+                    @Html.TextBoxFor(model => model.UserInputDevice, new { @style = "margin-top:-5px; margin-bottom:10px" })
+                </div>
+                    <p>
+                        <button type="submit" class="btn btn-primary" align="right" width="48" height="48">Submit</button>
+                    </p>
+                }
+            
+            <br />
 </div>
 
 @{
@@ -35,36 +47,39 @@
 
 }
 
-<div class="border border-dark rounded">
+<div class="border border-dark rounded" width="%100">
     <table>
         <thead>
             <tr>
-                <th scope="col">Query Results</th>
-
+                <th scope="row" style="margin-bottom: 10px">Query Results</th>
             </tr>
         </thead>
+
+        <thead>
+            <tr>
+                <th scope="col"><strong style="padding-right: 100px">           </strong></th>
+                <th scope="col"><strong style="padding-right: 100px">Clinic Name</strong></th>
+                <th scope="col"><strong style="padding-right: 100px">Province</strong></th>
+                <th scope="col"><strong style="padding-right: 100px">Date</strong></th>
+                <th scope="col"><strong style="padding-right: 100px">Device</strong></th>
+            </tr>
+        </thead>
+        
         <tbody>
             <tr>
-                <td> </td>
-                <td>
-                    <strong style="padding-right: 80px">Clinic Name</strong>
-                    <strong style="padding-right: 80px">Province</strong>
-                    <strong style="padding-right: 80px">Date</strong>
-                    <strong style="padding-right: 80px">Device</strong>
-                </td>
-            </tr>
-            @{
-
-                for (int i = 0; i < Model.List.Count; i++)
-                {
+                @{
+                    for (int i = 0; i < Model.List.Count; i += 4)
+                    {
                     <tr>
-                        <td> @(i + 1)</td>
+                        <th scope="row">@((i / 4) + 1) </th>
                         <td style="white-space:pre">@(Model.List[i])</td>
-
+                        <td style="white-space:pre">@(Model.List[i + 1])</td>
+                        <td style="white-space:pre">@(Model.List[i + 2])</td>
+                        <td style="white-space:pre">@(Model.List[i + 3])</td>
                     </tr>
                 }
-
-            }
-        </tbody>
+                }
+               </tr>
+            </tbody>
     </table>
 </div>

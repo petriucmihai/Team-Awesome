@@ -64,7 +64,7 @@ namespace JaunDetect.Controllers
 
         public ActionResult QueryResults(QueryViewModel model)
         {
-            ViewBag.Message = "Query Results";
+            ViewBag.Message = "Custom Query";
             if (ModelState.IsValid)
             {
                 QueryBackend.Instance.UpdateUserInputClinic(model.UserInputClinic);
