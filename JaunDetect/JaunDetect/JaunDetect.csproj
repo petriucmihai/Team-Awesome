@@ -239,10 +239,10 @@
     <Content Include="Views\Guest\Index.cshtml" />
     <Content Include="Views\Shared\GuestAccountLayout.cshtml" />
     <Content Include="Views\Guest\GuestResources.cshtml" />
+    <Content Include="Views\Chart\ChartView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Chart\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
