@@ -375,7 +375,7 @@ namespace JaunDetect.Backend_Data
                 SelectListItem listItem = new SelectListItem
                 {
                     Text = homeData.Clinics[i],
-                    Value = i.ToString()
+                    Value = homeData.Clinics[i]//i.ToString()
                 };
                 items.Add(listItem);
             }
