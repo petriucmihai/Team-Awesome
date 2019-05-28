@@ -33,7 +33,7 @@
         <div>
             @using (Html.BeginForm("UpdateHomeChartTimeOption", "Home", FormMethod.Post))
             {
-                @Html.DropDownListFor(model => model.TimeOptionString, Model.OptionsList);
+                @Html.DropDownListFor(model => model.TimeOptionString, Model.TimeOptionsList);
                 <button type="submit">Update</button>
             }
         </div>

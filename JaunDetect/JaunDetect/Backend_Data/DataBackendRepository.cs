@@ -228,7 +228,7 @@ namespace JaunDetect.Backend_Data
 
         public List<SelectListItem> GetOptionsList()
         {
-            return homeData.OptionsList;
+            return homeData.TimeOptionsList;
         }
 
         public bool UpdateTimeOptionString(string timeOptionString)
@@ -274,7 +274,7 @@ namespace JaunDetect.Backend_Data
             items.Add(listItem2);
             items.Add(listItem3);
 
-            homeData.OptionsList = items;
+            homeData.TimeOptionsList = items;
             crashesData.OptionsList = items;
 
         }
