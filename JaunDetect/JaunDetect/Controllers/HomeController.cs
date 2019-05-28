@@ -38,7 +38,8 @@ namespace JaunDetect.Controllers
             var resourceModel = new ResourcesChartModel();
 
             resourceModel = DataBackend.Instance.GetResources();
-
+            ViewBag.MONTHS = resourceModel.Months.ToList();
+            ViewBag.TESTSTRIPS = resourceModel.TestStripUsages.ToList();
             return View(resourceModel);
         }
 
