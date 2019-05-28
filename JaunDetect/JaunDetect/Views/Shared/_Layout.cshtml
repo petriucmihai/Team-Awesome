@@ -58,3 +58,11 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
+
+<!--Script to set Viewbag.Section as the anchor tag for page to return to when it refreshes-->
+<script type="text/javascript">
+    $(document).ready(function () {
+        var anchor = document.getElementById('@ViewBag.Section');
+        anchor.scrollIntoView(true);
+    });
+</script>

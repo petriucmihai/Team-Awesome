@@ -487,6 +487,8 @@ namespace JaunDetect.Controllers
             {
                 DataBackend.Instance.UpdateTimeOptionString(model.TimeOptionString);
 
+                ViewBag.Section = "TestNumberByClinic";
+
                 var homeModel = new HomeChartModel();
 
                 homeModel = DataBackend.Instance.GetHomeData();
