@@ -73,7 +73,7 @@ namespace JaunDetect.Backend_Data
             homeData.Timeframe[1] = unit.GetWeeks(5);
             homeData.Timeframe[2] = unit.GetYears(5);
 
-            CreateSelectList();
+            CreateTimeframeSelectList();
         }
 
         public void InitializeCrashReport()
@@ -105,7 +105,7 @@ namespace JaunDetect.Backend_Data
             crashesData.Timeframe[1] = unit.GetWeeks(9);
             crashesData.Timeframe[2] = unit.GetYears(9);
 
-            CreateSelectList();
+            CreateTimeframeSelectList();
         }
 
         #region Resources charts methods
@@ -274,7 +274,7 @@ namespace JaunDetect.Backend_Data
             homeData.BilirubinData = data;
         }
 
-        private void CreateSelectList()
+        private void CreateTimeframeSelectList()
         {
             SelectListItem listItem1 = new SelectListItem
             {
@@ -300,6 +300,21 @@ namespace JaunDetect.Backend_Data
             homeData.TimeOptionsList = items;
             crashesData.OptionsList = items;
 
+        }
+
+        private void CreateClinicSelectList()
+        {
+            List<SelectListItem> items = new List<SelectListItem>();
+            for (int i = 0; i < homeData.Clinics.Count(); i++)
+            {
+                SelectListItem listItem = new SelectListItem
+                {
+                    Text = homeData.Clinics[i],
+                    Value = i.ToString()
+                };
+                items.Add(listItem);
+            }
+            homeData.ClinicOptionsList = items;
         }
 
         #endregion
