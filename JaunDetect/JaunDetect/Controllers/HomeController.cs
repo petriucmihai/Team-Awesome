@@ -343,7 +343,7 @@ namespace JaunDetect.Controllers
             homeModel = DataBackend.Instance.GetHomeData();
             int num = homeModel.TimeOption;
 
-            var key = new Chart(width: 1200, height: 400)
+            var key = new Chart(width: 1100, height: 400)
                 .AddSeries(
                     chartType: "column",
                     name: homeModel.Clinics[0],
@@ -383,7 +383,7 @@ namespace JaunDetect.Controllers
             homeModel = DataBackend.Instance.GetHomeData();
             int num = homeModel.ClinicOption;
 
-            var key = new Chart(width: 600, height: 400)
+            var key = new Chart(width: 400, height: 550)
                 .AddSeries(
                     chartType: "column",
                     xValue: homeModel.ConvertDataToString(homeModel.BilirubinLevels),
