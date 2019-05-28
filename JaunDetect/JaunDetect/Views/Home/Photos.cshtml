@@ -3,24 +3,65 @@
     ViewBag.Title = "Photos";
 }
     
-<div class="row">
-    <h2>Photos</h2>
-</div>
+ 
+    <div class="row">
+        <div class="col text-center">
+            <div class="col-md-5 p-1 mx-auto my-3">
+                <h2 class="display-6 font-weight-normal">Photos</h2>
+            </div>
+        </div>
+    </div>
 
 <div class="row">
     <div class="col-6">
-        <h6 class="text-center">Photos Taken Over Time</h6>
-        <img src="/Home/GetPhotosTakenByTimeChart" class="img-fluid rounded" />
-    </div>
-    <div class="col">
-        <img src="~/Content/Images/photos2.png" />
-    </div>
- </div>
+        <div class="row">
+            <h6 class="text-center">Photos Taken Over Time</h6>
+            <img src="/Home/GetPhotosTakenByTimeChart" class="img-fluid rounded" />
 
-<div class="row">
+        </div>
+
+        <div class="row">
+            <h6 class="text-center">Successful vs Failed Photos</h6>
+            <img src="/Home/GetSuccessfulFailedPhotosTaken" class="img-fluid rounded" />
+        </div>
+    </div>
+
     <div class="col-6">
-        <h6 class="text-center">Successful vs Failed Photos</h6>
-        <img src="/Home/GetSuccessfulFailedPhotosTaken" class="img-fluid rounded" />
-        
+        <h4>Failed Photo Gallery</h4>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><img src="~/Content/Images/placeholder.png" class="img-thumbnail" /></td>
+                        <td><img src="~/Content/Images/placeholder.png" class="img-thumbnail" /></td>
+                        <td><img src="~/Content/Images/placeholder.png" class="img-thumbnail" /></td>
+                    </tr>
+                    <tr>
+                        <td><img src="~/Content/Images/placeholder.png" class="img-thumbnail" /></td>
+                        <td><img src="~/Content/Images/placeholder.png" class="img-thumbnail" /></td>
+                        <td><img src="~/Content/Images/placeholder.png" class="img-thumbnail" /></td>
+                    </tr>
+                    <tr>
+                        <td><img src="~/Content/Images/placeholder.png" class="img-thumbnail" /></td>
+                        <td><img src="~/Content/Images/placeholder.png" class="img-thumbnail" /></td>
+                        <td><img src="~/Content/Images/placeholder.png" class="img-thumbnail" /></td>
+                    </tr>
+                    <tr>
+                        <td><img src="~/Content/Images/placeholder.png" class="img-thumbnail" /></td>
+                        <td><img src="~/Content/Images/placeholder.png" class="img-thumbnail" /></td>
+                        <td><img src="~/Content/Images/placeholder.png" class="img-thumbnail" /></td>
+                    </tr>
+                    <tr>
+                        <td><img src="~/Content/Images/placeholder.png" class="img-thumbnail" /></td>
+                        <td><img src="~/Content/Images/placeholder.png" class="img-thumbnail" /></td>
+                        <td><img src="~/Content/Images/placeholder.png" class="img-thumbnail" /></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>

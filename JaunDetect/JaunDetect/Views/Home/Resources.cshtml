@@ -1,128 +1,184 @@
 ﻿@using JaunDetect.Models;
+@using Newtonsoft.Json;
 @model ResourcesChartModel
 
-<div class="row">
-    <div class="col text-center">
-        <div class="col-md-5 p-1 mx-auto my-3">
-            <h2 class="display-6 font-weight-normal">Resources</h2>
+
+<head>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/Chart.min.js"></script>
+</head>
+
+<body>
+    <div class="row">
+        <div class="col text-center">
+            <div class="col-md-5 p-1 mx-auto my-3">
+                <h2 class="display-6 font-weight-normal">Resources</h2>
+            </div>
         </div>
     </div>
-</div>
 
-<div class="container">
-    <div class="row">
-        <div class="col">
+    <div class="container">
+        <div class="row">
+            <div class="col">
 
-            <div class="row">
-                <h6 class="mx-auto">Test Strip Usage per Month</h6>
-                <img src="/Home/GetTestStripUsageChart" class="img-fluid rounded" />
-            </div>
+                <div class="row">
+                    <h6 class="mx-auto">Test Strip Usage per Month</h6>
+                    <img src="/Home/GetTestStripUsageChart" class="img-fluid rounded" />
+                </div>
 
-            <div class="row">
-                <div class="col">
-                    <div class="row mb-3">
-                        <p class="pr-2">Current price of test strip:</p>
-                        @using (Html.BeginForm("UpdatePrice", "Home", FormMethod.Post))
-                        {
-                            @Html.TextBoxFor(model => model.TestStripPrice, new { Class = "form-control w-50 d-inline" })
-                            <button type="submit" class="btn btn-outline-primary d-inline align-top">Update</button>
-                        }
-                    </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="row mb-3">
+                            <p class="pr-2">Current price of test strip:</p>
+                            @using (Html.BeginForm("UpdatePrice", "Home", FormMethod.Post))
+                            {
+                                @Html.TextBoxFor(model => model.TestStripPrice, new { Class = "form-control w-50 d-inline" })
+                                <button type="submit" class="btn btn-outline-primary d-inline align-top">Update</button>
+                            }
+                        </div>
 
-                    <div class="row border border-dark rounded w-75 text-center mx-auto">
-                        <h6 class="mx-auto p-2">Resources used this month by clinic</h6>
-                        <table class="table">
-                            <tbody>
-                                @{
-                                    if (Model.Clinics.Count() == Model.TestStripCosts.Count())
-                                    {
-                                        for (int i = 0; i < Model.Clinics.Count(); i++)
+                        <div class="row border border-dark rounded w-75 text-center mx-auto">
+                            <h6 class="mx-auto p-2">Resources used this month by clinic</h6>
+                            <table class="table">
+                                <tbody>
+                                    @{
+                                        if (Model.Clinics.Count() == Model.TestStripCosts.Count())
                                         {
-                                            <tr>
-                                                <td>@Model.Clinics[i]</td>
-                                                <td>$@Model.TestStripCosts[i]</td>
-                                            </tr>
+                                            for (int i = 0; i < Model.Clinics.Count(); i++)
+                                            {
+                                                <tr>
+                                                    <td>@Model.Clinics[i]</td>
+                                                    <td>$@Model.TestStripCosts[i]</td>
+                                                </tr>
+                                            }
                                         }
                                     }
-                                }
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
+
+                </div>
+
+            </div>
+
+            <div class="col">
+
+                <div class="row">
+                    <h6 class="mx-auto">High-Bilirubin Cases by Clinic</h6>
+                    <img src="/Home/GetHospitalPatientChart" class="img-fluid rounded" />
+                </div>
+
+                <div class="row border border-dark rounded w-75 text-center mx-auto">
+                    <h6 class="mx-auto p-2">Clinics that send the most patients to in-area hospitals</h6>
+                    <table class="table">
+                        <tbody>
+                            @{
+                                if (Model.Clinics.Count() == Model.HospitalPatients.Count())
+                                {
+                                    for (int i = 0; i < Model.Clinics.Count(); i++)
+                                    {
+                                        <tr>
+                                            <td>@Model.Clinics[i]</td>
+                                            <td>@Model.HospitalPatients[i]</td>
+                                        </tr>
+                                    }
+                                }
+                            }
+                        </tbody>
+                    </table>
                 </div>
 
             </div>
 
         </div>
+        <div class="row mt-3">
 
-        <div class="col">
-
-            <div class="row">
-                <h6 class="mx-auto">High-Bilirubin Cases by Clinic</h6>
-                <img src="/Home/GetHospitalPatientChart" class="img-fluid rounded" />
+            <div class="col text-center">
+                <h6 class="mx-auto">Individual Devices Registered by Clinic</h6>
+                <img src="/Home/GetClinicWorkersChart" class="img-fluid rounded" />
             </div>
 
-            <div class="row border border-dark rounded w-75 text-center mx-auto">
-                <h6 class="mx-auto p-2">Clinics that send the most patients to in-area hospitals</h6>
-                <table class="table">
-                    <tbody>
-                        @{
-                            if (Model.Clinics.Count() == Model.HospitalPatients.Count())
-                            {
-                                for (int i = 0; i < Model.Clinics.Count(); i++)
+            <div class="col">
+                <div class="row mb-3">
+                    <p class="pr-2 d-inline">Current per-hour salary:</p>
+                    @using (Html.BeginForm("UpdateSalary", "Home", FormMethod.Post))
+                    {
+                        @Html.TextBoxFor(model => model.WorkerSalary, new { Class = "form-control w-50 d-inline" })
+                        <button type="submit" class="btn btn-outline-primary d-inline align-top">Update</button>
+                    }
+                </div>
+
+                <div class="row border border-dark rounded w-75 text-center">
+                    <h6 class="mx-auto p-2">Resources used this month by clinic</h6>
+                    <table class="table">
+                        <tbody>
+                            @{
+                                if (Model.Clinics.Count() == Model.ClinicWorkers.Count())
                                 {
-                                    <tr>
-                                        <td>@Model.Clinics[i]</td>
-                                        <td>@Model.HospitalPatients[i]</td>
-                                    </tr>
+                                    for (int i = 0; i < Model.Clinics.Count(); i++)
+                                    {
+                                        <tr>
+                                            <td>@Model.Clinics[i]</td>
+                                            <td>$@Model.SalaryCosts[i]</td>
+                                        </tr>
+                                    }
                                 }
                             }
-                        }
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
         </div>
 
     </div>
-    <div class="row mt-3">
 
-        <div class="col text-center">
-            <h6 class="mx-auto">Individual Devices Registered by Clinic</h6>
-            <img src="/Home/GetClinicWorkersChart" class="img-fluid rounded" />
-        </div>
 
-        <div class="col">
-            <div class="row mb-3">
-                <p class="pr-2 d-inline">Current per-hour salary:</p>
-                @using (Html.BeginForm("UpdateSalary", "Home", FormMethod.Post))
+    <canvas id="myChart" width="400" height="400"></canvas>
+    <script type="text/javascript">
+        //var months = @Html.Raw(JsonConvert.SerializeObject(ViewBag.MONTHS));
+        //var strips = @Html.Raw(JsonConvert.SerializeObject(ViewBag.TESTSTRIPS));
+        /*
+        var data = {
+            labels: months,
+            datasets: [{
+                borderWidth: 2,
+                data: strips
+            }]
+        };
+        window.onload = function () {
+            var ctx = document.getElementById("myChart").getContext("2d");
+            window.myBar = new Chart(ctx,
                 {
-                    @Html.TextBoxFor(model => model.WorkerSalary, new { Class = "form-control w-50 d-inline" })
-                <button type="submit" class="btn btn-outline-primary d-inline align-top">Update</button>
-                }
-            </div>
+                    type: 'column',
+                    data: data,
+                    options:
+                    {
+                        title:
+                        {
+                            display: true,
+                            text: "Test"
+                        },
+                        responsive: true,
+                        maintainAspectRatio: true
+                    }
+                });
 
-            <div class="row border border-dark rounded w-75 text-center">
-                <h6 class="mx-auto p-2">Resources used this month by clinic</h6>
-                <table class="table">
-                    <tbody>
-                        @{
-                            if (Model.Clinics.Count() == Model.ClinicWorkers.Count())
-                            {
-                                for (int i = 0; i < Model.Clinics.Count(); i++)
-                                {
-                                    <tr>
-                                        <td>@Model.Clinics[i]</td>
-                                        <td>$@Model.SalaryCosts[i]</td>
-                                    </tr>
-                                }
-                            }
-                        }
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        
-    </div>
+        } */
 
-</div>
-    
+        var ctx = document.getElementById("myChart");
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: @Model.Months,
+                datasets: [
+                    {data: @Model.TestStripUsages}
+                ]
+            }
+        });
+
+    </script>
+
+
+</body>
