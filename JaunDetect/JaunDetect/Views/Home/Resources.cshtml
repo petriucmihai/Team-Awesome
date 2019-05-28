@@ -139,6 +139,35 @@
 
     </div>
 
+    <script>
+        var months = @Html.Raw(Json.Encode(ViewBag.MONTHS));
+        var strips = @Html.Raw(Json.Encode(ViewBag.TESTSTRIPS));
+
+        var ctx = document.getElementById("BarChart").getContext("2d");
+        var bc = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: months,
+                datasets: [{
+                    label: "Bar Chart Test",
+                    data: strips,
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero:true
+                        }
+                    }]
+                }
+
+            }
+        });
+
+    </script>
 
 
 </body>    
