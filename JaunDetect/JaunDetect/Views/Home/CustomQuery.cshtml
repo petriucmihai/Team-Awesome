@@ -12,32 +12,49 @@
     </div>
 </div>
 
-<div class=" container">
-                <style>
-                input [type = text] {
-                width: 50%;
-                padding: 12px 24px;
-                }
-                </style>
-                <div margin="48px"> Enter your search terms in the boxes below </div>
-                @using (Html.BeginForm("QueryResults", "Home", FormMethod.Post))
-                {
-                <div class="btn-group-vertical" role="group">
-                    <p><b> Clinic </b></p>
-                    @Html.TextBoxFor(model => model.UserInputClinic, new { @style = "margin-top:-5px; margin-bottom:10px" })
-                    <p><b> Province </b></p>
-                    @Html.TextBoxFor(model => model.UserInputProvince, new { @style = "margin-top:-5px; margin-bottom:10px" })
-                    <p><b> Date </b></p>
-                    @Html.TextBoxFor(model => model.UserInputDate, new { @style = "margin-top:-5px; margin-bottom:10px" })
-                    <p><b> Device </b></p>
-                    @Html.TextBoxFor(model => model.UserInputDevice, new { @style = "margin-top:-5px; margin-bottom:10px" })
-                </div>
-                    <p>
-                        <button type="submit" class="btn btn-primary" align="right" width="48" height="48">Submit</button>
-                    </p>
-                }
+<div class="row">
+    <div class="col text-left">
+        <button class="btn btn-primary" data-toggle="collapse" data-target="#query">Advanced Search</button>
+    </div>
+    <div class="col text-right">
+        <button class="btn btn-primary" data-toggle="collapse" data-target="#dataVis">Visualize Data</button>
+    </div>
+</div>
+
+<div class="row mt-2">
+    <div id="query" class="col collapse">
+        @using (Html.BeginForm("QueryResults", "Home", FormMethod.Post))
+        {
+        <div class="btn-group row" role="group">
+            <div class="col btn-group-vertical">
+                <p><b> Clinic </b></p>
+                @Html.TextBoxFor(model => model.UserInputClinic, new { @style = "margin-top:-5px; margin-bottom:10px" })
+                <p><b> Province </b></p>
+                @Html.TextBoxFor(model => model.UserInputProvince, new { @style = "margin-top:-5px; margin-bottom:10px" })
+            </div>
+
+            <div class="col btn-group-vertical">
+                <p><b> Date </b></p>
+                @Html.TextBoxFor(model => model.UserInputDate, new { @style = "margin-top:-5px; margin-bottom:10px" })
+                <p><b> Device </b></p>
+                @Html.TextBoxFor(model => model.UserInputDevice, new { @style = "margin-top:-5px; margin-bottom:10px" })
+            </div>
             
-            <br />
+        </div>
+            <p>
+                <button type="submit" class="btn btn-primary" align="right" width="48" height="48">Submit</button>
+            </p>
+        }
+    </div>
+    <div id="dataVis" class="col collapse text-right">
+        <div class="btn-group row" role="group">
+            <div class="col btn-group-vertical">
+                <p><b> Visualization type? </b></p>
+                <p><b> Type of chart here </b></p>
+
+            </div>
+        </div>
+    </div>
 </div>
 
 @{
@@ -47,39 +64,42 @@
 
 }
 
-<div class="border border-dark rounded" width="%100">
-    <table>
-        <thead>
-            <tr>
-                <th scope="row" style="margin-bottom: 10px">Query Results</th>
-            </tr>
-        </thead>
+<div class="row border border-dark rounded" width="100%">
+    <div class="col">
+        <table>
+            <thead>
+                <tr>
+                    <th scope="row" style="margin-bottom: 10px">Query Results</th>
+                </tr>
+            </thead>
 
-        <thead>
-            <tr>
-                <th scope="col"><strong style="padding-right: 100px">           </strong></th>
-                <th scope="col"><strong style="padding-right: 100px">Clinic Name</strong></th>
-                <th scope="col"><strong style="padding-right: 100px">Province</strong></th>
-                <th scope="col"><strong style="padding-right: 100px">Date</strong></th>
-                <th scope="col"><strong style="padding-right: 100px">Device</strong></th>
-            </tr>
-        </thead>
-        
-        <tbody>
-            <tr>
-                @{
-                    for (int i = 0; i < Model.List.Count; i += 4)
-                    {
-                    <tr>
-                        <th scope="row">@((i / 4) + 1) </th>
-                        <td style="white-space:pre">@(Model.List[i])</td>
-                        <td style="white-space:pre">@(Model.List[i + 1])</td>
-                        <td style="white-space:pre">@(Model.List[i + 2])</td>
-                        <td style="white-space:pre">@(Model.List[i + 3])</td>
-                    </tr>
-                }
-                }
-               </tr>
+            <thead>
+                <tr>
+                    <th scope="col"><strong style="padding-right: 100px">           </strong></th>
+                    <th scope="col"><strong style="padding-right: 100px">Clinic Name</strong></th>
+                    <th scope="col"><strong style="padding-right: 100px">Province</strong></th>
+                    <th scope="col"><strong style="padding-right: 100px">Date</strong></th>
+                    <th scope="col"><strong style="padding-right: 100px">Device</strong></th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                    @{
+                        for (int i = 0; i < Model.List.Count; i += 4)
+                        {
+                            <tr>
+                                <th scope="row">@((i / 4) + 1) </th>
+                                <td style="white-space:pre">@(Model.List[i])</td>
+                                <td style="white-space:pre">@(Model.List[i + 1])</td>
+                                <td style="white-space:pre">@(Model.List[i + 2])</td>
+                                <td style="white-space:pre">@(Model.List[i + 3])</td>
+                            </tr>
+                        }
+                    }
+
             </tbody>
-    </table>
+        </table>
+    </div>
+    
 </div>
