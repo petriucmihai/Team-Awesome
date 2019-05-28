@@ -61,6 +61,9 @@ namespace JaunDetect.Backend_Data
             myData.Timeframe = repository.GetTimeframe();
             myData.TimeOption = repository.GetTimeOption();
             myData.TimeOptionString = repository.GetTimeOptionString();
+            myData.ClinicOption = repository.GetClinicOption();
+            myData.ClinicOptionString = repository.GetClinicOptionString();
+            myData.ClinicOptionsList = repository.GetClinicOptionsList();
 
             return myData;
         }
