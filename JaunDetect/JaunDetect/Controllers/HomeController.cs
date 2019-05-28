@@ -377,6 +377,24 @@ namespace JaunDetect.Controllers
             return null;
         }
 
+        public ActionResult GetClinicBilirubinLevelChart()
+        {
+            var homeModel = new HomeChartModel();
+            homeModel = DataBackend.Instance.GetHomeData();
+            int num = homeModel.ClinicOption;
+
+            var key = new Chart(width: 300, height: 400)
+                .AddSeries(
+                    chartType: "column",
+                    xValue: homeModel.ConvertDataToString(homeModel.BilirubinLevels),
+                    yValues: homeModel.BilirubinData[num])
+                .SetXAxis("Clinic " + homeModel.Clinics[num])
+                .SetYAxis("Bilirubin Levels (%)")
+                .Write();
+
+            return null;
+        }
+
         public ActionResult GetClinic0BilirubinLevelChart()
         {
             var homeModel = new HomeChartModel();
