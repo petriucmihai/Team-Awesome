@@ -101,6 +101,11 @@ namespace JaunDetect.Backend_Data
             return repository.UpdateTimeOptionString(timeOptionString);
         }
 
+        public bool UpdateClinicOptionString(string clinicOptionString)
+        {
+            return repository.UpdateClinicOptionString(clinicOptionString);
+        }
+
         public bool UpdateCrashTimeOptionString(string timeOptionString)
         {
             return repository.UpdateCrashTimeOptionString(timeOptionString);

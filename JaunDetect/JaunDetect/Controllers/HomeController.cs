@@ -497,6 +497,23 @@ namespace JaunDetect.Controllers
             return View("Resources", model);
         }
 
+        [HttpPost]
+        public ActionResult UpdateHomeChartClinicOption(HomeChartModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                DataBackend.Instance.UpdateClinicOptionString(model.ClinicOptionString);
+
+                var homeModel = new HomeChartModel();
+
+                homeModel = DataBackend.Instance.GetHomeData();
+
+                return View("Index", homeModel);
+            }
+
+            return View("Resources", model);
+        }
+
 
 
         #endregion
