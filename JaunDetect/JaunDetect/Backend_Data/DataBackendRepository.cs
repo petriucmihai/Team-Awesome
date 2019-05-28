@@ -73,7 +73,10 @@ namespace JaunDetect.Backend_Data
             homeData.Timeframe[1] = unit.GetWeeks(5);
             homeData.Timeframe[2] = unit.GetYears(5);
 
+            homeData.ClinicOption = 0;
+
             CreateTimeframeSelectList();
+            CreateClinicSelectList();
         }
 
         public void InitializeCrashReport()
@@ -262,60 +265,7 @@ namespace JaunDetect.Backend_Data
             return true;
         }
 
-        private void refreshData()
-        {
-            RandomDataGenerator random = new RandomDataGenerator();
-            int[][] data = new int[homeData.BilirubinLevels.Length][];
-            for (int i = 0; i < 5; i++)
-            {
-                data[i] = random.GetRandomDatapoint(5, 50, 200);
-            }
-
-            homeData.BilirubinData = data;
-        }
-
-        private void CreateTimeframeSelectList()
-        {
-            SelectListItem listItem1 = new SelectListItem
-            {
-                Text = "Months",
-                Value = "0"
-            };
-            SelectListItem listItem2 = new SelectListItem
-            {
-                Text = "Weeks",
-                Value = "1"
-            };
-            SelectListItem listItem3 = new SelectListItem
-            {
-                Text = "Years",
-                Value = "2"
-            };
-
-            List<SelectListItem> items = new List<SelectListItem>();
-            items.Add(listItem1);
-            items.Add(listItem2);
-            items.Add(listItem3);
-
-            homeData.TimeOptionsList = items;
-            crashesData.OptionsList = items;
-
-        }
-
-        private void CreateClinicSelectList()
-        {
-            List<SelectListItem> items = new List<SelectListItem>();
-            for (int i = 0; i < homeData.Clinics.Count(); i++)
-            {
-                SelectListItem listItem = new SelectListItem
-                {
-                    Text = homeData.Clinics[i],
-                    Value = i.ToString()
-                };
-                items.Add(listItem);
-            }
-            homeData.ClinicOptionsList = items;
-        }
+        
 
         #endregion
 
@@ -373,6 +323,63 @@ namespace JaunDetect.Backend_Data
         {
             RandomDataGenerator random = new RandomDataGenerator();
             crashesData.CrashesByTime = random.GetRandomDatapoint(9, 0, 30);
+        }
+        #endregion
+
+        #region Private methods
+        private void refreshData()
+        {
+            RandomDataGenerator random = new RandomDataGenerator();
+            int[][] data = new int[homeData.BilirubinLevels.Length][];
+            for (int i = 0; i < 5; i++)
+            {
+                data[i] = random.GetRandomDatapoint(5, 50, 200);
+            }
+
+            homeData.BilirubinData = data;
+        }
+
+        private void CreateTimeframeSelectList()
+        {
+            SelectListItem listItem1 = new SelectListItem
+            {
+                Text = "Months",
+                Value = "0"
+            };
+            SelectListItem listItem2 = new SelectListItem
+            {
+                Text = "Weeks",
+                Value = "1"
+            };
+            SelectListItem listItem3 = new SelectListItem
+            {
+                Text = "Years",
+                Value = "2"
+            };
+
+            List<SelectListItem> items = new List<SelectListItem>();
+            items.Add(listItem1);
+            items.Add(listItem2);
+            items.Add(listItem3);
+
+            homeData.TimeOptionsList = items;
+            crashesData.OptionsList = items;
+
+        }
+
+        private void CreateClinicSelectList()
+        {
+            List<SelectListItem> items = new List<SelectListItem>();
+            for (int i = 0; i < homeData.Clinics.Count(); i++)
+            {
+                SelectListItem listItem = new SelectListItem
+                {
+                    Text = homeData.Clinics[i],
+                    Value = i.ToString()
+                };
+                items.Add(listItem);
+            }
+            homeData.ClinicOptionsList = items;
         }
         #endregion
     }
