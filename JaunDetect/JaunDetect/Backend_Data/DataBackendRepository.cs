@@ -239,6 +239,29 @@ namespace JaunDetect.Backend_Data
             return true;
         }
 
+        public string GetClinicOptionString()
+        {
+            return homeData.ClinicOptionString;
+        }
+
+        public int GetClinicOption()
+        {
+            return homeData.ClinicOption;
+        }
+
+        public List<SelectListItem> GetClinicOptionsList()
+        {
+            return homeData.ClinicOptionsList;
+        }
+
+        public bool UpdateClinicOptionString(string clinicOptionString)
+        {
+            homeData.ClinicOptionString = clinicOptionString;
+            homeData.ClinicOption = Array.IndexOf(homeData.Clinics, clinicOptionString);
+            //refreshData();
+            return true;
+        }
+
         private void refreshData()
         {
             RandomDataGenerator random = new RandomDataGenerator();

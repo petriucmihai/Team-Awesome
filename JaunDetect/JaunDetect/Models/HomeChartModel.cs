@@ -23,7 +23,7 @@ namespace JaunDetect.Models
 
         public List<SelectListItem> TimeOptionsList { get; set; }
         
-        public int ClinicOptionString { get; set; }
+        public string ClinicOptionString { get; set; }
 
         public int ClinicOption { get; set; }
 

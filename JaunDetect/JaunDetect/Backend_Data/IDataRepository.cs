@@ -52,6 +52,14 @@ namespace JaunDetect.Backend_Data
         List<SelectListItem> GetOptionsList();
 
         bool UpdateTimeOptionString(string timeOptionString);
+
+        string GetClinicOptionString();
+
+        int GetClinicOption();
+
+        List<SelectListItem> GetClinicOptionsList();
+
+        bool UpdateClinicOptionString(string timeOptionString);
         #endregion
 
         #region Crash charts backend methods
