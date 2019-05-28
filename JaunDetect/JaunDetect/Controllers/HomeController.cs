@@ -6,6 +6,7 @@ using System.Web.Helpers;
 using System.Web.Mvc;
 using JaunDetect.Models;
 using JaunDetect.Backend_Data;
+using Newtonsoft.Json;
 
 namespace JaunDetect.Controllers
 {
@@ -38,8 +39,8 @@ namespace JaunDetect.Controllers
             var resourceModel = new ResourcesChartModel();
 
             resourceModel = DataBackend.Instance.GetResources();
-            ViewBag.MONTHS = resourceModel.Months.ToList();
-            ViewBag.TESTSTRIPS = resourceModel.TestStripUsages.ToList();
+            ViewBag.MONTHS = JsonConvert.SerializeObject(resourceModel.Months);
+            ViewBag.TESTSTRIPS = JsonConvert.SerializeObject(resourceModel.TestStripUsages);
             return View(resourceModel);
         }
 
