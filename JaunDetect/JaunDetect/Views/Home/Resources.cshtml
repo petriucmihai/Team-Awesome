@@ -1,8 +1,10 @@
 ﻿@using JaunDetect.Models;
+@using Newtonsoft.Json;
 @model ResourcesChartModel
 
-<head>
 
+<head>
+    <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/Chart.min.js"></script>
 </head>
 
@@ -132,42 +134,51 @@
 
     </div>
 
-    <div id="chart_container">
-        <canvas id="bar_chart">
 
-        </canvas>
+    <canvas id="myChart" width="400" height="400"></canvas>
+    <script type="text/javascript">
+        //var months = @Html.Raw(JsonConvert.SerializeObject(ViewBag.MONTHS));
+        //var strips = @Html.Raw(JsonConvert.SerializeObject(ViewBag.TESTSTRIPS));
+        /*
+        var data = {
+            labels: months,
+            datasets: [{
+                borderWidth: 2,
+                data: strips
+            }]
+        };
+        window.onload = function () {
+            var ctx = document.getElementById("myChart").getContext("2d");
+            window.myBar = new Chart(ctx,
+                {
+                    type: 'column',
+                    data: data,
+                    options:
+                    {
+                        title:
+                        {
+                            display: true,
+                            text: "Test"
+                        },
+                        responsive: true,
+                        maintainAspectRatio: true
+                    }
+                });
 
-    </div>
+        } */
 
-    <script>
-        var months = @Html.Raw(Json.Encode(ViewBag.MONTHS));
-        var strips = @Html.Raw(Json.Encode(ViewBag.TESTSTRIPS));
-
-        var ctx = document.getElementById("BarChart").getContext("2d");
-        var bc = new Chart(ctx, {
+        var ctx = document.getElementById("myChart");
+        var myChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: months,
-                datasets: [{
-                    label: "Bar Chart Test",
-                    data: strips,
-                    borderWidth: 2
-                }]
-            },
-            options: {
-                maintainAspectRatio: false,
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero:true
-                        }
-                    }]
-                }
-
+                labels: @Model.Months,
+                datasets: [
+                    {data: @Model.TestStripUsages}
+                ]
             }
         });
 
     </script>
 
 
-</body>    
+</body>
