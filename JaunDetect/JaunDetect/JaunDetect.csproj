@@ -130,7 +130,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\PhotoChartModel.cs" />
-    <Compile Include="Models\QueryResultViewModelTODELETE.cs" />
     <Compile Include="Models\HomeChartModel.cs" />
     <Compile Include="Models\QueryViewModel.cs" />
     <Compile Include="Models\CrashChartModel.cs" />
