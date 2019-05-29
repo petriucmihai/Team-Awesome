@@ -1,12 +1,6 @@
 ﻿@using JaunDetect.Models;
-@using Newtonsoft.Json;
 @model ResourcesChartModel
 
-
-<head>
-    <script src="~/Scripts/bootstrap.min.js"></script>
-    <script src="~/Scripts/Chart.min.js"></script>
-</head>
 
 <body>
     <div class="row">
@@ -133,52 +127,5 @@
         </div>
 
     </div>
-
-
-    <canvas id="myChart" width="400" height="400"></canvas>
-    <script type="text/javascript">
-        //var months = @Html.Raw(JsonConvert.SerializeObject(ViewBag.MONTHS));
-        //var strips = @Html.Raw(JsonConvert.SerializeObject(ViewBag.TESTSTRIPS));
-        /*
-        var data = {
-            labels: months,
-            datasets: [{
-                borderWidth: 2,
-                data: strips
-            }]
-        };
-        window.onload = function () {
-            var ctx = document.getElementById("myChart").getContext("2d");
-            window.myBar = new Chart(ctx,
-                {
-                    type: 'column',
-                    data: data,
-                    options:
-                    {
-                        title:
-                        {
-                            display: true,
-                            text: "Test"
-                        },
-                        responsive: true,
-                        maintainAspectRatio: true
-                    }
-                });
-
-        } */
-
-        var ctx = document.getElementById("myChart");
-        var myChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: @Model.Months,
-                datasets: [
-                    {data: @Model.TestStripUsages}
-                ]
-            }
-        });
-
-    </script>
-
 
 </body>
