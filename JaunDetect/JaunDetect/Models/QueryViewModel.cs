@@ -18,6 +18,10 @@ namespace JaunDetect.Models
         public string Province { get; set; }
         public string Date { get; set; }
         public string Device { get; set; }
+        public string BiliConcentrations { get; set; }
+        public string DeviceOS { get; set; }
+        public bool PhotoUpload { get; set; }
+
         public List<QueryRecord> RecordList { get; set; }
 
         public QueryViewModel()

@@ -140,148 +140,149 @@ namespace JaunDetect.Backend_Data
         
                 public List<QueryRecord> GetRecordList()
                 {
-                    List<QueryRecord> list = new List<QueryRecord>();
+                    List<QueryRecord> result = new List<QueryRecord>();
 
-                    for (int i = 0; i < ROWS; i++)
-                    {
+                foreach (QueryRecord record in model.RecordList)
+                
+                {
                         // if no query is entered, the whole list is presented
-                        if (String.Equals(model.UserInputClinic, null) && String.Equals(model.UserInputProvince, null) &&
+                       /* if (String.Equals(model.UserInputClinic, null) && String.Equals(model.UserInputProvince, null) &&
                             String.Equals(model.UserInputDate, null) && String.Equals(model.UserInputDevice, null))
                         {
                             {
-                        model.RecordList = InitializeList();
+                            result.Add(record);
                             }
                         }
-
+                        */
                         // if only the clinic matches, that query is returned
-                        if (String.Equals(clinics[i], model.UserInputClinic) && String.Equals(null, model.UserInputProvince)
+                        if (String.Equals(record.Clinic, model.UserInputClinic) && String.Equals(null, model.UserInputProvince)
                             && String.Equals(null, model.UserInputDate) && String.Equals(null, model.UserInputDevice))
                         {
                             {
-                        model.RecordList = InitializeList();
-                            }
+                        result.Add(record);
+                    }
                         }
 
                         // if only the province matches, that query is returned 
-                        if (String.Equals(null, model.UserInputClinic) && String.Equals(provinces[i], model.UserInputProvince)
+                        if (String.Equals(null, model.UserInputClinic) && String.Equals(record.Province, model.UserInputProvince)
                             && String.Equals(null, model.UserInputDate) && String.Equals(null, model.UserInputDevice))
                         {
                             {
-                        model.RecordList = InitializeList();
-                            }   
+                        result.Add(record);
+                    }   
                         }
 
                         // if only the date matches, that query is returned
                         if (String.Equals(null, model.UserInputClinic) && String.Equals(null, model.UserInputProvince)
-                            && String.Equals(dates[i], model.UserInputDate) && String.Equals(null, model.UserInputDevice))
+                            && String.Equals(record.Date, model.UserInputDate) && String.Equals(null, model.UserInputDevice))
                         {
                             {
-                            model.RecordList = InitializeList();
-                            }
+                        result.Add(record);
+                    }
                         }
 
                         //if only the device matches, that query is returned 
                         if (String.Equals(null, model.UserInputClinic) && String.Equals(null, model.UserInputProvince)
-                             && String.Equals(null, model.UserInputDate) && String.Equals(devices[i], model.UserInputDevice))
+                             && String.Equals(null, model.UserInputDate) && String.Equals(record.Device, model.UserInputDevice))
                         {
                             {
-                        model.RecordList = InitializeList();
-                            }
+                        result.Add(record);
+                    }
                         }
 
-                        if (String.Equals(clinics[i], model.UserInputClinic) && String.Equals(provinces[i], model.UserInputProvince)
+                        if (String.Equals(record.Clinic, model.UserInputClinic) && String.Equals(record.Province, model.UserInputProvince)
                             && String.Equals(null, model.UserInputDate) && String.Equals(null, model.UserInputDevice))
                         {
                             {
-                        model.RecordList = InitializeList();
-                            }
+                        result.Add(record);
+                    }
                         }
 
-                        if (String.Equals(clinics[i], model.UserInputClinic) && String.Equals(null, model.UserInputProvince)
-                            && String.Equals(dates[i], model.UserInputDate) && String.Equals(null, model.UserInputDevice))
+                        if (String.Equals(record.Clinic, model.UserInputClinic) && String.Equals(null, model.UserInputProvince)
+                            && String.Equals(record.Date, model.UserInputDate) && String.Equals(null, model.UserInputDevice))
                         {
                             {
-                        model.RecordList = InitializeList();
-                            }
+                        result.Add(record);
+                    }
                         }
 
-                        if (String.Equals(clinics[i], model.UserInputClinic) && String.Equals(null, model.UserInputProvince)
-                            && String.Equals(null, model.UserInputDate) && String.Equals(devices[i], model.UserInputDevice))
+                        if (String.Equals(record.Clinic, model.UserInputClinic) && String.Equals(null, model.UserInputProvince)
+                            && String.Equals(null, model.UserInputDate) && String.Equals(record.Device, model.UserInputDevice))
                         {
                             {
-                        model.RecordList = InitializeList();
-                            }
+                        result.Add(record);
+                    }
                         }
 
-                        if (String.Equals(null, model.UserInputClinic) && String.Equals(provinces[i], model.UserInputProvince)
-                            && String.Equals(dates[i], model.UserInputDate) && String.Equals(null, model.UserInputDevice))
+                        if (String.Equals(null, model.UserInputClinic) && String.Equals(record.Province, model.UserInputProvince)
+                            && String.Equals(record.Date, model.UserInputDate) && String.Equals(null, model.UserInputDevice))
                         {
                             {
-                        model.RecordList = InitializeList();
-                            }
+                        result.Add(record);
+                    }
                         }
 
-                        if (String.Equals(null, model.UserInputClinic) && String.Equals(provinces[i], model.UserInputProvince)
-                            && String.Equals(null, model.UserInputDate) && String.Equals(devices[i], model.UserInputDevice))
+                        if (String.Equals(null, model.UserInputClinic) && String.Equals(record.Province, model.UserInputProvince)
+                            && String.Equals(null, model.UserInputDate) && String.Equals(record.Device, model.UserInputDevice))
                         {
                             {
-                        model.RecordList = InitializeList();
-                            }
+                        result.Add(record);
+                    }
                         }
 
                         if (String.Equals(null, model.UserInputClinic) && String.Equals(null, model.UserInputProvince)
-                             && String.Equals(dates[i], model.UserInputDate) && String.Equals(devices[i], model.UserInputDevice))
+                             && String.Equals(record.Date, model.UserInputDate) && String.Equals(record.Device, model.UserInputDevice))
                         {
                             {
-                        model.RecordList = InitializeList();
-                            }
+                        result.Add(record);
+                    }
                         }
 
-                        if (String.Equals(null, model.UserInputClinic) && String.Equals(provinces[i], model.UserInputProvince)
-                             && String.Equals(dates[i], model.UserInputDate) && String.Equals(devices[i], model.UserInputDevice))
+                        if (String.Equals(null, model.UserInputClinic) && String.Equals(record.Province, model.UserInputProvince)
+                             && String.Equals(record.Date, model.UserInputDate) && String.Equals(record.Device, model.UserInputDevice))
                         {
                             {
-                        model.RecordList = InitializeList();
-                            }
+                        result.Add(record);
+                    }
                         }
 
-                        if (String.Equals(clinics[i], model.UserInputClinic) && String.Equals(null, model.UserInputProvince)
-                            && String.Equals(dates[i], model.UserInputDate) && String.Equals(devices[i], model.UserInputDevice))
+                        if (String.Equals(record.Clinic, model.UserInputClinic) && String.Equals(null, model.UserInputProvince)
+                            && String.Equals(record.Date, model.UserInputDate) && String.Equals(record.Device, model.UserInputDevice))
                         {
                             {
-                        model.RecordList = InitializeList();
-                            }
+                        result.Add(record);
+                    }
                         }
 
-                        if (String.Equals(clinics[i], model.UserInputClinic) && String.Equals(provinces[i], model.UserInputProvince)
-                            && String.Equals(null, model.UserInputDate) && String.Equals(devices[i], model.UserInputDevice))
+                        if (String.Equals(record.Clinic, model.UserInputClinic) && String.Equals(record.Province, model.UserInputProvince)
+                            && String.Equals(null, model.UserInputDate) && String.Equals(record.Device, model.UserInputDevice))
                         {
                             {
-                        model.RecordList = InitializeList();
-                            }
+                        result.Add(record);
+                    }
                         }
 
-                        if (String.Equals(clinics[i], model.UserInputClinic) && String.Equals(provinces[i], model.UserInputProvince)
-                            && String.Equals(dates[i], model.UserInputDate) && String.Equals(null, model.UserInputDevice))
+                        if (String.Equals(record.Clinic, model.UserInputClinic) && String.Equals(record.Province, model.UserInputProvince)
+                            && String.Equals(record.Date, model.UserInputDate) && String.Equals(null, model.UserInputDevice))
                         {
                             {
-                        model.RecordList = InitializeList();
-                            }
+                        result.Add(record);
+                    }
                         }
 
 
-                        if (String.Equals(clinics[i], model.UserInputClinic) && String.Equals(provinces[i], model.UserInputProvince)
-                            && String.Equals(dates[i], model.UserInputDate) && String.Equals(devices[i], model.UserInputDevice))
+                        if (String.Equals(record.Clinic, model.UserInputClinic) && String.Equals(record.Province, model.UserInputProvince)
+                            && String.Equals(record.Date, model.UserInputDate) && String.Equals(record.Device, model.UserInputDevice))
                         {
                             {
-                        model.RecordList = InitializeList();
-                            }
+                        result.Add(record);
+                    }
                         }
 
 
 
                     }
-                    return list;
+                    return result;
                 }
             }
           
