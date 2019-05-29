@@ -80,21 +80,28 @@
                     <th scope="col"><strong style="padding-right: 100px">Province</strong></th>
                     <th scope="col"><strong style="padding-right: 100px">Date</strong></th>
                     <th scope="col"><strong style="padding-right: 100px">Device</strong></th>
+                    <th scope="col"><strong style="padding-right: 100px">Bilirubin Concentration</strong></th>
+                    <th scope="col"><strong style="padding-right: 100px">Device OS</strong></th>
+                    <th scope="col"><strong style="padding-right: 100px">Photo Upload</strong></th>
+
                 </tr>
             </thead>
 
             <tbody>
 
                     @{
-                        for (int i = 0; i < Model.List.Count; i += 4)
+                        for (int i = 0; i < Model.RecordList.Count; i++)
                         {
-                            <tr>
-                                <th scope="row">@((i / 4) + 1) </th>
-                                <td style="white-space:pre">@(Model.List[i])</td>
-                                <td style="white-space:pre">@(Model.List[i + 1])</td>
-                                <td style="white-space:pre">@(Model.List[i + 2])</td>
-                                <td style="white-space:pre">@(Model.List[i + 3])</td>
-                            </tr>
+                <tr>
+                    <th scope="row">@(i + 1) </th>
+                    <td style="white-space:pre">@(Model.RecordList[i].Clinic)</td>
+                    <td style="white-space:pre">@(Model.RecordList[i].Province)</td>
+                    <td style="white-space:pre">@(Model.RecordList[i].Date)</td>
+                    <td style="white-space:pre">@(Model.RecordList[i].Device)</td>
+                    <td style="white-space:pre">@(Model.RecordList[i].BiliConcentration)</td>
+                    <td style="white-space:pre">@(Model.RecordList[i].DeviceOS)</td>
+                    <td style="white-space:pre">@(Model.RecordList[i].PhotoUpload)</td>
+                </tr>
                         }
                     }
 

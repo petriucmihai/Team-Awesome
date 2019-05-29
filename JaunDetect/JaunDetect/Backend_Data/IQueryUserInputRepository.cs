@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using JaunDetect.Models;
 
 namespace JaunDetect.Backend_Data
 {
@@ -18,7 +19,9 @@ namespace JaunDetect.Backend_Data
         bool UpdateProvince(string newData);
         bool UpdateDate(string newData);
         bool UpdateDevice(string newData);
-        List<String> GetList();
+        List<QueryRecord> InitializeList();
+        void GetSearchResults();
+        List<QueryRecord> GetRecordList();
         #endregion
 
     }

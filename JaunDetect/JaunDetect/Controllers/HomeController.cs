@@ -76,7 +76,7 @@ namespace JaunDetect.Controllers
 
                 var queryViewModel = new QueryViewModel();
 
-                queryViewModel = QueryBackend.Instance.GetQuery();
+                queryViewModel = QueryBackend.Instance.GetSearchResults();
 
                 return View("CustomQuery", queryViewModel);
             }
