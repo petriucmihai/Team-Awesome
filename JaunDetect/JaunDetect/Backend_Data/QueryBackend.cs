@@ -47,21 +47,7 @@ namespace JaunDetect.Backend_Data
             return model;
         }
 
-        /*
-        private IQuerySampleDataRepository queryResultRepository = new QuerySampleDataBackendRepository();
-        QueryResultViewModel data = new QueryResultViewModel();
 
-        public QueryResultViewModel GetResultQuery()
-        {
-            data.Clinic = queryResultRepository.GetClinic(0);
-            data.Province = queryResultRepository.GetProvince(0);
-            data.Date = queryResultRepository.GetDate(0);
-            data.Device = queryResultRepository.GetDevice(0);
-            data.List = queryResultRepository.GetList();
-              
-            return data;
-        }
-        */
         public bool UpdateUserInputClinic(string newData)
         {
             return queryRepository.UpdateClinic(newData);
