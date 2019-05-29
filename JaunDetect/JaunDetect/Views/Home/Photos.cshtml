@@ -37,39 +37,24 @@
                 <tbody>
                     <tr>
                         <td>
-                            <img id="test" src="~/Content/Images/placeholder2.jpg" alt="test" style="width:100%;max-width:200px">
-
-                            <!-- The Modal -->
-                            <div id="myModal" class="modal">
-                                <!-- The Close Button -->
-                                <span class="close">&times;</span>
-                                <!-- Modal Content (The Image) -->
-                                <img class="modal-content" id="img01">
-                                <!-- Modal Caption (Image Text) -->
-                                <div id="caption"></div>
+                            <a data-target="#modalIMG" data-toggle="modal" href="~/Content/Images/placeholder2.jpg" class="color-gray-darker td-hover-none">
+                                <div class="ba-0 tp-s">
+                                    <img alt="Placeholder" class="card-img-top" height="200" width="200" src="~/Content/Images/placeholder2.jpg">
+                                </div>
+                            </a>
+                            <div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade" id="modalIMG" role="dialog" tabindex="-1">
+                                <div class="modal-dialog modal-lg" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-body mb-0 p-0">
+                                            <img src="~/Content/Images/placeholder2.jpg" alt="" style="width:100%">
+                                        </div>
+                                        <div class="modal-footer">
+                                            
+                                            <button class="btn btn-outline-primary btn-rounded btn-md ml-4 text-center" data-dismiss="modal" type="button">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <script>
-                            // Get the modal
-                                var modal = document.getElementById("myModal");
-
-                             // Get the image and insert it inside the modal - use its "alt" text as a caption
-                                var img = document.getElementById("myImg");
-                                var modalImg = document.getElementById("img01");
-                                var captionText = document.getElementById("caption");
-                                img.onclick = function () {
-                                    modal.style.display = "block";
-                                    modalImg.src = this.src;
-                                    captionText.innerHTML = this.alt;
-                                    }
-
-                            // Get the <span> element that closes the modal
-                                var span = document.getElementsByClassName("close")[0];
-
-                            // When the user clicks on <span> (x), close the modal
-                                span.onclick = function () {
-                                modal.style.display = "none";
-                }
-                            </script>
                         </td>
                         <td><img src="~/Content/Images/placeholder.png" class="img-thumbnail" /></td>
                         <td><img src="~/Content/Images/placeholder.png" class="img-thumbnail" /></td>
