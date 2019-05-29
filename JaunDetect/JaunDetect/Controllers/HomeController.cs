@@ -106,7 +106,7 @@ namespace JaunDetect.Controllers
         {
             var usageModel = new UsageViewModel();
 
-            var key = new Chart(width: 600, height: 400)
+            var key = new Chart(width: 600, height: 400, theme: GetTheme())
                 .AddSeries(
                     chartType: "column",
                     xValue: usageModel.TimesOfDay,
@@ -122,7 +122,7 @@ namespace JaunDetect.Controllers
         {
             var usageModel = new UsageViewModel();
 
-            var key = new Chart(width: 600, height: 400)
+            var key = new Chart(width: 600, height: 400, theme: GetTheme())
                 .AddSeries(
                     chartType: "pie",
                     xValue: usageModel.DeviceTypes,
@@ -138,7 +138,7 @@ namespace JaunDetect.Controllers
         {
             var usageModel = new UsageViewModel();
 
-            var key = new Chart(width: 600, height: 400)
+            var key = new Chart(width: 600, height: 400, theme: GetTheme())
                 .AddSeries(
                     chartType: "line",
                     xValue: usageModel.Months,
@@ -154,7 +154,7 @@ namespace JaunDetect.Controllers
         {
             var usageModel = new UsageViewModel();
 
-            var key = new Chart(width: 600, height: 400)
+            var key = new Chart(width: 600, height: 400, theme: GetTheme())
                 .AddSeries(
                     chartType: "bar",
                     xValue: usageModel.Months,
@@ -176,7 +176,7 @@ namespace JaunDetect.Controllers
 
             resourceModel = DataBackend.Instance.GetResources();
 
-            var key = new Chart(width: 600, height: 400)
+            var key = new Chart(width: 600, height: 400, theme: GetTheme())
                 .AddSeries(
                     chartType: "bar",
                     xValue: resourceModel.Months,
@@ -194,7 +194,7 @@ namespace JaunDetect.Controllers
 
             resourceModel = DataBackend.Instance.GetResources();
 
-            var key = new Chart(width: 500, height: 400)
+            var key = new Chart(width: 500, height: 400, theme: GetTheme())
                 .AddSeries(
                     chartType: "pie",
                     xValue: resourceModel.Clinics,
@@ -212,7 +212,7 @@ namespace JaunDetect.Controllers
 
             resourceModel = DataBackend.Instance.GetResources();
 
-            var key = new Chart(width: 600, height: 400)
+            var key = new Chart(width: 600, height: 400, theme: GetTheme())
                 .AddSeries(
                     chartType: "column",
                     xValue: resourceModel.Clinics,
@@ -343,7 +343,7 @@ namespace JaunDetect.Controllers
             homeModel = DataBackend.Instance.GetHomeData();
             int num = homeModel.TimeOption;
 
-            var key = new Chart(width: 1100, height: 400)
+            var key = new Chart(width: 1100, height: 400, theme: GetTheme())
                 .AddSeries(
                     chartType: "column",
                     name: homeModel.Clinics[0],
