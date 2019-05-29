@@ -15,11 +15,11 @@ namespace JaunDetect.Backend_Data
         string[] clinics = {"Lagos First Clinic", "Lagos Second Clinic", "Onitsha Clinic", "Kano Clinic", "Ibadan Clinic",
             "Uyo Clinic", "Nsukka Clinic", "Abuja First Clinic", "Abuja Second Clinic", "Aba Clinic" };
         string[] provinces = { "Lagos", "Lagos", "Onitsha", "Kano", "Ibadan", "Uyo", "Nsukka", "Abuja", "Abuja", "Aba" };
-        string[] dates = { "1/1/2019", "2/2/2019", "3/3/2019", "4/4/2019", "5/5/2019", "6/6/2019", "7/7/2019", "8/8/2019", "9/9/2019", "10/10/2019" };
+        string[] dates = { "1/1/2019", "1/15/2019", "2/2/2019", "2/15/2019", "3/3/2019", "3/15/201", "4/4/2019", "4/21/2019", "5/5/2019", "5/30/2019", "6/6/2019", "6/15/2019",
+                            "7/7/2019", "7/28/2019", "8/8/2019", "8/21/2019", "9/9/2019", "10/10/2019", "11/1/2019", "12/31/2019" };
         string[] devices = { "Samsung Galaxy S8", "Samsung Galaxy Note", "Sony Xperia", "Sony Xperia", "Tecno Spark", "Motorola One", "Huawei Y9", "Huawei P10", "Huawei P10", "OnePlus 5" };
-        string[] biliConcentrations = { "5%", "10%", "15%", "20%", "25%", "5%", "10%", "15%", "20%", "25%" };
+        string[] biliConcentrations = { "5%", "10%", "15%", "20%", "25%"};
         string[] osList = { "9.0 Pie", "8.0 Oreo", "8.1 Oreo", "7.0 Nougat", "7.1 Nougat", "6.0 Marshmallow", "5.0 Lollipop", "4.4 KitKat", "4.1 Jelly Bean", "4.0 Ice Cream Sandwich" };
-        bool[] photoUpload = { true, true, false, true, false, false, false, true, true, false };
 
         QueryViewModel model = new QueryViewModel();
         public QueryUserInputBackendRepository()
@@ -111,7 +111,7 @@ namespace JaunDetect.Backend_Data
                 record.Province = provinces[rand.Next(10)];
                 record.Device = devices[rand.Next(10)];
                 record.Clinic = clinics[rand.Next(10)];
-                record.Date = dates[rand.Next(10)];
+                record.Date = dates[rand.Next(20)];
                 record.BiliConcentration = biliConcentrations[rand.Next(5)];
                 record.DeviceOS = osList[rand.Next(10)];
                 // random bool

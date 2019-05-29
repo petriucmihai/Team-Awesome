@@ -7,15 +7,7 @@
 
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="/resources/demos/style.css">
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script>
-        $(function () {
-            $("#datepicker").datepicker();
-        });
-    </script>
+  
 
     <style>
         table {
@@ -36,24 +28,6 @@
 </head>
 
 <body>
-
-    
-
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <div class="input-group date" id="datepicker">
-                        <input type="text" class="form-control form-date" />
-                        <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-calendar"></span>
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div class="row">
         <div class="col text-center">
             <div class="col-md-5 p-1 mx-auto my-3">
@@ -135,28 +109,28 @@
                     @{
                         for (int i = 0; i < Model.RecordList.Count; i++)
                         {
-                    <tr>
-                        <th scope="row">@(i + 1) </th>
-                        <td style="white-space:pre">@(Model.RecordList[i].Clinic)</td>
-                        <td style="white-space:pre">@(Model.RecordList[i].Province)</td>
-                        <td style="white-space:pre">@(Model.RecordList[i].Date)</td>
-                        <td style="white-space:pre">@(Model.RecordList[i].Device)</td>
-                        <td style="white-space:pre">@(Model.RecordList[i].BiliConcentration)</td>
-                        <td style="white-space:pre">@(Model.RecordList[i].DeviceOS)</td>
-                        @{ if (Model.RecordList[i].PhotoUpload)
-                            {
-                            <td>
-                                <i class="fa fa-check" style="font-size:24px;color:green"></i>
-                            </td>
-                            }
-                            else
-                            {
-                            <td>
-                                <i class="fa fa-close" style="font-size:24px;color:red"></i>
-                            </td>
-                            }
-                         }
-                    </tr>
+                            <tr>
+                                <th scope="row">@(i + 1) </th>
+                                <td style="white-space:pre">@(Model.RecordList[i].Clinic)</td>
+                                <td style="white-space:pre">@(Model.RecordList[i].Province)</td>
+                                <td style="white-space:pre">@(Model.RecordList[i].Date)</td>
+                                <td style="white-space:pre">@(Model.RecordList[i].Device)</td>
+                                <td style="white-space:pre">@(Model.RecordList[i].BiliConcentration)</td>
+                                <td style="white-space:pre">@(Model.RecordList[i].DeviceOS)</td>
+                                @{ if (Model.RecordList[i].PhotoUpload)
+                                    {
+                                        <td>
+                                            <i class="fa fa-check" style="font-size:24px;color:green"></i>
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td>
+                                            <i class="fa fa-close" style="font-size:24px;color:red"></i>
+                                        </td>
+                                    }
+                                }
+                            </tr>
                         }
                     }
 
