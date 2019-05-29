@@ -161,7 +161,9 @@
     <Content Include="Content\Images\photos1.png" />
     <Content Include="Content\Images\photos2.png" />
     <Content Include="Content\Images\placeholder.png" />
+    <Content Include="Content\Images\placeholder2.jpg" />
     <Content Include="Content\Images\widemap.jpg" />
+    <Content Include="Content\ModalImage.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />

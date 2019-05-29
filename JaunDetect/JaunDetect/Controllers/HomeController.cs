@@ -107,7 +107,7 @@ namespace JaunDetect.Controllers
         {
             var usageModel = new UsageViewModel();
 
-            var key = new Chart(width: 600, height: 400)
+            var key = new Chart(width: 600, height: 400, theme: GetTheme())
                 .AddSeries(
                     chartType: "column",
                     xValue: usageModel.TimesOfDay,
@@ -123,7 +123,7 @@ namespace JaunDetect.Controllers
         {
             var usageModel = new UsageViewModel();
 
-            var key = new Chart(width: 600, height: 400)
+            var key = new Chart(width: 600, height: 400, theme: GetTheme())
                 .AddSeries(
                     chartType: "pie",
                     xValue: usageModel.DeviceTypes,
@@ -139,7 +139,7 @@ namespace JaunDetect.Controllers
         {
             var usageModel = new UsageViewModel();
 
-            var key = new Chart(width: 600, height: 400)
+            var key = new Chart(width: 600, height: 400, theme: GetTheme())
                 .AddSeries(
                     chartType: "line",
                     xValue: usageModel.Months,
@@ -155,7 +155,7 @@ namespace JaunDetect.Controllers
         {
             var usageModel = new UsageViewModel();
 
-            var key = new Chart(width: 600, height: 400)
+            var key = new Chart(width: 600, height: 400, theme: GetTheme())
                 .AddSeries(
                     chartType: "bar",
                     xValue: usageModel.Months,
@@ -177,7 +177,7 @@ namespace JaunDetect.Controllers
 
             resourceModel = DataBackend.Instance.GetResources();
 
-            var key = new Chart(width: 600, height: 400)
+            var key = new Chart(width: 600, height: 400, theme: GetTheme())
                 .AddSeries(
                     chartType: "bar",
                     xValue: resourceModel.Months,
@@ -195,7 +195,7 @@ namespace JaunDetect.Controllers
 
             resourceModel = DataBackend.Instance.GetResources();
 
-            var key = new Chart(width: 500, height: 400)
+            var key = new Chart(width: 500, height: 400, theme: GetTheme())
                 .AddSeries(
                     chartType: "pie",
                     xValue: resourceModel.Clinics,
@@ -213,7 +213,7 @@ namespace JaunDetect.Controllers
 
             resourceModel = DataBackend.Instance.GetResources();
 
-            var key = new Chart(width: 600, height: 400)
+            var key = new Chart(width: 600, height: 400, theme: GetTheme())
                 .AddSeries(
                     chartType: "column",
                     xValue: resourceModel.Clinics,
@@ -344,7 +344,7 @@ namespace JaunDetect.Controllers
             homeModel = DataBackend.Instance.GetHomeData();
             int num = homeModel.TimeOption;
 
-            var key = new Chart(width: 1100, height: 400)
+            var key = new Chart(width: 1100, height: 400, theme: GetTheme())
                 .AddSeries(
                     chartType: "column",
                     name: homeModel.Clinics[0],
@@ -384,7 +384,7 @@ namespace JaunDetect.Controllers
             homeModel = DataBackend.Instance.GetHomeData();
             int num = homeModel.ClinicOption;
 
-            var key = new Chart(width: 400, height: 550)
+            var key = new Chart(width: 400, height: 550, theme: GetTheme())
                 .AddSeries(
                     chartType: "column",
                     xValue: homeModel.ConvertDataToString(homeModel.BilirubinLevels),
@@ -396,90 +396,6 @@ namespace JaunDetect.Controllers
             return null;
         }
 
-        public ActionResult GetClinic0BilirubinLevelChart()
-        {
-            var homeModel = new HomeChartModel();
-            homeModel = DataBackend.Instance.GetHomeData();
-
-            var key = new Chart(width: 300, height: 400)
-                .AddSeries(
-                    chartType: "pie",
-                    xValue: homeModel.ConvertDataToString(homeModel.BilirubinLevels),
-                    yValues: homeModel.BilirubinData[0])
-                .SetXAxis("Clinic " + homeModel.Clinics[0])
-                .SetYAxis("Bilirubin Levels (%)")
-                .Write();
-
-            return null;
-        }
-
-        public ActionResult GetClinic1BilirubinLevelChart()
-        {
-            var homeModel = new HomeChartModel();
-            homeModel = DataBackend.Instance.GetHomeData();
-
-            var key = new Chart(width: 300, height: 400)
-                .AddSeries(
-                    chartType: "pie",
-                    xValue: homeModel.ConvertDataToString(homeModel.BilirubinLevels),
-                    yValues: homeModel.BilirubinData[1])
-                .SetXAxis("Clinic " + homeModel.Clinics[1])
-                .SetYAxis("Bilirubin Levels (%)")
-                .Write();
-
-            return null;
-        }
-
-        public ActionResult GetClinic2BilirubinLevelChart()
-        {
-            var homeModel = new HomeChartModel();
-            homeModel = DataBackend.Instance.GetHomeData();
-
-            var key = new Chart(width: 300, height: 400)
-                .AddSeries(
-                    chartType: "pie",
-                    xValue: homeModel.ConvertDataToString(homeModel.BilirubinLevels),
-                    yValues: homeModel.BilirubinData[2])
-                .SetXAxis("Clinic " + homeModel.Clinics[2])
-                .SetYAxis("Bilirubin Levels (%)")
-                .Write();
-
-            return null;
-        }
-
-        public ActionResult GetClinic3BilirubinLevelChart()
-        {
-            var homeModel = new HomeChartModel();
-            homeModel = DataBackend.Instance.GetHomeData();
-
-            var key = new Chart(width: 300, height: 400)
-                .AddSeries(
-                    chartType: "pie",
-                    xValue: homeModel.ConvertDataToString(homeModel.BilirubinLevels),
-                    yValues: homeModel.BilirubinData[3])
-                .SetXAxis("Clinic " + homeModel.Clinics[3])
-                .SetYAxis("Bilirubin Levels (%)")
-                .Write();
-
-            return null;
-        }
-
-        public ActionResult GetClinic4BilirubinLevelChart()
-        {
-            var homeModel = new HomeChartModel();
-            homeModel = DataBackend.Instance.GetHomeData();
-
-            var key = new Chart(width: 300, height: 400)
-                .AddSeries(
-                    chartType: "pie",
-                    xValue: homeModel.ConvertDataToString(homeModel.BilirubinLevels),
-                    yValues: homeModel.BilirubinData[4])
-                .SetXAxis("Clinic " + homeModel.Clinics[4])
-                .SetYAxis("Bilirubin Levels (%)")
-                .Write();
-
-            return null;
-        }
 
         [HttpPost]
         public ActionResult UpdateHomeChartTimeOption(HomeChartModel model)
@@ -560,6 +476,27 @@ namespace JaunDetect.Controllers
             return null;
         }
         #endregion
+
+        private string GetTheme()
+        {
+            var myTheme = @"<Chart BorderlineDashStyle=""Solid"" BorderWidth=""1"">
+
+    <ChartAreas>
+         <ChartArea Name=""Default"" _Template_=""All""> 
+      <AxisY LineColor = ""Gainsboro""> 
+        <LabelStyle Font=""Helvetica Neue, 90px"" /> 
+        <MajorGrid LineColor = ""Gainsboro"" />
+      </AxisY> 
+<AxisX LineColor = ""Gainsboro"">
+        <MajorGrid LineColor = ""Gainsboro"" />
+        <LabelStyle Font=""Helvetica Neue, 90px"" /> 
+      </AxisX>
+    </ChartArea>
+    </ChartAreas>
+  </Chart>";
+
+            return myTheme;
+        }
 
     }
 
