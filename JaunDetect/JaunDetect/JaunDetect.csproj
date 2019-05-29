@@ -131,6 +131,7 @@
     </Compile>
     <Compile Include="Models\PhotoChartModel.cs" />
     <Compile Include="Models\HomeChartModel.cs" />
+    <Compile Include="Models\QueryRecord.cs" />
     <Compile Include="Models\QueryViewModel.cs" />
     <Compile Include="Models\CrashChartModel.cs" />
     <Compile Include="Models\ResourcesChartModel.cs" />
