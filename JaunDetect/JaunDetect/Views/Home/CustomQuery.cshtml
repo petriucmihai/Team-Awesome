@@ -4,109 +4,165 @@
 @{
     ViewBag.Title = "Query";
 }
-<div class="row">
-    <div class="col text-center">
-        <div class="col-md-5 p-1 mx-auto my-3">
-            <h2 class="display-6 font-weight-normal">Custom Query</h2>
-        </div>
-    </div>
-</div>
 
-<div class="row">
-    <div class="col text-left">
-        <button class="btn btn-primary" data-toggle="collapse" data-target="#query">Advanced Search</button>
-    </div>
-    <div class="col text-right">
-        <button class="btn btn-primary" data-toggle="collapse" data-target="#dataVis">Visualize Data</button>
-    </div>
-</div>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(function () {
+            $("#datepicker").datepicker();
+        });
+    </script>
 
-<div class="row mt-2">
-    <div id="query" class="col collapse">
-        @using (Html.BeginForm("QueryResults", "Home", FormMethod.Post))
-        {
-        <div class="btn-group row" role="group">
-            <div class="col btn-group-vertical">
-                <p><b> Clinic </b></p>
-                @Html.TextBoxFor(model => model.UserInputClinic, new { @style = "margin-top:-5px; margin-bottom:10px" })
-                <p><b> Province </b></p>
-                @Html.TextBoxFor(model => model.UserInputProvince, new { @style = "margin-top:-5px; margin-bottom:10px" })
-            </div>
-
-            <div class="col btn-group-vertical">
-                <p><b> Date </b></p>
-                @Html.TextBoxFor(model => model.UserInputDate, new { @style = "margin-top:-5px; margin-bottom:10px" })
-                <p><b> Device </b></p>
-                @Html.TextBoxFor(model => model.UserInputDevice, new { @style = "margin-top:-5px; margin-bottom:10px" })
-            </div>
-            
-        </div>
-            <p>
-                <button type="submit" class="btn btn-primary" align="right" width="48" height="48">Submit</button>
-            </p>
+    <style>
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            width: 100%;
+            border: 1px solid #ddd;
         }
-    </div>
-    <div id="dataVis" class="col collapse text-right">
-        <div class="btn-group row" role="group">
-            <div class="col btn-group-vertical">
-                <p><b> Visualization type? </b></p>
-                <p><b> Type of chart here </b></p>
 
+        th, td {
+            text-align: left;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2
+        }
+    </style>
+</head>
+
+<body>
+
+    
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <div class="input-group date" id="datepicker">
+                        <input type="text" class="form-control form-date" />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-@{
-    /**/
+    <div class="row">
+        <div class="col text-center">
+            <div class="col-md-5 p-1 mx-auto my-3">
+                <h2 class="display-6 font-weight-normal">Custom Query</h2>
+            </div>
+        </div>
+    </div>
 
-    ViewBag.Title = "QueryResults";
+    <div class="row">
+        <div class="col text-left">
+            <button class="btn btn-primary" data-toggle="collapse" data-target="#query">Advanced Search</button>
+        </div>
+        <div class="col text-right">
+            <button class="btn btn-primary" data-toggle="collapse" data-target="#dataVis">Visualize Data</button>
+        </div>
+    </div>
 
-}
+    <div class="row mt-2">
+        <div id="query" class="col collapse">
+            @using (Html.BeginForm("QueryResults", "Home", FormMethod.Post))
+            {
+                <div class="btn-group row" role="group">
+                    <div class="col btn-group-vertical">
+                        <p><b> Clinic </b></p>
+                        @Html.TextBoxFor(model => model.UserInputClinic, new { @style = "margin-top:-5 px; margin-bottom:5 px" })
+                        <p><b> Province </b></p>
+                        @Html.TextBoxFor(model => model.UserInputProvince, new { @style = "margin-top:-5 px; margin-bottom:5 px" })
+                    </div>
 
-<div class="row border border-dark rounded" width="100%">
-    <div class="col">
-        <table>
-            <thead>
-                <tr>
-                    <th scope="row" style="margin-bottom: 10px">Query Results</th>
-                </tr>
-            </thead>
+                    <div class="col btn-group-vertical">
+                        <p><b> Start Date </b></p>
+                        @Html.TextBoxFor(model => model.UserInputStartDate, new { @style = "margin-top:-5 px; margin-bottom:5 px" })
+                        <p><b> End Date </b></p>
+                        @Html.TextBoxFor(model => model.UserInputEndDate, new { @style = "margin-top:-5 px; margin-bottom:5 px" })
+                    </div>
 
-            <thead>
-                <tr>
-                    <th scope="col"><strong style="padding-right: 100px">           </strong></th>
-                    <th scope="col"><strong style="padding-right: 100px">Clinic Name</strong></th>
-                    <th scope="col"><strong style="padding-right: 100px">Province</strong></th>
-                    <th scope="col"><strong style="padding-right: 100px">Date</strong></th>
-                    <th scope="col"><strong style="padding-right: 100px">Device</strong></th>
-                    <th scope="col"><strong style="padding-right: 100px">Bilirubin Concentration</strong></th>
-                    <th scope="col"><strong style="padding-right: 100px">Device OS</strong></th>
-                    <th scope="col"><strong style="padding-right: 100px">Photo Upload</strong></th>
+                    <div class="col btn-group-vertical">
+                        <p><b> Device </b></p>
+                        @Html.TextBoxFor(model => model.UserInputDevice, new { @style = "margin-top:-5 px; margin-bottom:5 px" })
+                    </div>
 
-                </tr>
-            </thead>
+                </div>
+                <p>
+                    <button type="submit" class="btn btn-primary" align="right" width="48" height="48">Submit</button>
+                </p>
+            }
+        </div>
+        <div id="dataVis" class="col collapse text-right">
+            <div class="btn-group row" role="group">
+                <div class="col btn-group-vertical">
+                    <p><b> Visualization type? </b></p>
+                    <p><b> Type of chart here </b></p>
 
-            <tbody>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row border border-dark rounded">
+        <div class="col">
+            <table>
+                <thead>
+                    <tr>
+                        <th scope="col"><strong style="padding-right: 50px">           </strong></th>
+                        <th scope="col"><strong style="padding-right: 120px">Clinic Name</strong></th>
+                        <th scope="col"><strong style="padding-right: 75px">Province</strong></th>
+                        <th scope="col"><strong style="padding-right: 100px"> Date</strong></th>
+                        <th scope="col"><strong style="padding-right: 100px">Device</strong></th>
+                        <th scope="col"><strong style="padding-right: 50px">Bilirubin Concentration</strong></th>
+                        <th scope="col"><strong style="padding-right: 125px">Device OS</strong></th>
+                        <th scope="col"><strong style="padding-right: 750px">Photo Upload</strong></th>
+
+                    </tr>
+                </thead>
+
+                <tbody>
 
                     @{
                         for (int i = 0; i < Model.RecordList.Count; i++)
                         {
-                <tr>
-                    <th scope="row">@(i + 1) </th>
-                    <td style="white-space:pre">@(Model.RecordList[i].Clinic)</td>
-                    <td style="white-space:pre">@(Model.RecordList[i].Province)</td>
-                    <td style="white-space:pre">@(Model.RecordList[i].Date)</td>
-                    <td style="white-space:pre">@(Model.RecordList[i].Device)</td>
-                    <td style="white-space:pre">@(Model.RecordList[i].BiliConcentration)</td>
-                    <td style="white-space:pre">@(Model.RecordList[i].DeviceOS)</td>
-                    <td style="white-space:pre">@(Model.RecordList[i].PhotoUpload)</td>
-                </tr>
+                    <tr>
+                        <th scope="row">@(i + 1) </th>
+                        <td style="white-space:pre">@(Model.RecordList[i].Clinic)</td>
+                        <td style="white-space:pre">@(Model.RecordList[i].Province)</td>
+                        <td style="white-space:pre">@(Model.RecordList[i].Date)</td>
+                        <td style="white-space:pre">@(Model.RecordList[i].Device)</td>
+                        <td style="white-space:pre">@(Model.RecordList[i].BiliConcentration)</td>
+                        <td style="white-space:pre">@(Model.RecordList[i].DeviceOS)</td>
+                        @{ if (Model.RecordList[i].PhotoUpload)
+                            {
+                            <td>
+                                <i class="fa fa-check" style="font-size:24px;color:green"></i>
+                            </td>
+                            }
+                            else
+                            {
+                            <td>
+                                <i class="fa fa-close" style="font-size:24px;color:red"></i>
+                            </td>
+                            }
+                         }
+                    </tr>
                         }
                     }
 
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </div>
+
     </div>
-    
-</div>
+</body>
