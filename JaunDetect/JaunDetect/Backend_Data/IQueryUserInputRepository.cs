@@ -19,6 +19,7 @@ namespace JaunDetect.Backend_Data
         bool UpdateProvince(string newData);
         bool UpdateDate(string newData);
         bool UpdateDevice(string newData);
+        List<QueryRecord> InitializeList();
         void GetSearchResults();
         List<QueryRecord> GetRecordList();
         #endregion

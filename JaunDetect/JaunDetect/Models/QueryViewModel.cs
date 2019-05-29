@@ -27,7 +27,7 @@ namespace JaunDetect.Models
 
         public void Initialize()
         {
-
+            
         }
 
     }

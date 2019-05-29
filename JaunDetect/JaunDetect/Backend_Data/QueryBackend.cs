@@ -42,7 +42,7 @@ namespace JaunDetect.Backend_Data
             model.UserInputProvince = queryRepository.GetUserInputProvince();
             model.UserInputDate = queryRepository.GetUserInputDate();
             model.UserInputDevice = queryRepository.GetUserInputDevice();
-            model.RecordList = queryRepository.GetRecordList();
+            model.RecordList = queryRepository.InitializeList();
             return model;
         }
 
@@ -81,9 +81,10 @@ namespace JaunDetect.Backend_Data
             return queryRepository.UpdateDevice(newData);
         }
 
-        public void GetSearchResults()
+        public QueryViewModel GetSearchResults()
         {
-            queryRepository.GetSearchResults();
+            model.RecordList = queryRepository.GetRecordList(); 
+            return model;
         }
     }
 }
