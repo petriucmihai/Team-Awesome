@@ -12,12 +12,14 @@ namespace JaunDetect.Backend_Data
         #region
         string GetUserInputClinic();
         string GetUserInputProvince();
-        string GetUserInputDate();
+        string GetUserInputStartDate();
+        string GetUserInputEndDate();
         string GetUserInputDevice();
 
         bool UpdateClinic(string newData);
         bool UpdateProvince(string newData);
-        bool UpdateDate(string newData);
+        bool UpdateStartDate(string newData);
+        bool UpdateEndDate(string newData);
         bool UpdateDevice(string newData);
         List<QueryRecord> InitializeList();
         void GetSearchResults();

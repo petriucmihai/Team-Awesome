@@ -71,7 +71,8 @@ namespace JaunDetect.Controllers
             {
                 QueryBackend.Instance.UpdateUserInputClinic(model.UserInputClinic);
                 QueryBackend.Instance.UpdateUserInputProvince(model.UserInputProvince);
-                QueryBackend.Instance.UpdateUserInputDate(model.UserInputDate);
+                QueryBackend.Instance.UpdateUserInputStartDate(model.UserInputStartDate);
+                QueryBackend.Instance.UpdateUserInputEndDate(model.UserInputEndDate);
                 QueryBackend.Instance.UpdateUserInputDevice(model.UserInputDevice);
 
                 var queryViewModel = new QueryViewModel();

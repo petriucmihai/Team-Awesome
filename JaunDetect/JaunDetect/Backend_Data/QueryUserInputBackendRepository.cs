@@ -4,13 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Data;
 using JaunDetect.Models;
-using System.Text.RegularExpressions;
+using System.Globalization; 
 
 namespace JaunDetect.Backend_Data
 {
     public class QueryUserInputBackendRepository : IQueryUserInputRepository
     {
-        const int ROWS = 10;
+        const int ROWS = 100;
+        TextInfo ti = new CultureInfo("en-US", false).TextInfo;
         string[] clinics = {"Lagos First Clinic", "Lagos Second Clinic", "Onitsha Clinic", "Kano Clinic", "Ibadan Clinic",
             "Uyo Clinic", "Nsukka Clinic", "Abuja First Clinic", "Abuja Second Clinic", "Aba Clinic" };
         string[] provinces = { "Lagos", "Lagos", "Onitsha", "Kano", "Ibadan", "Uyo", "Nsukka", "Abuja", "Abuja", "Aba" };
@@ -31,7 +32,8 @@ namespace JaunDetect.Backend_Data
         {
             model.UserInputClinic = "";
             model.UserInputProvince = "";
-            model.UserInputDate = "";
+            model.UserInputStartDate = "";
+            model.UserInputEndDate = "";
             model.UserInputDevice = "";
             model.Clinic = clinics[i];
             model.Province = provinces[i];
@@ -50,9 +52,14 @@ namespace JaunDetect.Backend_Data
             return model.UserInputProvince;
         }
 
-        public string GetUserInputDate()
+        public string GetUserInputStartDate()
         {
-            return model.UserInputDate;
+            return model.UserInputStartDate;
+        }
+
+        public string GetUserInputEndDate()
+        {
+            return model.UserInputEndDate;
         }
 
         public string GetUserInputDevice()
@@ -73,9 +80,15 @@ namespace JaunDetect.Backend_Data
             return true;
         }
 
-        public bool UpdateDate(string newData)
+        public bool UpdateStartDate(string newData)
         {
-            model.UserInputDate = newData;
+            model.UserInputStartDate = newData;
+            return true;
+        }
+
+        public bool UpdateEndDate(string newData)
+        {
+            model.UserInputEndDate = newData;
             return true;
         }
 
@@ -114,7 +127,7 @@ namespace JaunDetect.Backend_Data
         {
             List<QueryRecord> result = new List<QueryRecord>();
 
-            if (model.UserInputClinic == null && model.UserInputDate == null && model.UserInputProvince == null && model.UserInputDevice == null)
+            if (model.UserInputClinic == null && model.UserInputStartDate == null && model.UserInputProvince == null && model.UserInputDevice == null)
             {
                 model.RecordList = InitializeList();
             }
@@ -123,7 +136,7 @@ namespace JaunDetect.Backend_Data
 
                 foreach (QueryRecord record in model.RecordList)
                 {
-                    if (string.Equals(model.UserInputClinic, record.Clinic) || string.Equals(model.UserInputDate, record.Date) || string.Equals(model.UserInputProvince, record.Province)
+                    if (string.Equals(model.UserInputClinic, record.Clinic) || string.Equals(model.UserInputStartDate, record.Date) || string.Equals(model.UserInputProvince, record.Province)
                         || string.Equals(model.UserInputDevice, record.Device))
                     {
                         result.Add(record);
@@ -136,9 +149,76 @@ namespace JaunDetect.Backend_Data
 
         }
 
+        private bool ClinicMatch(QueryRecord singleRecord)
+        {
+            if (!string.IsNullOrWhiteSpace(model.UserInputClinic))
+                return String.Equals(singleRecord.Clinic, model.UserInputClinic) || singleRecord.Clinic.Contains(model.UserInputClinic) ||
+               singleRecord.Clinic.Contains(ti.ToTitleCase(model.UserInputClinic));
+            else
+                return false; 
+        }
 
-        
-                public List<QueryRecord> GetRecordList()
+        private bool ProvinceMatch(QueryRecord singleRecord)
+        {
+            if (!string.IsNullOrWhiteSpace(model.UserInputProvince))
+                return String.Equals(singleRecord.Province, model.UserInputProvince) || singleRecord.Province.Contains(model.UserInputProvince) ||
+                 singleRecord.Province.Contains(ti.ToTitleCase(model.UserInputProvince));
+            else
+                return false; 
+        }
+    
+        private bool DateMatch(QueryRecord singleRecord)
+        {
+            bool condition = false;
+            string[] formats = new string[] { "M-d-yyyy", "M/d/yyyy", "MM-dd-yyyy", "MM/dd/yyyy"};
+            if (!string.IsNullOrWhiteSpace(model.UserInputStartDate) || !string.IsNullOrWhiteSpace(model.UserInputEndDate))
+            {
+                try
+                {
+                    if (DateTime.ParseExact(singleRecord.Date, formats, System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None) >=
+               DateTime.ParseExact(model.UserInputStartDate, formats, System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None) &&
+               DateTime.ParseExact(singleRecord.Date, formats, System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None) <=
+               DateTime.ParseExact(model.UserInputEndDate, formats, System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None))
+                        condition = true;
+                }
+                catch { }; 
+            }    
+           
+            return condition;
+        }
+
+        private bool DeviceMatch(QueryRecord singleRecord)
+        {
+            if (!string.IsNullOrWhiteSpace(model.UserInputDevice))
+                return String.Equals(singleRecord.Device, model.UserInputDevice) || singleRecord.Device.Contains(model.UserInputDevice) ||
+                 singleRecord.Device.Contains(ti.ToTitleCase(model.UserInputDevice));
+            else
+                return false; 
+        }
+
+        private bool ClinicNull()
+        {
+            return String.Equals(model.UserInputClinic, null);
+        }
+
+        private bool ProvinceNull()
+        {
+            return String.Equals(model.UserInputProvince, null);
+        }
+
+        private bool DateNull()
+        {
+            return String.Equals(model.UserInputStartDate, null) || String.Equals(model.UserInputEndDate, null);
+        }
+
+        private bool DeviceNull()
+        {
+            return String.Equals(model.UserInputDevice, null);
+        }
+
+
+
+        public List<QueryRecord> GetRecordList()
                 {
                     List<QueryRecord> result = new List<QueryRecord>();
 
@@ -146,16 +226,35 @@ namespace JaunDetect.Backend_Data
                 
                 {
                         // if no query is entered, the whole list is presented
-                       /* if (String.Equals(model.UserInputClinic, null) && String.Equals(model.UserInputProvince, null) &&
-                            String.Equals(model.UserInputDate, null) && String.Equals(model.UserInputDevice, null))
-                        {
-                            {
+                        if (ClinicNull() && ProvinceNull() && DateNull() && DeviceNull())
                             result.Add(record);
-                            }
-                        }
-                        */
-                        // if only the clinic matches, that query is returned
-                        if (String.Equals(record.Clinic, model.UserInputClinic) && String.Equals(null, model.UserInputProvince)
+                  
+
+                        // if one query matches 
+                        if ((ClinicMatch(record) && ProvinceNull() && DateNull() && DeviceNull()) || (ProvinceMatch(record) && ClinicNull() && DateNull() && DeviceNull()) 
+                            || (DateMatch(record) && ProvinceNull() && ClinicNull() && DeviceNull()) || (DeviceMatch(record) && ProvinceNull() && DateNull() && ClinicNull()))
+                            result.Add(record);
+
+                        // if two queries match
+                        if ((ClinicMatch(record) && ProvinceMatch(record) && DateNull() && DeviceNull()) || (ClinicMatch(record) && ProvinceNull() && DateMatch(record) && DeviceNull())
+                            || (ClinicMatch(record) && ProvinceNull() && DateMatch(record) && DeviceNull()) || (ClinicMatch(record) && ProvinceNull() && DateNull() && DeviceMatch(record))
+                            || (ClinicNull() && ProvinceMatch(record) && DateMatch(record) && DeviceNull()) || (ClinicNull()) && ProvinceMatch(record) && DateNull() && DeviceMatch(record)
+                            || (ClinicNull() && ProvinceNull() && DateMatch(record) && DeviceMatch(record)))
+                            result.Add(record);
+
+                        // if three queries match
+                        if ((ClinicMatch(record) && ProvinceMatch(record) && DateMatch(record) && DeviceNull()) || (ClinicMatch(record) && ProvinceMatch(record) && DateNull() && DeviceMatch(record))
+                            || (ClinicMatch(record) && ProvinceNull() && DateMatch(record) && DeviceMatch(record)) || (ClinicNull() && ProvinceMatch(record) && DateMatch(record) && DeviceMatch(record)))
+                            result.Add(record);
+
+                        // if all queries match
+                        if ((ClinicMatch(record) && ProvinceMatch(record) && DateMatch(record) && DeviceMatch(record)))
+                            result.Add(record);
+
+                        /*
+
+                // if only the clinic matches, that query is returned
+                if (String.Equals(record.Clinic, model.UserInputClinic) && String.Equals(null, model.UserInputProvince)
                             && String.Equals(null, model.UserInputDate) && String.Equals(null, model.UserInputDevice))
                         {
                             {
@@ -279,10 +378,10 @@ namespace JaunDetect.Backend_Data
                     }
                         }
 
+    */
 
-
-                    }
-                    return result;
+            }
+            return result;
                 }
             }
           

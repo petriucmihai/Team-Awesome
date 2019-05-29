@@ -40,7 +40,8 @@ namespace JaunDetect.Backend_Data
         {     
             model.UserInputClinic = queryRepository.GetUserInputClinic();
             model.UserInputProvince = queryRepository.GetUserInputProvince();
-            model.UserInputDate = queryRepository.GetUserInputDate();
+            model.UserInputStartDate = queryRepository.GetUserInputStartDate();
+            model.UserInputEndDate = queryRepository.GetUserInputEndDate();
             model.UserInputDevice = queryRepository.GetUserInputDevice();
             model.RecordList = queryRepository.InitializeList();
             return model;
@@ -71,9 +72,14 @@ namespace JaunDetect.Backend_Data
             return queryRepository.UpdateProvince(newData);
         }
 
-        public bool UpdateUserInputDate(string newData)
+        public bool UpdateUserInputStartDate(string newData)
         {
-            return queryRepository.UpdateDate(newData);
+            return queryRepository.UpdateStartDate(newData);
+        }
+
+        public bool UpdateUserInputEndDate(string newData)
+        {
+            return queryRepository.UpdateEndDate(newData);
         }
 
         public bool UpdateUserInputDevice(string newData)
