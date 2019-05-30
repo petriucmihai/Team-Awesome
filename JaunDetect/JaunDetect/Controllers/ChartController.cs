@@ -38,7 +38,8 @@ namespace JaunDetect.Controllers
             return View("../Home/CustomQuery", model);
         }
 
-        public ActionResult GetLineChart()
+        #region Line Charts
+        public ActionResult GetDeviceLineChart()
         {
             var queryViewModel = new QueryViewModel();
 
@@ -47,20 +48,143 @@ namespace JaunDetect.Controllers
             BuildDataSets(queryViewModel);
 
             //test code for devices dataset
-            var distinctDevices = Devices.Distinct().ToArray();
-            var countOfDevices = GetNumberOfDistinctElements(distinctDevices, Devices);
+            var distinct = Devices.Distinct().ToArray();
+            var counts = GetNumberOfDistinctElements(distinct, Devices);
 
             var key = new Chart(width: 600, height: 400)
                 .AddSeries(
                     chartType: "line",
-                    xValue: distinctDevices,
-                    yValues: countOfDevices)
+                    xValue: distinct,
+                    yValues: counts)
                 .SetXAxis("Devices")
                 .SetYAxis("Number of Devices")
                 .Write();
 
             return null;
         }
+
+        public ActionResult GetBilirubinLineChart()
+        {
+            var queryViewModel = new QueryViewModel();
+
+            queryViewModel = QueryBackend.Instance.GetQuery();
+
+            BuildDataSets(queryViewModel);
+
+            //test code for devices dataset
+            var distinct = BiliConcentrations.Distinct().ToArray();
+            var counts = GetNumberOfDistinctElements(distinct, BiliConcentrations);
+
+            var key = new Chart(width: 600, height: 400)
+                .AddSeries(
+                    chartType: "line",
+                    xValue: distinct,
+                    yValues: counts)
+                .SetXAxis("Bilirubin %")
+                .SetYAxis("Number of Cases")
+                .Write();
+
+            return null;
+        }
+
+        public ActionResult GetOSLineChart()
+        {
+            var queryViewModel = new QueryViewModel();
+
+            queryViewModel = QueryBackend.Instance.GetQuery();
+
+            BuildDataSets(queryViewModel);
+
+            //test code for devices dataset
+            var distinct = OSArray.Distinct().ToArray();
+            var counts = GetNumberOfDistinctElements(distinct, OSArray);
+
+            var key = new Chart(width: 600, height: 400)
+                .AddSeries(
+                    chartType: "line",
+                    xValue: distinct,
+                    yValues: counts)
+                .SetXAxis("Device OS")
+                .SetYAxis("Number of OS's")
+                .Write();
+
+            return null;
+        }
+        #endregion
+
+        #region Column Charts
+        public ActionResult GetDeviceColumnChart()
+        {
+            var queryViewModel = new QueryViewModel();
+
+            queryViewModel = QueryBackend.Instance.GetQuery();
+
+            BuildDataSets(queryViewModel);
+
+            //test code for devices dataset
+            var distinct = Devices.Distinct().ToArray();
+            var counts = GetNumberOfDistinctElements(distinct, Devices);
+
+            var key = new Chart(width: 600, height: 400)
+                .AddSeries(
+                    chartType: "column",
+                    xValue: distinct,
+                    yValues: counts)
+                .SetXAxis("Devices")
+                .SetYAxis("Number of Devices")
+                .Write();
+
+            return null;
+        }
+
+        public ActionResult GetBilirubinColumnChart()
+        {
+            var queryViewModel = new QueryViewModel();
+
+            queryViewModel = QueryBackend.Instance.GetQuery();
+
+            BuildDataSets(queryViewModel);
+
+            //test code for devices dataset
+            var distinct = BiliConcentrations.Distinct().ToArray();
+            var counts = GetNumberOfDistinctElements(distinct, BiliConcentrations);
+
+            var key = new Chart(width: 600, height: 400)
+                .AddSeries(
+                    chartType: "column",
+                    xValue: distinct,
+                    yValues: counts)
+                .SetXAxis("Bilirubin %")
+                .SetYAxis("Number of Cases")
+                .Write();
+
+            return null;
+        }
+
+        public ActionResult GetOSColumnChart()
+        {
+            var queryViewModel = new QueryViewModel();
+
+            queryViewModel = QueryBackend.Instance.GetQuery();
+
+            BuildDataSets(queryViewModel);
+
+            //test code for devices dataset
+            var distinct = OSArray.Distinct().ToArray();
+            var counts = GetNumberOfDistinctElements(distinct, OSArray);
+
+            var key = new Chart(width: 600, height: 400)
+                .AddSeries(
+                    chartType: "column",
+                    xValue: distinct,
+                    yValues: counts)
+                .SetXAxis("Device OS")
+                .SetYAxis("Number of OS's")
+                .Write();
+
+            return null;
+        }
+        #endregion
 
         private void BuildDataSets(QueryViewModel model)
         {
