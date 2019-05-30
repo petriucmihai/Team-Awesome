@@ -81,8 +81,18 @@
                 <div class="btn-group row" role="group">
                     <div class="col btn-group-vertical">
                         <p><b> Visualization type? </b></p>
-                        @Html.RadioButtonFor(model => model.VisualizationChoice, 1, false)@Html.Label("Line")
-                        @Html.RadioButtonFor(model => model.VisualizationChoice, 2, false)@Html.Label("Bar")
+                        <div class="d-inline">
+                            @Html.RadioButtonFor(model => model.VisualizationChoice, 1, false)
+                            @Html.Label("Line")
+                        </div>
+                        <div class="d-inline">
+                            @Html.RadioButtonFor(model => model.VisualizationChoice, 2, false)
+                            @Html.Label("Bar")
+                        </div>
+                        <div class="d-inline">
+                            @Html.RadioButtonFor(model => model.VisualizationChoice, 3, false)
+                            @Html.Label("Pie")
+                        </div>
                         <button type="submit" class="btn btn-primary" align="right" width="48" height="48">Submit</button>
                     </div>
                 </div>
