@@ -477,6 +477,22 @@ namespace JaunDetect.Controllers
         }
         #endregion
 
+        public ActionResult ChooseVisualization(QueryViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                QueryBackend.Instance.UpdateVisualizationChoice(model.VisualizationChoice);
+
+                var queryViewModel = new QueryViewModel();
+
+                queryViewModel = QueryBackend.Instance.GetQuery();
+
+                return View("../Chart/ChartView", queryViewModel);
+            }
+
+            return View("QueryResults", model);
+        }
+
         private string GetTheme()
         {
             var myTheme = @"<Chart BorderlineDashStyle=""Solid"" BorderWidth=""1"">

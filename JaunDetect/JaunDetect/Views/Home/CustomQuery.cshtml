@@ -76,13 +76,17 @@
             }
         </div>
         <div id="dataVis" class="col collapse text-right">
-            <div class="btn-group row" role="group">
-                <div class="col btn-group-vertical">
-                    <p><b> Visualization type? </b></p>
-                    <p><b> Type of chart here </b></p>
-
+            @using (Html.BeginForm("ChooseVisualization", "Home", FormMethod.Post))
+            {
+                <div class="btn-group row" role="group">
+                    <div class="col btn-group-vertical">
+                        <p><b> Visualization type? </b></p>
+                        @Html.RadioButtonFor(model => model.VisualizationChoice, 1, false)@Html.Label("Bar")
+                        @Html.RadioButtonFor(model => model.VisualizationChoice, 2, false)@Html.Label("Line")
+                        <button type="submit" class="btn btn-primary" align="right" width="48" height="48">Submit</button>
+                    </div>
                 </div>
-            </div>
+            }
         </div>
     </div>
 
