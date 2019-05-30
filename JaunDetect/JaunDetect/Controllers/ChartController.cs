@@ -39,6 +39,30 @@ namespace JaunDetect.Controllers
         }
 
         #region Line Charts
+        public ActionResult GetTestsPerDateLineChart()
+        {
+            var queryViewModel = new QueryViewModel();
+
+            queryViewModel = QueryBackend.Instance.GetQuery();
+
+            BuildDataSets(queryViewModel);
+
+            //test code for devices dataset
+            var distinct = Dates.Distinct().ToArray();
+            var counts = GetNumberOfDistinctElements(distinct, Dates);
+
+            var key = new Chart(width: 600, height: 400)
+                .AddSeries(
+                    chartType: "line",
+                    xValue: distinct,
+                    yValues: counts)
+                .SetXAxis("Date")
+                .SetYAxis("Total Tests")
+                .Write();
+
+            return null;
+        }
+
         public ActionResult GetDeviceLineChart()
         {
             var queryViewModel = new QueryViewModel();
@@ -113,6 +137,30 @@ namespace JaunDetect.Controllers
         #endregion
 
         #region Column Charts
+        public ActionResult GetTestsPerDateColumnChart()
+        {
+            var queryViewModel = new QueryViewModel();
+
+            queryViewModel = QueryBackend.Instance.GetQuery();
+
+            BuildDataSets(queryViewModel);
+
+            //test code for devices dataset
+            var distinct = Dates.Distinct().ToArray();
+            var counts = GetNumberOfDistinctElements(distinct, Dates);
+
+            var key = new Chart(width: 600, height: 400)
+                .AddSeries(
+                    chartType: "column",
+                    xValue: distinct,
+                    yValues: counts)
+                .SetXAxis("Date")
+                .SetYAxis("Total Tests")
+                .Write();
+
+            return null;
+        }
+
         public ActionResult GetDeviceColumnChart()
         {
             var queryViewModel = new QueryViewModel();
@@ -187,6 +235,30 @@ namespace JaunDetect.Controllers
         #endregion
 
         #region Pie Charts
+        public ActionResult GetTestsPerDatePieChart()
+        {
+            var queryViewModel = new QueryViewModel();
+
+            queryViewModel = QueryBackend.Instance.GetQuery();
+
+            BuildDataSets(queryViewModel);
+
+            //test code for devices dataset
+            var distinct = Dates.Distinct().ToArray();
+            var counts = GetNumberOfDistinctElements(distinct, Dates);
+
+            var key = new Chart(width: 600, height: 400)
+                .AddSeries(
+                    chartType: "pie",
+                    xValue: distinct,
+                    yValues: counts)
+                .SetXAxis("Date")
+                .SetYAxis("Total Tests")
+                .Write();
+
+            return null;
+        }
+
         public ActionResult GetDevicePieChart()
         {
             var queryViewModel = new QueryViewModel();
