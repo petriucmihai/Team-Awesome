@@ -205,6 +205,7 @@ namespace JaunDetect.Controllers
                 Devices[i] = model.RecordList[i].Device;
                 OSArray[i] = model.RecordList[i].DeviceOS;
                 Uploads[i] = model.RecordList[i].PhotoUpload;
+                BiliConcentrations[i] = model.RecordList[i].BiliConcentration;
             }
         }
 
