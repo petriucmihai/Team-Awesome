@@ -186,6 +186,80 @@ namespace JaunDetect.Controllers
         }
         #endregion
 
+        #region Pie Charts
+        public ActionResult GetDevicePieChart()
+        {
+            var queryViewModel = new QueryViewModel();
+
+            queryViewModel = QueryBackend.Instance.GetQuery();
+
+            BuildDataSets(queryViewModel);
+
+            //test code for devices dataset
+            var distinct = Devices.Distinct().ToArray();
+            var counts = GetNumberOfDistinctElements(distinct, Devices);
+
+            var key = new Chart(width: 600, height: 400)
+                .AddSeries(
+                    chartType: "pie",
+                    xValue: distinct,
+                    yValues: counts)
+                .SetXAxis("Devices")
+                .SetYAxis("Number of Devices")
+                .Write();
+
+            return null;
+        }
+
+        public ActionResult GetBilirubinPieChart()
+        {
+            var queryViewModel = new QueryViewModel();
+
+            queryViewModel = QueryBackend.Instance.GetQuery();
+
+            BuildDataSets(queryViewModel);
+
+            //test code for devices dataset
+            var distinct = BiliConcentrations.Distinct().ToArray();
+            var counts = GetNumberOfDistinctElements(distinct, BiliConcentrations);
+
+            var key = new Chart(width: 600, height: 400)
+                .AddSeries(
+                    chartType: "pie",
+                    xValue: distinct,
+                    yValues: counts)
+                .SetXAxis("Bilirubin %")
+                .SetYAxis("Number of Cases")
+                .Write();
+
+            return null;
+        }
+
+        public ActionResult GetOSPieChart()
+        {
+            var queryViewModel = new QueryViewModel();
+
+            queryViewModel = QueryBackend.Instance.GetQuery();
+
+            BuildDataSets(queryViewModel);
+
+            //test code for devices dataset
+            var distinct = OSArray.Distinct().ToArray();
+            var counts = GetNumberOfDistinctElements(distinct, OSArray);
+
+            var key = new Chart(width: 600, height: 400)
+                .AddSeries(
+                    chartType: "pie",
+                    xValue: distinct,
+                    yValues: counts)
+                .SetXAxis("Device OS")
+                .SetYAxis("Number of OS's")
+                .Write();
+
+            return null;
+        }
+        #endregion
+
         private void BuildDataSets(QueryViewModel model)
         {
             Clinics = new string[model.RecordList.Count];
