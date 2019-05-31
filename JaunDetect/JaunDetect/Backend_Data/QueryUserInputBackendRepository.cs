@@ -40,6 +40,9 @@ namespace JaunDetect.Backend_Data
             model.Province = provinces[i];
             model.Date = dates[i];
             model.Device = devices[i];
+            model.DeviceOS = osList[i];
+            model.FailedPhoto = true;
+            model.BiliConcentrations = biliConcentrations[i];
             model.RecordList = InitializeList();
         }
 
@@ -132,10 +135,10 @@ namespace JaunDetect.Backend_Data
                 record.DeviceOS = osList[rand.Next(10)];
                 result.Add(record);
             }
-
             return result;
         }
 
+        /*
         public void GetSearchResults()
         {
             List<QueryRecord> result = new List<QueryRecord>();
@@ -161,7 +164,7 @@ namespace JaunDetect.Backend_Data
             }
 
         }
-
+        */
         private bool ClinicMatch(QueryRecord singleRecord)
         {
             if (!string.IsNullOrWhiteSpace(model.UserInputClinic))

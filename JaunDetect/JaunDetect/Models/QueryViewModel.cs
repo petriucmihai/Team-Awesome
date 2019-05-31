@@ -26,7 +26,7 @@ namespace JaunDetect.Models
 
         public List<QueryRecord> RecordList { get; set; }
 
-        public QueryViewModel()
+        /*public QueryViewModel()
         {
             Initialize();
         }
@@ -34,7 +34,7 @@ namespace JaunDetect.Models
         public void Initialize()
         {
             
-        }
+        }*/
 
     }
 }
