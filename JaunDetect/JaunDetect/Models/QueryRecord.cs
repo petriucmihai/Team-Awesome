@@ -16,6 +16,6 @@ namespace JaunDetect.Models
 
         public string DeviceOS { get; set; }
 
-        public bool PhotoUpload { get; set; }
+        public bool FailedPhoto { get; set; }
     }
 }

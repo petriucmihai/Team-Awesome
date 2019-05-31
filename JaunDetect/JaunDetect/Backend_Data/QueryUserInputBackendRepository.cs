@@ -11,6 +11,7 @@ namespace JaunDetect.Backend_Data
     public class QueryUserInputBackendRepository : IQueryUserInputRepository
     {
         const int ROWS = 100;
+        const double FAILURE_LIKELIHOOD = 0.05; 
         TextInfo ti = new CultureInfo("en-US", false).TextInfo;
         string[] clinics = {"Lagos First Clinic", "Lagos Second Clinic", "Onitsha Clinic", "Kano Clinic", "Ibadan Clinic",
             "Uyo Clinic", "Nsukka Clinic", "Abuja First Clinic", "Abuja Second Clinic", "Aba Clinic" };
@@ -112,10 +113,13 @@ namespace JaunDetect.Backend_Data
                 record.Device = devices[rand.Next(10)];
                 record.Clinic = clinics[rand.Next(10)];
                 record.Date = dates[rand.Next(20)];
-                record.BiliConcentration = biliConcentrations[rand.Next(5)];
+                if (record.FailedPhoto)
+                    record.BiliConcentration = "N/A";
+                else 
+                    record.BiliConcentration = biliConcentrations[rand.Next(5)];
                 record.DeviceOS = osList[rand.Next(10)];
                 // random bool
-                record.PhotoUpload = rand.NextDouble() > 0.5;
+                record.FailedPhoto = rand.NextDouble() <= FAILURE_LIKELIHOOD;
 
                 result.Add(record);
             }
