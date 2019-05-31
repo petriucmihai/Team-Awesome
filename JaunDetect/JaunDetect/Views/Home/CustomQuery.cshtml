@@ -76,13 +76,27 @@
             }
         </div>
         <div id="dataVis" class="col collapse text-right">
-            <div class="btn-group row" role="group">
-                <div class="col btn-group-vertical">
-                    <p><b> Visualization type? </b></p>
-                    <p><b> Type of chart here </b></p>
-
+            @using (Html.BeginForm("ChartView", "Chart", FormMethod.Post))
+            {
+                <div class="btn-group row" role="group">
+                    <div class="col btn-group-vertical">
+                        <p><b> Visualization type? </b></p>
+                        <div class="d-inline">
+                            @Html.RadioButtonFor(model => model.VisualizationChoice, 1, false)
+                            @Html.Label("Line")
+                        </div>
+                        <div class="d-inline">
+                            @Html.RadioButtonFor(model => model.VisualizationChoice, 2, false)
+                            @Html.Label("Bar")
+                        </div>
+                        <div class="d-inline">
+                            @Html.RadioButtonFor(model => model.VisualizationChoice, 3, false)
+                            @Html.Label("Pie")
+                        </div>
+                        <button type="submit" class="btn btn-primary" align="right" width="48" height="48">Submit</button>
+                    </div>
                 </div>
-            </div>
+            }
         </div>
     </div>
 
@@ -99,7 +113,7 @@
                         <th scope="col"><strong style="padding-right: 100px">Device</strong></th>
                         <th scope="col"><strong style="padding-right: 50px">Bilirubin Concentration</strong></th>
                         <th scope="col"><strong style="padding-right: 125px">Device OS</strong></th>
-                        <th scope="col"><strong style="padding-right: 750px">Photo Upload</strong></th>
+                        <th scope="col"><strong>Photo Upload</strong></th>
 
                     </tr>
                 </thead>

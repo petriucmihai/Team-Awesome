@@ -37,13 +37,15 @@ namespace JaunDetect.Backend_Data
         QueryViewModel model = new QueryViewModel();
 
         public QueryViewModel GetQuery()
-        {     
+        {
             model.UserInputClinic = queryRepository.GetUserInputClinic();
             model.UserInputProvince = queryRepository.GetUserInputProvince();
             model.UserInputStartDate = queryRepository.GetUserInputStartDate();
             model.UserInputEndDate = queryRepository.GetUserInputEndDate();
             model.UserInputDevice = queryRepository.GetUserInputDevice();
-            model.RecordList = queryRepository.InitializeList();
+            //model.RecordList = queryRepository.InitializeList();
+            model.RecordList = queryRepository.GetRecordList();
+            model.VisualizationChoice = queryRepository.GetVisualizationChoice();
             return model;
         }
 
@@ -71,6 +73,11 @@ namespace JaunDetect.Backend_Data
         public bool UpdateUserInputDevice(string newData)
         {
             return queryRepository.UpdateDevice(newData);
+        }
+
+        public bool UpdateVisualizationChoice(int choice)
+        {
+            return queryRepository.UpdateVisualizationChoice(choice);
         }
 
         public QueryViewModel GetSearchResults()

@@ -15,7 +15,9 @@ namespace JaunDetect.Backend_Data
         string GetUserInputStartDate();
         string GetUserInputEndDate();
         string GetUserInputDevice();
+        int GetVisualizationChoice();
 
+        bool UpdateVisualizationChoice(int choice);
         bool UpdateClinic(string newData);
         bool UpdateProvince(string newData);
         bool UpdateStartDate(string newData);

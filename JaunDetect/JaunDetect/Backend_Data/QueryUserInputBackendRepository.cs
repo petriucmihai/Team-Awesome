@@ -68,6 +68,16 @@ namespace JaunDetect.Backend_Data
             return model.UserInputDevice;
         }
 
+        public int GetVisualizationChoice()
+        {
+            return model.VisualizationChoice;
+        }
+
+        public bool UpdateVisualizationChoice(int choice)
+        {
+            model.VisualizationChoice = choice;
+            return true;
+        }
 
         public bool UpdateClinic(string newData)
         {

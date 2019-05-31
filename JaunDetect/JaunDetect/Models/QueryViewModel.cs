@@ -14,6 +14,7 @@ namespace JaunDetect.Models
         public string UserInputStartDate { get; set; }
         public string UserInputEndDate { get; set; }
         public string UserInputDevice { get; set; }
+        public int VisualizationChoice { get; set; }
 
         public string Clinic { get; set; }
         public string Province { get; set; }

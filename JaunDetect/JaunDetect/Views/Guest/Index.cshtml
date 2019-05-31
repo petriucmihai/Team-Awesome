@@ -15,7 +15,7 @@
 
 <div class="position-relative overflow-hidden p-1 p-md-1 m-md-1 text-center">
     <div class="col-md-5 p-1 mx-auto my-5">
-        <h1 class="display-6 font-weight-normal" id="TitleHeader">Welcome to JaunDetect</h1>
+        <h1 id="TitleHeader" class="display-6 font-weight-normal">Welcome to JaunDetect</h1>
         <div class="row pt-2">
             <div class="col">
                 <h6 class="display">Seattle, Washington</h6>
@@ -32,49 +32,39 @@
 </div>
 
 <div class="row">
-    <div class="col-4">
+    <div class="col-7">
         <h6 class="text-center">Map of Bilirubin Concentrations</h6>
-        <img src="~/Content/Images/heatmap.jpg" class="img-fluid rounded" alt="Responsive image" id="HeatMap" />
+        <img id="HeatMap" src="~/Content/Images/heatmapNOTsquare.jpg" class="img-fluid rounded" alt="Responsive image" />
     </div>
 
-    <div class="col-8">
+    <div class="col-5">
+        <h6 class="text-center">Bilirubin Concentrations (%) per Clinic</h6>
+
+        <img id="Concentrations" src="/Home/GetClinicBilirubinLevelChart" class="img-fluid rounded" alt="Responsive image" />
+
+        <div class="text-right">
+            @using (Html.BeginForm("UpdateHomeChartClinicOption", "Home", FormMethod.Post))
+            {
+                @Html.DropDownListFor(model => model.ClinicOptionString, Model.ClinicOptionsList);
+                <button type="submit">Update</button>
+            }
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col">
         <h6 class="text-center">Number of Tests Taken by each Clinic</h6>
         <div>
             @using (Html.BeginForm("UpdateHomeChartTimeOption", "Home", FormMethod.Post))
             {
-                @Html.DropDownListFor(model => model.TimeOptionString, Model.OptionsList);
+                @Html.DropDownListFor(model => model.TimeOptionString, Model.TimeOptionsList);
                 <button type="submit">Update</button>
             }
         </div>
-        <img src="/Home/GetBilirubinLevelChart" class="img-fluid rounded" id="LevelChart" />
+        <img id="LevelChart" src="/Home/GetBilirubinLevelChart" class="img-fluid rounded" />
     </div>
-</div>
-<div class="row">
-    <div class="col text-center">
-        <h5 class="text-center" id="Concentrations">Bilirubin Concentrations (%) per Clinic</h5>
-    </div>
-</div>
-<div class="row">
-    <div class="col text-center">
-        <img src="/Home/GetClinic0BilirubinLevelChart" />
-        <h6 class="text-center">Clinic @Model.Clinics[0]</h6>
-    </div>
-    <div class="col text-center">
-        <img src="/Home/GetClinic1BilirubinLevelChart" />
-        <h6 class="text-center">Clinic @Model.Clinics[1]</h6>
-    </div>
-    <div class="col text-center">
-        <img src="/Home/GetClinic2BilirubinLevelChart" />
-        <h6 class="text-center">Clinic @Model.Clinics[2]</h6>
-    </div>
-    <div class="col text-center">
-        <img src="/Home/GetClinic3BilirubinLevelChart" />
-        <h6 class="text-center">Clinic @Model.Clinics[3]</h6>
-    </div>
-    <div class="col text-center">
-        <img src="/Home/GetClinic4BilirubinLevelChart" />
-        <h6 class="text-center">Clinic @Model.Clinics[4]</h6>
-    </div>
+
 </div>
 
 <script type="text/javascript">
@@ -91,15 +81,16 @@
                 content: "Here you'll see the concentrations of bilirubin in patients in terms of location. Darker spots mean more high-risk tests are being returned in that area."
             },
             {
-                element: "#LevelChart",
-                title: "Bilirubin test results over time",
-                content: "JaunDetect lets you track the bilirubin test results over time and in terms of clinic at the same time. Change the timeframe in the dropdown to see the data over different periods of time."
-            },
-            {
                 element: "#Concentrations",
                 title: "Concentrations of Bilirubin for each clinic",
                 content: "Here you'll see the breakdown of bilirubin concentrations of patients at each clinic."
+            },
+            {
+                element: "#LevelChart",
+                title: "Bilirubin test results over time",
+                content: "JaunDetect lets you track the bilirubin test results over time and in terms of clinic at the same time. Change the timeframe in the dropdown to see the data over different periods of time."
             }
+            
         ]
     });
 

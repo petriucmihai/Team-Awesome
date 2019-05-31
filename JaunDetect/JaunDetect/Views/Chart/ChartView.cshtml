@@ -1,8 +1,82 @@
-﻿
+﻿@using JaunDetect.Models;
+@model QueryViewModel
+
 @{
     ViewBag.Title = "ChartView";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+
 }
 
-<h2>ChartView</h2>
+@{
+    if (Model.VisualizationChoice == 1)
+    {
+        <div class="row mt-5">
+            <div class="col">
+                <img src="/Chart/GetTestsPerDateLineChart" class="img-fluid rounded" alt="Responsive image" />
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col">
+                <img src="/Chart/GetDeviceLineChart" class="img-fluid rounded" alt="Responsive image" />
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col">
+                <img src="/Chart/GetBilirubinLineChart" class="img-fluid rounded" alt="Responsive image" />
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col">
+                <img src="/Chart/GetOSLineChart" class="img-fluid rounded" alt="Responsive image" />
+            </div>
+        </div>
+    }
+    else if (Model.VisualizationChoice == 2)
+    {
+        <div class="row mt-5">
+            <div class="col">
+                <img src="/Chart/GetTestsPerDateColumnChart" class="img-fluid rounded" alt="Responsive image" />
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col">
+                <img src="/Chart/GetDeviceColumnChart" class="img-fluid rounded" alt="Responsive image" />
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col">
+                <img src="/Chart/GetBilirubinColumnChart" class="img-fluid rounded" alt="Responsive image" />
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col">
+                <img src="/Chart/GetOSColumnChart" class="img-fluid rounded" alt="Responsive image" />
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="row mt-5">
+            <div class="col">
+                <img src="/Chart/GetTestsPerDatePieChart" class="img-fluid rounded" alt="Responsive image" />
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col">
+                <img src="/Chart/GetDevicePieChart" class="img-fluid rounded" alt="Responsive image" />
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col">
+                <img src="/Chart/GetBilirubinPieChart" class="img-fluid rounded" alt="Responsive image" />
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col">
+                <img src="/Chart/GetOSPieChart" class="img-fluid rounded" alt="Responsive image" />
+            </div>
+        </div>
+    }
+}
+
+
 
