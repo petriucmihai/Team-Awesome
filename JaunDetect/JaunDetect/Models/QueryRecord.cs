@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace JaunDetect.Models
+﻿namespace JaunDetect.Models
 {
     public class QueryRecord
     {
@@ -13,8 +8,6 @@ namespace JaunDetect.Models
         public string Device { get; set; }
         public bool FailedPhoto { get; set; }
         public string BiliConcentration { get; set; }
-        public string DeviceOS { get; set; }
-
-       
+        public string DeviceOS { get; set; }  
     }
 }

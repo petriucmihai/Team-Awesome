@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using JaunDetect.Backend_Data;
-
+﻿using System.Collections.Generic;
 
 namespace JaunDetect.Models
 {
+    // lists all the get/set methods and fields of the QueryViewModel
     public class QueryViewModel
     {
+        // user input to compare with database elements
         public string UserInputClinic { get; set; }
         public string UserInputProvince { get; set; }
         public string UserInputStartDate { get; set; }
@@ -16,6 +13,7 @@ namespace JaunDetect.Models
         public string UserInputDevice { get; set; }
         public int VisualizationChoice { get; set; }
 
+        // mockup database elements
         public string Clinic { get; set; }
         public string Province { get; set; }
         public string Date { get; set; }
@@ -24,17 +22,7 @@ namespace JaunDetect.Models
         public string DeviceOS { get; set; }
         public bool FailedPhoto { get; set; }
 
+        // the list that holds database elements
         public List<QueryRecord> RecordList { get; set; }
-
-        /*public QueryViewModel()
-        {
-            Initialize();
-        }
-
-        public void Initialize()
-        {
-            
-        }*/
-
     }
 }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Helpers;
+﻿using System.Web.Helpers;
 using System.Web.Mvc;
 using JaunDetect.Models;
 using JaunDetect.Backend_Data;
@@ -54,7 +50,7 @@ namespace JaunDetect.Controllers
             return View(crashReportModel);
         }
 
-
+        // returns the entire mockup database prior to user input
         public ActionResult CustomQuery()
         {
             ViewBag.Message = "Custom Query";
@@ -64,6 +60,7 @@ namespace JaunDetect.Controllers
             return View(queryModel);
         }
 
+        // returns matching elements following user input
         public ActionResult QueryResults(QueryViewModel model)
         {
             ViewBag.Message = "Custom Query";
@@ -76,12 +73,9 @@ namespace JaunDetect.Controllers
                 QueryBackend.Instance.UpdateUserInputDevice(model.UserInputDevice);
 
                 var queryViewModel = new QueryViewModel();
-
                 queryViewModel = QueryBackend.Instance.GetSearchResults();
-
-                return View("CustomQuery", queryViewModel);
-            }
-            
+                return View("CustomQuery", queryViewModel); // if the query model is not valid
+            }          
             return View("QueryResults", model);
         }
 
@@ -497,8 +491,5 @@ namespace JaunDetect.Controllers
 
             return myTheme;
         }
-
     }
-
-
 }
