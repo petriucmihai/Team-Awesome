@@ -10,7 +10,7 @@
     @*link for the Awesome icons used in the failed photo column*@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    @*style for the database table*@ 
+    @*style for the database table*@
     <style>
         table {
             border-collapse: collapse;
@@ -63,9 +63,9 @@
 
                     <div class="col btn-group-vertical">
                         <p><b> Start Date </b></p>
-                        @Html.TextBoxFor(model => model.UserInputStartDate, new { @style = "margin-top:-5 px; margin-bottom:5 px" })
+                        @Html.TextBoxFor(model => model.UserInputStartDate, new { @style = "margin-top:-5 px; margin-bottom:5 px" })                       
                         <p><b> End Date </b></p>
-                        @Html.TextBoxFor(model => model.UserInputEndDate, new { @style = "margin-top:-5 px; margin-bottom:5 px" })
+                        @Html.TextBoxFor(model => model.UserInputEndDate, new {@style = "margin-top:-5 px; margin-bottom:5 px" })
                     </div>
                     <div class="col btn-group-vertical">
                         <p><b> Device </b></p>
@@ -123,35 +123,35 @@
                 </thead>
 
                 <tbody>
-                @{
+                    @{
                         for (int i = 0; i < Model.RecordList.Count; i++)
                         {
-                        <tr>
-                            <th scope="row">@(i + 1) </th>
-                            <td style="white-space:pre">@(Model.RecordList[i].Clinic)</td>
-                            <td style="white-space:pre">@(Model.RecordList[i].Province)</td>
-                            <td style="white-space:pre">@(Model.RecordList[i].Date)</td>
-                            <td style="white-space:pre">@(Model.RecordList[i].Device)</td>
-                            <td style="white-space:pre">@(Model.RecordList[i].BiliConcentration)</td>
-                            <td style="white-space:pre">@(Model.RecordList[i].DeviceOS)</td>
-                            @*displays the photo if the photo upload has failed*@
-                            @{ if (Model.RecordList[i].FailedPhoto)
-                                {
-                                    <td>
+                            <tr>
+                                <th scope="row">@(i + 1) </th>
+                                <td style="white-space:pre">@(Model.RecordList[i].Clinic)</td>
+                                <td style="white-space:pre">@(Model.RecordList[i].Province)</td>
+                                <td style="white-space:pre">@(Model.RecordList[i].Date)</td>
+                                <td style="white-space:pre">@(Model.RecordList[i].Device)</td>
+                                <td style="white-space:pre">@(Model.RecordList[i].BiliConcentration)</td>
+                                <td style="white-space:pre">@(Model.RecordList[i].DeviceOS)</td>
+                                @*displays the photo if the photo upload has failed*@
+                                @{ if (Model.RecordList[i].FailedPhoto)
+                                    {
+                                        <td>
                                             <i class="fa fa-close" style="font-size:24px; color:red"></i>
                                             <a href="@Url.Content(Model.RecordList[i].Photo)" target="_blank" style="font-size: 12px">View Photo</a>
-                                    </td>
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td>
+                                            <i class="fa fa-check" style="font-size:24px;color:green"></i>
+                                        </td>
+                                    }
                                 }
-                                else
-                                {
-                                    <td>
-                                        <i class="fa fa-check" style="font-size:24px;color:green"></i>
-                                    </td>
-                                }
+                            </tr>
                         }
-                        </tr>
                     }
-                }
 
                 </tbody>
             </table>
