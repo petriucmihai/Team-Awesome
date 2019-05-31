@@ -350,7 +350,7 @@ namespace JaunDetect.Controllers
                 Dates[i] = model.RecordList[i].Date;
                 Devices[i] = model.RecordList[i].Device;
                 OSArray[i] = model.RecordList[i].DeviceOS;
-                Uploads[i] = model.RecordList[i].PhotoUpload;
+                Uploads[i] = model.RecordList[i].FailedPhoto;
                 BiliConcentrations[i] = model.RecordList[i].BiliConcentration;
             }
         }

@@ -22,7 +22,7 @@ namespace JaunDetect.Models
         public string Device { get; set; }
         public string BiliConcentrations { get; set; }
         public string DeviceOS { get; set; }
-        public bool PhotoUpload { get; set; }
+        public bool FailedPhoto { get; set; }
 
         public List<QueryRecord> RecordList { get; set; }
 
