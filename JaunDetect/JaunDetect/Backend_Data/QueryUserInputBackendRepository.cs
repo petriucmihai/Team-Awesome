@@ -23,6 +23,7 @@ namespace JaunDetect.Backend_Data
         string[] biliConcentrations = { "5%", "10%", "15%", "20%", "25%"};
         string[] osList = { "9.0 Pie", "8.0 Oreo", "8.1 Oreo", "7.0 Nougat", "7.1 Nougat", "6.0 Marshmallow", "5.0 Lollipop", "4.4 KitKat",
                             "4.1 Jelly Bean", "4.0 Ice Cream Sandwich" };
+        string[] photoList = {"~/Content/Images/badphoto1.jpg", "~/Content/Images/badphoto2.jpg", "~/Content/Images/badphoto3.jpg"};
 
         QueryViewModel model = new QueryViewModel(); // new empty Query View Model
 
@@ -139,6 +140,7 @@ namespace JaunDetect.Backend_Data
                 else 
                     record.BiliConcentration = biliConcentrations[rand.Next(biliConcentrations.Length)];
                 record.DeviceOS = osList[rand.Next(osList.Length)];
+                record.Photo = photoList[rand.Next(photoList.Length)];
                 result.Add(record);
             }
             return result;

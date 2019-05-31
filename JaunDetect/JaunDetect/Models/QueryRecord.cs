@@ -9,5 +9,6 @@
         public bool FailedPhoto { get; set; }
         public string BiliConcentration { get; set; }
         public string DeviceOS { get; set; }  
+        public string Photo { get; set; }
     }
 }
