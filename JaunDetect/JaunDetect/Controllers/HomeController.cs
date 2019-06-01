@@ -378,7 +378,7 @@ namespace JaunDetect.Controllers
             homeModel = DataBackend.Instance.GetHomeData();
             int num = homeModel.ClinicOption;
 
-            var key = new Chart(width: 400, height: 550, theme: GetTheme())
+            var key = new Chart(width: 1100, height: 550, theme: GetTheme())
                 .AddSeries(
                     chartType: "column",
                     xValue: homeModel.ConvertDataToString(homeModel.BilirubinLevels),
