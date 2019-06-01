@@ -3,6 +3,8 @@ using System.Web.Mvc;
 using JaunDetect.Models;
 using JaunDetect.Backend_Data;
 using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace JaunDetect.Controllers
 {
@@ -491,5 +493,28 @@ namespace JaunDetect.Controllers
 
             return myTheme;
         }
+
+        [HttpPost]
+        public JsonResult NewChart()
+        {
+            var homeModel = new HomeChartModel();
+            homeModel = DataBackend.Instance.GetHomeData();
+            int num = homeModel.ClinicOption;
+
+
+            // Order of data in the list:
+            // 1. X-Values (labels)
+            // 2. Y-Values (data)
+            // 3. X-Axis label
+            List<object> iData = new List<object>();
+            iData.Add(homeModel.ConvertDataToString(homeModel.BilirubinLevels));
+            iData.Add(homeModel.BilirubinData[num]);
+            iData.Add(new List<string>{ "Clinic " + homeModel.Clinics[num] });
+
+            //Source data returned as JSON  
+            return Json(iData, JsonRequestBehavior.AllowGet);
+        }
+
+
     }
 }
