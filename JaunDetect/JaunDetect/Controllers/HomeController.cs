@@ -334,62 +334,45 @@ namespace JaunDetect.Controllers
 
         #region Home Charts
 
-        public ActionResult GetBilirubinLevelChart()
+        [HttpPost]
+        public JsonResult GetTestNumbersForAllClinicsChart()
         {
             var homeModel = new HomeChartModel();
             homeModel = DataBackend.Instance.GetHomeData();
             int num = homeModel.TimeOption;
 
-            var key = new Chart(width: 1100, height: 400, theme: GetTheme())
-                .AddSeries(
-                    chartType: "column",
-                    name: homeModel.Clinics[0],
-                    xValue: homeModel.Timeframe[num],
-                    yValues: homeModel.BilirubinData[0])
-                .AddSeries(
-                    chartType: "column",
-                    name: homeModel.Clinics[1],
-                    xValue: homeModel.Timeframe[num],
-                    yValues: homeModel.BilirubinData[1])
-                .AddSeries(
-                    chartType: "column",
-                    name: homeModel.Clinics[2],
-                    xValue: homeModel.Timeframe[num],
-                    yValues: homeModel.BilirubinData[2])
-                .AddSeries(
-                    chartType: "column",
-                    name: homeModel.Clinics[3],
-                    xValue: homeModel.Timeframe[num],
-                    yValues: homeModel.BilirubinData[3])
-                .AddSeries(
-                    chartType: "column",
-                    name: homeModel.Clinics[4],
-                    xValue: homeModel.Timeframe[num],
-                    yValues: homeModel.BilirubinData[4])
-                .SetXAxis("Time")
-                .SetYAxis("Number of Tests Taken")
-                .AddLegend()
-                .Write();
+            List<object> iData = new List<object>();
 
-            return null;
+            for (int i = 0; i < homeModel.BilirubinData.Length; i++)
+            {
+                iData.Add(homeModel.Timeframe[num]);
+                iData.Add(homeModel.BilirubinData[i]);
+                iData.Add(new List<string> { "Clinic " + homeModel.Clinics[i] });
+            }
+
+            //Source data returned as JSON  
+            return Json(iData, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult GetClinicBilirubinLevelChart()
+        [HttpPost]
+        public JsonResult GetClinicBilirubinLevelChart()
         {
             var homeModel = new HomeChartModel();
             homeModel = DataBackend.Instance.GetHomeData();
             int num = homeModel.ClinicOption;
 
-            var key = new Chart(width: 1100, height: 550, theme: GetTheme())
-                .AddSeries(
-                    chartType: "column",
-                    xValue: homeModel.ConvertDataToString(homeModel.BilirubinLevels),
-                    yValues: homeModel.BilirubinData[num])
-                .SetXAxis("Clinic " + homeModel.Clinics[num])
-                .SetYAxis("Bilirubin Levels (%)")
-                .Write();
 
-            return null;
+            // Order of data in the list:
+            // 1. X-Values (labels)
+            // 2. Y-Values (data)
+            // 3. X-Axis label
+            List<object> iData = new List<object>();
+            iData.Add(homeModel.ConvertDataToString(homeModel.BilirubinLevels));
+            iData.Add(homeModel.BilirubinData[num]);
+            iData.Add(new List<string> { "Clinic " + homeModel.Clinics[num] });
+
+            //Source data returned as JSON  
+            return Json(iData, JsonRequestBehavior.AllowGet);
         }
 
 
@@ -418,6 +401,8 @@ namespace JaunDetect.Controllers
             if (ModelState.IsValid)
             {
                 DataBackend.Instance.UpdateClinicOptionString(model.ClinicOptionString);
+
+                ViewBag.Section = "Bili%ByClinic";
 
                 var homeModel = new HomeChartModel();
 
@@ -494,26 +479,7 @@ namespace JaunDetect.Controllers
             return myTheme;
         }
 
-        [HttpPost]
-        public JsonResult NewChart()
-        {
-            var homeModel = new HomeChartModel();
-            homeModel = DataBackend.Instance.GetHomeData();
-            int num = homeModel.ClinicOption;
-
-
-            // Order of data in the list:
-            // 1. X-Values (labels)
-            // 2. Y-Values (data)
-            // 3. X-Axis label
-            List<object> iData = new List<object>();
-            iData.Add(homeModel.ConvertDataToString(homeModel.BilirubinLevels));
-            iData.Add(homeModel.BilirubinData[num]);
-            iData.Add(new List<string>{ "Clinic " + homeModel.Clinics[num] });
-
-            //Source data returned as JSON  
-            return Json(iData, JsonRequestBehavior.AllowGet);
-        }
+        
 
 
     }
