@@ -4,6 +4,7 @@
     ViewBag.Title = "CrashReport";
 }
 
+<div class="container body-content">
     <div class="row">
         <div class="col text-center">
             <div class="col-md-5 p-1 mx-auto my-3">
@@ -13,64 +14,68 @@
     </div>
 
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-6 text-center" >
-            <h4>Crashes Over Time</h4>
-        </div>
-        
-        <div class="col text-center">
-        @using (Html.BeginForm("UpdateCrashChartTimeOption", "Home", FormMethod.Post))
-        {
-            @Html.DropDownListFor(model => model.TimeOptionString, Model.OptionsList);
-            <button type="submit">Update</button>
-        }
-        </div>
-    </div>
-
-    <div class="row justify-content-center">
-        <img src="/Home/GetCrashesByTimeChart" />
-    </div>
-</div>
-<br />
-<div class="container">
-    <div class="row">
-        <div class="col-md-4">
-            <h4>Crashes by Type</h4>
-            <img src="/Home/GetCrashesByTypeChart" />
-        </div>
-        <div class="col-md-4">
-            <h4>Crashes by Device Model</h4>
-            <img src="/Home/GetCrashesByDeviceTypeChart" />
-        </div>
-        <div class="col-md-4">
-            <h5>Highest Total Crashes by Device</h5>
-            <div class="container border border-dark rounded w-75 text-center mx-auto">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>DeviceID</th>
-                            <th>Number of Crashes</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @{ 
-                            for (int i = 0; i < Model.DeviceIDs.Length; i++)
-                            {
-                                <tr>
-                                    <td>@Model.DeviceIDs[i]</td>
-                                    <td>@Model.CrashesByID[i]</td>
-                                </tr>
-                            }
-                        }
-                    </tbody>
-                </table>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-6 text-center">
+                <h4>Crashes Over Time</h4>
             </div>
 
+            <div class="col text-center">
+                @using (Html.BeginForm("UpdateCrashChartTimeOption", "Home", FormMethod.Post))
+                {
+                    @Html.DropDownListFor(model => model.TimeOptionString, Model.OptionsList);
+                    <button type="submit">Update</button>
+                }
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <img src="/Home/GetCrashesByTimeChart" />
         </div>
     </div>
+    <br />
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h4>Crashes by Type</h4>
+                <img src="/Home/GetCrashesByTypeChart" />
+            </div>
+            <div class="col-md-4">
+                <h4>Crashes by Device Model</h4>
+                <img src="/Home/GetCrashesByDeviceTypeChart" />
+            </div>
+            <div class="col-md-4">
+                <h5>Highest Total Crashes by Device</h5>
+                <div class="container border border-dark rounded w-75 text-center mx-auto">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>DeviceID</th>
+                                <th>Number of Crashes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                for (int i = 0; i < Model.DeviceIDs.Length; i++)
+                                {
+                                    <tr>
+                                        <td>@Model.DeviceIDs[i]</td>
+                                        <td>@Model.CrashesByID[i]</td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
 
 
+
+    </div>
 
 </div>
+ 
+
 
