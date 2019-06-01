@@ -4,63 +4,65 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="text-light">
-    <div class="text-center row my-3" style="background-color:#4c497e;">
-        <div class="col-md-5 p-1 mx-auto my-5 no-gutters">
-            <h1 class="display-4 font-weight-normal">Welcome to JaunDetect</h1>
-            <div class="row pt-2">
-                <div class="col">
-                    <h6 class="display">Seattle, Washington</h6>
-                    <p class="font-weight-normal">@DateTime.Now.ToString("MM/dd/yyyy h:mm tt")</p>
+    <body style="background-color: #9DAAC9">
+        <div class="text-light">
+            <div class="text-center row my-3" style="background-color:#03012C;">
+                <div class="col-md-5 p-1 mx-auto my-5 no-gutters">
+                    <h1 class="display-4 font-weight-normal">Welcome to JaunDetect</h1>
+                    <div class="row pt-2">
+                        <div class="col">
+                            <h6 class="display">Seattle, Washington</h6>
+                            <p class="font-weight-normal">@DateTime.Now.ToString("MM/dd/yyyy h:mm tt")</p>
+                        </div>
+                        <div class="col">
+                            <h6 class="display">Lagos, Nigeria</h6>
+                            <p class="font-weight-normal">@DateTime.Now.AddHours(8).ToString("MM/dd/yyyy h:mm tt")</p>
+                        </div>
+                    </div>
                 </div>
+                <div class="product-device box-shadow d-none d-md-block"></div>
+                <div class="product-device product-device-2 box-shadow d-none d-md-block"></div>
+            </div>
+
+            <div class="row text-center py-4 my-3" style="background-color:#191970;">
                 <div class="col">
-                    <h6 class="display">Lagos, Nigeria</h6>
-                    <p class="font-weight-normal">@DateTime.Now.AddHours(8).ToString("MM/dd/yyyy h:mm tt")</p>
+                    <h2 class="text-center display-5">Map of Bilirubin Concentrations</h2>
+                    <img src="~/Content/Images/widemap.jpg" class="img-fluid rounded" alt="Responsive image" />
+                </div>
+            </div>
+
+
+            <div class="row text-center py-4 my-3" style="background-color:#1F2391;">
+                <div class="col">
+                    <h2 class="text-center display-5">Bilirubin Concentrations (%) per Clinic</h2>
+
+                    <img src="/Home/GetClinicBilirubinLevelChart" class="img-fluid rounded" alt="Responsive image" />
+
+                    <div class="text-center mt-2">
+                        @using (Html.BeginForm("UpdateHomeChartClinicOption", "Home", FormMethod.Post))
+                        {
+                            @Html.DropDownListFor(model => model.ClinicOptionString, Model.ClinicOptionsList, new { @class = "btn btn-light dropdown-toggle" });
+                            <button class="btn btn-secondary" type="submit">Update</button>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center py-4 my-3" style="background-color:#2F33AA;">
+                <div class="col">
+                    <h2 class="text-center display-5">Number of Tests Taken by each Clinic</h2>
+
+                    <img id="TestNumberByClinic" src="/Home/GetBilirubinLevelChart" class="img-fluid rounded" />
+
+                    <div class="text-center mt-2">
+                        @using (Html.BeginForm("UpdateHomeChartTimeOption", "Home", FormMethod.Post))
+                        {
+                            @Html.DropDownListFor(model => model.TimeOptionString, Model.TimeOptionsList, new { @class = "btn btn-light dropdown-toggle" });
+                            <button class="btn btn-secondary" type="submit">Update</button>
+                        }
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="product-device box-shadow d-none d-md-block"></div>
-        <div class="product-device product-device-2 box-shadow d-none d-md-block"></div>
-    </div>
-
-    <div class="row text-center py-4 my-3" style="background-color:#807a8b;">
-        <div class="col">
-            <h2 class="text-center display-5">Map of Bilirubin Concentrations</h2>
-            <img src="~/Content/Images/widemap.jpg" class="img-fluid rounded" alt="Responsive image" />
-        </div>
-    </div>
-
-
-    <div class="row text-center py-4 my-3" style="background-color:#4c497e;">
-        <div class="col">
-            <h2 class="text-center display-5">Bilirubin Concentrations (%) per Clinic</h2>
-
-            <img src="/Home/GetClinicBilirubinLevelChart" class="img-fluid rounded" alt="Responsive image" />
-
-            <div class="text-center mt-2">
-                @using (Html.BeginForm("UpdateHomeChartClinicOption", "Home", FormMethod.Post))
-                {
-                    @Html.DropDownListFor(model => model.ClinicOptionString, Model.ClinicOptionsList, new { @class = "btn btn-light dropdown-toggle" });
-                    <button class="btn btn-secondary" type="submit">Update</button>
-                }
-            </div>
-        </div>
-    </div>
-
-    <div class="row text-center py-4 my-3" style="background-color:#b3aa98;">
-        <div class="col">
-            <h2 class="text-center display-5">Number of Tests Taken by each Clinic</h2>
-
-            <img id="TestNumberByClinic" src="/Home/GetBilirubinLevelChart" class="img-fluid rounded" />
-
-            <div class="text-center mt-2">
-                @using (Html.BeginForm("UpdateHomeChartTimeOption", "Home", FormMethod.Post))
-                {
-                    @Html.DropDownListFor(model => model.TimeOptionString, Model.TimeOptionsList, new { @class = "btn btn-light dropdown-toggle" });
-                    <button class="btn btn-secondary" type="submit">Update</button>
-                }
-            </div>
-        </div>
-    </div>
-</div>
+    </body>
 
