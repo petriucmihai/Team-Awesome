@@ -147,46 +147,66 @@
                     label: aData[2],
                     data: aDatasets1,
                     fill: false,
-                    backgroundColor: ["rgba(255, 237, 161, 0.5)", "rgba(255, 237, 161, 0.5)", "rgba(255, 237, 161, 0.5)", "rgba(255, 237, 161, 0.5)", "rgba(255, 237, 161, 0.5)"],
-                    borderColor: ["rgb(255, 237, 161)", "rgb(255, 237, 161)", "rgb(255, 237, 161)", "rgb(255, 237, 161)", "rgb(255, 237, 161)"],
-                    borderWidth: 2
+                    borderColor: "#ffe4b2",
+                    backgroundColor: "#ffe4b2",
+                    pointBackgroundColor: "#ffe4b2",
+                    pointBorderColor: "#ffe4b2",
+                    pointHoverBackgroundColor: "#ffe4b2",
+                    pointHoverBorderColor: "#ffe4b2",
+                    borderWidth: 4
                 },
                 {
                     label: aData[5],
                     data: aData[4],
                     fill: false,
-                    backgroundColor: ["rgba(255, 209, 139, 0.5)", "rgba(255, 209, 139, 0.5)", "rgba(255, 209, 139, 0.5)", "rgba(255, 209, 139, 0.5)", "rgba(255, 209, 139, 0.5)"],
-                    borderColor: ["rgb(255, 209, 139)", "rgb(255, 209, 139)", "rgb(255, 209, 139)", "rgb(255, 209, 139)", "rgb(255, 209, 139)"],
-                    borderWidth: 2
+                    borderColor: "#ffc966",
+                    backgroundColor: "#ffc966",
+                    pointBackgroundColor: "#ffc966",
+                    pointBorderColor: "#ffc966",
+                    pointHoverBackgroundColor: "#ffc966",
+                    pointHoverBorderColor: "#ffc966",
+                    borderWidth: 4
                 },
                 {
                     label: aData[8],
                     data: aData[7],
                     fill: false,
-                    backgroundColor: ["rgba(255, 183, 109, 0.5)", "rgba(255, 183, 109, 0.5)", "rgba(255, 183, 109, 0.5)", "rgba(255, 183, 109, 0.5)", "rgba(255, 183, 109, 0.5)"],
-                    borderColor: ["rgb(255, 159, 64)", "rgb(255, 159, 64)", "rgb(255, 159, 64)", "rgb(255, 159, 64)", "rgb(255, 159, 64)"],
-                    borderWidth: 2
+                    borderColor: "#ffa500",
+                    backgroundColor: "#ffa500",
+                    pointBackgroundColor: "#ffa500",
+                    pointBorderColor: "#ffa500",
+                    pointHoverBackgroundColor: "#ffa500",
+                    pointHoverBorderColor: "#ffa500",
+                    borderWidth: 4
                 },
                 {
                     label: aData[11],
                     data: aData[10],
                     fill: false,
-                    backgroundColor: ["rgba(255, 162, 100, 0.5)", "rgba(255, 162, 100, 0.5)", "rgba(255, 162, 100, 0.5)", "rgba(255, 162, 100, 0.5)", "rgba(255, 162, 100, 0.5)"],
-                    borderColor: ["rgb(255, 162, 100)", "rgb(255, 162, 100)", "rgb(255, 162, 100)", "rgb(255, 162, 100)", "rgb(255, 162, 100)"],
-                    borderWidth: 2
+                    borderColor: "#cc8400",
+                    backgroundColor: "#cc8400",
+                    pointBackgroundColor: "#cc8400",
+                    pointBorderColor: "#cc8400",
+                    pointHoverBackgroundColor: "#cc8400",
+                    pointHoverBorderColor: "#cc8400",
+                    borderWidth: 4
                 },
                 {
                     label: aData[14],
                     data: aData[13],
                     fill: false,
-                    backgroundColor: ["rgba(255, 135, 95, 0.5)", "rgba(255, 135, 95, 0.5)", "rgba(255, 135, 95, 0.5)", "rgba(255, 135, 95, 0.5)", "rgba(255, 135, 95, 0.5)"],
-                    borderColor: ["rgb(255, 135, 95)", "rgb(255, 135, 95)", "rgb(255, 135, 95)", "rgb(255, 135, 95)", "rgb(255, 135, 95)"],
-                    borderWidth: 2
+                    borderColor: "#996300",
+                    backgroundColor: "#996300",
+                    pointBackgroundColor: "#996300",
+                    pointBorderColor: "#996300",
+                    pointHoverBackgroundColor: "#996300",
+                    pointHoverBorderColor: "#996300",
+                    borderWidth: 4
                 }]
             };
             var ctx = $("#bigchart").get(0).getContext("2d");
             var myNewChart = new Chart(ctx, {
-                type: 'bar',
+                type: 'line',
                 data: dataT,
                 options: {
                     responsive: true,
