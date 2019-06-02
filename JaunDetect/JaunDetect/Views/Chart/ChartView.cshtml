@@ -10,69 +10,75 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js" type="text/javascript"></script>
 <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 
-@{
-    if (Model.VisualizationChoice == 1)
-    {
-        <div class="row mt-5">
-            <div class="col">
-                <canvas id="TestNumLine"></canvas>
+<body class="text-white" style="background-color: #03012C">
+
+    @{
+        if (Model.VisualizationChoice == 1)
+        {
+            <div class="row mt-5">
+                <div class="col">
+                    <canvas id="TestNumLine"></canvas>
+                </div>
             </div>
-        </div>
-        <div class="row mt-3">
-            <div class="col">
-                <canvas id="DeviceLine"></canvas>
+            <div class="row mt-3">
+                <div class="col">
+                    <canvas id="DeviceLine"></canvas>
+                </div>
             </div>
-        </div>
-        <div class="row mt-3">
-            <div class="col">
-                <canvas id="BiliLine"></canvas>
+            <div class="row mt-3">
+                <div class="col">
+                    <canvas id="BiliLine"></canvas>
+                </div>
             </div>
-        </div>
-        <div class="row mt-3">
-            <div class="col">
-                <canvas id="OSLine"></canvas>
+            <div class="row mt-3">
+                <div class="col">
+                    <canvas id="OSLine"></canvas>
+                </div>
             </div>
-        </div>
+        }
+        else if (Model.VisualizationChoice == 2)
+        {
+            <div class="row mt-3">
+                <div class="col">
+                    <canvas id="DeviceBar"></canvas>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col">
+                    <canvas id="BiliBar"></canvas>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col">
+                    <canvas id="OSBar"></canvas>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="row mt-3">
+                <div class="col">
+                    <canvas id="DevicePie"></canvas>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col">
+                    <canvas id="BiliPie"></canvas>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col">
+                    <canvas id="OSPie"></canvas>
+                </div>
+            </div>
+        }
     }
-    else if (Model.VisualizationChoice == 2)
-    {
-        <div class="row mt-3">
-            <div class="col">
-                <canvas id="DeviceBar"></canvas>
-            </div>
-        </div>
-        <div class="row mt-3">
-            <div class="col">
-                <canvas id="BiliBar"></canvas>
-            </div>
-        </div>
-        <div class="row mt-3">
-            <div class="col">
-                <canvas id="OSBar"></canvas>
-            </div>
-        </div>
-    }
-    else
-    {
-        <div class="row mt-3">
-            <div class="col">
-                <canvas id="DevicePie"></canvas>
-            </div>
-        </div>
-        <div class="row mt-3">
-            <div class="col">
-                <canvas id="BiliPie"></canvas>
-            </div>
-        </div>
-        <div class="row mt-3">
-            <div class="col">
-                <canvas id="OSPie"></canvas>
-            </div>
-        </div>
-    }
-}
+</body>
 
 <script>
+    // Set all chart font to white
+    Chart.defaults.global.defaultFontColor = 'white';
+
     // Number of test line chart
     $.ajax({
         type: "POST",
@@ -89,9 +95,14 @@
                     label: "Test strips used",
                     data: aDatasets1,
                     fill: false,
-                    backgroundColor: ["rgba(112, 44, 231, 0.5)", "rgba(144, 44, 199, 0.5)", "rgba(176, 44, 167, 0.5)", "rgba(208, 44, 135, 0.5)", "rgba(240, 44, 103, 0.5)"],
-                    borderColor: ["rgba(112, 44, 231)", "rgba(144, 44, 199)", "rgba(176, 44, 167)", "rgba(208, 44, 135)", "rgba(240, 44, 103)"],
-                    borderWidth: 2
+                    borderColor: "#bae755",
+                    borderDash: [5, 5],
+                    backgroundColor: "#e755ba",
+                    pointBackgroundColor: "#55bae7",
+                    pointBorderColor: "#55bae7",
+                    pointHoverBackgroundColor: "#55bae7",
+                    pointHoverBorderColor: "#55bae7",
+                    borderWidth: 4
                 }]
             };
             var ctx = $("#TestNumLine").get(0).getContext("2d");
@@ -131,9 +142,14 @@
                     label: "Test strips used",
                     data: aDatasets1,
                     fill: false,
-                    backgroundColor: ["rgba(112, 44, 231, 0.5)", "rgba(144, 44, 199, 0.5)", "rgba(176, 44, 167, 0.5)", "rgba(208, 44, 135, 0.5)", "rgba(240, 44, 103, 0.5)"],
-                    borderColor: ["rgba(112, 44, 231)", "rgba(144, 44, 199)", "rgba(176, 44, 167)", "rgba(208, 44, 135)", "rgba(240, 44, 103)"],
-                    borderWidth: 2
+                    borderColor: "#bae755",
+                    borderDash: [5, 5],
+                    backgroundColor: "#e755ba",
+                    pointBackgroundColor: "#55bae7",
+                    pointBorderColor: "#55bae7",
+                    pointHoverBackgroundColor: "#55bae7",
+                    pointHoverBorderColor: "#55bae7",
+                    borderWidth: 4
                 }]
             };
             var ctx = $("#DeviceLine").get(0).getContext("2d");
@@ -173,9 +189,14 @@
                     label: "Test strips used",
                     data: aDatasets1,
                     fill: false,
-                    backgroundColor: ["rgba(112, 44, 231, 0.5)", "rgba(144, 44, 199, 0.5)", "rgba(176, 44, 167, 0.5)", "rgba(208, 44, 135, 0.5)", "rgba(240, 44, 103, 0.5)"],
-                    borderColor: ["rgba(112, 44, 231)", "rgba(144, 44, 199)", "rgba(176, 44, 167)", "rgba(208, 44, 135)", "rgba(240, 44, 103)"],
-                    borderWidth: 2
+                    borderColor: "#bae755",
+                    borderDash: [5, 5],
+                    backgroundColor: "#e755ba",
+                    pointBackgroundColor: "#55bae7",
+                    pointBorderColor: "#55bae7",
+                    pointHoverBackgroundColor: "#55bae7",
+                    pointHoverBorderColor: "#55bae7",
+                    borderWidth: 4
                 }]
             };
             var ctx = $("#BiliLine").get(0).getContext("2d");
@@ -215,9 +236,14 @@
                     label: "Test strips used",
                     data: aDatasets1,
                     fill: false,
-                    backgroundColor: ["rgba(112, 44, 231, 0.5)", "rgba(144, 44, 199, 0.5)", "rgba(176, 44, 167, 0.5)", "rgba(208, 44, 135, 0.5)", "rgba(240, 44, 103, 0.5)"],
-                    borderColor: ["rgba(112, 44, 231)", "rgba(144, 44, 199)", "rgba(176, 44, 167)", "rgba(208, 44, 135)", "rgba(240, 44, 103)"],
-                    borderWidth: 2
+                    borderColor: "#bae755",
+                    borderDash: [5, 5],
+                    backgroundColor: "#e755ba",
+                    pointBackgroundColor: "#55bae7",
+                    pointBorderColor: "#55bae7",
+                    pointHoverBackgroundColor: "#55bae7",
+                    pointHoverBorderColor: "#55bae7",
+                    borderWidth: 4
                 }]
             };
             var ctx = $("#OSLine").get(0).getContext("2d");
