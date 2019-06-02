@@ -1,6 +1,10 @@
 ﻿@using JaunDetect.Models;
 @model ResourcesChartModel
 
+<!--For Chart.js charts-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js" type="text/javascript"></script>
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
 
 <body>
 
@@ -12,125 +16,201 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col d-flex flex-column">
 
-        <div class="container">
-            <div class="row">
-                <div class="col">
-
-                    <div class="row">
-                        <h6 class="mx-auto">Test Strip Usage per Month</h6>
-                        <img src="/Home/GetTestStripUsageChart" class="img-fluid rounded" />
-                    </div>
-
-                    <div class="row">
-                        <div class="col">
-                            <div class="row mb-3">
-                                <p class="pr-2">Current price of test strip:</p>
-                                @using (Html.BeginForm("UpdatePrice", "Home", FormMethod.Post))
-                                {
-                                    @Html.TextBoxFor(model => model.TestStripPrice, new { Class = "form-control w-50 d-inline" })
-                                    <button type="submit" class="btn btn-outline-primary d-inline align-top">Update</button>
-                                }
-                            </div>
-
-                            <div class="row border border-dark rounded w-75 text-center mx-auto">
-                                <h6 class="mx-auto p-2">Resources used this month by clinic</h6>
-                                <table class="table">
-                                    <tbody>
-                                        @{
-                                            if (Model.Clinics.Count() == Model.TestStripCosts.Count())
-                                            {
-                                                for (int i = 0; i < Model.Clinics.Count(); i++)
-                                                {
-                                                    <tr>
-                                                        <td>@Model.Clinics[i]</td>
-                                                        <td>$@Model.TestStripCosts[i]</td>
-                                                    </tr>
-                                                }
-                                            }
-                                        }
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-
-                    </div>
-
+                <div class="text-center pb-2">
+                    <h4>Test Strip Usage per Month</h4>
                 </div>
 
-                <div class="col">
+                <div class="flex-grow-1">
+                    <!-- BAR CHART -->
+                    <canvas id="TestStripUsages"></canvas>
+                </div>
 
-                    <div class="row">
-                        <h6 class="mx-auto">High-Bilirubin Cases by Clinic</h6>
-                        <img src="/Home/GetHospitalPatientChart" class="img-fluid rounded" />
-                    </div>
+                <div class="row mb-3">
+                    <p class="pr-2">Current price of test strip:</p>
+                    @using (Html.BeginForm("UpdatePrice", "Home", FormMethod.Post))
+                    {
+                        @Html.TextBoxFor(model => model.TestStripPrice, new { Class = "form-control w-50 d-inline" })
+                        <button type="submit" class="btn btn-outline-primary d-inline align-top">Update</button>
+                    }
+                </div>
 
-                    <div class="row border border-dark rounded w-75 text-center mx-auto">
-                        <h6 class="mx-auto p-2">Clinics that send the most patients to in-area hospitals</h6>
-                        <table class="table">
-                            <tbody>
-                                @{
-                                    if (Model.Clinics.Count() == Model.HospitalPatients.Count())
+                <div class="row border border-dark rounded w-75 text-center mx-auto">
+                    <h6 class="mx-auto p-2">Resources used this month by clinic</h6>
+                    <table class="table">
+                        <tbody>
+                            @{
+                                if (Model.Clinics.Count() == Model.TestStripCosts.Count())
+                                {
+                                    for (int i = 0; i < Model.Clinics.Count(); i++)
                                     {
-                                        for (int i = 0; i < Model.Clinics.Count(); i++)
-                                        {
-                                            <tr>
-                                                <td>@Model.Clinics[i]</td>
-                                                <td>@Model.HospitalPatients[i]</td>
-                                            </tr>
-                                        }
+                                        <tr>
+                                            <td>@Model.Clinics[i]</td>
+                                            <td>$@Model.TestStripCosts[i]</td>
+                                        </tr>
                                     }
                                 }
-                            </tbody>
-                        </table>
-                    </div>
-
+                            }
+                        </tbody>
+                    </table>
                 </div>
 
             </div>
-            <div class="row mt-3">
 
-                <div class="col text-center">
-                    <h6 class="mx-auto">Individual Devices Registered by Clinic</h6>
-                    <img src="/Home/GetClinicWorkersChart" class="img-fluid rounded" />
+            <div class="col d-flex flex-column">
+
+                <div class="text-center pb-2">
+                    <h4 class="pb-2">High-Bilirubin Cases by Clinic</h4>
                 </div>
 
-                <div class="col">
-                    <div class="row mb-3">
-                        <p class="pr-2 d-inline">Current per-hour salary:</p>
-                        @using (Html.BeginForm("UpdateSalary", "Home", FormMethod.Post))
-                        {
-                            @Html.TextBoxFor(model => model.WorkerSalary, new { Class = "form-control w-50 d-inline" })
-                            <button type="submit" class="btn btn-outline-primary d-inline align-top">Update</button>
-                        }
-                    </div>
+                <div class="flex-grow-1 pb-2">
+                    <!-- BAR CHART -->
+                    <canvas id="HospitalPatients"></canvas>
+                </div>
 
-                    <div class="row border border-dark rounded w-75 text-center">
-                        <h6 class="mx-auto p-2">Resources used this month by clinic</h6>
-                        <table class="table">
-                            <tbody>
-                                @{
-                                    if (Model.Clinics.Count() == Model.ClinicWorkers.Count())
+                <div class="border border-dark rounded w-75 text-center mx-auto">
+                    <h6 class="mx-auto p-2">Clinics that send the most patients to in-area hospitals</h6>
+                    <table class="table">
+                        <tbody>
+                            @{
+                                if (Model.Clinics.Count() == Model.HospitalPatients.Count())
+                                {
+                                    for (int i = 0; i < Model.Clinics.Count(); i++)
                                     {
-                                        for (int i = 0; i < Model.Clinics.Count(); i++)
-                                        {
-                                            <tr>
-                                                <td>@Model.Clinics[i]</td>
-                                                <td>$@Model.SalaryCosts[i]</td>
-                                            </tr>
-                                        }
+                                        <tr>
+                                            <td>@Model.Clinics[i]</td>
+                                            <td>@Model.HospitalPatients[i]</td>
+                                        </tr>
                                     }
                                 }
-                            </tbody>
-                        </table>
-                    </div>
+                            }
+                        </tbody>
+                    </table>
                 </div>
 
             </div>
 
         </div>
+        <div class="row mt-3">
+
+            <div class="col text-center">
+                <h6 class="mx-auto">Individual Devices Registered by Clinic</h6>
+                <img src="/Home/GetClinicWorkersChart" class="img-fluid rounded" />
+            </div>
+
+            <div class="col">
+                <div class="row mb-3">
+                    <p class="pr-2 d-inline">Current per-hour salary:</p>
+                    @using (Html.BeginForm("UpdateSalary", "Home", FormMethod.Post))
+                    {
+                        @Html.TextBoxFor(model => model.WorkerSalary, new { Class = "form-control w-50 d-inline" })
+                        <button type="submit" class="btn btn-outline-primary d-inline align-top">Update</button>
+                    }
+                </div>
+
+                <div class="row border border-dark rounded w-75 text-center">
+                    <h6 class="mx-auto p-2">Resources used this month by clinic</h6>
+                    <table class="table">
+                        <tbody>
+                            @{
+                                if (Model.Clinics.Count() == Model.ClinicWorkers.Count())
+                                {
+                                    for (int i = 0; i < Model.Clinics.Count(); i++)
+                                    {
+                                        <tr>
+                                            <td>@Model.Clinics[i]</td>
+                                            <td>$@Model.SalaryCosts[i]</td>
+                                        </tr>
+                                    }
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
     </div>
-
-    
-
 </body>
+
+<script>
+    // Bilirubin Concentrations (%) per Clinic chart
+    $.ajax({
+        type: "POST",
+        url: "/Home/GetTestStripUsageChart",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (chData) {
+            var aData = chData;
+            var aLabels = aData[0];
+            var aDatasets1 = aData[1];
+            var dataT = {
+                labels: aLabels,
+                datasets: [{
+                    label: "Test strips used",
+                    data: aDatasets1,
+                    fill: false,
+                    backgroundColor: ["rgba(112, 44, 231, 0.5)", "rgba(144, 44, 199, 0.5)", "rgba(176, 44, 167, 0.5)", "rgba(208, 44, 135, 0.5)", "rgba(240, 44, 103, 0.5)"],
+                    borderColor: ["rgba(112, 44, 231)", "rgba(144, 44, 199)", "rgba(176, 44, 167)", "rgba(208, 44, 135)", "rgba(240, 44, 103)"],
+                    borderWidth: 2
+                }]
+            };
+            var ctx = $("#TestStripUsages").get(0).getContext("2d");
+            var myNewChart = new Chart(ctx, {
+                type: 'bar',
+                data: dataT,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    title: { display: false, text: 'CHART.JS DEMO CHART' },
+                    legend: { display: false, position: 'bottom' },
+                    scales: {
+                        xAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: true, labelString: '', } }],
+                        yAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: false, labelString: '' }, ticks: { beginAtZero: true, fontSize: 13 } }]
+                    },
+                }
+            });
+        }
+    });
+
+    $.ajax({
+        type: "POST",
+        url: "/Home/GetHospitalPatientChart",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (chData) {
+            var aData = chData;
+            var aLabels = aData[0];
+            var aDatasets1 = aData[1];
+            var dataT = {
+                labels: aLabels,
+                datasets: [{
+                    label: "Test strips used",
+                    data: aDatasets1,
+                    fill: false,
+                    backgroundColor: ["rgba(112, 44, 231, 0.5)", "rgba(144, 44, 199, 0.5)", "rgba(176, 44, 167, 0.5)", "rgba(208, 44, 135, 0.5)", "rgba(240, 44, 103, 0.5)"],
+                    borderColor: ["rgba(112, 44, 231)", "rgba(144, 44, 199)", "rgba(176, 44, 167)", "rgba(208, 44, 135)", "rgba(240, 44, 103)"],
+                    borderWidth: 2
+                }]
+            };
+            var ctx = $("#HospitalPatients").get(0).getContext("2d");
+            var myNewChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: dataT,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    title: { display: false, text: 'CHART.JS DEMO CHART' },
+                    legend: { display: true, position: 'bottom' },
+                    scales: {
+                        xAxes: [{ gridLines: { display: false }, display: false, scaleLabel: { display: true, labelString: '', } }],
+                        yAxes: [{ gridLines: { display: false }, display: false, scaleLabel: { display: false, labelString: '' }, ticks: { beginAtZero: true, fontSize: 13 } }]
+                    },
+                }
+            });
+        }
+    });
+</script>

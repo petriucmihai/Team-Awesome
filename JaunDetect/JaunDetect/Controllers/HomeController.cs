@@ -166,41 +166,38 @@ namespace JaunDetect.Controllers
         #endregion
 
         #region Resources Charts
-
-        public ActionResult GetTestStripUsageChart()
+        [HttpPost]
+        public JsonResult GetTestStripUsageChart()
         {
             var resourceModel = new ResourcesChartModel();
-
             resourceModel = DataBackend.Instance.GetResources();
 
-            var key = new Chart(width: 600, height: 400, theme: GetTheme())
-                .AddSeries(
-                    chartType: "bar",
-                    xValue: resourceModel.Months,
-                    yValues: resourceModel.TestStripUsages)
-                .SetXAxis("Months")
-                .SetYAxis("Number of Strips Used")
-                .Write();
+            // Order of data in the list:
+            // 1. X-Values (labels)
+            // 2. Y-Values (data)
+            List<object> iData = new List<object>();
+            iData.Add(resourceModel.Months);
+            iData.Add(resourceModel.TestStripUsages);
 
-            return null;
+            //Source data returned as JSON  
+            return Json(iData, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult GetHospitalPatientChart()
+        [HttpPost]
+        public JsonResult GetHospitalPatientChart()
         {
             var resourceModel = new ResourcesChartModel();
-
             resourceModel = DataBackend.Instance.GetResources();
 
-            var key = new Chart(width: 500, height: 400, theme: GetTheme())
-                .AddSeries(
-                    chartType: "pie",
-                    xValue: resourceModel.Clinics,
-                    yValues: resourceModel.HospitalPatients)
-                .SetXAxis("Clinics")
-                .SetYAxis("Number of Patients Sent to Hospitals")
-                .Write();
+            // Order of data in the list:
+            // 1. X-Values (labels)
+            // 2. Y-Values (data)
+            List<object> iData = new List<object>();
+            iData.Add(resourceModel.Clinics);
+            iData.Add(resourceModel.HospitalPatients);
 
-            return null;
+            //Source data returned as JSON  
+            return Json(iData, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult GetClinicWorkersChart()
