@@ -200,25 +200,22 @@ namespace JaunDetect.Controllers
             return Json(iData, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult GetClinicWorkersChart()
+        [HttpPost]
+        public JsonResult GetClinicWorkersChart()
         {
             var resourceModel = new ResourcesChartModel();
-
             resourceModel = DataBackend.Instance.GetResources();
 
-            var key = new Chart(width: 600, height: 400, theme: GetTheme())
-                .AddSeries(
-                    chartType: "column",
-                    xValue: resourceModel.Clinics,
-                    yValues: resourceModel.ClinicWorkers)
-                .SetXAxis("Clinic")
-                .SetYAxis("Number of Individual Devices Registering Tests")
-                .Write();
+            // Order of data in the list:
+            // 1. X-Values (labels)
+            // 2. Y-Values (data)
+            List<object> iData = new List<object>();
+            iData.Add(resourceModel.Clinics);
+            iData.Add(resourceModel.ClinicWorkers);
 
-            return null;
+            //Source data returned as JSON  
+            return Json(iData, JsonRequestBehavior.AllowGet);
         }
-
-
 
         [HttpPost]
         public ActionResult UpdatePrice(ResourcesChartModel model)

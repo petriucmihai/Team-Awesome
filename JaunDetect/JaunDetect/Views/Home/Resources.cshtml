@@ -28,8 +28,8 @@
                     <canvas id="TestStripUsages"></canvas>
                 </div>
 
-                <div class="row mb-3">
-                    <p class="pr-2">Current price of test strip:</p>
+                <div class="row mb-3 mx-auto">
+                    <p class="pr-2">Price of test strip:</p>
                     @using (Html.BeginForm("UpdatePrice", "Home", FormMethod.Post))
                     {
                         @Html.TextBoxFor(model => model.TestStripPrice, new { Class = "form-control w-50 d-inline" })
@@ -93,15 +93,23 @@
             </div>
 
         </div>
-        <div class="row mt-3">
 
-            <div class="col text-center">
-                <h6 class="mx-auto">Individual Devices Registered by Clinic</h6>
-                <img src="/Home/GetClinicWorkersChart" class="img-fluid rounded" />
+        <div class="row justify-content-center mt-5">
+            <div class="text-center pb-2">
+                <h4 class="pb-2">High-Bilirubin Cases by Clinic</h4>
             </div>
+        </div>
+
+
+        <div class="row mt-5 d-flex flex-row">
 
             <div class="col">
-                <div class="row mb-3">
+                <canvas id="ClinicWorkers"></canvas>
+            </div>
+
+            <div class="col d-flex flex-column">
+
+                <div class="mb-3 mx-auto">
                     <p class="pr-2 d-inline">Current per-hour salary:</p>
                     @using (Html.BeginForm("UpdateSalary", "Home", FormMethod.Post))
                     {
@@ -109,8 +117,7 @@
                         <button type="submit" class="btn btn-outline-primary d-inline align-top">Update</button>
                     }
                 </div>
-
-                <div class="row border border-dark rounded w-75 text-center">
+                <div class="border border-dark rounded w-75 text-center mx-auto">
                     <h6 class="mx-auto p-2">Resources used this month by clinic</h6>
                     <table class="table">
                         <tbody>
@@ -129,6 +136,7 @@
                         </tbody>
                     </table>
                 </div>
+
             </div>
 
         </div>
@@ -208,6 +216,44 @@
                     scales: {
                         xAxes: [{ gridLines: { display: false }, display: false, scaleLabel: { display: true, labelString: '', } }],
                         yAxes: [{ gridLines: { display: false }, display: false, scaleLabel: { display: false, labelString: '' }, ticks: { beginAtZero: true, fontSize: 13 } }]
+                    },
+                }
+            });
+        }
+    });
+
+    $.ajax({
+        type: "POST",
+        url: "/Home/GetClinicWorkersChart",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (chData) {
+            var aData = chData;
+            var aLabels = aData[0];
+            var aDatasets1 = aData[1];
+            var dataT = {
+                labels: aLabels,
+                datasets: [{
+                    label: "Clinic workers",
+                    data: aDatasets1,
+                    fill: false,
+                    backgroundColor: ["rgba(112, 44, 231, 0.5)", "rgba(144, 44, 199, 0.5)", "rgba(176, 44, 167, 0.5)", "rgba(208, 44, 135, 0.5)", "rgba(240, 44, 103, 0.5)"],
+                    borderColor: ["rgba(112, 44, 231)", "rgba(144, 44, 199)", "rgba(176, 44, 167)", "rgba(208, 44, 135)", "rgba(240, 44, 103)"],
+                    borderWidth: 2
+                }]
+            };
+            var ctx = $("#ClinicWorkers").get(0).getContext("2d");
+            var myNewChart = new Chart(ctx, {
+                type: 'bar',
+                data: dataT,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    title: { display: false, text: 'CHART.JS DEMO CHART' },
+                    legend: { display: false, position: 'bottom' },
+                    scales: {
+                        xAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: true, labelString: '', } }],
+                        yAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: false, labelString: '' }, ticks: { beginAtZero: true, fontSize: 13 } }]
                     },
                 }
             });
