@@ -6,7 +6,7 @@
 <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 
 
-<body>
+<body class="text-white" style="background-color: #03012C">
 
     <div class="container body-content">
         <div class="row">
@@ -33,13 +33,13 @@
                     @using (Html.BeginForm("UpdatePrice", "Home", FormMethod.Post))
                     {
                         @Html.TextBoxFor(model => model.TestStripPrice, new { Class = "form-control w-50 d-inline" })
-                        <button type="submit" class="btn btn-outline-primary d-inline align-top">Update</button>
+                        <button type="submit" class="btn btn-outline-light d-inline align-top">Update</button>
                     }
                 </div>
 
-                <div class="row border border-dark rounded w-75 text-center mx-auto">
+                <div class="row border border-white rounded w-75 text-center mx-auto">
                     <h6 class="mx-auto p-2">Resources used this month by clinic</h6>
-                    <table class="table">
+                    <table class="table text-white">
                         <tbody>
                             @{
                                 if (Model.Clinics.Count() == Model.TestStripCosts.Count())
@@ -70,9 +70,9 @@
                     <canvas id="HospitalPatients"></canvas>
                 </div>
 
-                <div class="border border-dark rounded w-75 text-center mx-auto">
+                <div class="border border-white rounded w-75 text-center mx-auto">
                     <h6 class="mx-auto p-2">Clinics that send the most patients to in-area hospitals</h6>
-                    <table class="table">
+                    <table class="table text-white">
                         <tbody>
                             @{
                                 if (Model.Clinics.Count() == Model.HospitalPatients.Count())
@@ -114,12 +114,12 @@
                     @using (Html.BeginForm("UpdateSalary", "Home", FormMethod.Post))
                     {
                         @Html.TextBoxFor(model => model.WorkerSalary, new { Class = "form-control w-50 d-inline" })
-                        <button type="submit" class="btn btn-outline-primary d-inline align-top">Update</button>
+                        <button type="submit" class="btn btn-outline-light d-inline align-top">Update</button>
                     }
                 </div>
-                <div class="border border-dark rounded w-75 text-center mx-auto">
+                <div class="border border-white rounded w-75 text-center mx-auto">
                     <h6 class="mx-auto p-2">Resources used this month by clinic</h6>
-                    <table class="table">
+                    <table class="table text-white">
                         <tbody>
                             @{
                                 if (Model.Clinics.Count() == Model.ClinicWorkers.Count())
@@ -145,7 +145,10 @@
 </body>
 
 <script>
-    // Bilirubin Concentrations (%) per Clinic chart
+    // Set all chart font to white
+    Chart.defaults.global.defaultFontColor = 'white';
+
+    // Test Strip Usage per Month
     $.ajax({
         type: "POST",
         url: "/Home/GetTestStripUsageChart",
@@ -167,6 +170,9 @@
                 }]
             };
             var ctx = $("#TestStripUsages").get(0).getContext("2d");
+
+            //Chart.defaults.global.defaultFontColor = 'white';
+
             var myNewChart = new Chart(ctx, {
                 type: 'bar',
                 data: dataT,
@@ -184,6 +190,7 @@
         }
     });
 
+    // High-Bilirubin Cases by Clinic
     $.ajax({
         type: "POST",
         url: "/Home/GetHospitalPatientChart",
@@ -222,6 +229,7 @@
         }
     });
 
+    //High-Bilirubin Cases by Clinic
     $.ajax({
         type: "POST",
         url: "/Home/GetClinicWorkersChart",
