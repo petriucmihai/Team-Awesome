@@ -11,68 +11,99 @@
 <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 
 <body class="text-white" style="background-color: #03012C">
-
-    @{
-        if (Model.VisualizationChoice == 1)
-        {
-            <div class="row mt-5">
-                <div class="col">
-                    <canvas id="TestNumLine"></canvas>
+    <div class="container body-content">
+        @{
+            if (Model.VisualizationChoice == 1)
+            {
+                <div class="row mt-5 d-flex flex-column">
+                    <div class="mx-auto">
+                        <h3>Number of Tests vs. Time</h3>
+                    </div>
+                    <div class="col">
+                        <canvas id="TestNumLine"></canvas>
+                    </div>
                 </div>
-            </div>
-            <div class="row mt-3">
-                <div class="col">
-                    <canvas id="DeviceLine"></canvas>
+                <div class="row mt-3 d-flex flex-column">
+                    <div class="mx-auto">
+                        <h3>Number of Devices</h3>
+                    </div>
+                    <div class="col">
+                        <canvas id="DeviceLine"></canvas>
+                    </div>
                 </div>
-            </div>
-            <div class="row mt-3">
-                <div class="col">
-                    <canvas id="BiliLine"></canvas>
+                <div class="row mt-3 d-flex flex-column">
+                    <div class="mx-auto">
+                        <h3>Bilirubin Concentrations</h3>
+                    </div>
+                    <div class="col">
+                        <canvas id="BiliLine"></canvas>
+                    </div>
                 </div>
-            </div>
-            <div class="row mt-3">
-                <div class="col">
-                    <canvas id="OSLine"></canvas>
+                <div class="row mt-3 d-flex flex-column">
+                    <div class="mx-auto">
+                        <h3>Number of OS's</h3>
+                    </div>
+                    <div class="col">
+                        <canvas id="OSLine"></canvas>
+                    </div>
                 </div>
-            </div>
+            }
+            else if (Model.VisualizationChoice == 2)
+            {
+                <div class="row mt-5 d-flex flex-column">
+                    <div class="mx-auto">
+                        <h3>Number of Devices</h3>
+                    </div>
+                    <div class="col">
+                        <canvas id="DeviceBar"></canvas>
+                    </div>
+                </div>
+                <div class="row mt-3 d-flex flex-column">
+                    <div class="mx-auto">
+                        <h3>Bilirubin Concentrations</h3>
+                    </div>
+                    <div class="col">
+                        <canvas id="BiliBar"></canvas>
+                    </div>
+                </div>
+                <div class="row mt-3 d-flex flex-column">
+                    <div class="mx-auto">
+                        <h3>Number of OS's</h3>
+                    </div>
+                    <div class="col">
+                        <canvas id="OSBar"></canvas>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="row mt-5 d-flex flex-column">
+                    <div class="mx-auto">
+                        <h3>Number of Devices</h3>
+                    </div>
+                    <div class="col">
+                        <canvas id="DevicePie"></canvas>
+                    </div>
+                </div>
+                <div class="row mt-3 d-flex flex-column">
+                    <div class="mx-auto">
+                        <h3>Bilirubin Concentrations</h3>
+                    </div>
+                    <div class="col">
+                        <canvas id="BiliPie"></canvas>
+                    </div>
+                </div>
+                <div class="row mt-3 d-flex flex-column">
+                    <div class="mx-auto">
+                        <h3>Number of OS's</h3>
+                    </div>
+                    <div class="col">
+                        <canvas id="OSPie"></canvas>
+                    </div>
+                </div>
+            }
         }
-        else if (Model.VisualizationChoice == 2)
-        {
-            <div class="row mt-3">
-                <div class="col">
-                    <canvas id="DeviceBar"></canvas>
-                </div>
-            </div>
-            <div class="row mt-3">
-                <div class="col">
-                    <canvas id="BiliBar"></canvas>
-                </div>
-            </div>
-            <div class="row mt-3">
-                <div class="col">
-                    <canvas id="OSBar"></canvas>
-                </div>
-            </div>
-        }
-        else
-        {
-            <div class="row mt-3">
-                <div class="col">
-                    <canvas id="DevicePie"></canvas>
-                </div>
-            </div>
-            <div class="row mt-3">
-                <div class="col">
-                    <canvas id="BiliPie"></canvas>
-                </div>
-            </div>
-            <div class="row mt-3">
-                <div class="col">
-                    <canvas id="OSPie"></canvas>
-                </div>
-            </div>
-        }
-    }
+    </div>
 </body>
 
 <script>
