@@ -30,27 +30,39 @@
 
         <div class="row text-center py-4 my-3" style="background-color:#070342;">
             <div class="col">
-                <h2 class="text-center display-5">Map of Bilirubin Concentrations</h2>
-                <img src="~/Content/Images/widemap.jpg" class="img-fluid rounded" alt="Responsive image" />
-            </div>
-        </div>
+                <div class="row mx-auto">
+                    <div class="col">
+                        <h2 class="display-5 text-center">Bilirubin Concentration Data by Clinic</h2>
+                        <br />
+                    </div>
+                </div>
 
+                <div class="row">
+                    <div class="col ml-3">
+                        <!--<h2 class="text-center display-5">Map of Bilirubin Concentrations</h2>-->
+                        <img src="~/Content/Images/widemap.jpg" class="img-fluid rounded" alt="Responsive image" style="object-fit: none; object-position: center;" />
+                    </div>
 
-        <div class="row text-center py-4 my-3" style="background-color:#130F60;">
-            <div class="col">
-                <h2 class="text-center display-5">Bilirubin Concentrations (%) per Clinic</h2>
+                    <div class="col-3 text-center">
+                        <!--<h2 class="text-center display-5">Bilirubin Concentrations (%) per Clinic</h2>-->
 
-                <!-- BAR CHART -->
-                <canvas class="mx-auto" id="myChart" style="max-width:90%; height:300px;"></canvas>
+                        <div class="container" style="height:400px;">
+                            <canvas class="mx-auto" id="myChart"></canvas>
+                        </div>
+                        
 
-                <div class="text-center mt-2">
-                    @using (Html.BeginForm("UpdateHomeChartClinicOption", "Home", FormMethod.Post))
-                    {
-                        @Html.DropDownListFor(model => model.ClinicOptionString, Model.ClinicOptionsList, new { @class = "btn btn-light dropdown-toggle" });
-                        <button id="Bili%ByClinic" class="btn btn-secondary" type="submit">Update</button>
-                    }
+                        <div class="text-center mt-2">
+                            @using (Html.BeginForm("UpdateHomeChartClinicOption", "Home", FormMethod.Post))
+                            {
+                                @Html.DropDownListFor(model => model.ClinicOptionString, Model.ClinicOptionsList, new { @class = "btn btn-light dropdown-toggle" });
+                                <button id="Bili%ByClinic" class="btn btn-secondary" type="submit">Update</button>
+                            }
+                        </div>
+                    </div>
                 </div>
             </div>
+
+
         </div>
 
         <div class="row text-center py-4 my-3" style="background-color:#191570;">
@@ -58,7 +70,7 @@
                 <h2 class="text-center display-5">Number of Tests Taken by each Clinic</h2>
 
                 <!-- BAR CHART -->
-                <canvas class="mx-auto" id="bigchart" style="max-width:90%; height:300px;"></canvas>
+                <canvas class="mx-auto" id="bigchart" style="max-width:90%; max-height:700px;"></canvas>
 
                 <div class="text-center mt-2">
                     @using (Html.BeginForm("UpdateHomeChartTimeOption", "Home", FormMethod.Post))
@@ -100,6 +112,7 @@
                 data: dataT,
                 options: {
                     responsive: true,
+                    maintainAspectRatio: false,
                     title: { display: false, text: 'CHART.JS DEMO CHART' },
                     legend: { display: false, position: 'bottom' },
                     scales: {
