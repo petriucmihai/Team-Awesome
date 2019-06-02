@@ -37,17 +37,19 @@
                     </div>
                 </div>
 
+
+
+                <!-- This row shows up oddly on a 1440p monitor -->
                 <div class="row">
-                    <div class="col ml-3">
-                        <!--<h2 class="text-center display-5">Map of Bilirubin Concentrations</h2>-->
-                        <img src="~/Content/Images/widemap.jpg" class="img-fluid rounded" alt="Responsive image" style="object-fit: none; object-position: center;" />
+                    <div class="col-8 mx-3">
+                        <img src="~/Content/Images/widemap.jpg" class="img-fluid rounded" alt="Responsive image" />
                     </div>
 
-                    <div class="col-3 text-center">
+                    <div class="col d-flex flex-column">
                         <!--<h2 class="text-center display-5">Bilirubin Concentrations (%) per Clinic</h2>-->
 
-                        <div class="container" style="height:400px;">
-                            <canvas class="mx-auto" id="myChart"></canvas>
+                        <div class="flex-grow-1">
+                            <canvas id="myChart"></canvas>
                         </div>
                         
 
@@ -58,7 +60,7 @@
                                 <button id="Bili%ByClinic" class="btn btn-secondary" type="submit">Update</button>
                             }
                         </div>
-                    </div>
+                     </div>
                 </div>
             </div>
 
@@ -66,11 +68,13 @@
         </div>
 
         <div class="row text-center py-4 my-3" style="background-color:#191570;">
-            <div class="col">
-                <h2 class="text-center display-5">Number of Tests Taken by each Clinic</h2>
+            <div class="col-9 mx-auto">
+                <h2 class="text-center display-5">Number of Tests Taken by Clinic</h2>
 
-                <!-- BAR CHART -->
-                <canvas class="mx-auto" id="bigchart" style="max-width:90%; max-height:700px;"></canvas>
+                <div>
+                    <!-- BAR CHART -->
+                    <canvas id="bigchart"></canvas>
+                </div>
 
                 <div class="text-center mt-2">
                     @using (Html.BeginForm("UpdateHomeChartTimeOption", "Home", FormMethod.Post))
@@ -85,6 +89,9 @@
 </body>
 
 <script>
+    // Set all chart font to white
+    Chart.defaults.global.defaultFontColor = 'white';
+
     // Bilirubin Concentrations (%) per Clinic chart
     $.ajax({
         type: "POST",
