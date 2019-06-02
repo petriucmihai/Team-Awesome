@@ -116,8 +116,8 @@
                     title: { display: false, text: 'CHART.JS DEMO CHART' },
                     legend: { display: false, position: 'bottom' },
                     scales: {
-                        xAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: true, labelString: aData[2] } }],
-                        yAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: false, labelString: '' }, ticks: {  beginAtZero: true } }]
+                        xAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: true, labelString: aData[2], fontSize: 18 }, ticks: { fontSize: 18 } }],
+                        yAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: false, labelString: '' }, ticks: { beginAtZero: true, fontSize: 13 } }]
                     },
                 }
             });
@@ -184,10 +184,12 @@
                 options: {
                     responsive: true,
                     title: { display: false, text: 'CHART.JS DEMO CHART' },
-                    legend: { display: true, position: 'bottom' },
+                    legend: {
+                        display: true, position: 'bottom', labels: { fontSize: 18 }
+                    },
                     scales: {
-                        xAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: true, labelString: '' } }],
-                        yAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: false, labelString: '' }, ticks: { beginAtZero: true } }]
+                        xAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: true, labelString: '' }, ticks: { fontSize: 18 } }],
+                        yAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: false, labelString: '' }, ticks: { beginAtZero: true, fontSize: 15 } }]
                     },
                 }
             });
