@@ -6,27 +6,31 @@
 
 }
 
+<!--For Chart.js charts-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js" type="text/javascript"></script>
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
 @{
     if (Model.VisualizationChoice == 1)
     {
         <div class="row mt-5">
             <div class="col">
-                <img src="/Chart/GetTestsPerDateLineChart" class="img-fluid rounded" alt="Responsive image" />
+                <canvas id="TestNumLine"></canvas>
             </div>
         </div>
         <div class="row mt-3">
             <div class="col">
-                <img src="/Chart/GetDeviceLineChart" class="img-fluid rounded" alt="Responsive image" />
+                <canvas id="DeviceLine"></canvas>
             </div>
         </div>
         <div class="row mt-3">
             <div class="col">
-                <img src="/Chart/GetBilirubinLineChart" class="img-fluid rounded" alt="Responsive image" />
+                <canvas id="BiliLine"></canvas>
             </div>
         </div>
         <div class="row mt-3">
             <div class="col">
-                <img src="/Chart/GetOSLineChart" class="img-fluid rounded" alt="Responsive image" />
+                <canvas id="OSLine"></canvas>
             </div>
         </div>
     }
@@ -77,6 +81,176 @@
         </div>
     }
 }
+
+<script>
+    // Number of test line chart
+    $.ajax({
+        type: "POST",
+        url: "/Chart/GetTestsPerDateLineChart",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (chData) {
+            var aData = chData;
+            var aLabels = aData[0];
+            var aDatasets1 = aData[1];
+            var dataT = {
+                labels: aLabels,
+                datasets: [{
+                    label: "Test strips used",
+                    data: aDatasets1,
+                    fill: false,
+                    backgroundColor: ["rgba(112, 44, 231, 0.5)", "rgba(144, 44, 199, 0.5)", "rgba(176, 44, 167, 0.5)", "rgba(208, 44, 135, 0.5)", "rgba(240, 44, 103, 0.5)"],
+                    borderColor: ["rgba(112, 44, 231)", "rgba(144, 44, 199)", "rgba(176, 44, 167)", "rgba(208, 44, 135)", "rgba(240, 44, 103)"],
+                    borderWidth: 2
+                }]
+            };
+            var ctx = $("#TestNumLine").get(0).getContext("2d");
+
+            //Chart.defaults.global.defaultFontColor = 'white';
+
+            var myNewChart = new Chart(ctx, {
+                type: 'line',
+                data: dataT,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    title: { display: false, text: 'CHART.JS DEMO CHART' },
+                    legend: { display: false, position: 'bottom' },
+                    scales: {
+                        xAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: true, labelString: '', } }],
+                        yAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: false, labelString: '' }, ticks: { beginAtZero: true, fontSize: 13 } }]
+                    },
+                }
+            });
+        }
+    });
+
+    // Devices line chart
+    $.ajax({
+        type: "POST",
+        url: "/Chart/GetDeviceLineChart",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (chData) {
+            var aData = chData;
+            var aLabels = aData[0];
+            var aDatasets1 = aData[1];
+            var dataT = {
+                labels: aLabels,
+                datasets: [{
+                    label: "Test strips used",
+                    data: aDatasets1,
+                    fill: false,
+                    backgroundColor: ["rgba(112, 44, 231, 0.5)", "rgba(144, 44, 199, 0.5)", "rgba(176, 44, 167, 0.5)", "rgba(208, 44, 135, 0.5)", "rgba(240, 44, 103, 0.5)"],
+                    borderColor: ["rgba(112, 44, 231)", "rgba(144, 44, 199)", "rgba(176, 44, 167)", "rgba(208, 44, 135)", "rgba(240, 44, 103)"],
+                    borderWidth: 2
+                }]
+            };
+            var ctx = $("#DeviceLine").get(0).getContext("2d");
+
+            //Chart.defaults.global.defaultFontColor = 'white';
+
+            var myNewChart = new Chart(ctx, {
+                type: 'line',
+                data: dataT,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    title: { display: false, text: 'CHART.JS DEMO CHART' },
+                    legend: { display: false, position: 'bottom' },
+                    scales: {
+                        xAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: true, labelString: '', } }],
+                        yAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: false, labelString: '' }, ticks: { beginAtZero: true, fontSize: 13 } }]
+                    },
+                }
+            });
+        }
+    });
+
+    // Bili line chart
+    $.ajax({
+        type: "POST",
+        url: "/Chart/GetBilirubinLineChart",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (chData) {
+            var aData = chData;
+            var aLabels = aData[0];
+            var aDatasets1 = aData[1];
+            var dataT = {
+                labels: aLabels,
+                datasets: [{
+                    label: "Test strips used",
+                    data: aDatasets1,
+                    fill: false,
+                    backgroundColor: ["rgba(112, 44, 231, 0.5)", "rgba(144, 44, 199, 0.5)", "rgba(176, 44, 167, 0.5)", "rgba(208, 44, 135, 0.5)", "rgba(240, 44, 103, 0.5)"],
+                    borderColor: ["rgba(112, 44, 231)", "rgba(144, 44, 199)", "rgba(176, 44, 167)", "rgba(208, 44, 135)", "rgba(240, 44, 103)"],
+                    borderWidth: 2
+                }]
+            };
+            var ctx = $("#BiliLine").get(0).getContext("2d");
+
+            //Chart.defaults.global.defaultFontColor = 'white';
+
+            var myNewChart = new Chart(ctx, {
+                type: 'line',
+                data: dataT,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    title: { display: false, text: 'CHART.JS DEMO CHART' },
+                    legend: { display: false, position: 'bottom' },
+                    scales: {
+                        xAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: true, labelString: '', } }],
+                        yAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: false, labelString: '' }, ticks: { beginAtZero: true, fontSize: 13 } }]
+                    },
+                }
+            });
+        }
+    });
+
+    // OS line chart
+    $.ajax({
+        type: "POST",
+        url: "/Chart/GetOSLineChart",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (chData) {
+            var aData = chData;
+            var aLabels = aData[0];
+            var aDatasets1 = aData[1];
+            var dataT = {
+                labels: aLabels,
+                datasets: [{
+                    label: "Test strips used",
+                    data: aDatasets1,
+                    fill: false,
+                    backgroundColor: ["rgba(112, 44, 231, 0.5)", "rgba(144, 44, 199, 0.5)", "rgba(176, 44, 167, 0.5)", "rgba(208, 44, 135, 0.5)", "rgba(240, 44, 103, 0.5)"],
+                    borderColor: ["rgba(112, 44, 231)", "rgba(144, 44, 199)", "rgba(176, 44, 167)", "rgba(208, 44, 135)", "rgba(240, 44, 103)"],
+                    borderWidth: 2
+                }]
+            };
+            var ctx = $("#OSLine").get(0).getContext("2d");
+
+            //Chart.defaults.global.defaultFontColor = 'white';
+
+            var myNewChart = new Chart(ctx, {
+                type: 'line',
+                data: dataT,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    title: { display: false, text: 'CHART.JS DEMO CHART' },
+                    legend: { display: false, position: 'bottom' },
+                    scales: {
+                        xAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: true, labelString: '', } }],
+                        yAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: false, labelString: '' }, ticks: { beginAtZero: true, fontSize: 13 } }]
+                    },
+                }
+            });
+        }
+    });
+</script>
 
 
 

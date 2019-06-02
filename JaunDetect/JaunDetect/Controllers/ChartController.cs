@@ -39,7 +39,8 @@ namespace JaunDetect.Controllers
         }
 
         #region Line Charts
-        public ActionResult GetTestsPerDateLineChart()
+        [HttpPost]
+        public JsonResult GetTestsPerDateLineChart()
         {
             var queryViewModel = new QueryViewModel();
 
@@ -51,19 +52,19 @@ namespace JaunDetect.Controllers
             var distinct = Dates.Distinct().ToArray();
             var counts = GetNumberOfDistinctElements(distinct, Dates);
 
-            var key = new Chart(width: 600, height: 400)
-                .AddSeries(
-                    chartType: "line",
-                    xValue: distinct,
-                    yValues: counts)
-                .SetXAxis("Date")
-                .SetYAxis("Total Tests")
-                .Write();
+            // Order of data in the list:
+            // 1. X-Values (labels)
+            // 2. Y-Values (data)
+            List<object> iData = new List<object>();
+            iData.Add(distinct);
+            iData.Add(counts);
 
-            return null;
+            //Source data returned as JSON  
+            return Json(iData, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult GetDeviceLineChart()
+        [HttpPost]
+        public JsonResult GetDeviceLineChart()
         {
             var queryViewModel = new QueryViewModel();
 
@@ -75,19 +76,19 @@ namespace JaunDetect.Controllers
             var distinct = Devices.Distinct().ToArray();
             var counts = GetNumberOfDistinctElements(distinct, Devices);
 
-            var key = new Chart(width: 600, height: 400)
-                .AddSeries(
-                    chartType: "line",
-                    xValue: distinct,
-                    yValues: counts)
-                .SetXAxis("Devices")
-                .SetYAxis("Number of Devices")
-                .Write();
+            // Order of data in the list:
+            // 1. X-Values (labels)
+            // 2. Y-Values (data)
+            List<object> iData = new List<object>();
+            iData.Add(distinct);
+            iData.Add(counts);
 
-            return null;
+            //Source data returned as JSON  
+            return Json(iData, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult GetBilirubinLineChart()
+        [HttpPost]
+        public JsonResult GetBilirubinLineChart()
         {
             var queryViewModel = new QueryViewModel();
 
@@ -99,19 +100,19 @@ namespace JaunDetect.Controllers
             var distinct = BiliConcentrations.Distinct().ToArray();
             var counts = GetNumberOfDistinctElements(distinct, BiliConcentrations);
 
-            var key = new Chart(width: 600, height: 400)
-                .AddSeries(
-                    chartType: "line",
-                    xValue: distinct,
-                    yValues: counts)
-                .SetXAxis("Bilirubin %")
-                .SetYAxis("Number of Cases")
-                .Write();
+            // Order of data in the list:
+            // 1. X-Values (labels)
+            // 2. Y-Values (data)
+            List<object> iData = new List<object>();
+            iData.Add(distinct);
+            iData.Add(counts);
 
-            return null;
+            //Source data returned as JSON  
+            return Json(iData, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult GetOSLineChart()
+        [HttpPost]
+        public JsonResult GetOSLineChart()
         {
             var queryViewModel = new QueryViewModel();
 
@@ -123,16 +124,15 @@ namespace JaunDetect.Controllers
             var distinct = OSArray.Distinct().ToArray();
             var counts = GetNumberOfDistinctElements(distinct, OSArray);
 
-            var key = new Chart(width: 600, height: 400)
-                .AddSeries(
-                    chartType: "line",
-                    xValue: distinct,
-                    yValues: counts)
-                .SetXAxis("Device OS")
-                .SetYAxis("Number of OS's")
-                .Write();
+            // Order of data in the list:
+            // 1. X-Values (labels)
+            // 2. Y-Values (data)
+            List<object> iData = new List<object>();
+            iData.Add(distinct);
+            iData.Add(counts);
 
-            return null;
+            //Source data returned as JSON  
+            return Json(iData, JsonRequestBehavior.AllowGet);
         }
         #endregion
 
