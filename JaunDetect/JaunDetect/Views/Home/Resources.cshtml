@@ -33,7 +33,7 @@
                     @using (Html.BeginForm("UpdatePrice", "Home", FormMethod.Post))
                     {
                         @Html.TextBoxFor(model => model.TestStripPrice, new { Class = "form-control w-50 d-inline" })
-                        <button type="submit" class="btn btn-outline-light d-inline align-top">Update</button>
+                        <button id="UpdatePriceButton" type="submit" class="btn btn-outline-light d-inline align-top">Update</button>
                     }
                 </div>
 
@@ -114,7 +114,7 @@
                     @using (Html.BeginForm("UpdateSalary", "Home", FormMethod.Post))
                     {
                         @Html.TextBoxFor(model => model.WorkerSalary, new { Class = "form-control w-50 d-inline" })
-                        <button type="submit" class="btn btn-outline-light d-inline align-top">Update</button>
+                        <button id="UpdateSalaryButton" type="submit" class="btn btn-outline-light d-inline align-top">Update</button>
                     }
                 </div>
                 <div class="border border-white rounded w-75 text-center mx-auto">
