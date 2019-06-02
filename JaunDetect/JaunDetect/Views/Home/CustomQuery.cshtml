@@ -24,12 +24,12 @@
         }
 
         tr:nth-child(even) {
-            background-color: #f2f2f2
+            background-color: #070342
         }
     </style>
 </head>
 
-<body>
+<body class="text-white" style="background-color: #03012C">
     <div class="container body-content">
         <div class="row">
             <div class="col text-center">
@@ -42,10 +42,10 @@
         @*advanced search and data visualization buttons*@
         <div class="row">
             <div class="col text-left">
-                <button class="btn btn-primary" data-toggle="collapse" data-target="#query">Advanced Search</button>
+                <button class="btn btn-outline-light" data-toggle="collapse" data-target="#query">Advanced Search</button>
             </div>
             <div class="col text-right">
-                <button class="btn btn-primary" data-toggle="collapse" data-target="#dataVis">Visualize Data</button>
+                <button class="btn btn-outline-light" data-toggle="collapse" data-target="#dataVis">Visualize Data</button>
             </div>
         </div>
 
@@ -57,26 +57,26 @@
                     <div class="btn-group row" role="group">
                         <div class="col btn-group-vertical">
                             <p><b> Clinic </b></p>
-                            @Html.TextBoxFor(model => model.UserInputClinic, new { @style = "margin-top:-5 px; margin-bottom:5 px" })
+                            @Html.TextBoxFor(model => model.UserInputClinic, new { @class = "mb-4" })
                             <p><b> Province </b></p>
-                            @Html.TextBoxFor(model => model.UserInputProvince, new { @style = "margin-top:-5 px; margin-bottom:5 px" })
+                            @Html.TextBoxFor(model => model.UserInputProvince, new { @class = "mb-4" })
                         </div>
 
                         <div class="col btn-group-vertical">
                             <p><b> Start Date </b></p>
-                            @Html.TextBoxFor(model => model.UserInputStartDate, new { @style = "margin-top:-5 px; margin-bottom:5 px" })
+                            @Html.TextBoxFor(model => model.UserInputStartDate, new { @class = "mb-4" })
                             <p><b> End Date </b></p>
-                            @Html.TextBoxFor(model => model.UserInputEndDate, new { @style = "margin-top:-5 px; margin-bottom:5 px" })
+                            @Html.TextBoxFor(model => model.UserInputEndDate, new { @class = "mb-4" })
                         </div>
-                        <div class="col btn-group-vertical">
+                        <div class="col">
                             <p><b> Device </b></p>
-                            @Html.TextBoxFor(model => model.UserInputDevice, new { @style = "margin-top:-5 px; margin-bottom:5 px" })
+                            @Html.TextBoxFor(model => model.UserInputDevice, new { @class = "mb-4" })
                         </div>
                     </div>
                     @*submit button*@
-                    <p>
-                        <button type="submit" class="btn btn-primary" align="right" width="48" height="48">Submit</button>
-                    </p>
+                    <div class="mb-4">
+                        <button type="submit" class="btn btn-light" align="right" width="48" height="48">Submit</button>
+                    </div>
                 }
             </div>
 
@@ -99,8 +99,10 @@
                                 @Html.RadioButtonFor(model => model.VisualizationChoice, 3, false)
                                 @Html.Label("Pie")
                             </div>
-                            <button type="submit" class="btn btn-primary" align="right" width="48" height="48">Submit</button>
                         </div>
+                    </div>
+                    <div class="mb-4">
+                        <button type="submit" class="btn btn-light" width="48" height="48">Submit</button>
                     </div>
                 }
             </div>
