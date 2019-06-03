@@ -245,6 +245,8 @@ namespace JaunDetect.Controllers
 
                 resourceModel = DataBackend.Instance.GetResources();
 
+                ViewBag.Section = "UpdateSalaryButton";
+
                 return View("Resources", resourceModel);
             }
 

@@ -41,9 +41,9 @@ namespace JaunDetect.Backend_Data
 
             for (int i = 0; i < numWeeksBack * 7; i+= 7)
             {
-                DateTime week1 = thisWeek.AddDays(-i);
+                DateTime week1 = thisWeek.AddDays(-i - 7);
                 string weekString = week1.ToString("MMMM dd");
-                DateTime week2 = thisWeek.AddDays(-i - 7);
+                DateTime week2 = thisWeek.AddDays(-i);
                 weekString += " - " + week2.ToString("MMMM dd");
                 result.Add(weekString);
             }
