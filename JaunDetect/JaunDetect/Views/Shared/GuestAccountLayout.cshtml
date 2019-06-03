@@ -1,5 +1,4 @@
 ﻿<!DOCTYPE html>
-
 <html>
 <head>
     <meta charset="utf-8" />
@@ -7,29 +6,49 @@
     <title>@ViewBag.Title - JaunDetect</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @using JaunDetect.Extensions
 </head>
 <body>
 
-    <nav class="navbar navbar-expand navbar-dark bg-dark fixed-top justify-content-center">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top justify-content-center" style="background-color:#FC5335;">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#layoutNavBar" aria-controls="layoutNavBar" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="nav nav-tabs" id="navbarsExampleDefault">
-            <a href="@Url.Action("Index", "Guest")" class="nav-item nav-link active">Home</a>
-            <!--<a href="@Url.Action("UsageData", "Home")" class="nav-item nav-link active">Usage Data</a>-->
-            <a href="@Url.Action("GuestResources", "Guest")" class="nav-item nav-link active">Resources</a>
-            <!--<a href="@Url.Action("CrashReport", "Home")" class="nav-item nav-link active">Crash Report</a>-->
-            <!--<a href="@Url.Action("Photos", "Home")" class="nav-item nav-link active">Photos</a>-->
-            <!--<a href="@Url.Action("CustomQuery", "Home")" class="nav-item nav-link active">Custom Query</a>-->
-            <a href="@Url.Action("Settings", "Home")" class="nav-item nav-link active">Settings</a>
+
+        <div class="collapse navbar-collapse justify-content-md-center" id="layoutNavBar">
+
+            <a class="navbar-brand" href="@Url.Action("Guest", "Home")"><img src="~/Content/Images/logo.png" alt="Logo" style="height:45px;" /></a>
+
+            <ul class="navbar-nav">
+                <li class="nav-item mx-3 @Html.IsActive("Guest", "Index")">
+                    <a class="nav-link" href="@Url.Action("Index", "Home")">Home</a>
+                </li>
+                <li class="nav-item mx-3 @Html.IsActive("Guest", "Resources")">
+                    <a class="nav-link" href="@Url.Action("Resources", "Home")">Resources</a>
+                </li>
+                <li class="nav-item mx-3 @Html.IsActive("Guest", "Settings")">
+                    <a class="nav-link" href="@Url.Action("Settings", "Home")">Settings</a>
+                </li>
+            </ul>
         </div>
     </nav>
 
-    <div class="container body-content">
+    <div class="no-gutters">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - JaunDetect</p>
+        <footer class="container d-flex text-white align-middle">
+            <div>
+                <p style="color:white">&copy; @DateTime.Now.Year - JaunDetect</p>
+            </div>
+            <div class="d-flex px-3 ml-5">
+                <p class="pr-2">Seattle, Washington:</p>
+                <p class="font-weight-normal">@DateTime.Now.ToString("MM/dd/yyyy h:mm tt")</p>
+            </div>
+            <div class="d-flex px-3">
+                <p class="pr-2">Lagos, Nigeria:</p>
+                <p class="font-weight-normal">@DateTime.Now.AddHours(8).ToString("MM/dd/yyyy h:mm tt")</p>
+            </div>
+
         </footer>
     </div>
 
@@ -38,3 +57,11 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
+
+<!--Script to set Viewbag.Section as the anchor tag for page to return to when it refreshes-->
+<script type="text/javascript">
+    $(document).ready(function () {
+        var anchor = document.getElementById('@ViewBag.Section');
+        anchor.scrollIntoView(true);
+    });
+</script>
