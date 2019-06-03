@@ -192,7 +192,10 @@ namespace JaunDetect.Backend_Data
             double[] result = new double[resourcesData.ClinicWorkers.Count()];
             for (int i = 0; i < resourcesData.ClinicWorkers.Count(); i++)
             {
-                result[i] = resourcesData.ClinicWorkers[i] * resourcesData.WorkerSalary;
+                if (resourcesData.WorkerSalary >= 0.00)
+                    result[i] = resourcesData.ClinicWorkers[i] * resourcesData.WorkerSalary;
+                else
+                    result[i] = 0.00;
             }
             return result;
         }
