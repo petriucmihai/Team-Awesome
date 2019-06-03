@@ -34,22 +34,25 @@
                     <h4 class="text-center">App Downloads per Month</h4>
                 </div>
                 <div class="flex-grow-1">
-                    <!-- BAR CHART -->
                     <canvas id="AppDownloads"></canvas>
                 </div>
             </div>
-            <div class="col">
-                <h4 class="text-center">App Logins Per Month</h4>
-                <img src="/Home/GetLoginsPerMonthChart" class="img-fluid rounded" />
+            <div class="col d-flex flex-column">
+                <div class="text-center pb-2">
+                    <h4 class="text-center">App Logins per Month</h4>
+                </div>
+                <div class="flex-grow-1">
+                    <canvas id="AppLogins"></canvas>
+                </div>
             </div>
         </div>
 
         <div class="row">
-            <div class="col">
+            <div class="col d-flex flex-column">
                 <h4 class="text-center">Most Common Usage Times of Day</h4>
                 <img src="/Home/GetCommonUsageTimesChart" class="img-fluid rounded" />
             </div>
-            <div class="col">
+            <div class="col d-flex flex-column">
                 <h4 class="text-center">Registered Device Models</h4>
                 <img src="/Home/GetDeviceModelsPieChart" class="img-fluid rounded" />
             </div>
@@ -93,6 +96,46 @@
 
             var myNewChart = new Chart(ctx, {
                 type: 'line',
+                data: dataT,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    title: { display: false, text: 'CHART.JS DEMO CHART' },
+                    legend: { display: false, position: 'bottom' },
+                    scales: {
+                        xAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: true, labelString: '', } }],
+                        yAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: false, labelString: '' }, ticks: { beginAtZero: true, fontSize: 13 } }]
+                    },
+                }
+            });
+        }
+    });
+
+    //App logins per month
+    $.ajax({
+        type: "POST",
+        url: "/Home/GetLoginsPerMonthChart",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (chData) {
+            var aData = chData;
+            var aLabels = aData[0];
+            var aDatasets1 = aData[1];
+            var dataT = {
+                labels: aLabels,
+                datasets: [{
+                    label: "Logins",
+                    data: aDatasets1,
+                    fill: false,
+                    backgroundColor: ["rgba(208, 44, 135, 0.5)", "rgba(250, 44, 75, 0.5)", "rgba(255, 44, 50, 0.5)", "rgba(255, 44, 20, 0.5)", "rgba(255, 80, 0, 0.5)", "rgba(255, 136, 0, 0.5)", "rgba(255, 189, 25, 0.5)", "rgba(255, 216, 25, 0.5)"],
+                    borderColor: ["rgba(208, 44, 135)", "rgba(250, 44, 75)", "rgba(255, 44, 50)", "rgba(255, 44, 20)", "rgba(255, 80, 0)", "rgba(255, 136, 0)", "rgba(255, 189, 25)", "rgba(255, 216, 25)"],
+                    borderWidth: 2
+                }]
+            };
+            var ctx = $("#AppLogins").get(0).getContext("2d");
+
+            var myNewChart = new Chart(ctx, {
+                type: 'horizontalBar',
                 data: dataT,
                 options: {
                     responsive: true,

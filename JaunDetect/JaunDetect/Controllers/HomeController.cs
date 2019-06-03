@@ -131,22 +131,6 @@ namespace JaunDetect.Controllers
             return null;
         }
 
-        public ActionResult GetDownloadsPerMonthChart()
-        {
-            var usageModel = new UsageViewModel();
-
-            var key = new Chart(width: 600, height: 400, theme: GetTheme())
-                .AddSeries(
-                    chartType: "line",
-                    xValue: usageModel.Months,
-                    yValues: usageModel.Downloads)
-                .SetXAxis("Months")
-                .SetYAxis("Number of App Downloads")
-                .Write();
-
-            return null;
-        }
-
         public JsonResult GetAppDownloadsPerMonthChart()
         {
             var usageModel = new UsageViewModel();
@@ -162,20 +146,19 @@ namespace JaunDetect.Controllers
             return Json(iData, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult GetLoginsPerMonthChart()
+        public JsonResult GetLoginsPerMonthChart()
         {
             var usageModel = new UsageViewModel();
 
-            var key = new Chart(width: 600, height: 400, theme: GetTheme())
-                .AddSeries(
-                    chartType: "bar",
-                    xValue: usageModel.Months,
-                    yValues: usageModel.Logins)
-                .SetXAxis("Months")
-                .SetYAxis("Number of App Logins")
-                .Write();
+            // Order of data in the list:
+            // 1. X-Values (labels)
+            // 2. Y-Values (data)
+            List<object> iData = new List<object>();
+            iData.Add(usageModel.Months);
+            iData.Add(usageModel.Logins);
 
-            return null;
+            //Source data returned as JSON  
+            return Json(iData, JsonRequestBehavior.AllowGet);
         }
 
         #endregion
