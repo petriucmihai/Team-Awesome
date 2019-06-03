@@ -4,6 +4,9 @@
 @{
     ViewBag.Title = "Home Page";
 }
+@{
+    Layout = "~/Views/Shared/GuestAccountLayout.cshtml";
+}
 
 <!--GUEST HOME-->
 <!--Needed for new user onboarding tour-->
@@ -241,7 +244,7 @@
                 element: "#Concentrations",
                 title: "Concentrations of Bilirubin for each clinic",
                 content: "Here you'll see the breakdown of bilirubin concentrations of patients at each clinic.",
-                placement:'left'
+                placement: 'left'
             },
             {
                 element: "#bigchart",
