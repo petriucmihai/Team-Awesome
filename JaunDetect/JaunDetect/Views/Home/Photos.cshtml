@@ -3,12 +3,12 @@
     ViewBag.Title = "Photos";
 }
     
-    <body style="background-color: #03012C">
+    <body class="text-white" style="background-color: #03012C">
         <div class="container body-content">
             <div class="row">
                 <div class="col text-center">
                     <div class="col-md-5 pt-4 py-2 mx-auto my-3">
-                        <h2 style="color: white" class="display-6 font-weight-normal">Photos</h2>
+                        <h2 class="display-6 font-weight-normal">Photos</h2>
                     </div>
                 </div>
             </div>
@@ -16,20 +16,18 @@
             <div class="row">
                 <div class="col-6">
                     <div class="row">
-                        <h4 style="color: white" class="text-center">Photos Taken Over Time</h4>
+                        <h4 class="text-center pb-2">Photos Taken Over Time</h4>
                         <img src="/Home/GetPhotosTakenByTimeChart" class="img-fluid rounded" />
 
                     </div>
-                    </br>
-                    <div class="row">
-                      
-                        <h4 style="color: white" class="text-center">Successful vs Failed Photos</h4>
+                    <div class="row pt-3">
+                        <h4 class="text-center pb-2">Successful vs Failed Photos</h4>
                         <img src="/Home/GetSuccessfulFailedPhotosTaken" class="img-fluid rounded" />
                     </div>
                 </div>
 
                 <div class="col-6" >
-                    <h4 style="color:white">Failed Photo Gallery</h4>
+                    <h4 class="text-center pb-2">Failed Photo Gallery</h4>
                     <div class="table-responsive">
                         <table bgcolor="white" class="table table-bordered">
                             <thead>
