@@ -115,29 +115,22 @@ namespace JaunDetect.Controllers
             return null;
         }
 
-        public ActionResult GetDeviceModelsPieChart()
+        public JsonResult GetDeviceModelsPieChart()
         {
             var usageModel = new UsageViewModel();
 
-            var key = new Chart(width: 600, height: 400, theme: GetTheme())
-                .AddSeries(
-                    chartType: "pie",
-                    xValue: usageModel.DeviceTypes,
-                    yValues: usageModel.NumbersOfDevices)
-                .SetXAxis("Device Type")
-                .SetYAxis("Number of Devices")
-                .Write();
+            List<object> iData = new List<object>();
+            iData.Add(usageModel.DeviceTypes);
+            iData.Add(usageModel.NumbersOfDevices);
 
-            return null;
+            //Source data returned as JSON  
+            return Json(iData, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult GetAppDownloadsPerMonthChart()
         {
             var usageModel = new UsageViewModel();
 
-            // Order of data in the list:
-            // 1. X-Values (labels)
-            // 2. Y-Values (data)
             List<object> iData = new List<object>();
             iData.Add(usageModel.Months);
             iData.Add(usageModel.Downloads);
@@ -150,9 +143,6 @@ namespace JaunDetect.Controllers
         {
             var usageModel = new UsageViewModel();
 
-            // Order of data in the list:
-            // 1. X-Values (labels)
-            // 2. Y-Values (data)
             List<object> iData = new List<object>();
             iData.Add(usageModel.Months);
             iData.Add(usageModel.Logins);
