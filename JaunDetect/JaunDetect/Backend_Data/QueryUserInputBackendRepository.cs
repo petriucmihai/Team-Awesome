@@ -12,8 +12,8 @@ namespace JaunDetect.Backend_Data
         TextInfo ti = new CultureInfo("en-US", false).TextInfo; // TextInfo instance is necessary for data to string conversion and manipulation
         
         // data for the mockup database
-        string[] clinics = {"Lagos First Clinic", "Lagos Second Clinic", "Onitsha Clinic", "Kano Clinic", "Ibadan Clinic",
-            "Uyo Clinic", "Nsukka Clinic", "Abuja First Clinic", "Abuja Second Clinic", "Aba Clinic"};
+        string[] clinics = {"City Clinic #1", "City Clinic #2", "City Clinic #3", "City Clinic #4", "Town Clinic #1", "Town Clinic #2",
+                            "Town Clinic #3", "Small-town Clinic #1", "Small-town Clinic #2", "Small-town Clinic #3"};
         string[] provinces = {"Lagos", "Lagos", "Onitsha", "Kano", "Ibadan", "Uyo", "Nsukka", "Abuja", "Abuja", "Aba"};
         string[] dates = {"1/1/2018", "1/15/2018", "2/2/2018", "2/15/2018", "3/3/2018", "3/15/2018", "4/4/2018", "4/21/2018",
                            "5/5/2018", "5/30/2018", "6/6/2018", "6/15/2018","7/7/2018", "7/28/2018", "8/8/2018", "8/21/2018",
@@ -24,7 +24,7 @@ namespace JaunDetect.Backend_Data
                              "Huawei Y9", "Huawei P10", "Huawei P10", "OnePlus 5"};
         string[] biliConcentrations = {"5%", "10%", "15%", "20%", "25%"};
         string[] osList = {"9.0 Pie", "8.0 Oreo", "8.1 Oreo", "7.0 Nougat", "7.1 Nougat", "6.0 Marshmallow", "5.0 Lollipop", "4.4 KitKat",
-                            "4.1 Jelly Bean", "4.0 Ice Cream Sandwich" };
+                            "4.1 Jelly Bean", "4.0 Ice Cream" };
         string[] photoList = {"~/Content/Images/badphoto1.jpg", "~/Content/Images/badphoto2.jpg", "~/Content/Images/badphoto3.jpg"};
 
         QueryViewModel model = new QueryViewModel(); // new empty Query View Model
