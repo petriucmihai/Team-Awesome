@@ -142,7 +142,7 @@ namespace JaunDetect.Backend_Data
         {
             return resourcesData.TestStripPrice;
         }
-
+        
         public bool UpdateTestStripPrice(double price)
         {
             resourcesData.TestStripPrice = price;
@@ -152,7 +152,7 @@ namespace JaunDetect.Backend_Data
         public double[] GetTestStripCosts()
         {
             resourcesData.TestStripCosts = CalculateTestStripCost();
-            return resourcesData.TestStripCosts;
+            return resourcesData.TestStripCosts; 
         }
 
         private double[] CalculateTestStripCost()
@@ -160,9 +160,12 @@ namespace JaunDetect.Backend_Data
             double[] result = new double[resourcesData.TestStripUsages.Count()];
             for (int i = 0; i < resourcesData.TestStripUsages.Count(); i++)
             {
-                result[i] = resourcesData.TestStripUsages[i] * resourcesData.TestStripPrice;
-            }
-            return result;
+                if (resourcesData.TestStripPrice >= 0.00)
+                    result[i] = resourcesData.TestStripUsages[i] * resourcesData.TestStripPrice;
+                else
+                    result[i] = 0.00; 
+            }              
+            return result; 
         }
 
         // new code here

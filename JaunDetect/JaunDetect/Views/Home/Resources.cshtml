@@ -27,12 +27,12 @@
                     <!-- BAR CHART -->
                     <canvas id="TestStripUsages"></canvas>
                 </div>
-
+                
                 <div class="row mb-3 mx-auto">
                     <p class="pr-2">Price of test strip:</p>
                     @using (Html.BeginForm("UpdatePrice", "Home", FormMethod.Post))
                     {
-                        @Html.TextBoxFor(model => model.TestStripPrice, new { Class = "form-control w-50 d-inline" })
+                        @Html.TextBoxFor(model => model.TestStripPrice, new { Class = "form-control w-50 d-inline" })    
                         <button type="submit" class="btn btn-outline-light d-inline align-top">Update</button>
                     }
                 </div>
@@ -41,7 +41,8 @@
                     <h6 class="mx-auto p-2">Resources used this month by clinic</h6>
                     <table class="table text-white">
                         <tbody>
-                            @{
+                            @try {
+                            {
                                 if (Model.Clinics.Count() == Model.TestStripCosts.Count())
                                 {
                                     for (int i = 0; i < Model.Clinics.Count(); i++)
@@ -53,6 +54,8 @@
                                     }
                                 }
                             }
+                            }
+                            catch{};
                         </tbody>
                     </table>
                 </div>
@@ -74,18 +77,21 @@
                     <h6 class="mx-auto p-2">Clinics that send the most patients to in-area hospitals</h6>
                     <table class="table text-white">
                         <tbody>
-                            @{
-                                if (Model.Clinics.Count() == Model.HospitalPatients.Count())
-                                {
-                                    for (int i = 0; i < Model.Clinics.Count(); i++)
+                            @try
+                            {
+                                    if (Model.Clinics.Count() == Model.HospitalPatients.Count())
                                     {
-                                        <tr>
-                                            <td>@Model.Clinics[i]</td>
-                                            <td>@Model.HospitalPatients[i]</td>
-                                        </tr>
+                                        for (int i = 0; i < Model.Clinics.Count(); i++)
+                                        {
+                                            <tr>
+                                                <td>@Model.Clinics[i]</td>
+                                                <td>@Model.HospitalPatients[i]</td>
+                                            </tr>
+                                        }
                                     }
-                                }
+                                
                             }
+                            catch { };
                         </tbody>
                     </table>
                 </div>
@@ -121,21 +127,26 @@
                     <h6 class="mx-auto p-2">Resources used this month by clinic</h6>
                     <table class="table text-white">
                         <tbody>
-                            @{
-                                if (Model.Clinics.Count() == Model.ClinicWorkers.Count())
-                                {
-                                    for (int i = 0; i < Model.Clinics.Count(); i++)
+                            
+                                @try{
+                                    if (Model.Clinics.Count() == Model.ClinicWorkers.Count())
                                     {
-                                        <tr>
-                                            <td>@Model.Clinics[i]</td>
-                                            <td>$@Model.SalaryCosts[i]</td>
-                                        </tr>
+                                        for (int i = 0; i < Model.Clinics.Count(); i++)
+                                        {
+                                            <tr>
+                                                <td>@Model.Clinics[i]</td>
+                                                <td>$@Model.SalaryCosts[i]</td>
+                                            </tr>
+                                        }
                                     }
                                 }
-                            }
-                        </tbody>
+                             catch { }; 
+                            </tbody>
                     </table>
                 </div>
+
+
+
 
             </div>
 
@@ -150,18 +161,18 @@
 
     // Test Strip Usage per Month
     $.ajax({
-        type: "POST",
+                                                type: "POST",
         url: "/Home/GetTestStripUsageChart",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (chData) {
-            var aData = chData;
-            var aLabels = aData[0];
-            var aDatasets1 = aData[1];
-            var dataT = {
+                                                        var aData = chData;
+                                                        var aLabels = aData[0];
+                                                        var aDatasets1 = aData[1];
+                                                        var dataT = {
                 labels: aLabels,
                 datasets: [{
-                    label: "Test strips used",
+                                                        label: "Test strips used",
                     data: aDatasets1,
                     fill: false,
                     backgroundColor: ["rgba(112, 44, 231, 0.5)", "rgba(144, 44, 199, 0.5)", "rgba(176, 44, 167, 0.5)", "rgba(208, 44, 135, 0.5)", "rgba(240, 44, 103, 0.5)"],
@@ -169,41 +180,41 @@
                     borderWidth: 2
                 }]
             };
-            var ctx = $("#TestStripUsages").get(0).getContext("2d");
+                                                    var ctx = $("#TestStripUsages").get(0).getContext("2d");
 
-            //Chart.defaults.global.defaultFontColor = 'white';
+                                                    //Chart.defaults.global.defaultFontColor = 'white';
 
-            var myNewChart = new Chart(ctx, {
+                                                    var myNewChart = new Chart(ctx, {
                 type: 'bar',
                 data: dataT,
                 options: {
-                    responsive: true,
+                                                    responsive: true,
                     maintainAspectRatio: false,
                     title: { display: false, text: 'CHART.JS DEMO CHART' },
                     legend: { display: false, position: 'bottom' },
                     scales: {
-                        xAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: true, labelString: '', } }],
+                                                        xAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: true, labelString: '', } }],
                         yAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: false, labelString: '' }, ticks: { beginAtZero: true, fontSize: 13 } }]
                     },
                 }
-            });
-        }
-    });
+                                                });
+                                            }
+                                        });
 
     // High-Bilirubin Cases by Clinic
     $.ajax({
-        type: "POST",
+                                        type: "POST",
         url: "/Home/GetHospitalPatientChart",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (chData) {
-            var aData = chData;
-            var aLabels = aData[0];
-            var aDatasets1 = aData[1];
-            var dataT = {
+                                                var aData = chData;
+                                                var aLabels = aData[0];
+                                                var aDatasets1 = aData[1];
+                                                var dataT = {
                 labels: aLabels,
                 datasets: [{
-                    label: "Test strips used",
+                                                label: "Test strips used",
                     data: aDatasets1,
                     fill: false,
                     backgroundColor: ["rgba(112, 44, 231, 0.5)", "rgba(144, 44, 199, 0.5)", "rgba(176, 44, 167, 0.5)", "rgba(208, 44, 135, 0.5)", "rgba(240, 44, 103, 0.5)"],
@@ -211,38 +222,38 @@
                     borderWidth: 2
                 }]
             };
-            var ctx = $("#HospitalPatients").get(0).getContext("2d");
-            var myNewChart = new Chart(ctx, {
+                                            var ctx = $("#HospitalPatients").get(0).getContext("2d");
+                                            var myNewChart = new Chart(ctx, {
                 type: 'doughnut',
                 data: dataT,
                 options: {
-                    responsive: true,
+                                            responsive: true,
                     maintainAspectRatio: false,
                     title: { display: false, text: 'CHART.JS DEMO CHART' },
                     legend: { display: true, position: 'bottom' },
                     scales: {
-                        xAxes: [{ gridLines: { display: false }, display: false, scaleLabel: { display: true, labelString: '', } }],
+                                                xAxes: [{ gridLines: { display: false }, display: false, scaleLabel: { display: true, labelString: '', } }],
                         yAxes: [{ gridLines: { display: false }, display: false, scaleLabel: { display: false, labelString: '' }, ticks: { beginAtZero: true, fontSize: 13 } }]
                     },
                 }
-            });
+                                        });
         }
     });
 
     //High-Bilirubin Cases by Clinic
     $.ajax({
-        type: "POST",
+                                    type: "POST",
         url: "/Home/GetClinicWorkersChart",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (chData) {
-            var aData = chData;
-            var aLabels = aData[0];
-            var aDatasets1 = aData[1];
-            var dataT = {
+                                            var aData = chData;
+                                            var aLabels = aData[0];
+                                            var aDatasets1 = aData[1];
+                                            var dataT = {
                 labels: aLabels,
                 datasets: [{
-                    label: "Clinic workers",
+                                            label: "Clinic workers",
                     data: aDatasets1,
                     fill: false,
                     backgroundColor: ["rgba(112, 44, 231, 0.5)", "rgba(144, 44, 199, 0.5)", "rgba(176, 44, 167, 0.5)", "rgba(208, 44, 135, 0.5)", "rgba(240, 44, 103, 0.5)"],
@@ -250,21 +261,21 @@
                     borderWidth: 2
                 }]
             };
-            var ctx = $("#ClinicWorkers").get(0).getContext("2d");
-            var myNewChart = new Chart(ctx, {
+                                        var ctx = $("#ClinicWorkers").get(0).getContext("2d");
+                                        var myNewChart = new Chart(ctx, {
                 type: 'bar',
                 data: dataT,
                 options: {
-                    responsive: true,
+                                        responsive: true,
                     maintainAspectRatio: false,
                     title: { display: false, text: 'CHART.JS DEMO CHART' },
                     legend: { display: false, position: 'bottom' },
                     scales: {
-                        xAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: true, labelString: '', } }],
+                                            xAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: true, labelString: '', } }],
                         yAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: false, labelString: '' }, ticks: { beginAtZero: true, fontSize: 13 } }]
                     },
                 }
-            });
+                                    });
         }
     });
 </script>
