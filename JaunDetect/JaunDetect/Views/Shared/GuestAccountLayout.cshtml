@@ -17,17 +17,14 @@
 
         <div class="collapse navbar-collapse justify-content-md-center" id="layoutNavBar">
 
-            <a class="navbar-brand" href="@Url.Action("Guest", "Home")"><img src="~/Content/Images/logo.png" alt="Logo" style="height:45px;" /></a>
+            <a class="navbar-brand" href="@Url.Action("Index", "Home")"><img src="~/Content/Images/logo.png" alt="Logo" style="height:45px;" /></a>
 
             <ul class="navbar-nav">
                 <li class="nav-item mx-3 @Html.IsActive("Guest", "Index")">
-                    <a class="nav-link" href="@Url.Action("Index", "Home")">Home</a>
+                    <a class="nav-link" href="@Url.Action("Index", "Guest")">Home</a>
                 </li>
                 <li class="nav-item mx-3 @Html.IsActive("Guest", "Resources")">
-                    <a class="nav-link" href="@Url.Action("Resources", "Home")">Resources</a>
-                </li>
-                <li class="nav-item mx-3 @Html.IsActive("Guest", "Settings")">
-                    <a class="nav-link" href="@Url.Action("Settings", "Home")">Settings</a>
+                    <a class="nav-link" href="@Url.Action("GuestResources", "Guest")">Resources</a>
                 </li>
             </ul>
         </div>
