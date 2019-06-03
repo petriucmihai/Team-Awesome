@@ -3,199 +3,201 @@
     ViewBag.Title = "Settings";
 }
 
-<div class="container body-content">
-    <div class="row">
-        <div class="col text-center">
-            <div class="col-md-5 p-1 mx-auto my-3">
-                <h2 class="display-6 font-weight-normal">Settings</h2>
+<body class="text-white" style="background-color: #03012C">
+
+    <div class="container body-content">
+        <div class="row">
+            <div class="col text-center">
+                <div class="col-md-5 p-1 mx-auto my-3">
+                    <h2 class="display-6 font-weight-normal">Settings</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion" id="accordionExample">
+
+            <div class="card">
+                <div class="card-header" id="headingZero" style="background-color: #070342">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link text-white" type="button" data-toggle="collapse" data-target="#collapseZero" aria-expanded="true" aria-controls="collapseZero">
+                            Dashboard report settings
+                        </button>
+                    </h5>
+                </div>
+
+                <div id="collapseZero" class="collapse show" aria-labelledby="headingZero" data-parent="#accordionExample" style="background-color: #03012C">
+                    <div class="card-body">
+                        <!--Customization settings here-->
+                        <div class="row">
+
+                            <div class="col">
+                                <h6>Default time period for dashboard reports:</h6>
+
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="defaultGroupExample1" name="freq" checked>
+                                    <label class="custom-control-label" for="defaultGroupExample1">Hours</label>
+                                </div>
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="defaultGroupExample2" name="freq">
+                                    <label class="custom-control-label" for="defaultGroupExample2">Days</label>
+                                </div>
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="defaultGroupExample3" name="freq">
+                                    <label class="custom-control-label" for="defaultGroupExample3">Weeks</label>
+                                </div>
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="defaultGroupExample4" name="freq">
+                                    <label class="custom-control-label" for="defaultGroupExample4">Months</label>
+                                </div>
+                            </div>
+
+                            <div class="col">
+                                <h6>Bilirubin alert level</h6>
+
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="defaultGroup1Example1" checked>
+                                    <label class="custom-control-label" for="defaultGroup1Example1">25%</label>
+                                </div>
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="defaultGroup1Example2">
+                                    <label class="custom-control-label" for="defaultGroup1Example2">20%</label>
+                                </div>
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="defaultGroup1Example3">
+                                    <label class="custom-control-label" for="defaultGroup1Example3">15%</label>
+                                </div>
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="defaultGroup1Example4">
+                                    <label class="custom-control-label" for="defaultGroup1Example4">10%</label>
+                                </div>
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="defaultGroup1Example5">
+                                    <label class="custom-control-label" for="defaultGroup1Example5">5%</label>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row pt-3">
+                            <div class="col">
+                                <button type="submit" class="btn btn-outline-light" onclick="">Apply Changes</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="card">
+                <div class="card-header" id="headingOne" style="background-color: #070342">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link text-white" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                            Curated report settings
+                        </button>
+                    </h5>
+                </div>
+
+                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample" style="background-color: #03012C">
+                    <div class="card-body">
+                        <!--Customization settings here-->
+                        <div class="row">
+
+                            <div class="col">
+                                <h6>Frequency of Curated Reports:</h6>
+
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="defaultGroupExample1" name="freq" checked>
+                                    <label class="custom-control-label" for="defaultGroupExample1">Daily</label>
+                                </div>
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="defaultGroupExample2" name="freq">
+                                    <label class="custom-control-label" for="defaultGroupExample2">Weekly</label>
+                                </div>
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="defaultGroupExample3" name="freq">
+                                    <label class="custom-control-label" for="defaultGroupExample3">Monthly</label>
+                                </div>
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="defaultGroupExample4" name="freq">
+                                    <label class="custom-control-label" for="defaultGroupExample4">Every 2 Months</label>
+                                </div>
+                            </div>
+
+                            <div class="col">
+                                <h6>Preferred Content in Curated Reports</h6>
+
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="defaultGroup1Example1" checked>
+                                    <label class="custom-control-label" for="defaultGroup1Example1">Bilirubin test results</label>
+                                </div>
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="defaultGroup1Example2">
+                                    <label class="custom-control-label" for="defaultGroup1Example2">Resources/budgeting</label>
+                                </div>
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="defaultGroup1Example3">
+                                    <label class="custom-control-label" for="defaultGroup1Example3">Phone app usage</label>
+                                </div>
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="defaultGroup1Example4">
+                                    <label class="custom-control-label" for="defaultGroup1Example4">Crashes</label>
+                                </div>
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="defaultGroup1Example5">
+                                    <label class="custom-control-label" for="defaultGroup1Example5">Photo results</label>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row pt-3">
+                            <div class="col">
+                                <button type="submit" class="btn btn-outline-light" onclick="">Apply Changes</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="card">
+                <div class="card-header" id="headingTwo" style="background-color: #070342">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed text-white" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Send test email notification
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample" style="background-color: #03012C">
+                    <div class="card-body">
+                        <!--Email test here-->
+                        <form>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Email address</label>
+                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                            </div>
+                            <button class="btn btn-success" onclick="">Send me a test email</button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" id="headingThree" style="background-color: #070342">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed text-white" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Create link for JaunDetect guest account
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample" style="background-color: #03012C">
+                    <div class="card-body">
+                        <p>Use this link to provide guest access to JaunDetect's telemetry reports:</p>
+                        <a href="@Url.Action("Index", "Guest")">https://jaundetecttest.azurewebsites.net/Guest/Index/1496580ers23</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
-    <div class="accordion" id="accordionExample">
-
-        <div class="card">
-            <div class="card-header" id="headingZero">
-                <h5 class="mb-0">
-                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseZero" aria-expanded="true" aria-controls="collapseZero">
-                        Dashboard report settings
-                    </button>
-                </h5>
-            </div>
-
-            <div id="collapseZero" class="collapse show" aria-labelledby="headingZero" data-parent="#accordionExample">
-                <div class="card-body">
-                    <!--Customization settings here-->
-                    <div class="row">
-
-                        <div class="col">
-                            <h6>Default time period for dashboard reports:</h6>
-
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" id="defaultGroupExample1" name="freq" checked>
-                                <label class="custom-control-label" for="defaultGroupExample1">Hours</label>
-                            </div>
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" id="defaultGroupExample2" name="freq">
-                                <label class="custom-control-label" for="defaultGroupExample2">Days</label>
-                            </div>
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" id="defaultGroupExample3" name="freq">
-                                <label class="custom-control-label" for="defaultGroupExample3">Weeks</label>
-                            </div>
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" id="defaultGroupExample4" name="freq">
-                                <label class="custom-control-label" for="defaultGroupExample4">Months</label>
-                            </div>
-                        </div>
-
-                        <div class="col">
-                            <h6>Bilirubin alert level</h6>
-
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" id="defaultGroup1Example1" checked>
-                                <label class="custom-control-label" for="defaultGroup1Example1">25%</label>
-                            </div>
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" id="defaultGroup1Example2">
-                                <label class="custom-control-label" for="defaultGroup1Example2">20%</label>
-                            </div>
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" id="defaultGroup1Example3">
-                                <label class="custom-control-label" for="defaultGroup1Example3">15%</label>
-                            </div>
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" id="defaultGroup1Example4">
-                                <label class="custom-control-label" for="defaultGroup1Example4">10%</label>
-                            </div>
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" id="defaultGroup1Example5">
-                                <label class="custom-control-label" for="defaultGroup1Example5">5%</label>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="row pt-3">
-                        <div class="col">
-                            <button type="submit" class="btn btn-primary" onclick="">Apply Changes</button>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-        </div>
-
-        <div class="card">
-            <div class="card-header" id="headingOne">
-                <h5 class="mb-0">
-                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                        Curated report settings
-                    </button>
-                </h5>
-            </div>
-
-            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-                <div class="card-body">
-                    <!--Customization settings here-->
-                    <div class="row">
-
-                        <div class="col">
-                            <h6>Frequency of Curated Reports:</h6>
-
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" id="defaultGroupExample1" name="freq" checked>
-                                <label class="custom-control-label" for="defaultGroupExample1">Daily</label>
-                            </div>
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" id="defaultGroupExample2" name="freq">
-                                <label class="custom-control-label" for="defaultGroupExample2">Weekly</label>
-                            </div>
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" id="defaultGroupExample3" name="freq">
-                                <label class="custom-control-label" for="defaultGroupExample3">Monthly</label>
-                            </div>
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" id="defaultGroupExample4" name="freq">
-                                <label class="custom-control-label" for="defaultGroupExample4">Every 2 Months</label>
-                            </div>
-                        </div>
-
-                        <div class="col">
-                            <h6>Preferred Content in Curated Reports</h6>
-
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" id="defaultGroup1Example1" checked>
-                                <label class="custom-control-label" for="defaultGroup1Example1">Bilirubin test results</label>
-                            </div>
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" id="defaultGroup1Example2">
-                                <label class="custom-control-label" for="defaultGroup1Example2">Resources/budgeting</label>
-                            </div>
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" id="defaultGroup1Example3">
-                                <label class="custom-control-label" for="defaultGroup1Example3">Phone app usage</label>
-                            </div>
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" id="defaultGroup1Example4">
-                                <label class="custom-control-label" for="defaultGroup1Example4">Crashes</label>
-                            </div>
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" id="defaultGroup1Example5">
-                                <label class="custom-control-label" for="defaultGroup1Example5">Photo results</label>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="row pt-3">
-                        <div class="col">
-                            <button type="submit" class="btn btn-primary" onclick="">Apply Changes</button>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-        </div>
-        <div class="card">
-            <div class="card-header" id="headingTwo">
-                <h5 class="mb-0">
-                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        Send test email notification
-                    </button>
-                </h5>
-            </div>
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                <div class="card-body">
-                    <!--Email test here-->
-                    <form>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Email address</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                        </div>
-                        <button class="btn btn-success" onclick="">Send me a test email</button>
-                    </form>
-
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-header" id="headingThree">
-                <h5 class="mb-0">
-                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                        Create link for JaunDetect guest account
-                    </button>
-                </h5>
-            </div>
-            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                <div class="card-body">
-                    <p>Use this link to provide guest access to JaunDetect's telemetry reports:</p>
-                    <a href="@Url.Action("Index", "Guest")">https://jaundetecttest.azurewebsites.net/Guest/Index/1496580ers23</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
+</body>
 
