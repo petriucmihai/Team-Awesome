@@ -41,7 +41,8 @@
                     <h6 class="mx-auto p-2">Resources used this month by clinic</h6>
                     <table class="table text-white">
                         <tbody>
-                            @{
+                            @try
+                            {
                                 if (Model.Clinics.Count() == Model.TestStripCosts.Count())
                                 {
                                     for (int i = 0; i < Model.Clinics.Count(); i++)
@@ -53,6 +54,7 @@
                                     }
                                 }
                             }
+                            catch { };
                         </tbody>
                     </table>
                 </div>
@@ -74,7 +76,8 @@
                     <h6 class="mx-auto p-2">Clinics that send the most patients to in-area hospitals</h6>
                     <table class="table text-white">
                         <tbody>
-                            @{
+                            @try
+                            {
                                 if (Model.Clinics.Count() == Model.HospitalPatients.Count())
                                 {
                                     for (int i = 0; i < Model.Clinics.Count(); i++)
@@ -86,6 +89,7 @@
                                     }
                                 }
                             }
+                            catch { };
                         </tbody>
                     </table>
                 </div>
@@ -121,7 +125,8 @@
                     <h6 class="mx-auto p-2">Resources used this month by clinic</h6>
                     <table class="table text-white">
                         <tbody>
-                            @{
+                            @try
+                            {
                                 if (Model.Clinics.Count() == Model.ClinicWorkers.Count())
                                 {
                                     for (int i = 0; i < Model.Clinics.Count(); i++)
@@ -133,6 +138,7 @@
                                     }
                                 }
                             }
+                            catch { };
                         </tbody>
                     </table>
                 </div>
