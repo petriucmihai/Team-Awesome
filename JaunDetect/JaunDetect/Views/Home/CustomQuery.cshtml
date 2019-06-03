@@ -118,8 +118,8 @@
                             <th scope="col"><strong style="padding-right: 120px">Clinic Name</strong></th>
                             <th scope="col"><strong style="padding-right: 75px">Province</strong></th>
                             <th scope="col"><strong style="padding-right: 100px"> Date</strong></th>
-                            <th scope="col"><strong style="padding-right: 100px">Device</strong></th>
-                            <th scope="col"><strong style="padding-right: 50px">Bilirubin Concentration</strong></th>
+                            <th scope="col"><strong style="padding-right: 110px">Device</strong></th>
+                            <th scope="col"><strong style="padding-right: 30px">Bilirubin %</strong></th>
                             <th scope="col"><strong style="padding-right: 125px">Device OS</strong></th>
                             <th scope="col"><strong> Successful Photo Upload</strong></th>
                         </tr>
@@ -130,7 +130,7 @@
                             for (int i = 0; i < Model.RecordList.Count; i++)
                             {
                                 <tr>
-                                    <th scope="row">@(i + 1) </th>
+                                    <th scope="row" style="padding-left: 10px">@(i + 1) </th>
                                     <td style="white-space:pre">@(Model.RecordList[i].Clinic)</td>
                                     <td style="white-space:pre">@(Model.RecordList[i].Province)</td>
                                     <td style="white-space:pre">@(Model.RecordList[i].Date)</td>
