@@ -48,7 +48,7 @@
                             @using (Html.BeginForm("UpdateHomeChartClinicOption", "Home", FormMethod.Post))
                             {
                                 @Html.DropDownListFor(model => model.ClinicOptionString, Model.ClinicOptionsList, new { @class = "btn btn-light dropdown-toggle" });
-                                <button id="Bili%ByClinic" class="btn btn-secondary" type="submit">Update</button>
+                                <button id="Bili%ByClinic" class="btn btn-outline-light" type="submit">Update</button>
                             }
                         </div>
                      </div>
@@ -71,7 +71,7 @@
                     @using (Html.BeginForm("UpdateHomeChartTimeOption", "Home", FormMethod.Post))
                     {
                         @Html.DropDownListFor(model => model.TimeOptionString, Model.TimeOptionsList, new { @class = "btn btn-light dropdown-toggle" });
-                        <button id="TestNumberByClinic" class="btn btn-secondary" type="submit">Update</button>
+                        <button id="TestNumberByClinic" class="btn btn-outline-light" type="submit">Update</button>
                     }
                 </div>
             </div>
