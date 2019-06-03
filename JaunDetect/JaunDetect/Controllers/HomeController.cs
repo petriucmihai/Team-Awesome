@@ -147,6 +147,21 @@ namespace JaunDetect.Controllers
             return null;
         }
 
+        public JsonResult GetAppDownloadsPerMonthChart()
+        {
+            var usageModel = new UsageViewModel();
+
+            // Order of data in the list:
+            // 1. X-Values (labels)
+            // 2. Y-Values (data)
+            List<object> iData = new List<object>();
+            iData.Add(usageModel.Months);
+            iData.Add(usageModel.Downloads);
+
+            //Source data returned as JSON  
+            return Json(iData, JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult GetLoginsPerMonthChart()
         {
             var usageModel = new UsageViewModel();
