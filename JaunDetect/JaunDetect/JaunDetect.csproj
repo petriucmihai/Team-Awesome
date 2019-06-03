@@ -152,6 +152,7 @@
     <Content Include="Content\Images\crashes2.png" />
     <Content Include="Content\Images\customquery1.png" />
     <Content Include="Content\Images\customquery2.png" />
+    <Content Include="Content\Images\heatmap mediumwide.jpg" />
     <Content Include="Content\Images\heatmap.jpg" />
     <Content Include="Content\Images\heatmap2.jpg" />
     <Content Include="Content\Images\heatmap3.jpg" />
