@@ -410,27 +410,21 @@ namespace JaunDetect.Controllers
             return Json(iData, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult GetSuccessfulFailedPhotosTaken()
+       
+
+        public JsonResult GetSuccessfulFailedPhotosTaken()
         {
             var photoModel = new PhotoChartModel();
 
-            var key = new Chart(width: 600, height: 400)
-                .AddSeries(
-                    chartType: "line",
-                    name: "Successful Photos",
-                    xValue: photoModel.Days,
-                    yValues: photoModel.SuccessfulPhotosTaken)
-                .AddSeries(
-                    chartType: "line",
-                    name: "Failed Photos",
-                    xValue: photoModel.Days,
-                    yValues: photoModel.FailedPhotosTaken)
-                .SetXAxis("Days")
-                .SetYAxis("Total Photos Taken")
-                .Write();
+            List<object> iData = new List<object>();
+            iData.Add(photoModel.Days);
+            iData.Add(photoModel.SuccessfulPhotosTaken);
+            iData.Add(photoModel.FailedPhotosTaken);
 
-            return null;
+            //Source data returned as JSON  
+            return Json(iData, JsonRequestBehavior.AllowGet);
         }
+
         #endregion
 
         private string GetTheme()

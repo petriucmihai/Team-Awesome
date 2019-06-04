@@ -27,8 +27,12 @@
                     </div>
                 </div>
                 <div class="row pt-3">
-                    <h4 class="mx-auto pb-2">Successful vs Failed Photos</h4>
-                    <img src="/Home/GetSuccessfulFailedPhotosTaken" class="img-fluid rounded" />
+                    <div class="text-center py-4 pb-2">
+                        <h4 class="text-center">Successful vs Failed Photos</h4>
+                    </div>
+                    <div class="flex-grow-1">
+                        <canvas id="SuccessfulFailedPhotos"></canvas>
+                    </div>
                 </div>
             </div>
 
@@ -183,9 +187,10 @@
     </div>
 
     <script>
+        // Photos taken over time Chart
         $.ajax({
         type: "POST",
-        url: "/Home/GetAppDownloadsPerMonthChart",
+        url: "/Home/GetPhotosTakenByTimeChart",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (chData) {
@@ -223,6 +228,63 @@
                     scales: {
                         xAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: true, labelString: '', } }],
                         yAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: false, labelString: '' }, ticks: { beginAtZero: true, fontSize: 13 } }]
+                    },
+                }
+            });
+        }
+        });
+
+        // Successful vs failed photos chart
+        $.ajax({
+        type: "POST",
+        url: "/Home/GetSuccessfulFailedPhotosTaken",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (chData) {
+            var aData = chData;
+            var aLabels = aData[0];
+            var dataT = {
+                labels: aLabels,
+                datasets: [{
+                    label: "Successful Photos",
+                    data: aData[1],
+                    fill: false,
+                    lineTension: .3,
+                    borderColor: "#FA2C4B",
+                    backgroundColor: "#D02C87",
+                    pointBackgroundColor: "#B02CA7",
+                    pointBorderColor: "#B02CA7",
+                    pointHoverBackgroundColor: "#B02CA7",
+                    pointHoverBorderColor: "#B02CA7",
+                    borderWidth: 2
+                },
+                {
+                    label: "Failed Photos",
+                    data: aData[2],
+                    fill: false,
+                    lineTension: .3,
+                    borderColor: "#FFD819",
+                    backgroundColor: "#FFD819",
+                    pointBackgroundColor: "#FF8800",
+                    pointBorderColor: "#FF8800",
+                    pointHoverBackgroundColor: "#FF8800",
+                    pointHoverBorderColor: "#FF8800",
+                    borderWidth: 2
+                }]
+            };
+            var ctx = $("#SuccessfulFailedPhotos").get(0).getContext("2d");
+            var myNewChart = new Chart(ctx, {
+                type: 'line',
+                data: dataT,
+                options: {
+                    responsive: true,
+                    title: { display: false, text: 'CHART.JS DEMO CHART' },
+                    legend: {
+                        display: true, position: 'bottom', labels: { fontSize: 18 }
+                    },
+                    scales: {
+                        xAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: true, labelString: '' }, ticks: { fontSize: 18 } }],
+                        yAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: false, labelString: '' }, ticks: { beginAtZero: true, fontSize: 15 } }]
                     },
                 }
             });
