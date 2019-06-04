@@ -58,7 +58,7 @@ namespace JaunDetect.Backend_Data
             myData.BilirubinLevels = repository.GetBilirubinLevels();
             myData.Clinics = repository.GetHomeClinics();
             myData.TimeOptionsList = repository.GetOptionsList();
-            myData.Timeframe = repository.GetCrashesTimeframe();
+            myData.Timeframe = repository.GetTimeframe();
             myData.TimeOption = repository.GetTimeOption();
             myData.TimeOptionString = repository.GetTimeOptionString();
             myData.ClinicOption = repository.GetClinicOption();
