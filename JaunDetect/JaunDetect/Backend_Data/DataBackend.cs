@@ -59,7 +59,7 @@ namespace JaunDetect.Backend_Data
             myData.Clinics = repository.GetHomeClinics();
             myData.TimeOptionsList = repository.GetOptionsList();
             myData.Timeframe = repository.GetCrashesTimeframe();
-            myData.TimeOption = repository.GetCrashesTimeOption();
+            myData.TimeOption = repository.GetTimeOption();
             myData.TimeOptionString = repository.GetTimeOptionString();
             myData.ClinicOption = repository.GetClinicOption();
             myData.ClinicOptionString = repository.GetClinicOptionString();
@@ -80,7 +80,7 @@ namespace JaunDetect.Backend_Data
             myData.NumbersOfDevices = repository.GetNumbersOfDevices();
             myData.OptionsList = repository.GetOptionsList();
             myData.Timeframe = repository.GetCrashesTimeframe();
-            myData.TimeOption = repository.GetTimeOption();
+            myData.TimeOption = repository.GetCrashesTimeOption();
             myData.TimeOptionString = repository.GetTimeOptionString();
 
             return myData;
