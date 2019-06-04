@@ -262,38 +262,32 @@ namespace JaunDetect.Controllers
 
         }
 
-        public ActionResult GetCrashesByTypeChart()
+        public JsonResult GetCrashesByTypeChart()
         {
             var crashModel = new CrashChartModel();
             crashModel = DataBackend.Instance.GetCrashData();
 
-            var key = new Chart(width: 300, height: 400)
-                .AddSeries(
-                    chartType: "column",
-                    xValue: crashModel.CrashTypes,
-                    yValues: crashModel.CrashesByType)
-                 .SetXAxis("Crash Type")
-                 .SetYAxis("Total Crashes")
-                 .Write();
+            List<object> iData = new List<object>();
+            iData.Add(crashModel.CrashTypes);
+            iData.Add(crashModel.CrashesByType);
 
-            return null;
+            //Source data returned as JSON  
+            return Json(iData, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult GetCrashesByDeviceTypeChart()
+
+
+        public JsonResult GetCrashesByDeviceTypeChart()
         {
             var crashModel = new CrashChartModel();
             crashModel = DataBackend.Instance.GetCrashData();
 
-            var key = new Chart(width:300, height: 400)
-                .AddSeries(
-                    chartType: "pie",
-                    xValue: crashModel.DeviceTypes,
-                    yValues: crashModel.NumbersOfDevices)
-                .SetXAxis("Device Model")
-                .SetYAxis("Total Crashes")
-                .Write();
+            List<object> iData = new List<object>();
+            iData.Add(crashModel.DeviceTypes);
+            iData.Add(crashModel.NumbersOfDevices);
 
-            return null;
+            //Source data returned as JSON  
+            return Json(iData, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult UpdateCrashChartTimeOption(CrashChartModel model)

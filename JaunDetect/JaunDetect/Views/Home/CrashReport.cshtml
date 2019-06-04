@@ -3,80 +3,178 @@
 @{
     ViewBag.Title = "CrashReport";
 }
+<!--For Chart.js charts-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js" type="text/javascript"></script>
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 
-    <body class="text-white" style="background-color: #03012C">
-        <div class="container body-content">
+<body class="text-white" style="background-color: #03012C">
+    <div class="container body-content">
+        <div class="row">
+            <div class="col text-center">
+                <div class="col-md-5 pt-4 py-2 mx-auto my-3">
+                    <h2 class="display-6 font-weight-normal">Crash Report</h2>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container-fluid">
             <div class="row">
+                <div class="col-6 text-center pb-2">
+                    <h4>Crashes Over Time</h4>
+                </div>
+
                 <div class="col text-center">
-                    <div class="col-md-5 pt-4 py-2 mx-auto my-3">
-                        <h2 class="display-6 font-weight-normal">Crash Report</h2>
-                    </div>
+                    @using (Html.BeginForm("UpdateCrashChartTimeOption", "Home", FormMethod.Post))
+                    {
+                        @Html.DropDownListFor(model => model.TimeOptionString, Model.OptionsList);
+                        <button type="submit">Update</button>
+                    }
                 </div>
             </div>
 
-
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-6 text-center pb-2">
-                        <h4>Crashes Over Time</h4>
-                    </div>
-
-                    <div class="col text-center">
-                        @using (Html.BeginForm("UpdateCrashChartTimeOption", "Home", FormMethod.Post))
-                        {
-                            @Html.DropDownListFor(model => model.TimeOptionString, Model.OptionsList);
-                            <button type="submit">Update</button>
-                        }
-                    </div>
-                </div>
-
-                <div class="row justify-content-center">
-                    <img src="/Home/GetCrashesByTimeChart" />
-                </div>
+            <div class="row justify-content-center">
+                <img src="/Home/GetCrashesByTimeChart" />
             </div>
-            <br />
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4">
-                        <h4 class="text-center pb-2">Crashes by Type</h4>
-                        <img src="/Home/GetCrashesByTypeChart" />
+        </div>
+        <div class="container">
+            <div class="row pt-4">
+                <div class="col d-flex flex-column">
+                    <div class="text-center pb-2">
+                        <h4 class="text-center">Crashes by Type</h4>
                     </div>
-                    <div class="col-md-4">
-                        <h4 class="text-center pb-2">Crashes by Device Model</h4>
-                        <img src="/Home/GetCrashesByDeviceTypeChart" />
+                    <div class="flex-grow-1">
+                        <canvas id="CrashesTypes"></canvas>
                     </div>
-                    <div class="col-md-4">
-                        <h4 class="text-center pb-2">Highest Total Crashes by Device</h4>
-                        <div class="border border-white rounded w-75 text-center mx-auto">
-                            <table class="table text-white">
-                                <thead>
-                                    <tr>
-                                        <th>DeviceID</th>
-                                        <th># Crashes</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @{
-                                        for (int i = 0; i < Model.DeviceIDs.Length; i++)
-                                        {
-                                            <tr>
-                                                <td>@Model.DeviceIDs[i]</td>
-                                                <td>@Model.CrashesByID[i]</td>
-                                            </tr>
-                                        }
+                </div>
+                <div class="col d-flex flex-column">
+                    <div class="text-center pb-2">
+                        <h4 class="text-center">Crashes by Device Model</h4>
+                    </div>
+                    <div class="flex-grow-1">
+                        <canvas id="CrashesDevice"></canvas>
+                    </div>
+                </div>
+                <div class="col d-flex flex-column">
+                    <h4 class="text-center pb-2">Highest Total Crashes by Device</h4>
+                    <div class="border border-white rounded w-75 text-center mx-auto">
+                        <table class="table text-white">
+                            <thead>
+                                <tr>
+                                    <th>DeviceID</th>
+                                    <th># Crashes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    for (int i = 0; i < Model.DeviceIDs.Length; i++)
+                                    {
+                                        <tr>
+                                            <td>@Model.DeviceIDs[i]</td>
+                                            <td>@Model.CrashesByID[i]</td>
+                                        </tr>
                                     }
-                                </tbody>
-                            </table>
-                        </div>
-
+                                }
+                            </tbody>
+                        </table>
                     </div>
+
                 </div>
-
-
-
             </div>
+
+
 
         </div>
 
-    </body>
+    </div>
+
+
+    <script>
+        // Set all chart font to white
+        Chart.defaults.global.defaultFontColor = 'white';
+
+        // Crashes By Type Chart
+        $.ajax({
+            type: "POST",
+            url: "/Home/GetCrashesByTypeChart",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (chData) {
+                var aData = chData;
+                var aLabels = aData[0];
+                var aDatasets1 = aData[1];
+                var dataT = {
+                    labels: aLabels,
+                    datasets: [{
+                        label: "Crash Type",
+                        data: aDatasets1,
+                        fill: true,
+                        backgroundColor: ["rgba(176, 44, 167, 0.5)", "rgba(208, 44, 135, 0.5)", "rgba(250, 44, 75, 0.5)", "rgba(255, 44, 50, 0.5)", "rgba(255, 44, 20, 0.5)", "rgba(255, 80, 0, 0.5)", "rgba(255, 136, 0, 0.5)", "rgba(255, 189, 25, 0.5)", "rgba(255, 216, 25, 0.5)", "rgba(235, 255, 25, 0.5)"],
+                        borderColor: ["rgba(176, 44, 167)", "rgba(208, 44, 135)", "rgba(250, 44, 75)", "rgba(255, 44, 50)", "rgba(255, 44, 20)", "rgba(255, 80, 0)", "rgba(255, 136, 0)", "rgba(255, 189, 25)", "rgba(255, 216, 25)", "rgba(235, 255, 25)"],
+                        borderWidth: 2
+                    }]
+                };
+                var ctx = $("#CrashesTypes").get(0).getContext("2d");
+
+                var myNewChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: dataT,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        title: { display: false, text: 'CHART.JS DEMO CHART' },
+                        legend: { display: false, position: 'bottom' },
+                        scales: {
+                            xAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: true, labelString: '', } }],
+                            yAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: false, labelString: '' }, ticks: { beginAtZero: true, fontSize: 13 } }]
+                        },
+                    }
+                });
+            }
+        });
+
+        // Crashes by Device chart
+        $.ajax({
+            type: "POST",
+            url: "/Home/GetCrashesByDeviceTypeChart",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (chData) {
+                var aData = chData;
+                var aLabels = aData[0];
+                var aDatasets1 = aData[1];
+                var dataT = {
+                    labels: aLabels,
+                    datasets: [{
+                        label: "Test strips used",
+                        data: aDatasets1,
+                        fill: false,
+                        backgroundColor: ["rgba(208, 44, 135, 0.5)", "rgba(250, 44, 75, 0.5)", "rgba(255, 44, 50, 0.5)", "rgba(255, 44, 20, 0.5)", "rgba(255, 80, 0, 0.5)", "rgba(255, 136, 0, 0.5)", "rgba(255, 189, 25, 0.5)", "rgba(255, 216, 25, 0.5)"],
+                        borderColor: ["rgba(208, 44, 135)", "rgba(250, 44, 75)", "rgba(255, 44, 50)", "rgba(255, 44, 20)", "rgba(255, 80, 0)", "rgba(255, 136, 0)", "rgba(255, 189, 25)", "rgba(255, 216, 25)"],
+                        borderWidth: 2
+                    }]
+                };
+                var ctx = $("#CrashesDevice").get(0).getContext("2d");
+
+                var myNewChart = new Chart(ctx, {
+                    type: 'pie',
+                    data: dataT,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        title: { display: false, text: 'CHART.JS DEMO CHART' },
+                        legend: { display: true, position: 'bottom' },
+                        scales: {
+                            xAxes: [{ gridLines: { display: false }, display: false, scaleLabel: { display: true, labelString: '', } }],
+                            yAxes: [{ gridLines: { display: false }, display: false, scaleLabel: { display: false, labelString: '' }, ticks: { beginAtZero: true, fontSize: 13 } }]
+                        },
+                    }
+                });
+            }
+        });
+
+
+
+    </script>
+</body>
 
