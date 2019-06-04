@@ -295,6 +295,7 @@ namespace JaunDetect.Controllers
             if (ModelState.IsValid)
             {
                 DataBackend.Instance.UpdateCrashTimeOptionString(model.TimeOptionString);
+                ViewBag.Section = "CrashTimeOption";
 
                 var crashModel = new CrashChartModel();
 
