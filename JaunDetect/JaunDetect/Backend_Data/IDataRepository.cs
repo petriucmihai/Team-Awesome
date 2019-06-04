@@ -77,6 +77,8 @@ namespace JaunDetect.Backend_Data
 
         int[] GetNumbersOfDevices();
 
+        int GetCrashesTimeOption();
+
         string[][] GetCrashesTimeframe();
 
         bool UpdateCrashTimeOptionString(string timeOptionString);

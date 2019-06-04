@@ -281,6 +281,11 @@ namespace JaunDetect.Backend_Data
             return crashesData.CrashesByTime;
         }
 
+        public string[][] GetCrashesTimeframe()
+        {
+            return crashesData.Timeframe;
+        }
+
         public int[] GetCrashesByType()
         {
             return crashesData.CrashesByType;
@@ -311,12 +316,16 @@ namespace JaunDetect.Backend_Data
             return crashesData.NumbersOfDevices;
         }
 
-        public string[][] GetCrashesTimeframe()
+        public int GetCrashesTimeOption()
         {
-            return crashesData.Timeframe;
+            return crashesData.TimeOption;
         }
 
-       
+        public List<SelectListItem> GetCrashesOptionsList()
+        {
+            return crashesData.OptionsList;
+        }
+
         public bool UpdateCrashTimeOptionString(string timeOptionString)
         {
             crashesData.TimeOptionString = timeOptionString;
