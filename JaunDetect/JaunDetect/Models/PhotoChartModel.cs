@@ -28,7 +28,7 @@ namespace JaunDetect.Models
             RandomDataGenerator random = new RandomDataGenerator();
             UnitGenerator unit = new UnitGenerator();
 
-            Weeks = unit.GetWeeks(4);
+            Weeks = unit.GetWeeks(6);
             PhotosTakenByTime = random.GetRandomDatapoint(6, 20, 100);
 
             Days = unit.GetDays(10);
