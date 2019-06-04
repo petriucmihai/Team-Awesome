@@ -99,20 +99,17 @@ namespace JaunDetect.Controllers
 
         #region Usage Data Charts
 
-        public ActionResult GetCommonUsageTimesChart()
+        
+        public JsonResult GetCommonUsageTimesChart()
         {
             var usageModel = new UsageViewModel();
 
-            var key = new Chart(width: 600, height: 400, theme: GetTheme())
-                .AddSeries(
-                    chartType: "column",
-                    xValue: usageModel.TimesOfDay,
-                    yValues: usageModel.UsageTimes)
-                .SetXAxis("Time of Day")
-                .SetYAxis("Usage Time")
-                .Write();
+            List<object> iData = new List<object>();
+            iData.Add(usageModel.TimesOfDay);
+            iData.Add(usageModel.UsageTimes);
 
-            return null;
+            //Source data returned as JSON  
+            return Json(iData, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult GetDeviceModelsPieChart()
