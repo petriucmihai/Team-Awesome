@@ -33,7 +33,7 @@
                 </div>
             </div>
 
-            <div class="flex-grow-1">
+            <div class="fixed-height-chart">
                 <canvas id="CrashesTime"></canvas>
             </div>
         </div>
@@ -199,6 +199,7 @@
                 data: dataT,
                 options: {
                     responsive: true,
+                    maintainAspectRatio: false,
                     title: { display: false, text: 'CHART.JS DEMO CHART' },
                     legend: {
                         display: true, position: 'bottom', labels: { fontSize: 18 }

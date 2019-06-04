@@ -3,6 +3,10 @@
     padding-bottom: 20px;
 }
 
+.fixed-height-chart {
+    height: 300px;
+    border: 1px solid black;
+}
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
@@ -22,3 +26,5 @@ select,
 textarea {
     max-width: 280px;
 }
+
+
