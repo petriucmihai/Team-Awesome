@@ -394,20 +394,20 @@ namespace JaunDetect.Controllers
         #endregion
 
         #region Photo Charts
-        public ActionResult GetPhotosTakenByTimeChart()
+        
+        public JsonResult GetPhotosTakenByTimeChart()
         {
             var photoModel = new PhotoChartModel();
 
-            var key = new Chart(width: 600, height: 400)
-                .AddSeries(
-                    chartType: "line",
-                    xValue: photoModel.Weeks,
-                    yValues: photoModel.PhotosTakenByTime)
-                .SetXAxis("Weeks")
-                .SetYAxis("Total Photos Taken")
-                .Write();
+            // Order of data in the list:
+            // 1. X-Values (labels)
+            // 2. Y-Values (data)
+            List<object> iData = new List<object>();
+            iData.Add(photoModel.Weeks);
+            iData.Add(photoModel.PhotosTakenByTime);
 
-            return null;
+            //Source data returned as JSON  
+            return Json(iData, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult GetSuccessfulFailedPhotosTaken()
