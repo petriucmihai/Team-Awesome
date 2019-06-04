@@ -242,24 +242,22 @@ namespace JaunDetect.Controllers
 
         #region Crash Report Charts
 
-        public ActionResult GetCrashesByTimeChart()
+      
+        public JsonResult GetCrashesByTimeChart()
         {
             var crashModel = new CrashChartModel();
             crashModel = DataBackend.Instance.GetCrashData();
             int num = crashModel.TimeOption;
 
+            // Order of data in the list:
+            // 1. X-Values (labels)
+            // 2. Y-Values (data)
+            List<object> iData = new List<object>();
+            iData.Add(crashModel.Timeframe[num]);
+            iData.Add(crashModel.CrashesByTime);
 
-            var key = new Chart(width: 900, height: 250)
-                .AddSeries(
-                    chartType: "line",
-                    xValue: crashModel.Timeframe[num],
-                    yValues: crashModel.CrashesByTime)
-                .SetXAxis("Time")
-                .SetYAxis("Total Crashes")
-                .Write();
-
-            return null;
-
+            //Source data returned as JSON  
+            return Json(iData, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult GetCrashesByTypeChart()

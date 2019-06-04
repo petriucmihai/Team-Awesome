@@ -33,8 +33,8 @@
                 </div>
             </div>
 
-            <div class="row justify-content-center">
-                <img src="/Home/GetCrashesByTimeChart" />
+            <div class="flex-grow-1">
+                <canvas id="CrashesTime"></canvas>
             </div>
         </div>
         <div class="container">
@@ -78,14 +78,9 @@
                             </tbody>
                         </table>
                     </div>
-
                 </div>
             </div>
-
-
-
         </div>
-
     </div>
 
 
@@ -173,7 +168,49 @@
             }
         });
 
-
+        // Crashes by Time chart
+        $.ajax({
+        type: "POST",
+        url: "/Home/GetCrashesByTimeChart",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (chData) {
+            var aData = chData;
+            var aLabels = aData[0];
+            var dataT = {
+                labels: aLabels,
+                datasets: [{
+                    label: "Crashes",
+                    data: aData[1],
+                    fill: true,
+                    lineTension: .3,
+                    borderColor: "#FFD819",
+                    backgroundColor: "rgba(255, 189, 25, 0.4)",
+                    pointBackgroundColor: "#FF8800",
+                    pointBorderColor: "#FF8800",
+                    pointHoverBackgroundColor: "#FF8800",
+                    pointHoverBorderColor: "#FF8800",
+                    borderWidth: 2
+                }]
+            };
+            var ctx = $("#CrashesTime").get(0).getContext("2d");
+            var myNewChart = new Chart(ctx, {
+                type: 'line',
+                data: dataT,
+                options: {
+                    responsive: true,
+                    title: { display: false, text: 'CHART.JS DEMO CHART' },
+                    legend: {
+                        display: true, position: 'bottom', labels: { fontSize: 18 }
+                    },
+                    scales: {
+                        xAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: true, labelString: '' }, ticks: { fontSize: 18 } }],
+                        yAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: false, labelString: '' }, ticks: { beginAtZero: true, fontSize: 15 } }]
+                    },
+                }
+            });
+        }
+    });
 
     </script>
 </body>
