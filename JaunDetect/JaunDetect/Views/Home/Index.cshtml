@@ -36,14 +36,12 @@
                         <img src="~/Content/Images/heatmap mediumwide.jpg" class="img-fluid rounded" alt="Responsive image" />
                     </div>
 
-                    <div class="col d-flex flex-column">
-                        <!--<h2 class="text-center display-5">Bilirubin Concentrations (%) per Clinic</h2>-->
+                    <div class="col d-flex ">
 
                         <div class="flex-grow-1">
                             <canvas id="myChart"></canvas>
                         </div>
                         
-
                         <div class="text-center mt-2">
                             @using (Html.BeginForm("UpdateHomeChartClinicOption", "Home", FormMethod.Post))
                             {
@@ -53,8 +51,8 @@
                         </div>
                      </div>
                 </div>
-            </div>
 
+            </div>
 
         </div>
 
@@ -144,7 +142,7 @@
                     pointBorderColor: "#D02C87",
                     pointHoverBackgroundColor: "#D02C87",
                     pointHoverBorderColor: "#D02C87",
-                    borderWidth: 4
+                    borderWidth: 3
                 },
                 {
                     label: aData[5],
@@ -156,7 +154,7 @@
                     pointBorderColor: "#FF2C32",
                     pointHoverBackgroundColor: "#FF2C32",
                     pointHoverBorderColor: "#FF2C32",
-                    borderWidth: 4
+                    borderWidth: 3
                 },
                 {
                     label: aData[8],
@@ -168,7 +166,7 @@
                     pointBorderColor: "#FF5000",
                     pointHoverBackgroundColor: "#FF5000",
                     pointHoverBorderColor: "#FF5000",
-                    borderWidth: 4
+                    borderWidth: 3
                 },
                 {
                     label: aData[11],
@@ -180,7 +178,7 @@
                     pointBorderColor: "#FF8800",
                     pointHoverBackgroundColor: "#FF8800",
                     pointHoverBorderColor: "#FF8800",
-                    borderWidth: 4
+                    borderWidth: 3
                 },
                 {
                     label: aData[14],
@@ -192,7 +190,7 @@
                     pointBorderColor: "#FFD819",
                     pointHoverBackgroundColor: "#FFD819",
                     pointHoverBorderColor: "#FFD819",
-                    borderWidth: 4
+                    borderWidth: 3
                 }]
             };
             var ctx = $("#bigchart").get(0).getContext("2d");
