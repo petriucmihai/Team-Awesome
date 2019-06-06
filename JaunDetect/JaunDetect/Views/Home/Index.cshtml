@@ -8,9 +8,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js" type="text/javascript"></script>
 <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 
-<body style="background-color: #23206B">
-    <div class="text-light">
-        <div class="text-center row my-3" style="background-color:#03012C;">
+<body style="background-color: #DFDFE6">
+    <div>
+        <div class="text-center row my-3" style="background-color:#9695B5;">
             <div class="col-md-5 p-1 mx-auto my-5 no-gutters">
                 <h1 class="display-4 font-weight-normal">Welcome to <img src="~/Content/Images/logo large.png" style=" width: 70%" /></h1>
                 
@@ -19,7 +19,7 @@
             <div class="product-device product-device-2 box-shadow d-none d-md-block"></div>
         </div>
 
-        <div class="row text-center py-4 my-3" style="background-color:#070342;">
+        <div class="row text-center py-4 my-3" style="background-color:#B8B8CB;">
             <div class="col">
                 <div class="row mx-auto">
                     <div class="col">
@@ -46,7 +46,7 @@
                             @using (Html.BeginForm("UpdateHomeChartClinicOption", "Home", FormMethod.Post))
                             {
                                 @Html.DropDownListFor(model => model.ClinicOptionString, Model.ClinicOptionsList, new { @class = "btn btn-light dropdown-toggle" });
-                                <button id="Bili%ByClinic" class="btn btn-outline-light" type="submit">Update</button>
+                                <button id="Bili%ByClinic" class="btn btn-outline-dark" type="submit">Update</button>
                             }
                         </div>
                      </div>
@@ -56,7 +56,7 @@
 
         </div>
 
-        <div class="row text-center py-4 my-3" style="background-color:#191570;">
+        <div class="row text-center py-4 my-3" style="background-color:#CDCDD9;">
             <div class="col-9 mx-auto">
                 <h2 class="text-center display-5">Number of Tests Taken by Clinic</h2>
 
@@ -69,7 +69,7 @@
                     @using (Html.BeginForm("UpdateHomeChartTimeOption", "Home", FormMethod.Post))
                     {
                         @Html.DropDownListFor(model => model.TimeOptionString, Model.TimeOptionsList, new { @class = "btn btn-light dropdown-toggle" });
-                        <button id="TestNumberByClinic" class="btn btn-outline-light" type="submit">Update</button>
+                        <button id="TestNumberByClinic" class="btn btn-outline-dark" type="submit">Update</button>
                     }
                 </div>
             </div>
@@ -78,8 +78,6 @@
 </body>
 
 <script>
-    // Set all chart font to white
-    Chart.defaults.global.defaultFontColor = 'white';
 
     // Bilirubin Concentrations (%) per Clinic chart
     $.ajax({
@@ -97,8 +95,8 @@
                     label: "Reported cases at " + aData[2],
                     data: aDatasets1,
                     fill: false,
-                    backgroundColor: ["rgba(176, 44, 167, 0.5)", "rgba(250, 44, 75, 0.5)", "rgba(255, 44, 20, 0.5)", "rgba(255, 136, 0, 0.5)", "rgba(255, 216, 25, 0.5)"],
-                    borderColor: ["rgba(176, 44, 167)", "rgba(250, 44, 75)", "rgba(255, 44, 20)", "rgba(255, 136, 0)", "rgba(255, 216, 25)"],
+                    backgroundColor: ["rgba(242, 237, 111, 0.5)", "rgba(206, 227, 151, 0.5)", "rgba(141, 177, 171, 0.5)", "rgba(68, 110, 122, 0.5)", "rgba(66, 108, 145, 0.5)", "rgba(124, 145, 175, 0.5)", "rgba(167, 173, 198, 0.5)", "rgba(95, 75, 102, 0.5)", "rgba(44, 19, 32, 0.5)"],
+                    borderColor: ["rgba(7, 3, 66)", "rgba(7, 3, 66)", "rgba(7, 3, 66)", "rgba(7, 3, 66)", "rgba(7, 3, 66)", "rgba(7, 3, 66)", "rgba(7, 3, 66)", "rgba(7, 3, 66)"],
                     borderWidth: 2
                 }]
             };
@@ -136,60 +134,60 @@
                     label: aData[2],
                     data: aDatasets1,
                     fill: false,
-                    borderColor: "#D02C87",
-                    backgroundColor: "#D02C87",
-                    pointBackgroundColor: "#D02C87",
-                    pointBorderColor: "#D02C87",
-                    pointHoverBackgroundColor: "#D02C87",
-                    pointHoverBorderColor: "#D02C87",
+                    borderColor: "#D8BC07",
+                    backgroundColor: "#D8BC07",
+                    pointBackgroundColor: "#D8BC07",
+                    pointBorderColor: "#D8BC07",
+                    pointHoverBackgroundColor: "#D8BC07",
+                    pointHoverBorderColor: "#D8BC07",
                     borderWidth: 3
                 },
                 {
                     label: aData[5],
                     data: aData[4],
                     fill: false,
-                    borderColor: "#FF2C32",
-                    backgroundColor: "#FF2C32",
-                    pointBackgroundColor: "#FF2C32",
-                    pointBorderColor: "#FF2C32",
-                    pointHoverBackgroundColor: "#FF2C32",
-                    pointHoverBorderColor: "#FF2C32",
+                    borderColor: "#96AB5D",
+                    backgroundColor: "#96AB5D",
+                    pointBackgroundColor: "#96AB5D",
+                    pointBorderColor: "#96AB5D",
+                    pointHoverBackgroundColor: "#96AB5D",
+                    pointHoverBorderColor: "#96AB5D",
                     borderWidth: 3
                 },
                 {
                     label: aData[8],
                     data: aData[7],
                     fill: false,
-                    borderColor: "#FF5000",
-                    backgroundColor: "#FF5000",
-                    pointBackgroundColor: "#FF5000",
-                    pointBorderColor: "#FF5000",
-                    pointHoverBackgroundColor: "#FF5000",
-                    pointHoverBorderColor: "#FF5000",
+                    borderColor: "#8DB1AB",
+                    backgroundColor: "#8DB1AB",
+                    pointBackgroundColor: "#8DB1AB",
+                    pointBorderColor: "#8DB1AB",
+                    pointHoverBackgroundColor: "#8DB1AB",
+                    pointHoverBorderColor: "#8DB1AB",
                     borderWidth: 3
                 },
                 {
                     label: aData[11],
                     data: aData[10],
                     fill: false,
-                    borderColor: "#FF8800",
-                    backgroundColor: "#FF8800",
-                    pointBackgroundColor: "#FF8800",
-                    pointBorderColor: "#FF8800",
-                    pointHoverBackgroundColor: "#FF8800",
-                    pointHoverBorderColor: "#FF8800",
+                    borderColor: "#426C91",
+                    backgroundColor: "#426C91",
+                    pointBackgroundColor: "#426C91",
+                    pointBorderColor: "#426C91",
+                    pointHoverBackgroundColor: "#426C91",
+                    pointHoverBorderColor: "#426C91",
                     borderWidth: 3
                 },
                 {
                     label: aData[14],
                     data: aData[13],
                     fill: false,
-                    borderColor: "#FFD819",
-                    backgroundColor: "#FFD819",
-                    pointBackgroundColor: "#FFD819",
-                    pointBorderColor: "#FFD819",
-                    pointHoverBackgroundColor: "#FFD819",
-                    pointHoverBorderColor: "#FFD819",
+                    borderColor: "#5F4B66",
+                    backgroundColor: "#5F4B66",
+                    pointBackgroundColor: "#5F4B66",
+                    pointBorderColor: "#5F4B66",
+                    pointHoverBackgroundColor: "#5F4B66",
+                    pointHoverBorderColor: "#5F4B66",
                     borderWidth: 3
                 }]
             };
