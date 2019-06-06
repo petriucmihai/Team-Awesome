@@ -3,7 +3,7 @@
     ViewBag.Title = "Settings";
 }
 
-<body class="text-white" style="background-color: #03012C">
+<body style="background-color: #DFDFE6">
 
     <div class="container body-content">
         <div class="row">
@@ -17,15 +17,15 @@
         <div class="accordion" id="accordionExample">
 
             <div class="card">
-                <div class="card-header" id="headingZero" style="background-color: #070342">
+                <div class="card-header" id="headingZero" style="background-color: #CDCDD9">
                     <h5 class="mb-0">
-                        <button class="btn btn-link text-white" type="button" data-toggle="collapse" data-target="#collapseZero" aria-expanded="true" aria-controls="collapseZero">
+                        <button class="btn btn-link text-black-50" type="button" data-toggle="collapse" data-target="#collapseZero" aria-expanded="true" aria-controls="collapseZero">
                             Dashboard report settings
                         </button>
                     </h5>
                 </div>
 
-                <div id="collapseZero" class="collapse show" aria-labelledby="headingZero" data-parent="#accordionExample" style="background-color: #03012C">
+                <div id="collapseZero" class="collapse show" aria-labelledby="headingZero" data-parent="#accordionExample" style="background-color: #DFDFE6">
                     <div class="card-body">
                         <!--Customization settings here-->
                         <div class="row">
@@ -79,7 +79,7 @@
                         </div>
                         <div class="row pt-3">
                             <div class="col">
-                                <button type="submit" class="btn btn-outline-light" onclick="">Apply Changes</button>
+                                <button type="submit" class="btn btn-outline-dark" onclick="">Apply Changes</button>
                             </div>
                         </div>
 
@@ -89,15 +89,15 @@
             </div>
 
             <div class="card">
-                <div class="card-header" id="headingOne" style="background-color: #070342">
+                <div class="card-header" id="headingOne" style="background-color: #CDCDD9">
                     <h5 class="mb-0">
-                        <button class="btn btn-link text-white" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                        <button class="btn btn-link text-black-50" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                             Curated report settings
                         </button>
                     </h5>
                 </div>
 
-                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample" style="background-color: #03012C">
+                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample" style="background-color: #DFDFE6">
                     <div class="card-body">
                         <!--Customization settings here-->
                         <div class="row">
@@ -152,7 +152,7 @@
 
                         <div class="row pt-3">
                             <div class="col">
-                                <button type="submit" class="btn btn-outline-light" onclick="">Apply Changes</button>
+                                <button type="submit" class="btn btn-outline-dark" onclick="">Apply Changes</button>
                             </div>
                         </div>
 
@@ -161,14 +161,14 @@
 
             </div>
             <div class="card">
-                <div class="card-header" id="headingTwo" style="background-color: #070342">
+                <div class="card-header" id="headingTwo" style="background-color: #CDCDD9">
                     <h5 class="mb-0">
-                        <button class="btn btn-link collapsed text-white" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        <button class="btn btn-link text-black-50 collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                             Send test email notification
                         </button>
                     </h5>
                 </div>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample" style="background-color: #03012C">
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample" style="background-color: #DFDFE6">
                     <div class="card-body">
                         <!--Email test here-->
                         <form>
@@ -183,21 +183,22 @@
                 </div>
             </div>
             <div class="card">
-                <div class="card-header" id="headingThree" style="background-color: #070342">
+                <div class="card-header" id="headingThree" style="background-color: #CDCDD9">
                     <h5 class="mb-0">
-                        <button class="btn btn-link collapsed text-white" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        <button class="btn btn-link text-black-50 collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                             Create link for JaunDetect guest account
                         </button>
                     </h5>
                 </div>
-                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample" style="background-color: #03012C">
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample" style="background-color: #DFDFE6">
                     <div class="card-body">
                         <p>Use this link to provide guest access to JaunDetect's telemetry reports:</p>
-                        <a href="@Url.Action("Index", "Guest")">https://jaundetecttest.azurewebsites.net/Guest/Index/1496580ers23</a>
+                        <a href="/Guest">https://jaundetecttest.azurewebsites.net/Guest/Index/1496580ers23</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </body>
+
 
