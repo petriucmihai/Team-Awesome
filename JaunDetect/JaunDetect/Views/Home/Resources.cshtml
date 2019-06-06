@@ -6,7 +6,7 @@
 <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 
 
-<body class="text-white" style="background-color: #03012C">
+<body style="background-color: #DFDFE6">
 
     <div class="container body-content">
         <div class="row">
@@ -33,13 +33,13 @@
                     @using (Html.BeginForm("UpdatePrice", "Home", FormMethod.Post))
                     {
                         @Html.TextBoxFor(model => model.TestStripPrice, new { Class = "form-control w-50 d-inline" })
-                        <button id="UpdatePriceButton" type="submit" class="btn btn-outline-light d-inline align-top">Update</button>
+                        <button id="UpdatePriceButton" type="submit" class="btn btn-outline-dark d-inline align-top">Update</button>
                     }
                 </div>
 
-                <div class="row border border-white rounded w-75 text-center mx-auto">
+                <div class="row border border-dark rounded w-75 text-center mx-auto">
                     <h6 class="mx-auto p-2">Resources used this month by clinic</h6>
-                    <table class="table text-white">
+                    <table class="table table-hover">
                         <tbody>
                             @try
                             {
@@ -72,9 +72,9 @@
                     <canvas id="HospitalPatients"></canvas>
                 </div>
 
-                <div class="border border-white rounded w-75 text-center mx-auto">
+                <div class="border border-dark rounded w-75 text-center mx-auto">
                     <h6 class="mx-auto p-2">Clinics that send the most patients to in-area hospitals</h6>
-                    <table class="table text-white">
+                    <table class="table table-hover">
                         <tbody>
                             @try
                             {
@@ -118,12 +118,12 @@
                     @using (Html.BeginForm("UpdateSalary", "Home", FormMethod.Post))
                     {
                         @Html.TextBoxFor(model => model.WorkerSalary, new { Class = "form-control w-50 d-inline" })
-                        <button id="UpdateSalaryButton" type="submit" class="btn btn-outline-light d-inline align-top">Update</button>
+                        <button id="UpdateSalaryButton" type="submit" class="btn btn-outline-dark d-inline align-top">Update</button>
                     }
                 </div>
-                <div class="border border-white rounded w-75 text-center mx-auto">
+                <div class="border border-dark rounded w-75 text-center mx-auto">
                     <h6 class="mx-auto p-2">Resources used this month by clinic</h6>
-                    <table class="table text-white">
+                    <table class="table table-hover">
                         <tbody>
                             @try
                             {
@@ -151,8 +151,6 @@
 </body>
 
 <script>
-    // Set all chart font to white
-    Chart.defaults.global.defaultFontColor = 'white';
 
     // Test Strip Usage per Month
     $.ajax({
@@ -170,8 +168,8 @@
                     label: "Test strips used",
                     data: aDatasets1,
                     fill: false,
-                    backgroundColor: ["rgba(176, 44, 167, 0.5)", "rgba(208, 44, 135, 0.5)", "rgba(250, 44, 75, 0.5)", "rgba(255, 44, 50, 0.5)", "rgba(255, 44, 20, 0.5)"],
-                    borderColor: ["rgba(176, 44, 167)", "rgba(208, 44, 135)", "rgba(250, 44, 75)", "rgba(255, 44, 50)", "rgba(255, 44, 20)"],
+                    backgroundColor: ["rgba(242, 237, 111, 0.5)", "rgba(206, 227, 151, 0.5)", "rgba(141, 177, 171, 0.5)", "rgba(68, 110, 122, 0.5)", "rgba(66, 108, 145, 0.5)", "rgba(124, 145, 175, 0.5)", "rgba(167, 173, 198, 0.5)", "rgba(95, 75, 102, 0.5)", "rgba(44, 19, 32, 0.5)"],
+                    borderColor: ["rgba(7, 3, 66)", "rgba(7, 3, 66)", "rgba(7, 3, 66)", "rgba(7, 3, 66)", "rgba(7, 3, 66)", "rgba(7, 3, 66)", "rgba(7, 3, 66)", "rgba(7, 3, 66)", "rgba(7, 3, 66)"],
                     borderWidth: 2
                 }]
             };
@@ -212,8 +210,8 @@
                     label: "Test strips used",
                     data: aDatasets1,
                     fill: false,
-                    backgroundColor: ["rgba(255, 44, 50, 0.5)", "rgba(255, 189, 25, 0.5)", "rgba(255, 136, 0, 0.5)", "rgba(255, 80, 0, 0.5)", "rgba(255, 44, 20, 0.5)"],
-                    borderColor: ["rgba(255, 44, 50, 0.5)", "rgba(255, 189, 25)", "rgba(255, 136, 0)", "rgba(255, 80, 0)", "rgba(255, 44, 20)"],
+                    backgroundColor: ["rgba(244, 224, 77, 0.5)", "rgba(242, 237, 111, 0.5)", "rgba(206, 227, 151, 0.5)", "rgba(141, 177, 171, 0.5)", "rgba(68, 110, 122, 0.5)", "rgba(66, 108, 145, 0.5)", "rgba(124, 145, 175, 0.5)", "rgba(167, 173, 198, 0.5)", "rgba(95, 75, 102, 0.5)", "rgba(44, 19, 32, 0.5)"],
+                    borderColor: ["rgba(7, 3, 66)", "rgba(7, 3, 66)", "rgba(7, 3, 66)", "rgba(7, 3, 66)", "rgba(7, 3, 66)", "rgba(7, 3, 66)", "rgba(7, 3, 66)", "rgba(7, 3, 66)", "rgba(7, 3, 66)", "rgba(7, 3, 66)"],
                     borderWidth: 2
                 }]
             };
@@ -251,8 +249,8 @@
                     label: "Clinic workers",
                     data: aDatasets1,
                     fill: false,
-                    backgroundColor: ["rgba(112, 44, 231, 0.5)", "rgba(144, 44, 199, 0.5)", "rgba(176, 44, 167, 0.5)", "rgba(208, 44, 135, 0.5)", "rgba(240, 44, 103, 0.5)"],
-                    borderColor: ["rgba(112, 44, 231)", "rgba(144, 44, 199)", "rgba(176, 44, 167)", "rgba(208, 44, 135)", "rgba(240, 44, 103)"],
+                    backgroundColor: ["rgba(141, 177, 171, 0.5)", "rgba(68, 110, 122, 0.5)", "rgba(66, 108, 145, 0.5)", "rgba(124, 145, 175, 0.5)", "rgba(167, 173, 198, 0.5)", "rgba(95, 75, 102, 0.5)", "rgba(44, 19, 32, 0.5)"],
+                    borderColor: ["rgba(7, 3, 66)", "rgba(7, 3, 66)", "rgba(7, 3, 66)", "rgba(7, 3, 66)", "rgba(7, 3, 66)", "rgba(7, 3, 66)", "rgba(7, 3, 66)"],
                     borderWidth: 2
                 }]
             };
