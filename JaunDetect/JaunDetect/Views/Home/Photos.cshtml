@@ -6,7 +6,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js" type="text/javascript"></script>
 <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 
-<body class="text-white" style="background-color: #03012C">
+<body style="background-color: #DFDFE6">
     <div class="container body-content">
         <div class="row">
             <div class="col text-center">
@@ -184,8 +184,6 @@
     </div>
 
     <script>
-        Chart.defaults.global.defaultFontColor = 'white';
-
         // Photos taken over time Chart
         $.ajax({
         type: "POST",
@@ -203,12 +201,12 @@
                     data: aDatasets1,
                     fill: true,
                     lineTension: 0.1,
-                    borderColor: "#FF2C14",
-                    backgroundColor: "rgba(255, 80, 0, .4)",
-                    pointBackgroundColor: "#FFBD19",
-                    pointBorderColor: "#FFBD19",
-                    pointHoverBackgroundColor: "#FFBD19",
-                    pointHoverBorderColor: "#FFBD19",
+                    borderColor: "#446E7A",
+                    backgroundColor: "rgba(141, 177, 171, .4)",
+                    pointBackgroundColor: "#CEE397",
+                    pointBorderColor: "#070342",
+                    pointHoverBackgroundColor: "#CEE397",
+                    pointHoverBorderColor: "#CEE397",
                     borderWidth: 3
                 }]
             };
@@ -249,12 +247,12 @@
                     data: aData[1],
                     fill: false,
                     lineTension: .3,
-                    borderColor: "#FA2C4B",
-                    backgroundColor: "#D02C87",
-                    pointBackgroundColor: "#B02CA7",
-                    pointBorderColor: "#B02CA7",
-                    pointHoverBackgroundColor: "#B02CA7",
-                    pointHoverBorderColor: "#B02CA7",
+                    borderColor: "#2C1320",
+                    backgroundColor: "#7C91AF",
+                    pointBackgroundColor: "#7C91AF",
+                    pointBorderColor: "#2C1320",
+                    pointHoverBackgroundColor: "#7C91AF",
+                    pointHoverBorderColor: "#7C91AF",
                     borderWidth: 2
                 },
                 {
@@ -262,12 +260,12 @@
                     data: aData[2],
                     fill: false,
                     lineTension: .3,
-                    borderColor: "#FFD819",
-                    backgroundColor: "#FFD819",
-                    pointBackgroundColor: "#FF8800",
-                    pointBorderColor: "#FF8800",
-                    pointHoverBackgroundColor: "#FF8800",
-                    pointHoverBorderColor: "#FF8800",
+                    borderColor: "#446E7A",
+                    backgroundColor: "#446E7A",
+                    pointBackgroundColor: "#F4E04D",
+                    pointBorderColor: "#446E7A",
+                    pointHoverBackgroundColor: "#F4E04D",
+                    pointHoverBorderColor: "#F4E04D",
                     borderWidth: 2
                 }]
             };
