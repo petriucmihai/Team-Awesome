@@ -116,10 +116,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Backend_Data\IQueryUserInputRepository.cs" />
     <Compile Include="Backend_Data\QueryUserInputBackendRepository.cs" />
-    <Compile Include="Backend_Data\QueryBackend.cs" />
-    <Compile Include="Backend_Data\DataBackend.cs" />
+    <Compile Include="Backend_Data\Backend.cs" />
     <Compile Include="Backend_Data\DataBackendRepository.cs" />
-    <Compile Include="Backend_Data\IDataRepository.cs" />
+    <Compile Include="Backend_Data\IDataBackendRepository.cs" />
     <Compile Include="Backend_Data\RandomDataGenerator.cs" />
     <Compile Include="Backend_Data\UnitGenerator.cs" />
     <Compile Include="Controllers\ChartController.cs" />

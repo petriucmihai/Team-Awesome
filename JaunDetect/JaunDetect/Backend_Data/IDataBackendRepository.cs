@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace JaunDetect.Backend_Data
 {
-    interface IDataRepository
+    interface IDataBackendRepository
     {
         // Methods needed to provide data for charts on the Resources page
         #region Resources charts backend methods

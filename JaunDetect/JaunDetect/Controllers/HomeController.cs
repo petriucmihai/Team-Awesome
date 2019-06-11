@@ -16,7 +16,7 @@ namespace JaunDetect.Controllers
         {
             var homeModel = new HomeChartModel();
 
-            homeModel = DataBackend.Instance.GetHomeData();
+            homeModel = Backend.Instance.GetHomeData();
 
             return View(homeModel);
         }
@@ -36,7 +36,7 @@ namespace JaunDetect.Controllers
 
             var resourceModel = new ResourcesChartModel();
 
-            resourceModel = DataBackend.Instance.GetResources();
+            resourceModel = Backend.Instance.GetResources();
             ViewBag.MONTHS = JsonConvert.SerializeObject(resourceModel.Months);
             ViewBag.TESTSTRIPS = JsonConvert.SerializeObject(resourceModel.TestStripUsages);
             return View(resourceModel);
@@ -47,7 +47,7 @@ namespace JaunDetect.Controllers
             ViewBag.Message = "Crash Reports";
 
             var crashReportModel = new CrashChartModel();
-            crashReportModel = DataBackend.Instance.GetCrashData();
+            crashReportModel = Backend.Instance.GetCrashData();
 
             return View(crashReportModel);
         }
@@ -58,7 +58,7 @@ namespace JaunDetect.Controllers
             ViewBag.Message = "Custom Query";
 
             var queryModel = new QueryViewModel();
-            queryModel = QueryBackend.Instance.GetQuery();
+            queryModel = Backend.Instance.GetQuery();
             return View(queryModel);
         }
 
@@ -68,14 +68,14 @@ namespace JaunDetect.Controllers
             ViewBag.Message = "Custom Query";
             if (ModelState.IsValid)
             {
-                QueryBackend.Instance.UpdateUserInputClinic(model.UserInputClinic);
-                QueryBackend.Instance.UpdateUserInputProvince(model.UserInputProvince);
-                QueryBackend.Instance.UpdateUserInputStartDate(model.UserInputStartDate);
-                QueryBackend.Instance.UpdateUserInputEndDate(model.UserInputEndDate);
-                QueryBackend.Instance.UpdateUserInputDevice(model.UserInputDevice);
+                Backend.Instance.UpdateUserInputClinic(model.UserInputClinic);
+                Backend.Instance.UpdateUserInputProvince(model.UserInputProvince);
+                Backend.Instance.UpdateUserInputStartDate(model.UserInputStartDate);
+                Backend.Instance.UpdateUserInputEndDate(model.UserInputEndDate);
+                Backend.Instance.UpdateUserInputDevice(model.UserInputDevice);
 
                 var queryViewModel = new QueryViewModel();
-                queryViewModel = QueryBackend.Instance.GetSearchResults();
+                queryViewModel = Backend.Instance.GetSearchResults();
                 return View("CustomQuery", queryViewModel); // if the query model is not valid
             }          
             return View("QueryResults", model);
@@ -155,7 +155,7 @@ namespace JaunDetect.Controllers
         public JsonResult GetTestStripUsageChart()
         {
             var resourceModel = new ResourcesChartModel();
-            resourceModel = DataBackend.Instance.GetResources();
+            resourceModel = Backend.Instance.GetResources();
 
             // Order of data in the list:
             // 1. X-Values (labels)
@@ -172,7 +172,7 @@ namespace JaunDetect.Controllers
         public JsonResult GetHospitalPatientChart()
         {
             var resourceModel = new ResourcesChartModel();
-            resourceModel = DataBackend.Instance.GetResources();
+            resourceModel = Backend.Instance.GetResources();
 
             // Order of data in the list:
             // 1. X-Values (labels)
@@ -189,7 +189,7 @@ namespace JaunDetect.Controllers
         public JsonResult GetClinicWorkersChart()
         {
             var resourceModel = new ResourcesChartModel();
-            resourceModel = DataBackend.Instance.GetResources();
+            resourceModel = Backend.Instance.GetResources();
 
             // Order of data in the list:
             // 1. X-Values (labels)
@@ -207,11 +207,11 @@ namespace JaunDetect.Controllers
         {
             if (ModelState.IsValid)
             {
-                DataBackend.Instance.UpdateStripPrice(model.TestStripPrice);
+                Backend.Instance.UpdateStripPrice(model.TestStripPrice);
 
                 var resourceModel = new ResourcesChartModel();
 
-                resourceModel = DataBackend.Instance.GetResources();
+                resourceModel = Backend.Instance.GetResources();
 
                 return View("Resources", resourceModel);
             }
@@ -224,11 +224,11 @@ namespace JaunDetect.Controllers
         {
             if (ModelState.IsValid)
             {
-                DataBackend.Instance.UpdateWorkerSalary(model.WorkerSalary);
+                Backend.Instance.UpdateWorkerSalary(model.WorkerSalary);
 
                 var resourceModel = new ResourcesChartModel();
 
-                resourceModel = DataBackend.Instance.GetResources();
+                resourceModel = Backend.Instance.GetResources();
 
                 ViewBag.Section = "UpdateSalaryButton";
 
@@ -246,7 +246,7 @@ namespace JaunDetect.Controllers
         public JsonResult GetCrashesByTimeChart()
         {
             var crashModel = new CrashChartModel();
-            crashModel = DataBackend.Instance.GetCrashData();
+            crashModel = Backend.Instance.GetCrashData();
             int num = crashModel.TimeOption;
 
             // Order of data in the list:
@@ -263,7 +263,7 @@ namespace JaunDetect.Controllers
         public JsonResult GetCrashesByTypeChart()
         {
             var crashModel = new CrashChartModel();
-            crashModel = DataBackend.Instance.GetCrashData();
+            crashModel = Backend.Instance.GetCrashData();
 
             List<object> iData = new List<object>();
             iData.Add(crashModel.CrashTypes);
@@ -278,7 +278,7 @@ namespace JaunDetect.Controllers
         public JsonResult GetCrashesByDeviceTypeChart()
         {
             var crashModel = new CrashChartModel();
-            crashModel = DataBackend.Instance.GetCrashData();
+            crashModel = Backend.Instance.GetCrashData();
 
             List<object> iData = new List<object>();
             iData.Add(crashModel.DeviceTypes);
@@ -292,12 +292,12 @@ namespace JaunDetect.Controllers
         {
             if (ModelState.IsValid)
             {
-                DataBackend.Instance.UpdateCrashTimeOptionString(model.TimeOptionString);
+                Backend.Instance.UpdateCrashTimeOptionString(model.TimeOptionString);
                 //ViewBag.Section = "CrashTimeOption";
 
                 var crashModel = new CrashChartModel();
 
-                crashModel = DataBackend.Instance.GetCrashData();
+                crashModel = Backend.Instance.GetCrashData();
 
                 return View("CrashReport", crashModel);
             }
@@ -312,7 +312,7 @@ namespace JaunDetect.Controllers
         public JsonResult GetTestNumbersForAllClinicsChart()
         {
             var homeModel = new HomeChartModel();
-            homeModel = DataBackend.Instance.GetHomeData();
+            homeModel = Backend.Instance.GetHomeData();
             int num = homeModel.TimeOption;
 
             List<object> iData = new List<object>();
@@ -332,7 +332,7 @@ namespace JaunDetect.Controllers
         public JsonResult GetClinicBilirubinLevelChart()
         {
             var homeModel = new HomeChartModel();
-            homeModel = DataBackend.Instance.GetHomeData();
+            homeModel = Backend.Instance.GetHomeData();
             int num = homeModel.ClinicOption;
 
 
@@ -355,13 +355,13 @@ namespace JaunDetect.Controllers
         {
             if (ModelState.IsValid)
             {
-                DataBackend.Instance.UpdateTimeOptionString(model.TimeOptionString);
+                Backend.Instance.UpdateTimeOptionString(model.TimeOptionString);
 
                 ViewBag.Section = "TestNumberByClinic";
 
                 var homeModel = new HomeChartModel();
 
-                homeModel = DataBackend.Instance.GetHomeData();
+                homeModel = Backend.Instance.GetHomeData();
 
                 return View("Index", homeModel);
             }
@@ -374,13 +374,13 @@ namespace JaunDetect.Controllers
         {
             if (ModelState.IsValid)
             {
-                DataBackend.Instance.UpdateClinicOptionString(model.ClinicOptionString);
+                Backend.Instance.UpdateClinicOptionString(model.ClinicOptionString);
 
                 ViewBag.Section = "Bili%ByClinic";
 
                 var homeModel = new HomeChartModel();
 
-                homeModel = DataBackend.Instance.GetHomeData();
+                homeModel = Backend.Instance.GetHomeData();
 
                 return View("Index", homeModel);
             }

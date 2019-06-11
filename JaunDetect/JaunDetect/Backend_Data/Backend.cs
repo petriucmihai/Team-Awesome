@@ -1,20 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using JaunDetect.Models;
+﻿using JaunDetect.Models;
 
 namespace JaunDetect.Backend_Data
 {
-    public class DataBackend
+    public class Backend
     {
         #region SingletonPattern
-        private static volatile DataBackend instance;
+        private static volatile Backend instance;
         private static object syncRoot = new object();
 
-        private DataBackend() { }
+        private Backend() { }
 
-        public static DataBackend Instance
+        public static Backend Instance
         {
             get
             {
@@ -23,7 +19,7 @@ namespace JaunDetect.Backend_Data
                     lock (syncRoot)
                     {
                         if (instance == null)
-                            instance = new DataBackend();
+                            instance = new Backend();
                     }
                 }
 
@@ -33,7 +29,7 @@ namespace JaunDetect.Backend_Data
         #endregion SingletonPattern
 
         // Hook up the Repositry
-        private IDataRepository repository = new DataBackendRepository();
+        private IDataBackendRepository repository = new DataBackendRepository();
 
         public ResourcesChartModel GetResources()
         {
@@ -109,6 +105,61 @@ namespace JaunDetect.Backend_Data
         public bool UpdateCrashTimeOptionString(string timeOptionString)
         {
             return repository.UpdateCrashTimeOptionString(timeOptionString);
+        }
+
+        // creates a new View Model that takes in information from user input stored in the backend repository
+        private IQueryUserInputRepository queryRepository = new QueryUserInputBackendRepository(); // the repository containing the user input data
+        QueryViewModel model = new QueryViewModel(); // the View Model where the Query Results will be displayed
+
+        public QueryViewModel GetQuery()
+        {
+            model.UserInputClinic = queryRepository.GetUserInputClinic();
+            model.UserInputProvince = queryRepository.GetUserInputProvince();
+            model.UserInputStartDate = queryRepository.GetUserInputStartDate();
+            model.UserInputEndDate = queryRepository.GetUserInputEndDate();
+            model.UserInputDevice = queryRepository.GetUserInputDevice();
+            model.RecordList = queryRepository.InitializeList();
+            model.VisualizationChoice = queryRepository.GetVisualizationChoice();
+            return model;
+        }
+
+        // creates a new View Model with user input search results 
+        public QueryViewModel GetSearchResults()
+        {
+            model.RecordList = queryRepository.GetRecordList();
+            model.VisualizationChoice = queryRepository.GetVisualizationChoice();
+            return model;
+        }
+
+        // methods to update the query backend repository through user input; parameters represent user input
+        public bool UpdateUserInputClinic(string newData)
+        {
+            return queryRepository.UpdateClinic(newData);
+        }
+
+        public bool UpdateUserInputProvince(string newData)
+        {
+            return queryRepository.UpdateProvince(newData);
+        }
+
+        public bool UpdateUserInputStartDate(string newData)
+        {
+            return queryRepository.UpdateStartDate(newData);
+        }
+
+        public bool UpdateUserInputEndDate(string newData)
+        {
+            return queryRepository.UpdateEndDate(newData);
+        }
+
+        public bool UpdateUserInputDevice(string newData)
+        {
+            return queryRepository.UpdateDevice(newData);
+        }
+
+        public bool UpdateVisualizationChoice(int choice)
+        {
+            return queryRepository.UpdateVisualizationChoice(choice);
         }
     }
 }

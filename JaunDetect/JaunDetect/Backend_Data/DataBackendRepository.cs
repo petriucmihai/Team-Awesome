@@ -10,7 +10,7 @@ namespace JaunDetect.Backend_Data
     /// <summary>
     /// In memory implementation of the JaunDetect data store
     /// </summary>
-    public class DataBackendRepository : IDataRepository
+    public class DataBackendRepository : IDataBackendRepository
     {
         ResourcesChartModel resourcesData = new ResourcesChartModel();
         HomeChartModel homeData = new HomeChartModel();

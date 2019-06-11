@@ -16,7 +16,7 @@ namespace JaunDetect.Controllers
         {
             var homeModel = new HomeChartModel();
 
-            homeModel = DataBackend.Instance.GetHomeData();
+            homeModel = Backend.Instance.GetHomeData();
 
             return View(homeModel);
         }
@@ -25,7 +25,7 @@ namespace JaunDetect.Controllers
         {
             var resourcesModel = new ResourcesChartModel();
 
-            resourcesModel = DataBackend.Instance.GetResources();
+            resourcesModel = Backend.Instance.GetResources();
 
             return View(resourcesModel);
         }
@@ -33,7 +33,7 @@ namespace JaunDetect.Controllers
         public ActionResult GetBilirubinLevelChart()
         {
             var homeModel = new HomeChartModel();
-            homeModel = DataBackend.Instance.GetHomeData();
+            homeModel = Backend.Instance.GetHomeData();
             int num = homeModel.TimeOption;
 
             var key = new Chart(width: 900, height: 400)
@@ -75,11 +75,11 @@ namespace JaunDetect.Controllers
         {
             if (ModelState.IsValid)
             {
-                DataBackend.Instance.UpdateTimeOptionString(model.TimeOptionString);
+                Backend.Instance.UpdateTimeOptionString(model.TimeOptionString);
 
                 var homeModel = new HomeChartModel();
 
-                homeModel = DataBackend.Instance.GetHomeData();
+                homeModel = Backend.Instance.GetHomeData();
 
                 return View("Index", homeModel);
             }

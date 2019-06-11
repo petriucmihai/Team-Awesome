@@ -24,11 +24,11 @@ namespace JaunDetect.Controllers
         {
             if (ModelState.IsValid)
             {
-                QueryBackend.Instance.UpdateVisualizationChoice(model.VisualizationChoice);
+                Backend.Instance.UpdateVisualizationChoice(model.VisualizationChoice);
 
                 var queryViewModel = new QueryViewModel();
 
-                queryViewModel = QueryBackend.Instance.GetSearchResults();
+                queryViewModel = Backend.Instance.GetSearchResults();
 
                 BuildDataSets(queryViewModel);
 
@@ -44,7 +44,7 @@ namespace JaunDetect.Controllers
         {
             var queryViewModel = new QueryViewModel();
 
-            queryViewModel = QueryBackend.Instance.GetQuery();
+            queryViewModel = Backend.Instance.GetQuery();
 
             BuildDataSets(queryViewModel);
 
@@ -68,7 +68,7 @@ namespace JaunDetect.Controllers
         {
             var queryViewModel = new QueryViewModel();
 
-            queryViewModel = QueryBackend.Instance.GetQuery();
+            queryViewModel = Backend.Instance.GetQuery();
 
             BuildDataSets(queryViewModel);
 
@@ -92,7 +92,7 @@ namespace JaunDetect.Controllers
         {
             var queryViewModel = new QueryViewModel();
 
-            queryViewModel = QueryBackend.Instance.GetQuery();
+            queryViewModel = Backend.Instance.GetQuery();
 
             BuildDataSets(queryViewModel);
 
@@ -116,7 +116,7 @@ namespace JaunDetect.Controllers
         {
             var queryViewModel = new QueryViewModel();
 
-            queryViewModel = QueryBackend.Instance.GetQuery();
+            queryViewModel = Backend.Instance.GetQuery();
 
             BuildDataSets(queryViewModel);
 
