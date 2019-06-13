@@ -44,7 +44,7 @@ namespace JaunDetect.Controllers
         {
             var queryViewModel = new QueryViewModel();
 
-            queryViewModel = Backend.Instance.GetQuery();
+            queryViewModel = Backend.Instance.GetSearchResults();
 
             BuildDataSets(queryViewModel);
 
@@ -68,7 +68,7 @@ namespace JaunDetect.Controllers
         {
             var queryViewModel = new QueryViewModel();
 
-            queryViewModel = Backend.Instance.GetQuery();
+            queryViewModel = Backend.Instance.GetSearchResults();
 
             BuildDataSets(queryViewModel);
 
@@ -92,7 +92,7 @@ namespace JaunDetect.Controllers
         {
             var queryViewModel = new QueryViewModel();
 
-            queryViewModel = Backend.Instance.GetQuery();
+            queryViewModel = Backend.Instance.GetSearchResults();
 
             BuildDataSets(queryViewModel);
 
@@ -116,7 +116,7 @@ namespace JaunDetect.Controllers
         {
             var queryViewModel = new QueryViewModel();
 
-            queryViewModel = Backend.Instance.GetQuery();
+            queryViewModel = Backend.Instance.GetSearchResults();
 
             BuildDataSets(queryViewModel);
 
